@@ -22,14 +22,18 @@
 //let
 // can not be Redeclare but can be Resign the value.
 
-function getData() {
+//function getData() {
 
     //  let rollNo=2; {console.log('######',rollNo)}
-    let rollNo = 2;
+//     let c = 10
+// if (c == 10) {
+// let a = "hi"
+// console.log(a)   ** can be console only  inside the block scope. example: inside the curly braces.
+// }
+// console.log(a)  ** here shown ReferenceError: a is not defined.
     
     
-    
-}
+// }
 
 
 getData()
