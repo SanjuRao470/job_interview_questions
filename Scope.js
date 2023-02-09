@@ -15,6 +15,13 @@
 //console.log('my name is :',userName)  ** shown referenceError: userName is not defined
 //getUser()
 
+// var b = "Hello"         *** can see variable “b” with var keyword is declared globally.
+//         function Checkb(){      **and we tried to get value two times one time inside function and second time globally (outside the function)
+//             console.log(b)   **so both the ways we get the correct result
+//         }
+//     Checkb();
+//     console.log(b);
+
 
 //Block scope
 // only can console inside the Block scope not inside the functional scope.
@@ -36,8 +43,8 @@
 //}
 //getData()
 
-//const 
-//Using const keyword you can not reassign the value nor you can redeclare the variable with const . 
+//const
+//Using const keyword you can not reassign the value nor you can redeclare the variable with const .
 //If you do it will give you error .
 // must be assign a value while declaration.
 
