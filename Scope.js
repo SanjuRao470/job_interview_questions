@@ -79,7 +79,7 @@
 //     // console.log('$$$$',a)
 // }
 // Doc()
-// a =5;                    case-1
+// a =5;                    case-1 consider a as global variable and can access anywhere in program.
 //  it will give the result 5
 
 
@@ -142,3 +142,112 @@
 //  var a;          5- undefined
 //  a = 4;
 
+
+
+
+// Regular Functions
+
+// getApp(8,9,6,5)
+// function getApp(x,y,z,w){
+
+//     console.log(y+w,x*z)
+ 
+// }
+
+// getApp(8,9,6,5)   regular functions are hoisted.
+
+
+// let square = function(x){   ##  here,it will treat a veriable as a  function. 
+//     return (x*x);
+//   };
+//   console.log(square(10));
+
+// QUESTION NO-1 all questions done by https://dev.to/midasxiv/scopes-hoisting-closures-tricky-questions-4c85
+// var variable = 10;
+// (()=>{
+//    var variable;
+//    console.log(variable);   // undefined
+//     variable = 30;
+//    console.log(variable);   // 30
+// })();
+// console.log(variable)    // here, 10 has treated  as global variable. 
+
+ // QUESTION NO-2
+//  var variable = 20;
+// (()=>{
+// //    console.log(variable);   // Cannot access 'variable' before initialization. Because  it will not initialized by undefied and  enter something called 'the temporal  dead zone
+//    let variable = 40;
+//    console.log(variable);   // 40
+// })()
+// console.log(variable)   /// here, 10 has treated  as global variable. 
+
+ // QUESTION NO-3
+
+//  var variable = 10;
+// (()=>{
+//    console.log(variable);   // undefined
+//    variable = 20;
+//    console.log(variable);   // 20
+// })();
+// var variable = 30;
+// console.log(variable);
+// result:10,20,30
+
+//  ###$$$OR CASE
+// var variable = 10;
+//  console.log(variable);
+// (()=>{
+//    console.log(variable);   // undefined
+//    variable = 20;
+//    console.log(variable);   // 20
+// })();
+// var variable = 30;
+// console.log(variable);
+
+// result:10,10,20,30
+
+ // QUESTION NO-4
+
+//  var variable;
+// variable = 10;   // 10 replaced by 5
+// variable = 5;
+// (()=>{
+//     var variable
+//    console.log(variable);   // undefined
+//    variable = 20;
+//    console.log(variable);   // 20
+// })();
+// variable = 10;
+// variable = 8;        // 10 replaced by 8
+// console.log(variable);
+
+// result:undefined,20,5,8
+
+// QUESTION NO-5
+// var variable = 10;
+// (()=>{
+//    console.log(variable);   // undefined
+//    var variable = 20;
+//    console.log(variable);   // 20
+// })();
+
+// console.log(variable);
+// var variable = 30;
+
+ //NOTE: Always remember, first hoisting will happen inside scope after that outside the scope.  see above in given example.
+//  result: undefined,20,10  
+
+// var variable;
+// variable = 10;
+// (()=>{
+//    console.log(variable);   // undefined
+//    variable = 20;
+//    console.log(variable);   // 20
+// })();
+// variable = 30;
+// console.log(variable);
+
+//===============immediate invoke function
+// (()=>{
+
+// })(); //===== Anonymous Function
