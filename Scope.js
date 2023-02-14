@@ -50,9 +50,9 @@
 
 //example  const a=10; ** correct
 //const a;  ** wrong
- //a = 10
+//a = 10
 
- //const
+//const
 //const b = "red"
 //b = "blue"       // give you error because can't be updated
 
@@ -73,7 +73,7 @@
 //declaration of functions, variables or classes to the top of their scope, prior to execution of the code. 
 
 
- 
+
 // function Doc(){
 
 //     // console.log('$$$$',a)
@@ -101,7 +101,7 @@
 
 //  const a =3 ;      case-1
 //  console.log(a)
- 
+
 // let a;
 //console.log(a)    case-2   Typescript error: cannot access 'a' before initialization
 // a= 5;
@@ -115,7 +115,7 @@
 
 // function Doc(){
 
-    // console.log('$$$$',a)
+// console.log('$$$$',a)
 // }
 // a = 4;
 // var a; 
@@ -137,7 +137,7 @@
 // a = 4;
 // console.log(a)    4 -initialized by undefined  
 // var a;  
-         
+
 //  console.log(a)
 //  var a;          5- undefined
 //  a = 4;
@@ -151,7 +151,7 @@
 // function getApp(x,y,z,w){
 
 //     console.log(y+w,x*z)
- 
+
 // }
 
 // getApp(8,9,6,5)   regular functions are hoisted.
@@ -172,7 +172,7 @@
 // })();
 // console.log(variable)    // here, 10 has treated  as global variable. 
 
- // QUESTION NO-2
+// QUESTION NO-2
 //  var variable = 20;
 // (()=>{
 // //    console.log(variable);   // Cannot access 'variable' before initialization. Because  it will not initialized by undefied and  enter something called 'the temporal  dead zone
@@ -181,7 +181,7 @@
 // })()
 // console.log(variable)   /// here, 10 has treated  as global variable. 
 
- // QUESTION NO-3
+// QUESTION NO-3
 
 //  var variable = 10;
 // (()=>{
@@ -206,7 +206,7 @@
 
 // result:10,10,20,30
 
- // QUESTION NO-4
+// QUESTION NO-4
 
 //  var variable;
 // variable = 10;   // 10 replaced by 5
@@ -234,7 +234,7 @@
 // console.log(variable);
 // var variable = 30;
 
- //NOTE: Always remember, first hoisting will happen inside scope after that outside the scope.  see above in given example.
+//NOTE: Always remember, first hoisting will happen inside scope after that outside the scope.  see above in given example.
 //  result: undefined,20,10  
 
 // var variable;
@@ -247,7 +247,127 @@
 // variable = 30;
 // console.log(variable);
 
-//===============immediate invoke function
+//===============immediate invoke function (IIF)
 // (()=>{
 
 // })(); //===== Anonymous Function
+
+
+// ###==========================Regular Function.
+// 1- with arguments binding always gives result in form of array.
+
+// let myFunc = {
+//     showArgs() {
+//         console.log(arguments);
+//     }
+// };
+// myFunc.showArgs(1, 2, 3, 4);
+
+
+//  ###===================Another
+
+// function showArgs(){
+//     console.log(arguments);
+//    };
+//    showArgs(1, 2, 3, 4);
+
+// ##==============Arrow Function
+
+// let myFunc = { 
+//     showArgs : () => {
+//     console.log(arguments);
+//    }
+//   };
+//   myFunc.showArgs(1, 2, 3, 4);
+//Uncaught ReferenceError: arguments is not defined
+// at Object.showArgs
+
+// ##=================ANOTHER
+//    const showArgs = () => {
+//         console.log(arguments);
+//        };
+//       showArgs(1, 2, 3, 4)
+      //Uncaught ReferenceError: arguments is not defined
+    // at showArgs
+
+
+    // ###=============== use of this keyword.
+// let me = { 
+//     name: "Ashutosh Verma", 
+//     thisInArrow:() => { 
+//     console.log("My name is " + this.name); // no 'this' binding here 
+//     }, 
+//     thisInRegular(){ 
+//     console.log("My name is " + this.name); // 'this' binding works here 
+//     } 
+//    };
+//    me.thisInArrow(); 
+//    me.thisInRegular();
+
+// ###====================== use of new keyword
+
+// function getName(a,b){
+
+//      this.a = a,
+//      this.b = b
+//     //  console.log('hjdshj', a,b)
+// }
+// getName()
+
+// let person = new getName('mohan','sandeep')
+// console.log('hjdshj', a,b)
+
+
+// Constructor
+function User() {
+    this.n = n
+    console.log('dhjfdghjf',this.n)
+}
+User()
+var user = new User('babita');
+
+// let add = (x, y) => console.log(x + y);
+// new add(2,3);
+
+// No duplicate named parameters
+
+// function App(X,X){
+//     console.log('jhdhjhjd', X+X)
+// }
+// App(1,2)
+//  in case of regular function, if we pass same parameters it will be override.
+
+//   let App = (y,y) =>{
+//     console.log('bhjdghdsdh',y+y)
+//   }
+//   App(5,5)
+  // Because of arrow function it will gives errors.
+
+ //========== OPTIONAL CHAINING =======
+//  optional chaining  is a feature in javascript that allows you to access proprties of an object.
+// or elements of an array without having to check whether the object or array is null or undefined first. it  is represented by the ?. operator
+// and can be used to concisely access deeply nested properties without having to write a long chain of if  statement
+// to check for null or undefied values.
+ //The optional chaining ?. is a safe way to access nested object properties, 
+//  even if an intermediate property doesn’t exist.
+
+//  const ProductList={
+
+//     wire:'AA23',
+//     board:'electric',
+//     desk:'tabledesk23',
+//     waterbottle:'jaal',
+
+//     property:{
+
+//         road:{
+//             name:"jiiiiiiiiiiiiiiiii"
+//         },
+//         address:  'A23,dadar',
+//         age: 45,
+//     }
+
+//  };
+//  console.log(ProductList.property?.road.name?.kjkj?.jjk)
+
+ 
