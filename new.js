@@ -5,8 +5,8 @@
 
 
 
-let name = ""
-let lastName= "kapoor"
+// let name = ""
+// let lastName= "kapoor"
 
 // console.log(!!name)  // false:   the string does not exist .  // true:   the string does exist.
 
