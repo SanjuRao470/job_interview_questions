@@ -319,12 +319,12 @@
 
 
 // Constructor
-function User() {
-    this.n = n
-    console.log('dhjfdghjf',this.n)
-}
-User()
-var user = new User('babita');
+// function User() {
+//     this.n = n
+//     console.log('dhjfdghjf',this.n)
+// }
+// User()
+// var user = new User('babita');
 
 // let add = (x, y) => console.log(x + y);
 // new add(2,3);
@@ -368,6 +368,190 @@ var user = new User('babita');
 //     }
 
 //  };
-//  console.log(ProductList.property?.road.name?.kjkj?.jjk)
+//  console.log(ProductList.property.road.name.kkk?.jhjj)
 
  
+// ###================this Context
+// When used in a function, the this keyword simply points to an object to which it is bound.
+//  It answers the question of where it should get some value or data from:
+//But how do you know ###== which object the function is bound to?###===== How do you find out what this is referring to?
+
+// EXAMPLE
+
+// function Alert(C,C,K,K) { 
+
+//   this.name='sdghgdh'
+//   this.num='785786'
+//   this.case='ASDFGHJMK,L'
+//   this.roll='3456789MNBVCXZ'
+
+// console.log(this.name ,C+C-K+K ,'is calling');
+   
+// }
+// Alert(5,7,4,2)
+//A function with a "this" reference.
+
+
+// 1. Default binding | Direct invocation
+
+// function alert() { 
+//   console.log(this.name + ' is calling'); 
+// }
+
+// const name = 'Kingsley'; 
+// alert(); // Kingsley is calling
+
+// STANDALONE FUNCTION
+// One of the first rules to remember is that if the function housing a this reference is a standalone function,
+//  then that function is bound to the global object.
+//As you can see, name() is a standalone, unattached function, so it is bound to the global scope.
+//As a result, the this.name reference resolves to the global variable const name = 'Kingsley'.
+// This rule, however, doesn't hold if name() were to be defined in strict mode:
+
+// PART 2
+// function alert() { 
+//   'use strict'; 
+//   // this.baba ='dhs';
+//   console.log(this.name + ' is calling'); //undefined in strict mode
+// }
+
+// const name = 'Kingsley'; 
+// alert(); // TypeError: `this` is `undefined`######======
+// TypeError: Cannot read properties of undefined (reading 'name')
+//When set in strict mode, the this reference is set to undefined.
+
+// 2. Implicit binding | Method invocation
+// HAVE TWO METHODS 1 : SEPARATED,2: NESTED
+
+//  EXAMPLE -1
+// function alert() { 
+//   console.log(this.age + ' years old'); 
+// }
+
+// const myObj = {
+//   age: 22,
+//   alert: alert
+// }
+
+// myObj.alert() // 22 years old
+// when you call a function using dot notation,
+//  this is implicitly bound to the object the function is being called from.
+
+
+//  EXAMPLE -2
+// function alert() { 
+//   console.log(this.age + ' years old'); 
+// }
+
+// const myObj = {
+//   age: 22,
+//   alert: alert,  //  putting a property function reference on the object?
+//   nestedObj: {
+//     age: 26,
+//     // alert: alert
+//   }
+// }
+
+// 2a: Method separated from the object
+// const newFunction = myObj.alert
+// newFunction();    // Window {}
+
+// 2b: Nested Function
+// myObj.nestedObj.alert(); // 26 years old
+
+ //IMPORTANT POINTS=============
+//myObj.alert(); // `this` is bound to `myObj` -- 22 years old
+// myObj.nestedObj.alert(); // `this` is bound to `nestedObj` -- 26 years old
+
+// 3. Explicit binding | Indirect invocation
+
+// we want to force a function to use an object as its context without
+//  putting a property function reference on the object?
+//We have two utility methods to achieve this: call() and apply().
+// To explicitly bind a function call to a context, you simply have to invoke the call()
+//  on that function and pass in the context object as parameter.
+
+// EXAMPLE -1
+// function alert() { 
+//   console.log(this.lastname, this.age + ' years old'); 
+// }
+
+// const myObj = {
+//   age: 22,
+//  lastname: 'jghgh'
+// }
+// alert.call(myObj); // 22 years old
+
+ // EXAMPLE -2
+
+// function myFunction(param1, param2) {
+//   console.log(this)     
+// }
+
+// const obj = {
+// someKey: 1, 
+// }
+
+// const param1 = 1, param2 = 2;
+// myFunction.call(obj, param1, param2)                  // {someKey: 1}
+// myFunction.apply(obj, [param1, param2])            // {someKey: 1}
+
+//  DIFFERENCE B/W call() and apply()
+
+//call(): Pass in the required object as the first parameter during the function call.
+//  The actual parameters are passed after the object.
+
+// apply(): Similar to call() with a difference in the way the actual arguments are passed.
+//  Here, the actual arguments are passed as an array.
+
+//EXAMPLE-2
+
+// function myFunction() {
+//   console.log(this)     
+// }
+
+// const obj = {
+// someKey: 1, 
+// }
+
+// const boundFunction = myFunction.bind(obj)
+// boundFunction();      // {someKey: 1}
+
+// bind(): In this method, you create a new function with a fixed this. 
+// These types of functions created using bind() are commonly known as bound functions.
+
+//4. New binding | Constructor invocation
+// we create an object using Function Constructors.
+
+// 4.a Function without Return
+
+// function myFunction(){
+//   // JS internally creates an object and refers it as this
+  
+//   // User explicitly adds required properties and methods to the object
+//   this.someKey = 1;
+//   this.inner = function(){
+//     console.log(this);
+//   }
+  
+//   // JS internally returns the object
+// }
+
+// const obj = new myFunction();
+// obj.inner()           // {someKey: 1, inner: ƒ} with myFunction prototype
+
+
+//4.b Function with Return
+
+// The returned object is assigned to the LHS variable at the function call and
+//  the prototype of the constructor function is NOT inherited.
+
+// function myFunction(){
+//   return {
+//     someKey: 1,
+//   }
+// }
+
+// const obj = new myFunction();
+// console.log(obj);    // {someKey: 1} without myFunction prototype.
+
