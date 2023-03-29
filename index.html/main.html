@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js"> </script>
+
+</head>
+
+<body>
+    <h1>sdfghjkl</h1>
+
+    
+        <button id="setExpirey">set session</button>
+        <br></br>
+        <input id="inputForexpiry"/>
+        <br></br>
+        <button id="getExpiry">get session</button> <br></br>
+        <div> Value: <span id="value"></span></div>
+
+    
+</body>
+
+<script>
+    const btnSET= document.getElementById('setExpiry')
+    const btnGET= document.getElementById('getExpiry')
+    const setInput= document.getElementById('inputForexpiry')
+    const valueDisplay= document.getElementById('value')
+
+    // =====>>>>>>>>> SESSIONS
+    //  1=============== sessionStorage
+    //  sessionStorage.setItem("Name","kavita kaushik")
+    //  sessionStorage.getItem("Name")
+
+    // sessionStorage.setItem("List", JSON.stringify([1,2,3,4,6,7,8]))
+    //  sessionStorage.getItem( "List" ,JSON.parse(List))
+    //   sessionStorage.getItem( typeof List)
+
+
+    //    2================LocalStorage
+
+    btnSET.addEventListener('Click',()=>{
+      Setsession("mydata", setInput.value,10000)
+    })
+
+    btnGET.addEventListener('Click',()=>{
+    const returnedValue= Getsession("mydata");
+    valueDisplay.innerHTML = returnedValue;
+    })
+
+    function Setsession(key, value, expiryTime) {
+        const date = new Date();
+        const list = {
+            value: val,
+            expiry: date.getTime() + expiryTime,
+        };
+
+        localStorage.setItem(key, JSON.stringify(list));
+     
+
+    }
+
+    function Getsession(key) {
+        const getvaluesession = localStorage.getItem(key)
+
+        if (!getvaluesession) {
+            return null;
+        }
+
+        const list = JSON.parse(getvaluesession)
+        const date = new Date();
+
+        if (date.getTime() > list.expiry) {
+            localStorage.removeItem(key)
+            return null;
+        }
+
+        return list.value
+
+    }
+</script>
+
+</html>

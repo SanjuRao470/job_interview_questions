@@ -287,11 +287,11 @@
 //         console.log(arguments);
 //        };
 //       showArgs(1, 2, 3, 4)
-      //Uncaught ReferenceError: arguments is not defined
-    // at showArgs
+//Uncaught ReferenceError: arguments is not defined
+// at showArgs
 
 
-    // ###=============== use of this keyword.
+// ###=============== use of this keyword.
 // let me = { 
 //     name: "Ashutosh Verma", 
 //     thisInArrow:() => { 
@@ -341,14 +341,14 @@
 //     console.log('bhjdghdsdh',y+y)
 //   }
 //   App(5,5)
-  // Because of arrow function it will gives errors.
+// Because of arrow function it will gives errors.
 
- //========== OPTIONAL CHAINING =======
+//========== OPTIONAL CHAINING =======
 //  optional chaining  is a feature in javascript that allows you to access proprties of an object.
 // or elements of an array without having to check whether the object or array is null or undefined first. it  is represented by the ?. operator
 // and can be used to concisely access deeply nested properties without having to write a long chain of if  statement
 // to check for null or undefied values.
- //The optional chaining ?. is a safe way to access nested object properties, 
+//The optional chaining ?. is a safe way to access nested object properties, 
 //  even if an intermediate property doesn’t exist.
 
 //  const ProductList={
@@ -370,7 +370,7 @@
 //  };
 //  console.log(ProductList.property.road.name.kkk?.jhjj)
 
- 
+
 // ###================this Context
 // When used in a function, the this keyword simply points to an object to which it is bound.
 //  It answers the question of where it should get some value or data from:
@@ -386,7 +386,7 @@
 //   this.roll='3456789MNBVCXZ'
 
 // console.log(this.name ,C+C-K+K ,'is calling');
-   
+
 // }
 // Alert(5,7,4,2)
 //A function with a "this" reference.
@@ -459,7 +459,7 @@
 // 2b: Nested Function
 // myObj.nestedObj.alert(); // 26 years old
 
- //IMPORTANT POINTS=============
+//IMPORTANT POINTS=============
 //myObj.alert(); // `this` is bound to `myObj` -- 22 years old
 // myObj.nestedObj.alert(); // `this` is bound to `nestedObj` -- 26 years old
 
@@ -482,7 +482,7 @@
 // }
 // alert.call(myObj); // 22 years old
 
- // EXAMPLE -2
+// EXAMPLE -2
 
 // function myFunction(param1, param2) {
 //   console.log(this)     
@@ -527,13 +527,13 @@
 
 // function myFunction(){
 //   // JS internally creates an object and refers it as this
-  
+
 //   // User explicitly adds required properties and methods to the object
 //   this.someKey = 1;
 //   this.inner = function(){
 //     console.log(this);
 //   }
-  
+
 //   // JS internally returns the object
 // }
 
@@ -554,4 +554,125 @@
 
 // const obj = new myFunction();
 // console.log(obj);    // {someKey: 1} without myFunction prototype.
+
+//CLOSURES=====================
+
+
+
+//Closures are functions that refer to independent (free) variables.
+// In other words, the function defined in the closure ‘remembers’ the environment in which it was created.
+// Note: Free variables are variables that are neither locally declared nor passed as parameter.
+//  CLOSURE MEANS: a function along with its an environment or we can call lexical environment. 
+
+
+//A closure is the combination of a function bundled together (enclosed)
+// with references to its surrounding state (the lexical environment)
+
+//Example 1:
+// function numberGenerator() {        //// this part is lexical environment.
+//   // Local “free” variable that ends up within the closure
+//   var num = 1;
+//   function checkNumber() { 
+//     console.log(num);      /// this part is closure
+//   }
+//   num++;
+//   return checkNumber;
+// }
+
+// var number = numberGenerator();
+// number(); // 2
+
+
+// function foo() {
+//   // The function scope
+//   let count = 0;
+//   // console.log(count); // logs 0
+// }
+// foo();
+// console.log(count); // ReferenceError: count is not defined
+
+// function Closure() {
+//   fname = 'sakshi'    //
+//   console.log('@@@@@@@@@@@@@@@', fname)
+
+//   let c = function Show() {
+//     lname = 'tanwar'
+//     console.log('###############', lname)
+//   }
+//   console.log(fname)
+//   return c
+// }
+// let char = Closure()
+// char()
+
+
+// case-1 Array.reduce()
+// let arr=[1,3,4,56,7,]
+// let sum = arr.reduce((a,b)=>a+b)
+// console.log(sum)
+//output  71
+
+// let duplicateEle = [1,3,4,1,2,6,3,44,6,8,2,7,6]
+// console.log(duplicateEle)
+
+// output: simple arrray
+
+// ii#### output: {'1':2,'3':5............. }  in key value pair
+
+
+/// to find frequency
+// let duplicateEle = [1,3,4,1,2,6,3,44,6,8,2,7,6]
+// let frequency = duplicateEle.reduce((freqObj,ele)=>{
+//        freqObj[ele] ? ++freqObj[ele] :  freqObj[ele]=1
+      
+//      return freqObj;
+//    },{})
+//   console.log(frequency)
+
+
+// case-2 syntax: Object.keys(obj)
+// important point: 1- Object.keys: return only array of key,    2-Object.value: return only array of values
+// but in case both FILTER and MAP it will gives the result in array.
+
+// 1- Object.keys : only array of key
+// 1- Object.value : only array of value
+// 1- Object.entries  : array of an indiviual pair of
+
+
+//let obj = {a:12,b:32,c:98}
+// console.log(Object.keys(obj)) // [a,b,c]
+// output:['a','b','c'] only keys
+
+
+//let obj = {a:12,b:32,c:98}
+ //console.log( Object.values(obj))
+  // output:[ 12, 32, 98 ] only values
+
+
+  // EXTRA POINT:
+  //Object.keys(obj).map((val)=> obj[val]*2 )
+ // Object.values(obj).filter((val)=> val > 34)
+
+
+ // ### for map
+//  let obj = {a:12,b:32,c:98}
+// let res = Object.keys(obj).map((val)=> obj[val]*2 )
+// console.log(res)
+ 
+// output:[ 24, 64, 196 ]
+
+//case-3  i-FILTER RETURN A NEW ARRAY
+//ii- if condition has not matched in that case it return empty array.
+// iii- on bases on condition filter return element of array.
+
+// let arr = [3,5,1,6,7,45]
+// let filres = arr.filter((val)=> val > 50)
+// console.log(filres)
+// output:[ 45 ]
+// output:[  ]  if condition has not matched
+
+//let obj = {a:12,b:32,c:98}
+//let objRes = Object.values(obj).filter((val)=> val > 34)
+//console.log(objRes)
+//output:[ 98 ]
 
