@@ -676,3 +676,21 @@
 //console.log(objRes)
 //output:[ 98 ]
 
+
+// starts sorting
+// The sort() method sorts the elements of an array in place and returns the reference to the same array,
+// now sorted. The default sort order is ascending,
+
+// Functionless
+// sort()
+
+// Arrow function
+// sort((a, b) => { /* … */ } )
+
+// const months = ['March', 'Jan', 'Feb', 'Dec'];
+// months.sort();
+// console.log(months);
+
+const array1 = [1,2,3,4,5,6];
+array1.sort();
+console.log(array1);
