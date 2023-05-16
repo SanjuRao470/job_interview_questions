@@ -359,3 +359,37 @@
 //    - BOM
 //    - Custom event
 //    - dynamic routing
+
+// QUESTION
+// // LINEAR SEARCH (to find elements in sequential order in an array)
+
+// Advantage: will perform fast searches in small to medium List.
+// 2- the list does not need to sorted.
+// 3- not affected by inserted and deletion.
+
+// Disadvantage:
+// 1- time consuming
+
+// const a = [54, 26, 9, 80, 47, 71, 10, 24, 45]; // given array  
+//    //const val = 71; // value to be searched / num 
+//    // const n = 9; // size of array / a.length 
+   
+//     const a = [54, 26, 9, 80, 47, 71, 10, 24, 45];
+     
+//     function linearSearch(a, val) {                // complixity of this function is really high
+//     for (let i = 0; i < a.length; i++) { 
+     
+//      if (a[i] == val)  {
+//         return i;    
+//     } 
+//   }
+//     return -1; 
+//   }
+//      const result=linearSearch(a,80)
+     
+//      if (result == -1){
+//          console.log('element not found');
+//      }
+//      else{
+//          console.log(`element found at index ${result}`);
+//      }
