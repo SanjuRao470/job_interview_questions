@@ -177,18 +177,44 @@
 // console.log(objRes)
 
 
-
+// arr =[1,2,3,4]
 // let sum = arr.reduce((a,b)=>a+b)
 // console.log(sum)
+//output :10
+
+
+//QUESTION
+//-------- FIND FREQUENCY OF AN GIVEN ARRAY
 // let duplicateEle = [1,3,4,1,2,6,3,44,6,8,2,7,6]
 // // output : {1:2,3:2,...}
-
 // let frequency = duplicateEle.reduce((freqObj,ele)=>{
 //     freqObj[ele] ? ++freqObj[ele] :  freqObj[ele]=1
 //     return freqObj;
     
 // },{})
 // console.log(frequency)
+//output { '1': 2, '2': 2, '3': 2, '4': 1, '6': 3, '7': 1, '8': 1, '44': 1 }
+
+// solved in diffrent way
+// dupli =[1,1,1,2,2,2,2,3,3,3,3,3,4]
+// let fre = dupli.reduce((obj,ele)=>{
+//     obj[ele] ? ++obj[ele] :obj[ele]=1
+//     return obj;
+    
+// },{})
+// console.log(fre)
+//output:{ '1': 0, '2': 0, '3': 0, '4': 0 }
+
+//2nd case  : final output in []
+
+// dupli =[1,1,1,2,2,2,2,3,3,3,3,3,4]
+// let fre = dupli.reduce((obj,ele)=>{
+//     obj[ele] ? ++obj[ele] :obj[ele]=1
+//     return obj;
+    
+// },[])
+// console.log(fre)
+//output:[ <1 empty item>, 3, 4, 5, 1 ]
 
 
 
@@ -429,3 +455,24 @@
 // }
 //  console.log(position);
    //output:find element at index 6
+
+
+  //QUESTION LOOP
+//   array = [2,3,4,5,6,7,8,9]
+//   let start = 15;
+//   let end = 14;
+//    let mid = 11;
+//  //let arr =array.slice(2,5)
+//  //let arr = array.shift(2)
+//  //console.log(arr)
+//  function foo(){
+//      if(start<end){
+//          console.log(array.length)
+//      }
+//      else if(end<=mid){
+//          console.log(array.splice(3,4))
+//      }else
+//          console.log(array.slice(3,4))            
+//  }
+//  foo(array)
+
