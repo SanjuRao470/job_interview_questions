@@ -393,3 +393,39 @@
 //      else{
 //          console.log(`element found at index ${result}`);
 //      }
+
+//QUESTION 
+//BINARY SEARCH : to divide an array into two equal parts
+// Required : sorted array( binary search will never works in unsorted array)  L,M,H VALUES 
+// IMP POINTS
+//1- TWO APPROACH
+//ITRATIVE, RECURSIVE
+//ITERATIVE: in which we use Loop.(mostly used)
+// recursive: we use recursion which will a method or a function call search()
+// For even array [1,2,3,4]:  (start+end)/2=( 0+3)/2=1.5=>1, here middle point is 2 // Math.floor // to calculate middle points
+// for odd array : (low+high)/2 // this floor removes the decimal points for e.g 5/2 = 2.5 but its give 2
+
+//PROBLEM
+// array = [2,3,4,5,6,7,8,9]
+// let find =8;
+// let start =0;
+// let end = array.length-1;
+// let position = undefined;
+// while(start<=end){
+//     let mid=Math.floor((start+end)/2);
+    //console.log(array[mid]);
+    //output:5
+
+//     if(array[mid]==find){
+//     position=mid;
+//       break;
+//     }
+//     else if(array[mid]<find){
+//         start= mid+1;
+        
+//     }else{
+//         end=mid-1
+//     }
+// }
+//  console.log(position);
+   //output:find element at index 6
