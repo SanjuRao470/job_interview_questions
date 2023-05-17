@@ -476,3 +476,59 @@
 //  }
 //  foo(array)
 
+
+//Rest oprator  // rest porator will always give the answer in array
+// function foo(a,b, ...obj){
+//   console.log('a',a)
+//    console.log('b',b)
+//     console.log('obj',obj)
+// }
+// foo(11,3,4,6,7,8,9,11,12,12)
+// output:a 11
+// b 3
+// obj [
+//   4,  6,  7,  8,  //// rest porator will always give the answer in array
+//   9, 11, 12, 12
+// ]
+//imp points
+// function foo( ...obj,a,b){
+//   console.log('a',a)
+//    console.log('b',b)
+//     console.log('obj',obj)
+// }
+// foo(11,3,4,6,7,8,9,11,12,12)
+//output:SyntaxError: Rest parameter must be last formal parameter
+
+//spread oprator
+// function sum(...nums){
+//   console.log(nums);
+// }
+// sum(4,5);
+// sum(5,6,7,8);
+//output:[4,5]
+//[5,6,7,8]
+
+//Q-2
+// let arr1 = [1,2,3,4,5];
+// let arr2 = [...arr1,6,7,8];
+// console.log(arr1);
+//OUTPUT:[1,2,3,4,5,6,7,8]
+//Q3
+// let arr=[1,5,89,5,900,234,1456];
+// console.log(Math.max(...arr));
+// output:1456
+// console.log(Math.max(arr));
+//output: it is giving NaN, Nan is basically not a number. So this is invalid way of passing the data
+
+//Q4
+// let arr="abc";
+// let arr1="bbc"
+// let arr2=`${arr} ${arr1}`
+// console.log(arr2)
+//OUTPUT: abc bbc
+
+//Q4 DEstructure
+// let arr =['riya','siya','piya'];
+// let[f,m]=arr;
+// console.log(f,m)
+// output:riya siya
