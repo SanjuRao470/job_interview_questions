@@ -21,10 +21,10 @@
 //     // it rerenders the components whenever state is changes
 //     let content1 =' this is the data for the content 1 button'
 //     let content2 = 'this is the data for the content 2 button'
-  
+
 //   const [content,setContent] =useState("c1")
-  
-  
+
+
 //   // function handleChange(event){
 //   //   let val = event.target.value
 //   //   setName(val);
@@ -33,25 +33,25 @@
 //        setContent(value);
 //   }
 //     return (<>
-  
+
 //      <button onClick={()=>handleClick('c1')}>content 1</button>
 //      <button onClick={()=>handleClick('c2')}>content2</button>
 //     {/* {  content === 'content1'  ? <p>this is the data for the content 1 button</p> : <p>this is the data for the content 2 button</p> } */}
-  
+
 //     {content === 'c1' && <p>{content1}</p>}
 //     {content === 'c2' && <p>{content2}</p>}
-  
-    
+
+
 //     </>
 //     );
 //   }
-  
+
 //   export default App;
 
 
 //Question -2 ========
 // import React,{useEffect, useState} from 'react'
- 
+
 //  const Callapi = () => {
 //   const[data,setData]=useState(0)
 //   const [apiData,setApiData] = useState([])
@@ -78,7 +78,7 @@
 //     <div>{item.name}</div>
 //     <p>{item.id}</p>
 //     </>
-    
+
 //     )
 
 //     }
@@ -86,7 +86,7 @@
 
 //    )
 //  }
- 
+
 //  export default Callapi
 
 
@@ -190,7 +190,7 @@
 // let frequency = duplicateEle.reduce((freqObj,ele)=>{
 //     freqObj[ele] ? ++freqObj[ele] :  freqObj[ele]=1
 //     return freqObj;
-    
+
 // },{})
 // console.log(frequency)
 //output { '1': 2, '2': 2, '3': 2, '4': 1, '6': 3, '7': 1, '8': 1, '44': 1 }
@@ -200,7 +200,7 @@
 // let fre = dupli.reduce((obj,ele)=>{
 //     obj[ele] ? ++obj[ele] :obj[ele]=1
 //     return obj;
-    
+
 // },{})
 // console.log(fre)
 //output:{ '1': 0, '2': 0, '3': 0, '4': 0 }
@@ -211,7 +211,7 @@
 // let fre = dupli.reduce((obj,ele)=>{
 //     obj[ele] ? ++obj[ele] :obj[ele]=1
 //     return obj;
-    
+
 // },[])
 // console.log(fre)
 //output:[ <1 empty item>, 3, 4, 5, 1 ]
@@ -227,28 +227,28 @@
 //   #. 'let', 'const' has the block scope // {}
 //   #. 'var', 'function' hoisting
 //   #. 'const' have the same properties but can't re assign
-   
+
 // ---- Scope var/let -----------------
 //   function foo () {
-	 
+
 // 	 if(true) {
-	  
+
 // 	  let a = 6;
-	  
+
 // 	 }
-     
+
 //      console.log(a);
-    
+
 //      var a = 8;
 //   }
-   
+
 //   foo();
-   
-   
+
+
 // ------ Hoisting --------------------
-   
+
 //   let s = 10;
-   
+
 //   function doo() {
 //       console.log(s);
 //       var s = 5;
@@ -270,7 +270,7 @@
 // To understand the context we should always look to the execution
 
 // const foo = () =>  {
-    
+
 // }
 // foo();
 
@@ -316,15 +316,15 @@
 //----- curring ---------------------
 
 // const foo1 = () => {
-     
+
 //      const foo2 = () => {
-          
+
 //           const foo3 = () => {
 //               console.log("#################")
 //           }
 //           return foo3
 //      }
-     
+
 //      return foo2
 // }
 
@@ -352,7 +352,7 @@
 
 
 
-  // Array, Object
+// Array, Object
 
 // // Inherirence
 // const obj = {
@@ -379,7 +379,7 @@
 //    call/apply/bind
 //    prototype ----------------------------------
 //    promises
-  
+
 
 //    Special
 //    - BOM
@@ -399,12 +399,12 @@
 // const a = [54, 26, 9, 80, 47, 71, 10, 24, 45]; // given array  
 //    //const val = 71; // value to be searched / num 
 //    // const n = 9; // size of array / a.length 
-   
+
 //     const a = [54, 26, 9, 80, 47, 71, 10, 24, 45];
-     
+
 //     function linearSearch(a, val) {                // complixity of this function is really high
 //     for (let i = 0; i < a.length; i++) { 
-     
+
 //      if (a[i] == val)  {
 //         return i;    
 //     } 
@@ -412,7 +412,7 @@
 //     return -1; 
 //   }
 //      const result=linearSearch(a,80)
-     
+
 //      if (result == -1){
 //          console.log('element not found');
 //      }
@@ -439,8 +439,8 @@
 // let position = undefined;
 // while(start<=end){
 //     let mid=Math.floor((start+end)/2);
-    //console.log(array[mid]);
-    //output:5
+//console.log(array[mid]);
+//output:5
 
 //     if(array[mid]==find){
 //     position=mid;
@@ -448,16 +448,16 @@
 //     }
 //     else if(array[mid]<find){
 //         start= mid+1;
-        
+
 //     }else{
 //         end=mid-1
 //     }
 // }
 //  console.log(position);
-   //output:find element at index 6
+//output:find element at index 6
 
 
-  //QUESTION LOOP
+//QUESTION LOOP
 //   array = [2,3,4,5,6,7,8,9]
 //   let start = 15;
 //   let end = 14;
@@ -532,3 +532,62 @@
 // let[f,m]=arr;
 // console.log(f,m)
 // output:riya siya
+
+//OBJECT QUESTIONS
+//Q1:Sort object array based on another array of keys
+
+// const arr1 = ['d','a','b','c'] ;
+// const arr2 = [{a:1},{c:3},{d:4},{b:2}];
+// const sortArray = (arr1, arr2) => {
+//    arr2.sort((a, b) => {
+//       const aKey = Object.keys(a)[0];
+//       //console.log("ttttt",aKey)
+//       const bKey = Object.keys(b)[0];
+//      console.log("cccc",bKey)
+//       return arr1.indexOf(aKey) - arr1.indexOf(bKey);
+//    });
+// };
+// sortArray(arr1, arr2);
+// console.log(arr2);
+// output:[ { d: 4 }, { a: 1 }, { b: 2 }, { c: 3 } ]
+
+
+//closure  :  (REMEMBER THE ENVIRONMENT IN WHICH I WAS CREATED)
+//Question-1
+// var x = 10;
+// function foo() {
+//   var y = 20;
+//   return function boop() {
+//     let z = 15;
+//     const output = x + y + z;
+//     console.log(output)
+//     console.log(z)
+//     return function () {
+//       console.log(y)
+//     }
+//   }
+// }
+// var fn = foo();
+// var fn1 = fn();
+// fn1()
+
+
+//Question-2
+// var x = 10;
+// function foo() {
+//   var y = 20;
+//   function boop() {
+//     let z = 15;
+//     const output = x + y + z;
+//     console.log(output)
+//     console.log(z)
+//   }
+//   boop()
+//  // console.log('vvvv', z) ////ReferenceError: z is not defined
+//   console.log(x)
+//   function foo1() {
+//     console.log('nnnnnn', y)
+//   }
+//   foo1()
+// }
+// foo();
