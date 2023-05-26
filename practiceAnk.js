@@ -591,3 +591,23 @@
 //   foo1()
 // }
 // foo();
+ 
+
+// To find comman element
+
+//  let array = [10,20,30,40,50];
+//  let arr = [20,30,60,70,90];
+
+//  function CommonItemsArray(array1,arr1) {        // TAKING SCOPE
+//     let commonArray = []; 
+//    for(let i = 0; i < array.length; i++) {
+//       for(let j = 0; j < arr.length; j++) {
+//          if(array[i] == arr[j]) { 
+//             commonArray.push(array[i]); 
+//          }
+//       }
+//    }
+//    return commonArray;
+// }
+// console.log(CommonItemsArray())
+// console.log(arr)
