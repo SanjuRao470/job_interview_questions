@@ -242,3 +242,42 @@
 // arr[99]="apple"
 // console.log(arr.length)//100
 
+//QUESTION
+//let arr =[0,1,2,3,4,5,6]
+// arr.length =2
+// console.log(arr)//[ 0, 1 ]
+
+//QUESTION
+// let arr =[
+//     [1,2,3],// 0 index
+//     [4,5,6],// 1 index
+//     [7,8,9] // 2 index
+// ]
+//console.log(arr.length)//3
+//console.log(arr[2])//[ 7, 8, 9 ]
+// console.log(arr[0][1])//2 second element of 0 index
+
+//OUTPUT BASED QUESTIONS
+//  let arr = [1,2,3,4]
+//   console.log(String(arr) ==="1234")//false
+//       console.log(String(arr) ==="1,2,3,4")//true
+
+//OUTPUT BASED QUESTIONS
+
+    // console.log([1]+1) //"11" 
+    //   console.log([1,4]+3) //"1,43"
+    //       console.log(["1"]+1) //"11"   
+    //       console.log([1,8]+"1") //"1,81"
+    //     console.log([0]+0) //"00" 
+    //   console.log([0]+"1") //"01"
+    //       console.log(["1,5"]+"1,9")//"1,51,9"    
+    //       console.log(["1"]+1,7) //"1,17"
+    //  console.log([]+1,7) //1 7
+    //  console.log([]+"1,7") //1,7
+    //  console.log([""]+1,7) //1 7
+
+//OUTPUT BASED QUESTIONS
+//     console.log(0 == [])//true
+// console.log(0 == '')//true
+// console.log('0' == [])//false
+// console.log('0' == '')//false
