@@ -40,6 +40,33 @@
 // l
 // l
 // o
+
+// //STRING
+// let str = "asdfghjk"
+
+// for (let char of str){
+//     console.log(char)
+// }
+// a
+// s
+// d
+// f
+// g
+// h
+// j
+// k
+// a
+// s
+// d
+// f
+// g
+// h
+// j
+// k
+// //OR
+// for (let char of "asdfghjk"){
+//     console.log(char)
+// }
 //*************************************
 //Strings can’t be changed in JavaScript
 //The usual workaround is to create a whole new string and assign it to str instead of the old one.
@@ -138,3 +165,80 @@
 
 //TOPIC
 //To get a substring, use: slice or substring.
+
+
+
+
+//ARRAYS
+//Array is an object and thus behaves like an object.
+//arr[0]  //actually come from the object syntax.That’s essentially the same as obj[key], 
+//where arr is the object, while numbers are used as keys.
+
+// contiguous memory area :refers to a block of memory where elements or data are stored in
+//  consecutive or sequential locations. This means that the elements are stored one after another
+//  in memory without any gaps or spaces between them.
+
+
+//let fruits = ["Apple", "Orange","aa","qwe"]
+//method-1
+//So new elements are added or taken always from the “end”.that is push ,pop
+//alert( fruits.pop() ); //qwe
+//fruits.push("banana")
+//console.log(fruits)//[ 'Apple', 'Orange', 'aa', 'qwe', 'banana' ]
+
+//1-shift
+//console.log(fruits.shift())//Apple
+//console.log(fruits)//[ 'Orange', 'aa', 'qwe' ]
+
+//2-unshift
+//fruits.unshift('ttt')
+//console.log(fruits)//[ 'ttt', 'Apple', 'Orange', 'aa', 'qwe' ]
+// we can extract/get  any index elements without using any formula
+// positive array counting from 0 to .....
+// negetive array counting from -1 to .....
+// console.log(fruits.at(-3))//orange
+// fruits[2] = "assd"
+//console.log(fruits)//[ 'Apple', 'Orange', 'assd', 'qwe' ]
+//console.log(fruits.length)//4
+
+//EXAMPLES
+// let order = ["bb"]
+// order.unshift("aa")// add at beginning 
+// order.push("cc")// add at end 
+// console.log(order)//[ 'aa', 'bb', 'cc' ]
+
+// let lists =["01","02","03","04","05","06"]
+// console.log(lists.pop())//Extracts at end   ///06
+// console.log(lists.shift())//Extracts at beginning   ///01
+// console.log(lists)//[ '02', '03', '04', '05' ]
+
+//Qusetion
+// let list =["abc"]
+// let arr =list
+// console.log(list ===arr)//true
+// arr.push("bca") // // modify the array by reference
+// console.log(list)//[ 'abc', 'bca' ]
+
+//QUESTION
+// let list =["abc"]// Array is also a special kind of an object
+// list.age=26
+// console.log(list)//[ 'abc', age: 26 ]
+// console.log(list.age)//26
+
+//QUESTION
+//ARRAY
+// let arr = ["Apple", "Orange", "Pear"];
+
+// for (let i = 0; i < arr.length; i++) {
+//   console.log( arr[i] );
+// }
+
+// Apple
+// Orange
+// Pear
+
+//QUESTION
+// let arr =[]
+// arr[99]="apple"
+// console.log(arr.length)//100
+
