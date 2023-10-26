@@ -95,6 +95,12 @@
 // Difference between functional and class components 
 // Asked about the projects mentioned in resume
 
+//EXTRA QUESTIONS
+// diff  b/w  SSR & CSR
+// coreWebvitals
+// what is the passed method // Json Stringfy
+// Cookies & session
+
 
 
 
