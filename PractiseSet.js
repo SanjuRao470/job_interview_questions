@@ -274,6 +274,13 @@
 // they implement only toString conversion, so here [] becomes an empty string, [1] becomes
 //  "1" and [1,2] becomes "1,2".
 
+//IMPORTANT NOTE: in which every answer you get to see on screen like vs code,js complier without string.
+// but it assume when we use .toString()  then the answer will get in string. like in example
+
+// example:
+// console.log((1).toString()) //"1"
+// console.log(([1,4]+3).toString()) //"1,43"
+
     // console.log([1]+1) //11
     //   console.log([1,4]+3) //"1,43"
     //       console.log(["1"]+1) //"11"   
@@ -281,19 +288,20 @@
     //     console.log([0]+0) //"00" 
     //   console.log([0]+"1") //"01"
     //       console.log(["1,5"]+"1,9")//"1,51,9"    
-    //       console.log(["1"]+1,7) //"1,17"
+    //       console.log(["1"]+1,7) //"11,7"
     //  console.log([]+1,7) //1 7
     //  console.log([]+"1,7") //1,7
-    //  console.log([""]+1,7) //1 7
+    //  console.log([""]+1,7) //1 7 
 
  //RULES
 // alert( [] + 1 ); // "1"             
 // alert( [1] + 1 ); // "11"
 // alert( [1,2] + 1 ); // "1,21"
 
-//alert( "" + 1 ); // "1"
-//alert( "1" + 1 ); // "11"
-//alert( "1,2" + 1 ); // "1,21"
+// alert( "" + 1 ); // "1"
+// alert( "1" + 1 ); // "11"
+// alert( "1,2" + 1 ); // "1,21"
+
 
 //OUTPUT BASED QUESTIONS
 //Arrays in JavaScript, unlike some other programming languages, shouldn’t be compared with operator ==.
