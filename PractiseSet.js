@@ -341,6 +341,7 @@
 
 
 ///ARRAY METHODS
+
 //IMP FOR INTERVIEW
 //The element was removed, but the array still has 3
 // elements, we can see that arr.length == 3.
@@ -412,3 +413,59 @@
 // let originalarr = ['ab','bc','ca','de','ef','fg' ]
 // originalarr.splice(2,4,'drd','rsr')
 // console.log(originalarr)
+
+
+//output based question
+// let arr = ['aa', 'ab', 'bc', 'bb', 'cdc', 'edd']
+// let users ={
+//     name:'piya',
+//     age:29
+// }
+// console.log(typeof users)//object
+// console.log(typeof arr)//object
+
+
+//QUESTION-1
+// let arr = ['aa', 'ab', 'bc', 'bb', 'cdc', 'edd']
+// arr.forEach( function (item, index, array) {
+//     console.log(`${item}  :is item ,
+//     ${index} :is index,
+//      ${array} :is array `)   
+// })
+
+//IMPORTANT POINTS
+//for LOOP : WHEN WE KNOW THE NO OF ITERATION
+//while : WHEN WE DON'T KNOW THE ON OF ITERATION AND WANT TO MET DESIRE CONDITION
+// forEach :  WHEN WE WANT THE ITERATION ON EVERY ELEMENTS OF ARRAY
+
+
+//Question
+// let arr = ['aa', 'ab', 'bc', 'bb', 'cdc', 'edd']
+
+// let users ={
+//     name:'piya',
+//     age:29
+// }
+
+// console.log(arr.concat(['a','c']))
+// [
+//   'aa', 'ab',  'bc',
+//   'bb', 'cdc', 'edd',
+//   'a',  'c'
+// ]
+// console.log(arr.concat(['b','db'],['cv','vc']))
+// [
+//   'aa', 'ab',  'bc',
+//   'bb', 'cdc', 'edd',
+//   'b',  'db',  'cv',
+//   'vc'
+// ]
+// console.log(arr.concat(['rr','tt'],'pp','oo'))
+// [
+//   'aa', 'ab',  'bc',
+//   'bb', 'cdc', 'edd',
+//   'rr', 'tt',  'pp',
+//   'oo'
+// ]
+// console.log(arr.concat(users))
+// [ 'aa', 'ab', 'bc', 'bb', 'cdc', 'edd', { name: 'piya', age: 29 } ]
