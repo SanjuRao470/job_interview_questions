@@ -89,9 +89,107 @@
 
 //  export default Callapi
 
+//QUESTION 
+ //diff. b/w spread oprator, rest oprator, destructring.
+
+// Spread operator spreads iterable elements(arrays and onject). 
+
+// Here are some multiple-choice questions (MCQs) based on the spread operator in JavaScript:
+
+// What will be the output of the following code snippet?
+// javascript
+// Copy code
+// const arr1 = [1, 2, 3];
+// const arr2 = [4, 5, 6];
+// const mergedArray = [...arr1, ...arr2];
+// console.log(mergedArray);
+
+// a) [1, 2, 3, 4, 5, 6]
+// b) [[1, 2, 3], [4, 5, 6]]
+// c) [1, 2, 3, [4, 5, 6]]
+// d) [1, 2, 3, ...arr2]
+
+// Answer: a) [1, 2, 3, 4, 5, 6]
+
+// What does the following code snippet output?
+// javascript
+// Copy code
+// const str = 'hello';
+// const chars = [...str];
+
+// console.log(chars);
+// a) ['h', 'e', 'l', 'l', 'o']
+// b) 'h', 'e', 'l', 'l', 'o'
+// c) ['hello']
+// d) SyntaxError: Unexpected token '...'
+
+// Answer: a) ['h', 'e', 'l', 'l', 'o']
+
+// What will be the output of the following code?
+// javascript
+// Copy code
+// const arr1 = [1, 2, 3];
+// const arr2 = [4, 5, 6];
+// const arr3 = [...arr1, ...arr2];
+// const arr4 = arr1.concat(arr2);
+
+// console.log(arr3 === arr4);
+// a) true
+// b) false
+// c) undefined
+// d) ReferenceError: arr3 is not defined
+
+// Answer: a) true
+
+// What does the following code snippet output?
+// javascript
+// Copy code
+// const obj1 = { x: 1, y: 2 };
+// const obj2 = { z: 3 };
+// const mergedObj = { ...obj1, ...obj2 };
+
+// console.log(mergedObj);
+// a) { x: 1, y: 2, z: 3 }
+// b) { { x: 1, y: 2 }, { z: 3 } }
+// c) { ...obj1, ...obj2 }
+// d) SyntaxError: Unexpected token '...'
+
+// Answer: a) { x: 1, y: 2, z: 3 }
+
+// What will be the output of the following code?
+// javascript
+// Copy code
+// const numbers = [1, 2, 3];
+
+// const copyNumbers = [...numbers];
+
+// console.log(copyNumbers === numbers);   object===array
+
+// a) true
+// b) false
+// c) undefined
+// d) ReferenceError: copyNumbers is not defined
+
+// Answer: b) false
+// //ReasonIn JavaScript, arrays are reference types. When you create a new array using the 
+// spread operator ([...numbers]), you are creating a new array instance 
+// with the same elements as the original array (numbers), but it is a separate object in memory.
+
+// Key Points:
+// Used in array literals, function calls, object literals, etc.
+// Creates a shallow copy of the original array/string.
+
+// Rest parameter gathers function arguments into an array.
+// Key Points:
+// Used only in function parameters.
+// Collects all remaining arguments into an array.
+
+// Destructuring extracts values from arrays/objects into separate variables.
 
 // Question -3 =========
-// [13:01, 2/6/2023] Ankit Sir: let obj = {name:"ankit",lastName:"yadav", role:"developer"}
+// [13:01, 2/6/2023] Ankit Sir: 
+
+//let obj = {name:"ankit",lastName:"yadav", role:"developer"}
 // let arr =["ankit",'yadav','kumar']
 // let {name,...remaining} = obj
 // let [myName,...remainingArr] = arr
@@ -107,8 +205,9 @@
 // }
 
 // foo("a","b","c","d")
-// [16:18, 2/6/2023] Ankit Sir: // destructuring operator ;
+// [16:18, 2/6/2023] Ankit Sir:
 
+ // destructuring operator ;
 // let obj = {name:"ankit",lastName:"yadav", role:"developer"}
 // let arr =["ankit",'yadav','kumar']
 // let {name:ak,...remaining} = obj
@@ -144,6 +243,8 @@
 
 // let newVar = {...dell,...mobile}
 // console.log(newVar)
+
+
 // // deepcopy And Shallowcopy
 
 
@@ -258,12 +359,11 @@
 // ------- const ----------------------
 
 // const a = {  // constant mean 'a' always be an object (type would be the same)
-//     b : 5
+//     b : 8
 // };
 
-// a.b = 8;
-
-// console.log(a);
+//console.log(a.b)  // 8
+//console.log(a)  // { a: 8 }
 
 //Question -2 ====
 // When ever regular fn get executed independently it always point to the 'window'

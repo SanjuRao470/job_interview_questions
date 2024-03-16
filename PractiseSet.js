@@ -1,3 +1,408 @@
+//CALLBACK HELL
+
+// Callback hell refers to the situation in asynchronous programming 
+// where code becomes difficult to read and maintain due to nested callbacks.
+//  This typically occurs when you have multiple asynchronous operations 
+// that depend on the results of each other, resulting in deeply nested callback functions.
+
+//EXAMPLE OF CALLBACK HELL
+
+// Example of callback hell
+// asyncFunction1(arg1, function(result1) {
+//   asyncFunction2(result1, function(result2) {
+//       asyncFunction3(result2, function(result3) {
+//           // More nested callbacks...
+//       });
+//   });
+// });
+
+//QUESTION Difference between call(),apply(),bind()
+//all three are methods which help in controlling the context of a function.
+
+// call() & apply(): they are pretty interchangable both execute current function immediately it all up to 
+// wheather  its easier to send in an array or comma seperated list of arguments
+//OR
+//when we want to invoke a function immediately with sepecified this value and arguments
+
+//bind(): when we want  create reusable function with sepecified this value and intial arguments
+
+
+// What will be the output of the following code?
+// javascript
+
+
+// Copy code
+// function greet(message) {
+//   return message + ' ' + this.name;
+// }
+
+// const person = { name: 'Alice' };
+// const message = greet.call(person, 'Hello');
+// console.log(message);
+// a) "Hello Alice"
+// b) "Hello undefined"
+// c) "Hello "
+// d) TypeError: Cannot read property 'name' of undefined
+
+// Answer: a) "Hello Alice"
+
+// What does the following code snippet output?
+// javascript
+// Copy code
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// const result = sum.apply(null, [10, 20]);
+// console.log(result);
+// a) 30
+// b) 10
+// c) NaN
+// d) TypeError: Cannot read property 'apply' of null
+
+// Answer: a) 30
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// const result = sum.apply( [10, 20]);     /////when we do not provide this value null in case answeR will be NaN
+// console.log(result);
+// a) 30
+// b) 10
+// c) NaN
+// d) TypeError: Cannot read property 'apply' of null
+
+// Answer: c) NaN 
+
+
+//BIG REASON:
+// The apply() method calls the sum function with the this value as null and the arguments 10 and 20.
+// Inside the sum function, a receives the value 10 and b receives the value 20.
+// The sum function returns the sum of a and b, which is 10 + 20 = 30.
+
+// What will be logged to the console in the following code?
+// javascript
+// Copy code
+// function fullName(city, country) {
+//   return this.firstName + ' ' + this.lastName + ', ' + city + ', ' + country;
+// }
+
+// const person = { firstName: 'Emma', lastName: 'Smith' };
+// const message = fullName.apply(person, ['London', 'UK']);
+// console.log(message);
+// a) "Emma Smith, London, UK"
+// b) "Emma Smith, London, undefined"
+// c) "Emma Smith, undefined, undefined"
+// d) TypeError: Cannot read property 'firstName' of undefined
+
+// Answer: a) "Emma Smith, London, UK"
+
+// What will be the output of the following code?
+// javascript
+// Copy code
+// function greet(message) {
+//   return message + ' ' + this.name;
+// }
+
+// const person = { name: 'Bob' };
+// const greetBob = greet.bind(person, 'Hi');
+// console.log(greetBob());
+// a) "Hi Bob"
+// b) "Hi undefined"
+// c) "Hi "
+// d) TypeError: Cannot read property 'name' of undefined
+
+// Answer: a) "Hi Bob"
+
+// What does the following code snippet output?
+// javascript
+// Copy code
+// const numbers = [1, 2, 3, 4, 5];
+// const maxNumber = Math.max.apply(null, numbers);
+// console.log(maxNumber);
+// a) 5
+// b) 1
+// c) NaN
+// d) TypeError: Cannot read property 'apply' of null
+
+// Answer: a) 5
+
+
+
+//Question Behaviour of event capturing (Parent to child) and event bubbling (child to parent)
+
+// For the outer and middle buttons, event listeners are registered with true,
+//  indicating event capturing.
+
+// For the inner button, event listeners are registered without specifying true,
+//  indicating event bubbling (default behavior).
+
+
+// <!DOCTYPE html>
+// <html>
+// <head>
+//     <title>Event Bubbling</title>
+// </head>
+// <body>
+//     <div id="outer">
+//         <div id="middle">
+//             <div id="inner">Click me!</div>
+//         </div>
+//     </div>
+//     <script>
+//         document.getElementById('outer').addEventListener('click', function() {
+//             console.log('Outer div clicked - Bubbling phase');
+//         });
+
+//         document.getElementById('middle').addEventListener('click', function() {
+//             console.log('Middle div clicked - Bubbling phase');
+//         });
+
+//         document.getElementById('inner').addEventListener('click', function() {
+//             console.log('Inner div clicked - Bubbling phase');
+//         });
+//     </script>
+// </body>
+// </html>
+
+
+//Example---------------------------------
+// document.getElementById('outer').addEventListener('click', function(event) {
+//   console.log('Outer button clicked - Capturing phase');
+// }, true); // Event capturing
+
+// document.getElementById('middle').addEventListener('click', function(event) {
+//   console.log('Middle button clicked - Capturing phase');
+// }, true); // Event capturing
+
+// document.getElementById('inner').addEventListener('click', function(event) {
+//   console.log('Inner button clicked - Capturing phase');
+// }, true); // Event capturing
+
+// document.getElementById('outer').addEventListener('click', function(event) {
+//   console.log('Outer button clicked - Bubbling phase');
+// }); // Event bubbling
+
+// document.getElementById('middle').addEventListener('click', function(event) {
+//   console.log('Middle button clicked - Bubbling phase');
+// }); // Event bubbling
+
+// document.getElementById('inner').addEventListener('click', function(event) {
+//   console.log('Inner button clicked - Bubbling phase');
+// }); // Event bubbling
+
+
+// Event Capturing:-----
+
+// When using event capturing in JavaScript, which phase does the event propagate through first?
+
+// A) Target phase
+// B) Bubbling phase
+// C) Capturing phase
+// D) Event phase
+
+// ANS: C) Capturing phase
+
+// Which method in JavaScript is used to attach an event listener with event capturing?
+
+// A) addEventListener
+// B) attachEvent
+// C) on
+// D) bindEvent
+
+// ANS:A) addEventListener
+
+// Event Bubbling:------
+
+// When using event bubbling in JavaScript, which phase does the event propagate through after reaching the target element?
+
+// A) Capturing phase
+// B) Bubbling phase
+// C) Target phase
+// D) Event phase
+
+// ANS:B) Bubbling phase
+
+// By default, which phase of event propagation does JavaScript use when attaching an event listener without specifying a phase?
+
+// A) Target phase
+// B) Bubbling phase
+// C) Capturing phase
+// D) Event phase
+
+// ANS:B) Bubbling phase
+
+// Combining Event Capturing and Bubbling:
+
+// In JavaScript, can event capturing and event bubbling be used simultaneously for the same event?
+
+// A) Yes, they can be used together without any restrictions.
+// B) No, they cannot be used together as they are mutually exclusive.
+// C) Yes, but only in modern browsers.
+// D) Yes, but only in older browsers.
+
+// ANS: A) Yes, they can be used together without any restrictions.
+
+// Which phase of event propagation takes precedence when event capturing and event bubbling are both used for the same event?
+
+// A) Event phase
+// B) Target phase
+// C) Capturing phase
+// D) Bubbling phase
+
+// ANS:C) Capturing phase
+
+
+// Cross-Browser Compatibility:
+// Which browser introduced event capturing in JavaScript?
+
+// A) Internet Explorer
+// B) Firefox
+// C) Google Chrome
+// D) Netscape Navigator
+
+// ANS:D) Netscape Navigator
+
+// When dealing with cross-browser compatibility issues related to event capturing and event bubbling, what is a common approach used by developers?
+
+// A) Using vendor-specific prefixes
+// B) Using polyfills
+// C) Ignoring the issue and focusing on modern browsers
+// D) Avoiding event capturing and event bubbling altogether
+
+// Answers:B) Using polyfills
+
+
+//Question  equality comparisons:
+//The main difference between == and === in JavaScript is how they handle equality comparisons:
+
+//== : it is known as loose equality that only check value ,not the data type
+// console.log(5 == "5"); // Output: true
+// console.log(null == undefined); // Output: true
+
+
+//=== : it is known as Strict Equality that  check both  value  and  data type
+// console.log(5 === "5"); // Output: false
+// console.log(null === undefined); // Output: false
+// console.log("5" === "5"); // Output: true
+// console.log(20 === 21); // Output: false
+
+
+//question
+//What are the data types in JavaScript?
+// JavaScript provides different data types to hold different types of values. There are two types of data types in JavaScript.
+
+// Primitive data type   ///  string , number, boolean, undefined, null
+// Non-primitive (reference) data type   //objects
+
+//diffrenece between undefined and null
+
+//1 Definition
+//undefined: represents a variable that has been declared but has not been assigned a value.
+
+// let variable;
+// console.log(variable); // Output: undefined
+
+ //null: represents a variable intentionally has no value or an object property has no assigned value.
+
+//  let obj = null;
+//  console.log(obj); // Output: null
+ 
+
+// 2 Type:
+
+// undefined: Is a type itself in JavaScript, representing the absence of a value.
+// null: Is an object type in JavaScript, although typeof null returns 'object', which is a historical quirk in JavaScript
+// console.log(typeof(null))  //object
+
+// 3 Usages
+// undefined: when trying to access properties that do not exist.
+// null:  when there is a deliberate absence of a value.
+
+
+// 4 Behavior in Functions:
+
+// When a function does not explicitly return a value, it implicitly returns undefined.              //explicitly means  aspast roop  se     ,implicitly means : uljhav roop se
+// If a function explicitly returns null, it means the function intentionally returns no value.
+
+
+//5 Equlity comparison
+// undefined: Loosely equal (==) to both null and undefined, but not strictly equal (===) to anything except undefined.
+// null: Loosely equal (==) to undefined and itself, but not strictly equal (===) to anything except null.
+
+// example
+// console.log(null === undefined); // Output: false
+// console.log(null == undefined); // Output: true
+
+
+//5 top case----------------------------
+// Scenario 1: Initialization of Variables
+
+// javascript
+// Copy code
+// let x; // Variable declared but not initialized, defaults to undefined
+// console.log(x); // Output: undefined
+
+// let y = null; // Variable explicitly initialized to null
+// console.log(y); // Output: null
+
+
+
+// Scenario 2: Object Properties
+// javascript
+// Copy code
+// let person = {
+//     name: "John",
+//     age: undefined // Property initialized to undefined, indicating the age is not yet known
+// };
+// console.log(person.name); // Output: "John"
+// console.log(person.age); // Output: undefined
+
+// let car = {
+//     make: "Toyota",
+//     model: null // Property initialized to null, indicating the model is intentionally absent
+// };
+// console.log(car.make); // Output: "Toyota"
+// console.log(car.model); // Output: null
+
+
+// Scenario 3: Function Returns
+// javascript
+// Copy code
+// function getUser() {
+//     // Function does not return a value, implicitly returns undefined
+// }
+// console.log(getUser()); // Output: undefined
+
+// function findUser(id) {
+//     if (id === 1) {
+//         return { name: "Alice" };
+//     } else {
+//         return null; // Explicitly returning null when user is not found
+//     }
+// }
+// console.log(findUser(1)); // Output: { name: "Alice" }
+// console.log(findUser(2)); // Output: null
+
+
+// Scenario 4: Comparison and Validation
+// javascript
+// Copy code
+// let z; // Variable declared but not initialized, defaults to undefined
+// console.log(z == null); // Output: true (loose equality comparison)
+
+// let status = null;
+// if (status === null) {
+//     console.log("Status is null."); // Output: "Status is null."
+// } else if (status === undefined) {
+//     console.log("Status is undefined.");
+// } else {
+//     console.log("Status has a value.");
+// }
+
+
+
 //##OBJECTS
 //Question 1
 
@@ -314,9 +719,12 @@
 // console.log('0' == []) //false
 // console.log('0' == '') //false
 
+
 //OUTPUT BASED QUESTIONS
-// alert( [] == [] ); // false
-// alert( [0] == [0] ); // false
+// console.log([] == []) //false
+// console.log([0] == [0]) //false
+//console.log({}== {}) //false
+//console.log({0} == {0}) //Unexpected number
 
 //OUTPUT BASED QUESTIONS
 //QUESTION Is array copied? 
@@ -325,7 +733,7 @@
 // let newarr = arr
 // newarr.push('fg')
 // console.log(newarr.length)//6
-// console.log(newarr)//[ 'ab', 'bc', 'cd', 'ed', 'ef', 'fg' ]
+// console.log(newarr)//[ 'ab', 'bc', 'cd', 'ed', 'ef', 'fg' ]  modify the array by reference
 
 //OUTPUT BASED QUESTIONS
 // let arr =['Jazz', 'Blues']
@@ -344,8 +752,8 @@
 // let arr =['Jazz', 'Blues']
 // let newarr =arr or  newarr =arr
 // newarr.push('ab')
-// console.log(newarr)//[ 'Jazz', 'Blues', 'ab' ]
-// console.log(arr)//[ 'Jazz', 'Blues', 'ab' ]
+// console.log(newarr)//[ 'Jazz', 'Blues', 'ab' ]  modify the array by reference
+// console.log(arr)//[ 'Jazz', 'Blues', 'ab' ]  
 
 
 ///ARRAY METHODS
