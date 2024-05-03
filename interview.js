@@ -77,6 +77,7 @@
 // Children  object in props?
 // what  do you mean by default props?
 // what is the props types?
+//  what we use to avoid props drilling  ans: to use context api to avoid props drilling
 
 
 // Interview  Asked Question
