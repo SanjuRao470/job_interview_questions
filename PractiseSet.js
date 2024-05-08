@@ -2,7 +2,7 @@
 
 // Callback hell refers to the situation in asynchronous programming 
 // where code becomes difficult to read and maintain due to nested callbacks.
-//  This typically occurs when you have multiple asynchronous operations 
+// This typically occurs when you have multiple asynchronous operations 
 // that depend on the results of each other, resulting in deeply nested callback functions.
 
 //EXAMPLE OF CALLBACK HELL
@@ -24,7 +24,7 @@
 //OR
 //when we want to invoke a function immediately with sepecified this value and arguments
 
-//bind(): when we want  create reusable function with sepecified this value and intial arguments
+//bind(): when we want create reusable function with sepecified this value and intial arguments
 
 
 // What will be the output of the following code?
@@ -293,8 +293,19 @@
 //What are the data types in JavaScript?
 // JavaScript provides different data types to hold different types of values. There are two types of data types in JavaScript.
 
-// Primitive data type   ///  string , number, boolean, undefined, null
-// Non-primitive (reference) data type   //objects
+// Primitive data type   ///  string, number, boolean, undefined, null
+// Non-primitive (reference) data type   //objects, arrays, functions
+
+//NOTE
+// a reference data type (or reference type) refers to a type of data that stores references 
+// (addresses) to the memory locations of other objects rather
+//  than the data itself. This is in contrast to value types, which directly store their data values.
+
+//or
+// When you create a variable of a reference type and assign it
+//  a value, you are actually storing a reference (memory address) to the location where the
+//  actual data is stored in memory. This reference allows you to access 
+//  and manipulate the underlying data indirectly.
 
 //diffrenece between undefined and null
 
@@ -371,7 +382,7 @@
 // javascript
 // Copy code
 // function getUser() {
-//     // Function does not return a value, implicitly returns undefined
+//     // Function does not return a value, implicitly  returns undefined         implicitly means:(It means that you trust them without question)
 // }
 // console.log(getUser()); // Output: undefined
 
@@ -400,7 +411,7 @@
 // } else {
 //     console.log("Status has a value.");
 // }
-
+//ans: Status is null.
 
 
 //##OBJECTS
@@ -424,12 +435,6 @@
 
 //  let key = prompt ("fname") 
 // console.log(user[key]) //fname
-
-
-
-
-
-
 
 
 
@@ -485,6 +490,10 @@
 //  let name ="Nia"
 //  newname = "Pi" + name[2] 
 //  console.log(newname) //Pia
+
+// let name ='sanju'
+// let rename = name[0].toUpperCase() + name.slice(1)// by using it will give substring
+// console.log(rename) //Sanju
 
 //Question************************
 // let products = "DataRequired"
@@ -577,9 +586,6 @@
 //TOPIC
 //To get a substring, use: slice or substring.
 
-
-
-
 //ARRAYS
 //Array is an object and thus behaves like an object.
 //arr[0]  //actually come from the object syntax.That’s essentially the same as obj[key], 
@@ -589,6 +595,7 @@
 //  consecutive or sequential locations. This means that the elements are stored one after another
 //  in memory without any gaps or spaces between them.
 
+ // IMPORTANT FORMULA -------- PUSH/POP FOR FROM END ,UNSHIFT/SHIFT FOR FROM START 
 
 //let fruits = ["Apple", "Orange","aa","qwe"]
 //method-1
@@ -624,9 +631,9 @@
 // console.log(lists)//[ '02', '03', '04', '05' ]
 
 //Qusetion
-// let list =["abc"]
+// let list = ["abc"]
 // let arr =list
-// console.log(list ===arr)//true
+// console.log(list === arr)//true
 // arr.push("bca") // // modify the array by reference
 // console.log(list)//[ 'abc', 'bca' ]
 
@@ -727,7 +734,7 @@
 //console.log({0} == {0}) //Unexpected number
 
 //OUTPUT BASED QUESTIONS
-//QUESTION Is array copied? 
+//QUESTION Is array copied?  answer : would be yes  
 
 // let arr =['ab','bc','cd','ed','ef']
 // let newarr = arr
@@ -852,7 +859,7 @@
 //IMPORTANT POINTS
 //for LOOP : WHEN WE KNOW THE NO OF ITERATION
 //while : WHEN WE DON'T KNOW THE ON OF ITERATION AND WANT TO MET DESIRE CONDITION
-// forEach :  WHEN WE WANT THE ITERATION ON EVERY ELEMENTS OF ARRAY
+// forEach : WHEN WE WANT THE ITERATION ON EVERY ELEMENTS OF ARRAY
 
 
 //Question

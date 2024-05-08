@@ -109,7 +109,7 @@
 // c) [1, 2, 3, [4, 5, 6]]
 // d) [1, 2, 3, ...arr2]
 
-// Answer: a) [1, 2, 3, 4, 5, 6]
+// Answer: a) [1, 2, 3, 4, 5, 6]//spread opreator create new array /object
 
 // What does the following code snippet output?
 // javascript
@@ -139,7 +139,8 @@
 // c) undefined
 // d) ReferenceError: arr3 is not defined
 
-// Answer: a) true
+// Answer: a) false   reason: because of both having the same value but created different memory location for new array or we can say object===array
+// every new array stored in memory as an object 
 
 // What does the following code snippet output?
 // javascript
@@ -193,12 +194,12 @@
 // let arr =["ankit",'yadav','kumar']
 // let {name,...remaining} = obj
 // let [myName,...remainingArr] = arr
-// console.log(remaining,remainingArr)
+// console.log(remaining,remainingArr)//{ lastName: 'yadav', role: 'developer' } [ 'yadav', 'kumar' ]
 
+//Q---
 // let newArr = ["hp","dell","acer","lenovo","macbook"]
-
 // let [,,l1,,l2] = newArr
-// console.log(l1,l2)
+// console.log(l1,l2) //acer macbook
 
 // function foo(firstVal,...rest){
 //     console.log(firstVal,rest)
@@ -249,6 +250,7 @@
 
 
 // // =====  shallow copy ====== 
+//const foo1 = ['one', 'two'];
 // let copyRef = foo1
 // foo1[2] ="three"
 
@@ -267,22 +269,36 @@
 
 // Qusetion -4 ======
 // let obj = {a:12,b:32,c:98}
-
-// let arr = [3,5,1,6,7,45]
-// console.log(Object.keys(obj)) // [a,b,c]
+// console.log(Object.keys(obj)) // [a,b,c]    // Object.keys(obj).map((val) => obj[val]*2  )
+//console.log(Object.values(obj)) //[12,32,98]
 // let res = Object.keys(obj).map((val)=> obj[val]*2 )
-// console.log(res)
+// console.log(res)//[ 24, 64, 196 ]
+
+//Question
+// let arr = [3,5,1,6,7,45]
 // let filres = arr.filter((val)=> val > 100)
 // console.log(filres)
+//output: []
+
 // let objRes = Object.values(obj).filter((val)=> val > 34)
 // console.log(objRes)
+//output: [45]
 
+// let arr = [13,5,11,61,17,45]
+//  let filres = arr.filter((val)=> val >=11)
+//  console.log(filres)
+//output: [ 13, 11, 61, 17, 45 ]
 
+//Question--
 // arr =[1,2,3,4]
 // let sum = arr.reduce((a,b)=>a+b)
 // console.log(sum)
 //output :10
 
+// scenario
+// let sum = arr.reduce((a,b)=>a)
+// console.log(sum)
+//output :1
 
 //QUESTION
 //-------- FIND FREQUENCY OF AN GIVEN ARRAY
@@ -322,6 +338,13 @@
 // ***** Abhishek sir lecture****88
 
 //Question -5 =======
+                                         //var                      //let                     //const
+//1- scope                               functional                  block                        block
+//2-  hoisting                            functional hoisting        no                          no
+//3-  re-declare the same variable         yes                        no                          no
+//4- re-assign the value                   yes                         yes                         no
+
+
 
 //   #. 'var' has function scope // () => {}
 //   #. 'var' can re declare the same variable
@@ -344,7 +367,7 @@
 //   }
 
 //   foo();
-
+//ans:undefined
 
 // ------ Hoisting --------------------
 
@@ -355,6 +378,7 @@
 //       var s = 5;
 //   }
 //   doo();
+//ans:undefined
 
 // ------- const ----------------------
 
@@ -383,6 +407,19 @@
 // };
 
 // obj.fn();
+//ans { xyz: 123, fn: [Function: fn] }
+
+
+// const obj = {
+//     xyz: 123,
+//     fn: function() {
+//         console.log(this.xyz);
+//     }
+// };
+// obj.fn();
+//ans : 123
+
+
 
 // function rfn () {
 //   function foo() {
@@ -391,6 +428,7 @@
 //     foo()
 // }
 // rfn(); 
+//ans:  will log the global object (window in a browser) to the console.
 
 
 // const frfn = () =>  {
@@ -400,6 +438,7 @@
 //     foo()
 // }
 // frfn();
+//ans:  will log the global object (window in a browser) to the console.
 
 // function rfn () {
 //   this.a = 5;

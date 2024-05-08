@@ -72,7 +72,7 @@
 // use of useRef hooks?
 // what is forward Ref?
 // how you gonna debug your component?
-// HOC (higher order componet)?
+// HOC (higher order component)?
 // Lazy loading and its benefits?
 // Children  object in props?
 // what  do you mean by default props?

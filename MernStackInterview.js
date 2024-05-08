@@ -122,7 +122,7 @@
 // Explain the concept of Relay in React.
 // How does Suspense for Data Fetching work in React?
 // What are some best practices for styling in React applications?
-// How do you handle forms in React?
+// How do you handle forms in React?  ANS: by using controlled component  
 
 
 
@@ -356,8 +356,8 @@
 // How would you conditionally render components in React?
 //ANS:
 // In React, you can conditionally render components or elements based on certain conditions using
-//  JavaScript expressions or conditional statements within your JSX code. This allows you to dynamically 
-// show or hide components based on the state of your application. 
+//JavaScript expressions or conditional statements within your JSX code. This allows you to dynamically 
+//show or hide components based on the state of your application. 
 
 // Provide examples of conditional rendering techniques.
 // 1. Using Conditional Statements (if/else)
@@ -404,8 +404,6 @@
 // {isLoggedIn && <LoggedInComponent />}
 // If isLoggedIn is true, <LoggedInComponent /> is rendered.
 // If isLoggedIn is false, nothing is rendered after the &&.
-
-
 //   );
 // }
 
@@ -413,20 +411,17 @@
 
 //4 . Using Element Variables
 //You can use variables to conditionally render different components:
+
 // import React from 'react';
-
-// function MyComponent({ isLoggedIn }) {
+// function MyComponent({isLoggedIn}) {
 //   let greeting;
-
 //   if (isLoggedIn) {
 //     greeting = <p>Welcome, user!</p>;
 //   } else {
 //     greeting = <p>Please log in to continue.</p>;
 //   }
-
 //   return <div>{greeting}</div>;
 // }
-
 // export default MyComponent;
 
 //5 .Rendering Null or Nothing
@@ -487,7 +482,7 @@
 //       console.log("Button in child clicked");
 //     };
   
-//     return <ChildComponent onClick={handleChildClick} />;
+//     return <ChildComponent onClick={handleChildClick}/>;
 //   }
   
 //   function ChildComponent(props) {
@@ -744,11 +739,13 @@
 
 // To create an error boundary in React,
 // there are two step to create error boundary in React
+
 //step-1 you need to define a class component that implements either componentDidCatch(error, info) or the
 //  new static getDerivedStateFromError(error) lifecycle method.
 
 //step-2 Wrap Components with Error Boundary:
-//question  : can we use the  error boundary with Hooks?
+
+//question  : can we use the error boundary with Hooks?
 //ANS:
 // Error handling with error boundaries isn't directly supported by React hooks
 //  like useState or useEffect. However, you can encapsulate error handling logic within a custom hook to provide 
