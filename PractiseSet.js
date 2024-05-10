@@ -1,3 +1,68 @@
+// how do add key in an object?
+
+// Define an object
+// let person = {
+//   firstName: "John",
+//   lastName: "Doe"
+// };
+
+// // Add a new key-value pair using dot notation
+// person.age = 30;
+
+// console.log(person);
+// Output: { firstName: "John", lastName: "Doe", age: 30 }
+
+
+// // props type & default props
+// prop-types is a package used in React to type-check the props passed to a component and provide 
+// warnings in development if props are used incorrectly.
+
+// import PropTypes from 'prop-types';
+
+// class Greeting extends React.Component {
+//   render() {
+//     return <div>Hello, {this.props.name}!</div>;
+//   }
+// }
+
+// Greeting.propTypes = {
+//   name: PropTypes.string.isRequired // 'name' prop is expected to be a string and is required
+// };
+
+
+// defaultProps is a feature in React that
+//  allows you to specify default values for props in a component.
+// class Greeting extends React.Component {
+//   render() {
+//     return <div>Hello, {this.props.name}!</div>;
+//   }
+// }
+
+// Greeting.defaultProps = {
+//   name: 'Guest' // Default value for the 'name' prop
+// };
+
+// //advantage of using 
+// These features are important for ensuring component reliability, enforcing prop type
+//  requirements, and improving code readability and maintainability in React applications.
+
+//how do you debuge your project.
+//debuge in react applicaton involving indentifying and fixing the issue in react project/application
+//console.log , ReactDevTool,  error boundries 
+
+//q- swap the two variable  without using third varialbe
+//answer
+// let a = 5;
+// let b = 10;
+
+// // Swap values using destructuring assignment
+// [b, a] = [a, b];
+
+// console.log(a); // Output: 10
+// console.log(b); // Output: 5
+
+
+
 //CALLBACK HELL
 
 // Callback hell refers to the situation in asynchronous programming 
@@ -293,8 +358,36 @@
 //What are the data types in JavaScript?
 // JavaScript provides different data types to hold different types of values. There are two types of data types in JavaScript.
 
-// Primitive data type   ///  string, number, boolean, undefined, null
-// Non-primitive (reference) data type   //objects, arrays, functions
+// Value Types:
+// Primitive types (e.g., numbers, strings, booleans,null, undefined) are
+//  stored directly in memory where the variable is allocated. When you assign a value 
+//  to a new variable or pass it to a function, a copy of the value is created.
+
+//EXAMPLE
+// let name ='sanju'
+//  let remane =name
+// name="vvv"
+// console.log(name) //vvv
+// console.log(remane) // sanju
+//console.log(remane===name)//false
+
+// Reference Types:
+// Objects, arrays, functions, and other complex types are stored
+//  in memory separately from the variable that references them. Variables of reference types store references
+//   (pointers) to the memory locations where the actual data is stored. When you assign 
+// a reference type to a new variable or pass it to a function, you are copying the reference, not the data itself.
+
+//EXAMPLW
+// let arr =["vv"]
+//  let newarr = arr
+//  arr.push("pp")
+//  console.log(arr)// [ 'vv', 'pp' ]
+// console.log(newarr)  //[ 'vv', 'pp' ]
+//console.log(newarr ===arr)//true
+
+
+// Primitive data type   ///  string, number, boolean, undefined, null , BigInt=2113434n// VALUE TYPE
+// Non-primitive (reference) data type   //objects, arrays, functions  // REFERENCE TYPE // all return type is an object
 
 //NOTE
 // a reference data type (or reference type) refers to a type of data that stores references 
@@ -892,3 +985,14 @@
 // ]
 // console.log(arr.concat(users))
 // [ 'aa', 'ab', 'bc', 'bb', 'cdc', 'edd', { name: 'piya', age: 29 } ]
+
+
+
+
+
+
+
+
+
+
+

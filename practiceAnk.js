@@ -89,10 +89,38 @@
 
 //  export default Callapi
 
+
+
 //QUESTION 
  //diff. b/w spread oprator, rest oprator, destructring.
+// Spread operator spreads iterable elements(arrays and object). OR , is primarily used for expanding iterables like arrays into an individual elements.
+// Key Points:
+// Used for combining arrays or objects into new arrays or objects.
+// Can be used to clone arrays or objects quickly. 
+//IMPORTANT: COPY ,CONCAT IF WE CHECK  arr === arr1 result will be false because store in memory seperatly
 
-// Spread operator spreads iterable elements(arrays and onject). 
+
+//REST =  used to collect multiple function arguments into an array.
+//example
+// function sum(...numbers) {
+//     return numbers.reduce((total, num) => total + num, 0);
+//   }
+//   sum(1, 2, 3); // Returns 6
+  
+
+//Destructure: add/extraxt elements from array/object
+//example
+// const person = { name: 'John', age: 30 };
+// const { name, age } = person;
+// console.log(name); // "John"
+// console.log(age); // 30
+
+// const numbers = [1, 2, 3];
+// const [first, second] = numbers;
+// console.log(first); // 1
+// console.log(second); // 2
+
+
 
 // Here are some multiple-choice questions (MCQs) based on the spread operator in JavaScript:
 
@@ -209,8 +237,8 @@
 // [16:18, 2/6/2023] Ankit Sir:
 
  // destructuring operator ;
-// let obj = {name:"ankit",lastName:"yadav", role:"developer"}
-// let arr =["ankit",'yadav','kumar']
+// let obj = {name:"ankit",lastName:"yadav",role:"developer"}
+// let arr = ["ankit",'yadav','kumar']
 // let {name:ak,...remaining} = obj
 // let [myName,...remainingArr] = arr
 // console.log(remaining,remainingArr,"===",ak)
@@ -243,13 +271,24 @@
 // let mobile = {brand:"samsung"}
 
 // let newVar = {...dell,...mobile}
-// console.log(newVar)
+// console.log(newVar)  //{ memory: '256gb', ram: '8gb', brand: 'samsung' }
 
 
 // // deepcopy And Shallowcopy
+//EXAMPLE
+// let originalArray= [1, { name: 'Alice' }, [3, 4]];
+// shallowCopy= [...originalArray]
+// shallowCopy[1].name = 'Bob';
+
+// // Modify the nested array in the shallow copy
+// shallowCopy[2][0] = 300;
+
+// console.log(originalArray);//[ 1, { name: 'Bob' }, [ 300, 4 ] ]
+// console.log(shallowCopy);//[ 1, { name: 'Bob' }, [ 300, 4 ] ]
 
 
-// // =====  shallow copy ====== 
+
+// =====  shallow copy ====== 
 //const foo1 = ['one', 'two'];
 // let copyRef = foo1
 // foo1[2] ="three"
@@ -268,11 +307,32 @@
 
 
 // Qusetion -4 ======
+//Object.keys() and Object.values() in JavaScript  : is a built-in JavaScript method that returns an array of a given object
+
 // let obj = {a:12,b:32,c:98}
-// console.log(Object.keys(obj)) // [a,b,c]    // Object.keys(obj).map((val) => obj[val]*2  )
+//console.log(Object.keys(obj)) // [a,b,c]    // Object.keys(obj).map((val) => obj[val]*2  )
 //console.log(Object.values(obj)) //[12,32,98]
 // let res = Object.keys(obj).map((val)=> obj[val]*2 )
 // console.log(res)//[ 24, 64, 196 ]
+
+//QUESTION
+// let obj ={a:'A',b:'B',c:'C'}
+// //[2A,2B,2C]
+// let keys = Object.keys(obj)
+// let values = Object.values(obj)
+// console.log(keys)//[ 'a', 'b', 'c' ]
+// console.log(values)//[ 'A', 'B', 'C' ]
+
+// let values1 = values.map((item) => `2${item}`)
+// console.log(values1)//[ '2A', '2B', '2C' ]
+
+
+// if(Object.values(obj).includes('N')){
+//   console.log(" YES ITS TRUE")  
+    
+// }else{
+//    console.log(" YES ITS false")    //YES ITS false
+// }
 
 //Question
 // let arr = [3,5,1,6,7,45]
@@ -718,14 +778,38 @@
 //   function boop() {
 //     let z = 15;
 //     const output = x + y + z;
-//     console.log(output)
-//     console.log(z)
+//     console.log(output)//45
+//     console.log(z)//15
 //   }
 //   boop()
 //  // console.log('vvvv', z) ////ReferenceError: z is not defined
 //   console.log(x)
 //   function foo1() {
-//     console.log('nnnnnn', y)
+//     console.log('nnnnnn', y)//20
+//   }
+//   foo1()
+// }
+// foo();
+
+//ORRRRRRRRRRRRRRRRRRRRRRR
+//REASON
+//BECAUSE OF  X HAS FUNCTIONAL SCOPE THAT IS WHY  ALL FUNCTION CAN ABLE TO GET ACCESS OF X
+// var x = 10;
+// function foo() {
+//   var y = 20;
+//   function boop() {
+//     let z = 15;
+//     const output = x + y + z;
+//     console.log(output)//45
+//     console.log(z)   //15
+//      console.log("oo",x)
+//   }
+//   boop()
+//   //console.log('vvvv', z)  //ReferenceError: z is not defined
+//   console.log(x)//10
+//   function foo1() {
+//       console.log('n', x)  //20
+//     console.log('nnnnnn', y)  //20
 //   }
 //   foo1()
 // }

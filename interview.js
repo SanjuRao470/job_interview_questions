@@ -66,7 +66,7 @@
 // "" state b/w function and class component?
 // class life cycle method?
 // what is the redux context api?
-// useRedux
+// useRedux like custom hook
 // diff. b/w useCallback and useMemo.
 // what is the prop drilling?
 // use of useRef hooks?
