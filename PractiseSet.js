@@ -1,3 +1,7 @@
+// [] & [1,3 ]  both  are truthy value 
+ 
+
+
 // how do add key in an object?
 
 // Define an object
@@ -725,8 +729,8 @@
 
 //Qusetion
 // let list = ["abc"]
-// let arr =list
-// console.log(list === arr)//true
+// let arr = list
+// console.log(list === arr) //true
 // arr.push("bca") // // modify the array by reference
 // console.log(list)//[ 'abc', 'bca' ]
 
@@ -772,8 +776,8 @@
 // toString
 
 //  let arr = [1,2,3,4]
-//   console.log(String(arr) ==="1234")//false
-//       console.log(String(arr) ==="1,2,3,4")//true
+//   console.log(String(arr) === "1234")//false
+//   console.log(String(arr) ==="1,2,3,4")//true
 
 //OUTPUT BASED QUESTIONS
 // they implement only toString conversion, so here [] becomes an empty string, [1] becomes
@@ -850,14 +854,13 @@
 
 //OUTPUT BASED QUESTIONS
 // let arr =['Jazz', 'Blues']
-// let newarr =arr or  newarr =arr
+// let newarr = arr or  newarr = arr
 // newarr.push('ab')
-// console.log(newarr)//[ 'Jazz', 'Blues', 'ab' ]  modify the array by reference
-// console.log(arr)//[ 'Jazz', 'Blues', 'ab' ]  
+// console.log(newarr)//['Jazz', 'Blues', 'ab' ]  modify the array by reference
+// console.log(arr)//['Jazz', 'Blues', 'ab' ]  
 
 
-///ARRAY METHODS
-
+//ARRAY METHODS
 //IMP FOR INTERVIEW
 //The element was removed, but the array still has 3
 // elements, we can see that arr.length == 3.
@@ -868,23 +871,23 @@
 // delete arr[1]
 // console.log(arr[1])//undefined
 // console.log(arr)// [ 'ab', <1 empty item>, 'ca' ]
-// console.log(arr.length)// 3
+// console.log(arr.length)// 3```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // console.log(arr.length == 3)//true
 
 
 //FOR ARRAY
-//The arr.splice method is a swiss army knife for arrays. It can do everything: insert, remove and replace elements.
-
-// Slice:
+//The arr.splice method is a swiss army knife for arrays.It can do everything: insert,remove and replace elements.
+```````````````````````````````````
+// Slice:`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 // Extracts a portion of an array.
 // Creates a new array without modifying the original.
-// Typically used for selecting elements.
-//  syntax:arr.slice(start,end) last element is not included.
-//example:
-// let originalarr = ['ab','bc','ca','de','ef','fg']
-//   newarr = originalarr.slice(2,4)
+// Typically used for selecting elements.`````````````````````
+// syntax:arr.slice(start,end) last element is not included.```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+//example:```````````````````````````````````````````````````````````
+// let originalarr = ['ab','bc','ca','de','ef','fg']````````````````````````
+// newarr = originalarr.slice(2,4)
 // console.log(newarr)//[ 'ca', 'de' ] created an new array and take out a portion of an array.
-//  console.log(originalarr)//[ 'ab', 'bc', 'ca', 'de', 'ef', 'fg' ] original array is as it is ,no changes!
+// console.log(originalarr)//[ 'ab', 'bc', 'ca', 'de', 'ef', 'fg' ] original array is as it is ,no changes!
 
 
 // Splice:
@@ -895,21 +898,25 @@
 //example:
 // start counting from given index to , remove given elements like arr.splice(2,5) so here including  at index 2 element ,remove total 5 elements,and return remaining elements in an array.
 // let originalarr = ['ab','bc','ca','de','ef','fg' ]
-// originalarr.splice(3,2)
-// console.log(originalarr)// ['ab','bc','ca','fg']
-// originalarr.splice(1,5)
+
+// originalarr.splice(3,2)//['de','ef']
+// console.log(originalarr)// ['ab','bc','ca','fg'] it is the showing deleted array
+
+// originalarr.splice(1,5)//['bc','ca','de','ef','fg' ]
 // console.log(originalarr)//[ 'ab' ]
-// originalarr.splice(2,4)
-// console.log(originalarr)//['ab','bc']
+
+// originalarr.splice(2,4)// ['ca','de','ef','fg' ]  this is display whose element take out from the original array
+// console.log(originalarr)//['ab','bc'] // now here display only lefted elements
 
 //To Store removal arrays
+//CASE-2
 // array1 = originalarr.splice(1,4)
-//  console.log(array1)//['bbc','ca','de','ef'' ] to store removal arrays
+// console.log(array1) //['bbc','ca','de','ef'' ] to store removal arrays
 
 //QUESTION-(without deleting any array's element instead of shift the array)
-// let originalarr = ['ab','bc','ca','de','ef','fg' ]
-// // here to set delete 0  and also defined the position 1 where ypu want to place the new word!
-// // originalarr.splice(1,0, 'cnbc')
+// let originalarr = ['ab','bc','ca','de','ef','fg']
+// // here to set delete 0  and also defined the position 1 where you want to place the new word!
+// //  originalarr.splice(1,0, 'cnbc')
 // //  console.log(originalarr)//[
 // //   'ab', 'cnbc',
 // //   'bc', 'ca',

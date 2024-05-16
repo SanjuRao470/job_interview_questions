@@ -286,6 +286,29 @@
 // console.log(originalArray);//[ 1, { name: 'Bob' }, [ 300, 4 ] ]
 // console.log(shallowCopy);//[ 1, { name: 'Bob' }, [ 300, 4 ] ]
 
+//ORRRRRRRRRRRRRR
+
+// // Original object
+// const originalObj = { a: 1, b: 2, c: [3, 4, 5] };
+
+// // Shallow copy using spread operator
+// const shallowCopyObj = { ...originalObj };
+
+// // Modifying the shallow copy
+// //shallowCopyObj.a = 100;  here is unchangable because shellow onlychange its nested object
+
+// shallowCopyObj.c.push(6);
+
+// console.log("Original Object:", originalObj);
+// console.log("Shallow Copy Object:", shallowCopyObj);
+
+// Original Object: { a: 1, b: 2, c: [ 3, 4, 5 ] }
+// Shallow Copy Object: { a: 100, b: 2, c: [ 3, 4, 5 ] }
+//OR
+// Original Object: { a: 1, b: 2, c: [ 3, 4, 5, 6 ] }
+// Shallow Copy Object: { a: 1, b: 2, c: [ 3, 4, 5, 6 ] }
+
+
 
 
 // =====  shallow copy ====== 
@@ -393,6 +416,55 @@
 // console.log(fre)
 //output:[ <1 empty item>, 3, 4, 5, 1 ]
 
+/////////======== diffrent ways=================
+
+//CASE-1 BY IF-ELSE
+
+// let duplicateEle = [1,3,4,1,2,6,3,44,6,8,2,7,6,1]
+// // output : {1:2,3:2,...}
+// let frequency = duplicateEle.reduce((freqObj,ele)=>{
+//     if(freqObj[ele] ){
+//         ++freqObj[ele]
+//     }else{
+//          freqObj[ele]=1
+//     }
+// },{})
+// console.log(frequency)
+
+
+//CASE-2  BY TERNERY
+
+// let duplicateEle = [1,3,4,1,2,6,3,44,6,8,2,7,6,1]
+// // output : {1:2,3:2,...}
+// let frequency = duplicateEle.reduce((freqObj,ele)=>{
+//      freqObj[ele] ? ++freqObj[ele] :  freqObj[ele]=1
+//      return freqObj;
+// },{})
+// console.log(frequency)
+
+//CASE-3  BY LOOP
+
+// arr = [1, 2, 3, 2, 4, 1, 3, 5, 6, 5, 4, 2, 1]
+// function findFrequency(arr) {
+//     // Create an object to store the frequency of each element
+//     let frequency = {};
+
+//     // Loop through each element in the array
+//     for (let i = 0; i < arr.length; i++) {
+//         let element = arr[i];
+
+//         // If the element is already a key in the frequency object, increment its count
+//         if (frequency[element]) {
+//             frequency[element] +=1 ;
+//         } else {
+//             // If the element is encountered for the first time, set its count to 1
+//             frequency[element] =1 ;
+//         }
+//     }
+//     return frequency;
+// }
+// const final = findFrequency(arr)
+// console.log(final)
 
 
 // ***** Abhishek sir lecture****88
@@ -832,5 +904,6 @@
 //    }
 //    return commonArray;
 // }
-// console.log(CommonItemsArray())
-// console.log(arr)
+// console.log(CommonItemsArray())//[20,30]         ///find the common  elements 
+
+

@@ -255,7 +255,7 @@
 //     const [loading, setLoading] = useState(true);
 //     const [error, setError] = useState(null);
 
-//     useEffect(() => {
+//useEffect(() => {
 // const abortController = new AbortController(); // to create new instance associated with signal , this signal used to cancel ongoing request
 // const signal = abortController.signal;
 
@@ -277,7 +277,6 @@
 //         };
 
 //         fetchData();
-
 //         // Cleanup function (optional)
 //         return () => {
 //            // Cleanup function to cancel the fetch request
