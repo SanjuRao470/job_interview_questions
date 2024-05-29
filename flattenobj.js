@@ -1,3 +1,60 @@
+// Question
+// console.log('Start');  Synchronous Execution Starts
+
+//event loop process
+// setTimeout(() => {
+//   console.log('Timeout');   it conatian main queque or  macrotask   example like :setInterval
+// }, 0);
+
+// Promise.resolve().then(() => {  it conatian micro queque
+//   console.log('Promise');
+// });
+
+// console.log('End');  Synchronous Execution Starts
+
+//ANS: Start ,End , Promise , Timeout
+
+//NOTE---
+// interaction between synchronous code, microtasks, and macrotasks in the JavaScript event loop.
+//  Microtasks (e.g., promises) are always 
+// executed before macrotasks (e.g., setTimeout), even if the delay for setTimeout is 0 milliseconds.
+
+//QUESTIONS
+// What is the call stack and how does it interact with the event loop?
+
+// Answer: The call stack is a data structure that keeps track of function calls.
+//  When a function is called, it is added to the top of the stack.
+//  When the function returns, it is removed from the top of the stack. The event
+//   loop interacts with the call stack by pushing callbacks from the message 
+//   queue to the call stack for execution when the stack is empty.
+
+// Explanation: The call stack manages the execution context of functions, 
+// while the event loop manages the scheduling of these functions, ensuring that asynchronous callbacks are executed when 
+// the stack is clear.
+
+// What are microtasks and macrotasks in the context of the event loop?
+// Answer: Microtasks (or microtask queue) include tasks like Promise callbacks and MutationObserver callbacks.
+//  Macrotasks (or task queue) include tasks like setTimeout, setInterval, and I/O operations. 
+//  The event loop prioritizes the execution of microtasks before moving on to the next macrotask.
+
+// Explanation: Microtasks are executed immediately after the currently executing 
+// script and before any rendering or other macrotasks, ensuring higher priority and more 
+// immediate execution for operations like promise resolutions.
+
+// Microtasks Execution
+
+// Microtasks have higher priority than macrotasks, so the microtask queue is processed first.
+// The callback for the resolved promise (from Promise.resolve().then(...)) is executed:
+// Output: Promise
+
+// Macrotasks Execution
+
+// After the microtask queue is empty, the event loop processes the macrotask queue.
+// The callback function from the setTimeout is executed:
+// Output: Timeout
+
+
+
 //question
 
 // const obj = {
@@ -403,6 +460,55 @@
 //actions are plain object:{ type: 'INCREMENT' }
 
 
+///CURRING
+// Currying is defined as changing a function having multiple arguments into a sequence of functions with a single argument. 
+
+// function calculateVolume(length) {
+//     return function (breadth) {
+        
+//         return function (height) {
+            
+//             return length * breadth * height;
+//         }
+//     }
+// }
+// console.log(calculateVolume(4)(5)(6));//120
+
+
+//SMALL NOTES
+// It is a transformation of functions that translate a function from callable as
+//  add(1, 2, 3) into callable as add(1)(2)(3). It only transforms a function
+//   instead of calling it. It returns a new function until all arguments get exhausted.
+
+// Suppose a function with some arguments so instead of taking all arguments once,
+//  it takes the first one, and returns a new function which
+//  takes the second one and returns a new function that takes the third one, and
+//   it will keep going until all arguments are fulfilled.
+
+
+
+// let arr = [1,2,3,4,3,2,1,4,5,4,2,1]
+  
+
+// function freObj (arr){
+//  frequecyObj ={};
+
+//   for(let i=0; i < arr.length ;i++  ){
+//     let element = arr[i]
+//     if(frequecyObj[element]){
+
+// frequecyObj[element]+= 1
+
+//     }else{
+//         frequecyObj[element] =1
+//     }
+
+//   }
+//   return  frequecyObj
+// }
+ 
+//  const final =freObj (arr)
+//  console.log(final)
 
 
 

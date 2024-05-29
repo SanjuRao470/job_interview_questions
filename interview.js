@@ -1,3 +1,84 @@
+// IMPORTANT QUESTIONS ABOUT JS
+//1-  Is javascript interpreter or complile language?
+//ANS:  its behaveslike both interpreter and complile language after 
+// that it comes like JIT compilation (just in time)
+// JIT: combination of both  interpreter and complile.
+
+//JAVASCRIPT RUNETIME ENVIORNMENT(JRE) : it is the space to execute JS code.   for example node behave as JRE
+// 1-  it contains many things like JS engine (memory heap , call stack), web apis(like settimeout , console.log) , callback quece  , event loop and a lot of other things.
+// 2- JS engine(google v8) (memory heap , call stack) : it is the piece of code takes an js code as an input
+
+ // it have three stages : 
+ //  a- parse : created AST(abstract tree)
+ //  b-  JIT : interpreator( execute code one by one) & compiler(produce compress version of optimised code)
+ // 3- Execution : finally js code execute with help of memory heap , call stack
+ ////Garbage Collection: memory heap is memory storage  which assign memory to every function ,variable etc. 
+
+ // difference b/w interpreator and compiler
+ //ANS : interpreator : increases the speed of js engine
+ // compiler :  produce the efficiency
+
+ //NOTE
+// The V8 engine's architecture and its components like Ignition and TurboFan enable it to deliver high performance
+//  for both client-side applications in browsers and server-side applications in Node.js.
+ //   Ignition  :(Interpreter & Bytecode)
+//TurboFan   :(JIT Compiler) Optimized Machine Code            |
+
+//Garbage Collection
+
+
+
+
+//MAIN TOPIC EXPERIENCE
+//REST
+//REDUX (AN OBJECT IN STORE , THERE IS KEY IN SALARY 10K NOW UPDATE TO 12K)//TOOLKIT  REDUCER,ACTION
+//CURRING
+
+//STAGE-1
+//PROJECT :
+// Typical Interview Questions About Projects
+//1- Can you describe a recent project you worked on? What was your role?
+// Agenda: Assess overall project understanding, role clarity, and individual contribution.
+
+//2- What were the main challenges you faced during this project and how did you overcome them?
+// Agenda: Evaluate problem-solving skills and resilience.
+
+//3- What technologies and tools did you use? Why did you choose them?
+// Agenda: Gauge technical knowledge and decision-making process.
+
+//4- How did you manage your time and resources during the project?
+// Agenda: Understand project management skills and efficiency.
+
+// Can you give an example of a significant contribution you made to the project?
+// Agenda: Identify key individual contributions and impact.
+
+//5- What was the outcome of the project? Were there any measurable results?
+// Agenda: Assess the effectiveness and success of the project.
+
+//6- How did you handle team conflicts or disagreements during the project?
+// Agenda: Evaluate interpersonal and conflict resolution skills.
+
+//7- What did you learn from this project, and how have you applied those lessons to future work?
+// Agenda: Understand reflection and continuous improvement.
+
+// 8-What did you learn from this project, and how have you applied those lessons to future work?
+// Agenda: Understand reflection and continuous improvement.
+
+//9-How do you approach debugging and troubleshooting a complex issue in your code?]]
+//Purpose: To understand your problem-solving skills and methodologies for identifying and fixing bugs.
+
+
+///STAGE-2
+// what kind of questions should candidate ask to the interview  panels. 
+
+
+
+
+
+
+
+
+
 // JS  INTERVIEW QUESTIONS
 // diff. b/w virtual DOM and real DOM with example.senario a button
 // diff. b/w const, let, var.
@@ -109,14 +190,101 @@
 //ROUND--1
 
 // 1. explain the flow how browser run an application ? 
-// 2. what is CSR and SSR?
+ //ANS::
+
+// Sure, I can break down how a browser runs an application in simple terms.
+
+// 1-User Input: It starts when you type a web address (URL) or click on a link.
+
+//2- HTTP Request: The browser sends a request over the internet to the server where the website is hosted.This request asks for the website's files (like HTML, CSS, and JavaScript).
+
+// 3-Receiving Files: The server responds by sending back these files to the browser.
+
+// 4-HTML Parsing: The browser reads the HTML file first. HTML is like a blueprint that tells the browser what content to show (like text, images, and links).
+
+// 5-Building the DOM Tree: Based on the HTML, the browser builds a Document Object Model (DOM) tree. This tree structure represents all the elements on the web page.
+
+// 6-CSS Parsing and Rendering: The browser reads the CSS files to understand how elements should look (like colors, fonts, and layout). Then, it combines this with the DOM to create the render tree — which is how things will appear on the screen.
+
+// 7-JavaScript Execution: If there's JavaScript code on the page, the browser runs it. JavaScript can add interactivity, animations, and dynamic content.
+
+//8- Rendering the Page: Finally, the browser displays the web page on your screen based on the render tree. It continues to listen for any user interactions (like clicks or scrolls) that might require changes to the page.
+
+// 9-Continued Interaction: As you interact with the page, the browser might need to fetch more files (like images or data) or execute additional JavaScript based on your actions.
+
+// This process happens quickly and continuously while you browse the web, making websites interactive and responsive to your input.
+
+ // 2. what is CSR and SSR?
 // 3. How V8 engine works?
 // 4. what are promises in js?
 // 5. If we need to call multiple api in a single request then how we can do it ?
+ //Ans:
+// To call multiple APIs in a single request, you can use a technique called API chaining or batching.
+//  This approach allows you to combine multiple API requests into a single HTTP request, 
+// which can be more efficient in certain scenarios, especially when dealing with multiple independent data fetches. 
+
+//Using API Chaining/Batching Techniques:
+
+// 1-Custom Server-Side Logic/aggration:
+// 2-API Gateway or Middleware:
+// 3-Client-Side Aggregation:
+// 4-Batch Processing with API Libraries:
+
+//EXAMPLE
+// const urls = [
+//     'https://api.example.com/data1',
+//     'https://api.example.com/data2',
+//     'https://api.example.com/data3'
+// ];
+
+// const requests = urls.map(url => fetch(url));
+
+// Promise.all(requests)
+//     .then(responses => Promise.all(responses.map(r => r.json())))
+//     .then(data => {
+//         console.log('Data 1:', data[0]);
+//         console.log('Data 2:', data[1]);
+//         console.log('Data 3:', data[2]);
+//     })
+//     .catch(error => {
+//         console.error('Error fetching data:', error);
+//     });
+
+
+//SERVER SIDE
+
+// const express = require('express');
+// const axios = require('axios');
+
+// const app = express();
+// const PORT = 3000;
+
+// app.get('/batch-api', async (req, res) => {
+//   try {
+//     const results = await Promise.all([
+//       axios.get('https://api.example.com/endpoint1'),
+//       axios.get('https://api.example.com/endpoint2'),
+//       axios.get('https://api.example.com/endpoint3')
+//     ]);
+
+//     const responseData = results.map(response => response.data);
+//     res.json(responseData);
+//   } catch (error) {
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+
+
+
+//Example with JavaScript (using Fetch API):
 // 6. what is hoisting in js?
 // 7. what is closure in js ?
 // 8. what is callbacks ?
-// 9. difference btw promises and async await ?
+// 9. difference b/w promises and async await ?
 
 
 // ###Scanrio based questions 
@@ -129,15 +297,18 @@
      
 //  #output  print five times 5
 //  # why it print five times 5 and how to correct it 
+//ANS
+//In case of var you are always referring to the same variable address, because var is function scoped.
+//let is block scoped. For every callback in setTimeout you have a different value of i, since it is a different block.
+//that's why we prefer to use let over the var because of how confusing var hoisting can be!
 
 // ### coding Questions using without using built in methods
 // 1. const arr = [1,2,3,4,3,2,1,4,5,4,2,1]  find frequency of number 
 //     desired output => {'1':3,'2':3,'3':2,'4':3,'5':1}
 
-// 2. find prime numbers from 1 to 50 using single loop 
+// 2. find prime numbers from 1 to 50 using single loop. 
 
  
-
 //ROUND--2
 
 // 1.   let topstories = ["news1", "news2", "news3", "news4", "news5", "news6",
@@ -148,32 +319,138 @@
 //     }, {
 //       name: 'ad2',
 //       index: 8
-//     }];
-
-    
-//     })
+//     }];   
+// })
     
 // how will u insert the ad1,add2 in the given array on the give index position 
     
 // 2.difference between GET and POST in details with use case
 
 // 3.where we can store the user login data like local storage ,session storage,cookies (explain with use cases)
+//ANSWER
+
+// Encryption: Avoid storing sensitive information in local storage or session storage without encryption.
+// Secure Cookies: Always set cookies with Secure, HttpOnly, and SameSite attributes for sensitive data.
 
 // 4.how will u set the timeout when u fething api if it will take time then how will u set the time out 
+// AbortController can be utilized to set up timeouts.
+//  Instantiated abort controller has a signal property which represents
+//   reference to its associated AbortSignal object. Abort signal object
+//  is used as a signal parameter in the request with Fetch API,
+//   so HTTP request is aborted when abort method is called.
 
-// 5.all array method with use case like in slice we pass the 1 or 2 argument what if we pass the 3argument
+
+/////======================
+// const HTTP_TIMEOUT = 3000;
+// const URL = 'https://www.google.com:81';
+
+// (async () => {
+//   const controller = new AbortController();
+//   const timeoutId = setTimeout(() => controller.abort(), HTTP_TIMEOUT);
+
+//   try {
+//     const response = await fetch(URL, {
+//       signal: controller.signal
+//     }).then((res) => res.json());
+//     console.log(response);
+//   } catch (error) {
+//     console.error(error);
+//   } finally {
+//     clearTimeout(timeoutId);
+//   }
+// })();
+
+// import { useState, useEffect } from 'react';
+
+// function useFetch(url) {
+//     const [data, setData] = useState(null);
+//     const [loading, setLoading] = useState(true);
+//     const [error, setError] = useState(null);
+
+//useEffect(() => {
+// const abortController = new AbortController(); // to create new instance associated with signal , this signal used to cancel ongoing request
+// const signal = abortController.signal;
+
+//         const fetchData = async () => {
+//             try {
+//                 const response = await fetch(url , { signal });
+//                 if (!response.ok) {
+//                     throw new Error('Network response was not ok');
+//                 }
+//                 const responseData = await response.json();
+//                 setData(responseData);
+//             } catch (error) {
+//                 if (error.name !== 'AbortError') {
+//                  setError(error.message);
+//              }
+//             } finally {
+//                 setLoading(false);
+//             }
+//         };
+
+//         fetchData();
+//         // Cleanup function (optional)
+//         return () => {
+//            // Cleanup function to cancel the fetch request
+// abortController.abort();
+//         };
+//     }, [url]); // Trigger useEffect when 'url' changes
+
+//     return { data, loading, error };
+// }
+
+// export default useFetch;
+
+// 5.all array method with use case like in slice we pass the 1 or 2 argument what if we pass the 3 argument?
+// let arr = [1, 2, 3, 4, 5];
+// let newArr = arr.slice(1, 3,1);
+// console.log(newArr); // [2, 3]
+// it can accept does not change the expected result
 
 // 6.how will u send the sensative information like aadhar ,pancard etc to the server ,
+//ANSWER
+//Encrypt Data: Encrypt the sensitive information on the client side before sending it to the server.
+//after that  he/she can decrypt it
+
+// Tokenization: Replace sensitive information with unique tokens before sending. 
+// The server can then map the tokens back to the original data.
+
+// Authentication and Authorization: Ensure that only authenticated and authorized 
+// users can send and access sensitive information.
 
 // 7.what are the project u have done and what are the challenges u faced
 
 // 8.how will u dynamicaly get the object or how will u dynamical set the object
+//ANSWER
+// Dynamically Getting a Property
+// const obj = {
+//     name: "John",
+//     age: 30,
+//     job: "Developer"
+// };
+
+// const propertyName = "name";
+// console.log(obj[propertyName]); // Output: John
+
+
+// Dynamically setting a Property
+// const obj = {
+//     name: "John",
+//     age: 30,
+//     job: "Developer"
+// };
+
+// const propertyName = "age";
+// obj[propertyName] = 31;
+// console.log(obj.age); // Output: 31
+
+
 
 // 9.how will u flat the nested object
 
-// 10. how will u flat the nested array
+// 10.how will u flat the nested array
 
-// 11. how will u convert the first letter in upper case  like mango=Mango,orange=Orange
+// 11.how will u convert the first letter in upper case like mango=Mango,orange=Orange
 
 
 

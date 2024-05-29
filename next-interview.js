@@ -1,3 +1,299 @@
+//Tutorial Points:------------------------------
+//1
+// points of video
+
+// The React Framework for the Web Apps
+// It is based on react js library
+//  But many extra features were added in the
+// Next js over React js
+// Like Routing, middleware, etc
+
+// Major points 
+// Next js tutorial 2023,
+// next js in tutorial in hindi,
+// next js 13 tutorial in hindi,
+// next js 13.3 tutorial in hindi
+
+//2
+// points of video
+
+// The React Framework for the Web Apps
+// It is based on react js library
+//  But many extra features were added in the
+// Next js over React js
+// Like Routing, middleware, etc
+
+// Major points 
+// Download and Install Node js
+// Install Next.js with Npx
+// Config Next.js Setup
+// Run project
+// Make First Change in the App 
+// Interview Questions
+
+//3
+// points of video
+
+// The React Framework for the Web Apps
+// It is based on react js library
+//  But many extra features were added in the
+// Next js over React js
+// Like Routing, middleware, etc
+
+// Points 
+// Write Fresh Code in Page.js
+// Make Component
+// Reuse Component 
+// Data passing in component
+// Interview Questions
+// Is React code working with Next.js?
+// What is Component?
+// How to pass data in component?
+// Difference between JavaScript and TypeScript?
+// Server Side Scripting vs Client Side Scripting ?
+
+
+//4
+// points of video
+
+// Event in next.js
+// Make function and call
+// Call Component as function
+// Make state and Update 
+// Interview Questions
+
+// Points 
+// what is `use client` in the next js? 
+// How to call the function in next.js?
+// Make a component inside a component?
+// Call component as a function?
+// what is a state in React?
+
+
+// 5
+// points of video
+
+// Event in next.js
+// Important files for Beginners.
+// Other file introduction.
+// Code flow of next.js. 
+// Interview Questions.
+
+// Points 
+// What is package.json?
+// Difference between dependency and devdependency
+
+
+// 6
+// points of video
+
+// Type of component in Next.js
+// What is Server component.
+// What is Client component.
+// Where to use Server component
+// Where to use Client component
+// Interview Questions.
+
+
+// Points 
+// Render on the Server Side
+// By default, All components are  Server components.
+// They are closer to the Backend
+// So BE-related logic and code should write in Server components
+// Render on the Client Side
+// Can make client components with
+// `use client` directive.
+// All UI-related code and events should be written here.
+
+// 7
+// points of video
+
+// Make a folder for the new page
+// Make page file and write component code
+//  Route example
+// Interview Questions
+// What is the pattern for creating Page in next.s
+// Do we need to install any package for routing in next.js
+// Next.js uses a file-system based router
+
+
+// 8
+// points of video
+
+// What is Linking and navigation?
+// How to make links?
+// How to navigate to another screen?
+// Interview Questions
+// Task for you
+// Two ways of navigating between routes
+// Difference between Link and navigation
+
+// 9
+// points of video
+
+// What is Nested Routing?
+// Make Nested Routing.
+// Make navigation between Nested pages 
+// Interview Questions 
+// What is nested Routing?
+//  Pattern for nested Routing
+
+
+// 10
+// points of video
+
+// Make layout.js.
+// Create a Navigation bar for login.
+// Add a common style for log in.
+// Interview Question.
+// Task for you.
+// How common layout works in Next.js
+// Why user first letter capital in Link
+
+
+// 11
+// points of video
+
+// What is conditional Layout?
+// Get Route Name by the hook.
+// Apply Condition with route name.
+// Interview Question.
+// The task for you.
+
+// 12
+// points of video
+
+// What are Dynamic Routes
+// Make a folder and file for the Dynamic route
+// Write Code and Navigation
+// Get Dynamic Route name.
+// Interview Question.
+// The task for you.
+// What is a dynamic Route?
+// How to get a dynamic Route name?
+
+
+// 13
+// points of video
+
+// What are the Segments of the Route?
+// How to get all segments of Route
+// Interview Question.
+// The task for you.
+// Get Route Name from url?
+// How to get all segments of Route?
+
+
+// 14
+// points of video
+
+// What is 404 Page.
+// Make the Global 404 page.
+// Make Route specific 404 page.
+// Interview Question.
+// Task for you
+// Make 404 page a segment.
+// How to make 404 page?
+// What is 404 page
+
+
+// 15
+// points of video
+
+// What is Middleware in Next js Routing
+// Make middleware in Next js app.
+// Add config matcher.
+// Interview Question.
+// Task for you
+
+
+// 16
+// points of video
+
+// What is Middleware in Next js Routing
+// Make middleware in the Next js app.
+// Add config matcher.
+// Interview Question.
+// Task for you
+
+// What is rendering?
+// Rendering Environments.
+// Component-level Client and Server Rendering.
+// What is Pre-rending?// includede ssr/ssg
+// Static Generation?
+// Server-side rendering?
+// What is Middleware in Next js Routing
+// Make middleware in Next js app.
+// Add config matcher.
+// Interview Question.
+// Task for you
+
+// 17
+// points of video
+
+// How to know rendering type.
+// Check Result of rendering.  
+// Why this is important. security ,seo,fast of ssr
+// SEO with rendering.
+// How is SEO works?
+
+// 18
+// points of video
+// Create Product components.  
+// Make it client component.
+// Add hooks
+// Call API 
+// Render Data
+
+// 19
+// points of video
+// Create Product components.  
+// Make it server  component.
+// Add hooks
+// Call API 
+// Render Data
+
+// 20
+// points of video
+// Why do we need a Client component inside Server Component?
+// Make Component.
+// Pass data in components
+// Add events
+// How to Perform Events with Server Component
+// Pass data between component.
+
+//21
+// points of video
+// Global CSS
+// Inline CSS
+// Update Style with a button
+// Interview Question
+// Can Write Style tag in Next js// ans will be no
+// Update style with useState
+
+//22
+// points of video
+// How this is different from normal CSS.
+// Make a Modular css file.
+// Apply CSS Module.
+// Multiple CSS module. 
+// Interview Question.
+// what is css module?
+// How module css is diffent from normal css?
+// how to use module css?
+
+
+//23
+
+
+
+
+
+
+
+
+
+
 
 // Certainly! Here are some interview questions related to Next.js that could be useful for someone with
 //  3+ years of experience:

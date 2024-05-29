@@ -96,6 +96,5 @@ let obj5= {
         ar();
     }
 }
-
 obj5.getName()
 
