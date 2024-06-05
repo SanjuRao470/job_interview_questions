@@ -385,3 +385,11 @@
 //1-Implement a dynamic route in Next.js: Create a page that uses a dynamic route (e.g., /posts/[id]) to fetch and display content based on the route parameter.
 
 //2-
+
+
+
+
+
+//LATEST INTERVIEW QUESTIONS---------
+// 1- why we use next.js over the React.js
+//2- 

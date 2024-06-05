@@ -5,7 +5,7 @@
 // let fname ='abc'
 // fname = 123
 // fname = true
-// console.log(fname) // this will absolity work in js because it is  dynamic language.
+// console.log(fname) //this will absolity work in js because it is  dynamic language.
 
 
 // In Ts
@@ -76,9 +76,9 @@
 
 //Conclusion
 //TypeScript adds powerful features to JavaScript that
-//  can help you write more reliable, maintainable, and scalable code.
-//   It’s especially useful for large projects where type safety
-// can significantly reduce the number of runtime errors and improve overall code quality.
+//can help you write more reliable, maintainable, and scalable code.
+//It’s especially useful for large projects where type safety
+//can significantly reduce the number of runtime errors and improve overall code quality.
 
 //Note
 //typescript catches errors at compile time instead of runtime, which makes debugging easier and reduces

@@ -907,3 +907,39 @@
 // console.log(CommonItemsArray())//[20,30]         ///find the common  elements 
 
 
+
+// Topic Prototype
+//Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+
+//Every object/array in JavaScript has a built-in property, which is called its prototype. 
+//The prototype is itself an object, so the prototype will have its own prototype, making
+//what's called a prototype chain. The chain ends when we reach a prototype
+//that has null for its own prototype.
+
+// let data = 10;
+// console.log("results++++++++",data.__proto__);
+// console.log("results===",Number.prototype);
+// // we can say  data.__proto__ =  Number.prototype , we got the result as an object
+
+// const a  ={
+//     name:'neha',
+//     age:30
+// }
+// console.log(a) // {} in which have many build in methods like [[prototype]] : object 
+
+// let p ={
+//     run : () => {
+//         alert('running')
+//     }
+// }
+
+// a.__proto__ = p
+// a.run() //running
+
+// p.__proto__ ={
+//     book :'build dont talk'
+// }
+// console.log("------",p.book) //build dont talk    ===== this is call prototype chaining
+
+// const b  =[]
+// console.log(b)  //[] in which have many build in methods like [[prototype]] : array(0)   // array also behave like an object. 

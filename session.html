@@ -1,65 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <button id = "setExpiry">set</button>
-    <input id="inputForExpiry"/>
-    <br/>
-    <button id = "getExpiry">get</button>
-    <div>Value: <span id="value"></span></div>
 
-  </body>
-  <script>
-    const btnSet = document.getElementById('setExpiry');
-    const btnGet = document.getElementById('getExpiry')
-    const inputSet = document.getElementById('inputForExpiry')
-    const valueDisplay = document.getElementById("value")
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-    btnSet.addEventListener('click',()=>{
-        setTimeForExpiry("myKey",inputSet.value,10000)
-    })
+<body>
+  <button id="setExpiry">set</button>
+  <input id="inputForExpiry" />
+  <br />
+  <button id="getExpiry">get</button>
+  <div>Value: <span id="value"></span></div>
 
-    btnGet.addEventListener('click',()=>{
-        const returnedValue = getValueWithExpiry("myKey");
-        valueDisplay.innerHTML = returnedValue ; 
-    })
+</body>
+<script>
+  const btnSet = document.getElementById('setExpiry');
+  const btnGet = document.getElementById('getExpiry')
+  const inputSet = document.getElementById('inputForExpiry')
+  const valueDisplay = document.getElementById("value")
+
+  btnSet.addEventListener('click', () => {
+    setTimeForExpiry("myKey", inputSet.value, 10000)
+  })
+
+  btnGet.addEventListener('click', () => {
+    const returnedValue = getValueWithExpiry("myKey");
+    valueDisplay.innerHTML = returnedValue;
+  })
 
 
-    function setTimeForExpiry(key, val, expiryTime) {
-      const now = new Date();
-      const item = {
-        value: val,
-        expiry: now.getTime() + expiryTime,
-        // getTime() above returns milliseconds since since January 1, 1970 (called epoch);
-      };
-      localStorage.setItem(key, JSON.stringify(item));
+  function setTimeForExpiry(key, val, expiryTime) {
+    const now = new Date();
+    const item = {
+      value: val,
+      expiry: now.getTime() + expiryTime,
+      // getTime() above returns milliseconds since since January 1, 1970 (called epoch);
+    };
+    localStorage.setItem(key, JSON.stringify(item));
 
-  
-}
-    
 
-    function getValueWithExpiry(key) {
-      const getItemString = localStorage.getItem(key);
-      // if the item doesn't exist, return null
-      if (!getItemString) {
-        return null;
-      }
+  }
 
-      const item = JSON.parse(getItemString)
-      const now = new Date();
-      if (now.getTime() > item.expiry){
-
-        // If the item is expired, delete the item from storage
-		// and return null
-		localStorage.removeItem(key)
-		return null;
-      }
-      return item.value
+  function getValueWithExpiry(key) {
+    const getItemString = localStorage.getItem(key);
+    // if the item doesn't exist, return null
+    if (!getItemString) {
+      return null;
     }
-  </script>
+
+    const item = JSON.parse(getItemString)
+    const now = new Date();
+    if (now.getTime() > item.expiry) {
+
+      // If the item is expired, delete the item from storage
+      // and return null
+      localStorage.removeItem(key)
+      return null;
+    }
+    return item.value
+  }
+</script>
 </html>

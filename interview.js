@@ -1,6 +1,6 @@
 // IMPORTANT QUESTIONS ABOUT JS
 //1-  Is javascript interpreter or complile language?
-//ANS:  its behaveslike both interpreter and complile language after 
+//ANS:  its behaves like both interpreter and complile language after 
 // that it comes like JIT compilation (just in time)
 // JIT: combination of both  interpreter and complile.
 
@@ -19,14 +19,36 @@
  // compiler :  produce the efficiency
 
  //NOTE
-// The V8 engine's architecture and its components like Ignition and TurboFan enable it to deliver high performance
-//  for both client-side applications in browsers and server-side applications in Node.js.
- //   Ignition  :(Interpreter & Bytecode)
-//TurboFan   :(JIT Compiler) Optimized Machine Code            |
+//The V8 engine's architecture and its components like Ignition and TurboFan enable it to deliver high performance
+//for both client-side applications in browsers and server-side applications in Node.js.
+//Ignition :(Interpreter & Bytecode)
+//TurboFan :(JIT Compiler) Optimized Machine Code            |
 
 //Garbage Collection
 
+// There are many parts of the JRE
+// The components of the JavaScript runtime environment are:
 
+// Heap memory:
+// The heap is a region of memory used for storing objects and variables that require dynamic memory allocation. 
+// Unlike the stack, memory allocation in the heap is more flexible and can grow or shrink as needed.
+
+// Characteristics:
+// Dynamic Allocation: Memory is allocated at runtime.
+// Non-contiguous: Memory blocks can be scattered throughout.
+// Garbage Collection: Unused memory is managed and freed by the garbage collector.
+
+//An execution context 
+//It is a container that holds information about the current execution of code, including 
+//variables, the scope chain, and the value of this.
+//Each execution context provides the necessary context for the JavaScript engine to execute code properly.
+
+// Call Stack
+// Event Loop(javascript 's browser)
+// Callback Queue (Task Queue)
+// Microtask Queue (Job Queue)
+// Web APIs (or Node.js APIs)
+// Event Loop Phases (Node.js specific)
 
 
 //MAIN TOPIC EXPERIENCE
