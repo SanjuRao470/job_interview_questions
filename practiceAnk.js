@@ -209,9 +209,36 @@
 // Creates a shallow copy of the original array/string.
 
 // Rest parameter gathers function arguments into an array.
+//REST::The rest parameter syntax allows a function to accept an indefinite number of arguments as an array,
+//EXAMPLE
+// function app(a,b,c,...rest){
+//     console.log(rest)//ES6//[ 10, 20, 30, 40 ]
+//     return a+b+c
+// }
+// console.log(app(2,3,4,10,20,30,40))//9
+
+//QUESTION DIFFRENCE B/W ES5 AND ES6
+// function app(a,b,c,...rest){
+//     console.log(rest)//ES6//[ 10, 20, 30, 40 ]
+//     console.log(arguments)//ES5//
+//     //[Arguments] {
+// //   '0': 2,
+// //   '1': 3,
+// //   '2': 4,
+// //   '3': 10,
+// //   '4': 20,
+// //   '5': 30,
+// //   '6': 40
+// // }
+//     return a+b+c
+// }
+// console.log(app(2,3,4,10,20,30,40))//9
 // Key Points:
 // Used only in function parameters.
 // Collects all remaining arguments into an array.
+
+// The spread operator (...) and the rest operator (...) are both represented by the same syntax (...) 
+// in JavaScript, but they serve different purposes depending on the context in which they are used.
 
 // Destructuring extracts values from arrays/objects into separate variables.
 
@@ -908,17 +935,17 @@
 
 
 
-// Topic Prototype
+//Topic Prototype
 //Prototypes are the mechanism by which JavaScript objects inherit features from one another.
 
 //Every object/array in JavaScript has a built-in property, which is called its prototype. 
 //The prototype is itself an object, so the prototype will have its own prototype, making
-//what's called a prototype chain. The chain ends when we reach a prototype
+//what's called a prototype chain.The chain ends when we reach a prototype
 //that has null for its own prototype.
 
 // let data = 10;
-// console.log("results++++++++",data.__proto__);
-// console.log("results===",Number.prototype);
+// console.log("results++++++++", data.__proto__ );
+// console.log("results===", Number.prototype );
 // // we can say  data.__proto__ =  Number.prototype , we got the result as an object
 
 // const a  ={
@@ -943,3 +970,204 @@
 
 // const b  =[]
 // console.log(b)  //[] in which have many build in methods like [[prototype]] : array(0)   // array also behave like an object. 
+
+//what is the use of " __proto__ "
+// It is used to look up the prototype chain of a particular instance to understand
+// the inheritance and find properties and methods not directly on the instance itself.
+
+ const a = {
+    fname:'abc'
+ }
+ console.log(a)
+ console.log(Number.prototype)
+ console.log(a.__proto__)
+ 
+ let b={
+    subObj :{
+        salary:10000
+    }
+ }
+ a.__proto__ = b
+ b.__proto__ ={
+    lname:'dhawan',
+    subObj1 :{
+        age:30
+    }
+}
+
+console.log("---", b.lname)
+console.log("====", b )
+
+
+
+// Certainly! Here are some multiple-choice questions (MCQs) related to prototypes in 
+//JavaScript that might be useful for interviews:
+
+// MCQ 1:
+// What is the purpose of the prototype property in JavaScript?
+
+// A. To create private variables in JavaScript.
+
+// B. To define methods and properties that will be inherited by all instances of a constructor.
+
+// C. To store data in local storage.
+
+// D. To manage event handling in JavaScript.
+
+// Answer: B. To define methods and properties that will be inherited by all instances of a constructor.
+
+// MCQ 2:
+// Given the following code, what will console.log(b.__proto__ === Number.prototype) output?
+
+// let b = new Number(3);
+// console.log(b.__proto__ === Number.prototype);
+// A. true
+
+// B. false
+
+// C. undefined
+
+// D. null
+
+// Answer: A. true
+
+// MCQ 3:
+// Which of the following statements is true about the Object.prototype?
+
+// A. It is the prototype of all objects created using the Number constructor.
+
+// B. It is the prototype of all objects created using the Array constructor.
+
+// C. It is the prototype of all objects created using object literals and the Object constructor.
+
+// D. It is not a prototype for any objects in JavaScript.
+
+// Answer: C. It is the prototype of all objects created using object literals and the Object constructor.
+
+// MCQ 4:
+// What will the following code output?
+
+// function Person() {}
+// Person.prototype.greet = function() { return "Hello"; };
+
+// let p = new Person();
+// console.log(p.greet());
+// A. undefined
+
+// B. null
+
+// C. Hello
+
+// D. Error
+
+// Answer: C. Hello
+
+// MCQ 5:
+// What is true about the __proto__ property in JavaScript?
+
+// A. It is a method that all objects inherit from Object.prototype.
+
+// B. It is a property that points to the prototype of the object.
+
+// C. It is a private property that cannot be accessed directly.
+
+// D. It is used to bind events to HTML elements.
+
+// Answer: B. It is a property that points to the prototype of the object.
+
+// MCQ 6:
+// What will the following code output?
+
+// function Animal() {}
+// Animal.prototype.eat = function() { return "eating"; };
+
+// let dog = new Animal();
+// Animal.prototype = { sleep: function() { return "sleeping"; } };
+
+// let cat = new Animal();
+
+// console.log(dog.eat()); // Line 1
+// console.log(cat.eat()); // Line 2
+
+// A. eating and eating
+
+// B. eating and undefined
+
+// C. undefined and undefined
+
+// D. eating and sleeping
+
+// Answer: B. eating and undefined
+
+// MCQ 7:
+// How can you set the prototype of an object in JavaScript?
+
+// A. Using the __proto__ property.
+
+// B. Using the Object.setPrototypeOf() method.
+
+// C. Using the Object.create() method.
+
+// D. All of the above.
+
+// Answer: D. All of the above.
+
+// MCQ 8:
+// What will the following code output?
+
+// let obj = { a: 1 };
+// let proto = { b: 2 };
+
+// Object.setPrototypeOf(obj, proto);
+
+// console.log(obj.a); // Line 1
+// console.log(obj.b); // Line 2
+// A. 1 and undefined
+
+// B. undefined and 2
+
+// C. 1 and 2
+
+// D. undefined and undefined
+
+// Answer: C. 1 and 2
+
+// MCQ 9:
+// Which of the following is true about the prototype property of a constructor function?
+
+// A. It is only accessible from instances of the constructor.
+
+// B. It is shared among all instances of the constructor.
+
+// C. It is unique to each instance of the constructor.
+
+// D. It is not modifiable.
+
+// Answer: B. It is shared among all instances of the constructor.
+
+// MCQ 10:
+// What will the following code output?
+
+// function Vehicle() {}
+// Vehicle.prototype.drive = function() { return "driving"; };
+
+// let car = new Vehicle();
+// car.drive = function() { return "car driving"; };
+
+// console.log(car.drive());
+// A. driving
+
+// B. undefined
+
+// C. car driving
+
+// D. null
+
+// Answer: C. car driving
+
+
+
+
+
+
+

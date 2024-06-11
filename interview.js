@@ -1,24 +1,331 @@
+// Webpack and Babel :
+//are tools for developers that optimize JavaScript applications. 
+// Webpack is a module bundler(it used ti bundler images,script,assest)we can use to minify multiple files in
+//  a JavaScript project and increase the overall efficiency.
+
+// Babel is a JavaScript compiler
+// Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of
+//  JavaScript in current and older browsers or environments.
+//example like polyfill & Transpilers.
+
+//how to make our modern code work on older engines that don’t understand recent features yet?
+// There are two tools for that:
+
+// Transpilers.
+// Polyfills.  why we use it? : because it provide us to update/add new feature and browser compatibility.
+
+//Transpilers   
+// JavaScript before year 2020 didn’t have the “nullish coalescing operator” ??.
+// A transpiler is a special piece of software that translates source code to another source code. 
+// It can parse (“read and understand”) modern code and rewrite it 
+
+// // before running the transpiler
+// height = height ?? 100;
+
+// // after running the transpiler
+// height = (height !== undefined && height !== null) ? height : 100;
+
+// Polyfills
+// We just need to declare the missing function. A script that updates/adds new functions is called “polyfill”. It “fills in” the gap and adds missing implementations.
+// there are polyfill.io library is available to provide us polyfill-sets you want to have in your bundle.
+// <script src="https://polyfill.io/v3/polyfill.min.js"></script>
+
+//example
+// ES6
+// Array.prototype.values
+// Array.prototype.keys
+// Array.from
+// Math.trunc
+// Object.assign
+// ES7
+// Array.prototype.includes
+// String.prototype.startsWith
+
+//EXAMPLE-1
+// if (!Array.prototype.includes) {
+//     Array.prototype.includes = function(valueToFind, fromIndex) {
+//       // Default fromIndex to 0 if not provided
+//       if (fromIndex === undefined) {
+//         fromIndex = 0;
+//       }
+  
+//       // Handle negative fromIndex
+//       if (fromIndex < 0) {
+//         fromIndex = Math.max(this.length + fromIndex, 0);
+//       }
+  
+//       // Iterate over the array using a loop
+//       for (var i = fromIndex; i < this.length; i++) {
+//         // Check if the current element is equal to valueToFind
+//         if (this[i] === valueToFind || (isNaN(this[i]) && isNaN(valueToFind))) {
+//           return true;
+//         }
+//       }
+//       return false;
+//     };
+//   }
+  
+//   // Example usage
+//   var arr = [1, 2, 3, 4, 6, 8, 7, 9];
+//   console.log(arr.includes(3)); // Output: true
+//   console.log(arr.includes(5)); // Output: false
+//   console.log(arr.includes(7, -3)); // Output: true (search starts from index 6)
+//   console.log(arr.includes(NaN)); // Output: false (unless there's a NaN in the array)
+  
+//EXAMPLE-2
+// if (!Array.prototype.odd) {
+//     Array.prototype.odd = function() {
+//       var result = [];
+//       for (var i = 0; i < this.length; i++) {
+//         if (this[i] % 2 === 1) {
+//           result.push(this[i]);
+//         }
+//       }
+//       return result;
+//     };
+//   }
+  
+//   var arr = [1, 2, 3, 4, 6, 8, 7, 9];
+//   var oddNumbers = arr.odd();
+//   console.log(oddNumbers); // Output: [1, 3, 7, 9]
+
+ //------INTERVIEW QUESTIONS RELATED TO POLYFILL---
+
+// 1-What is a polyfill in JavaScript?
+// A polyfill is a piece of code (usually JavaScript) used to provide modern functionality on older
+//  browsers that do not natively support it.
+
+// 2-Why would you use a polyfill?
+// To ensure compatibility with older browsers that may not support newer JavaScript features or APIs, thereby 
+// providing a consistent experience across different environments.
+
+// 3-How do you determine if a feature needs a polyfill?
+// By checking if the feature or method exists on the object or prototype. If it doesn't,
+//  a polyfill can be implemented. This can be done using feature detection,
+//  for example: if (!Array.prototype.includes) { /* polyfill code */ }.
+
+// 4-How do you write a polyfill for Array.prototype.includes?
+//KINDLY REFER TO EXAMPLE NO 1
+
+// 5-What are some common features that developers polyfill?
+// Methods such as Array.prototype.includes, Array.prototype.find, Object.assign, Promise, fetch, and others 
+// that are not supported in older browsers.
+
+// 6-What is feature detection and how is it related to polyfills?
+// Feature detection is the practice of checking if a particular feature or API is available
+//  in the current environment before using it. If the feature is not available, a polyfill can be used to 
+//  provide the missing functionality. It is an essential practice when implementing polyfills.
+
+// 7-Can you explain the difference between a polyfill and a shim?
+// A polyfill is a piece of code that provides the functionality that is missing in
+//  older browsers. A shim, on the other hand, can sometimes be broader, patching or modifying existing code to 
+// fix or extend functionality, not necessarily just adding missing features.
+
+// 8-What are some best practices when writing polyfills?
+// 1-Ensure that the polyfill does not overwrite existing functionality.
+// 2-Use feature detection to check if the feature needs to be polyfilled.
+// 3-Follow the specification as closely as possible to ensure the polyfill behaves like the native implementation.
+// 4-Avoid using polyfills for features that are not widely supported in modern environments to minimize performance overhead.
+
+// 9-How can you test if your polyfill works correctly?
+//1- Write unit tests to cover different scenarios and edge cases.
+// 2-Test in various browsers and environments, including those that do not support the feature natively.
+// 3-Use tools like BrowserStack or Sauce Labs to test on actual devices and browsers.
+
+// 10-How can you include polyfills in your project?
+// You can include polyfills manually in your codebase, use a polyfill service like polyfill.io, or
+// leverage tools like Babel that automatically 
+// include necessary polyfills based on your target browser support.
+
+//INTERSECTION OBSERVER APIS
+//1- waht is the INTERSECTION OBSERVER APIS
+
+// The Intersection Observer API is a web API that allows developers to asynchronously observe changes
+// in the intersection of a target element with an ancestor element or with a top-level document's viewport. 
+// It provides a way to efficiently detect when an observed element enters or exits the viewport or intersects with 
+// another element, without the need for continuous polling or listening for scroll events.
+// where it should use: lazy loading of images, infinite scrolling, triggering animations based on scroll position
+
+
+//// Function to be called when the observed element intersects with the viewport
+// function handleIntersection(entries, observer) {
+//-----OR-------
+// let callback = (entries, observer) => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting) {
+//         console.log('Observed element is intersecting with the viewport!');
+//         // Do something when the observed element is in view
+//       } else {
+//         console.log('Observed element is not intersecting with the viewport!');
+//         // Do something when the observed element is out of view
+//       }
+//     });
+//   }
+  
+// entries: here as an array which These entries contain details like whether the observed element is currently intersecting, the ratio of intersection,
+
+// Creating an Intersection Observer instance
+//   const options = {
+//     root: null, // Use the viewport as the root // which element you set to use as  a viewport
+//     rootMargin: '0px', // No margin around the root // whenever element set your root element will grow and shrink acc to that value.
+//     threshold: 0.5 // 50% of the observed element is visible  // it indicates what %  of target visibility the callback function will executes.
+//   };
+  
+//   const observer = new IntersectionObserver(handleIntersection, options);
+//---OR----
+//   const observer = new IntersectionObserver(callback, options);
+  
+//   // Targeting the element to observe
+//   const target = document.getElementById('targetElement');
+  
+//   // Start observing the target element
+//   observer.observe(target);
+  
+
+
+// CURRING----------Currying is a transform that makes f(a,b,c) callable as f(a)(b)(c)
+// currying is a functional programming technique that is used to transform a function that takes
+// multiple arguments into a sequence of functions that each takes a single argument. Currying is
+// mainly used in event handling and to avoid passing the same variable as a
+// function argument multiple times.
+
+//USE CASES OF CURRING------
+//1--Currying can be used to handle asynchronous operations, in which functions return the promises.
+//2--It is even helpful in handling situations where we need to partially apply functions with 
+// specific arguments that can represent the current context of the event.
+//3--It allows the creation of highly configurable middleware functions that can be used across different parts of the code.
+
+// //----1
+// // Non-curried function
+// function add(a, b) {
+//     return a + b;
+//   }
+
+//----2
+//   // Curried version of the same function
+//   function curriedAdd(a) {
+//     return function(b) {
+//       return a + b;
+//     };
+//   }
+  
+
+//   // Usage
+//   console.log(add(1, 2)); // 3
+//   console.log(curriedAdd(1)(2)); // 3
+  
+//----3
+/// Partial application
+//   const addFive = curriedAdd(5);
+//   console.log(addFive(10)); // 15
+  
+
+
+//QUESTION: How to achieve currying in JavaScript?
+// There are two different ways 
+//Using the closures function
+
+// In this example, createMultiplier is a curried function.
+//  The outer function takes the multiplier and returns an inner function that takes a number 
+//  and multiplies it by the multiplier.
+//  This allows the creation of specific multiplier functions like double and triple.
+
+// Function to create a multiplier using closures
+// function createMultiplier(multiplier) {
+//     return function(number) {
+//       return multiplier * number;
+//     };
+//   }
+  
+//   // Create specific multipliers
+//   const double = createMultiplier(2);
+//   const triple = createMultiplier(3);
+  
+//   // Usage
+//   console.log(double(5)); // Output: 10
+//   console.log(triple(5)); // Output: 15
+  
+
+// Using the bind() method
+// In this example, multiply.bind(null) creates a new function curriedMultiply 
+// that is a curried version of multiply.
+ //The bind(null, 2)  call creates a new function where a is fixed to 2, effectively 
+// creating a function that multiplies any given number by 2.
+ //The bind(null, 3)  call creates a new function where a is fixed to 2, effectively 
+// creating a function that multiplies any given number by 3.
+//EXAMPLE
+// Original function (non-curried)
+// function multiply(a, b) {
+//     return a * b;
+//   }
+  
+//   // Curried function using bind()
+//   const curriedMultiply = multiply.bind(null);
+//   console.log(curriedMultiply)
+//   // Usage
+//   const multiplyBy2 = curriedMultiply.bind(null, 2);
+//   console.log(multiplyBy2(5)); // 10
+  
+//   const multiplyBy3 = curriedMultiply.bind(null, 3);
+//   console.log(multiplyBy3(5)); // 15
+
+//EXAMPLE
+// function add(a) {
+//     return function(b) {
+//       return a + b;
+//     };
+//   }
+  
+//  Using the curried function
+//   const add5 = add(5);
+//   console.log(add5(3)); // Outputs 8
+//   console.log(add(2)(4)); // Outputs 6
+
+//EXAMPLE 
+// function app (a){
+//     return function(b){
+//         return function(c){
+//         return a+b+c
+//         }
+//     }
+// }
+// console.log(app(2)(4)(6))//12  //Curried Function
+
+// Original Function: A function f that takes multiple arguments, say f(x, y, z).
+// Curried Function: This function is transformed into a series of functions, each taking one argument: f(x)(y)(z).
+
+
 // IMPORTANT QUESTIONS ABOUT JS
-//1-  Is javascript interpreter or complile language?
-//ANS:  its behaves like both interpreter and complile language after 
+//1- Is javascript interpreter or complile language?
+//ANS:its behaves like both interpreter and complile language after 
 // that it comes like JIT compilation (just in time)
-// JIT: combination of both  interpreter and complile.
+// JIT: combination of both  interpreter and complile to optimize code execution speed..
 
 //JAVASCRIPT RUNETIME ENVIORNMENT(JRE) : it is the space to execute JS code.   for example node behave as JRE
 // 1-  it contains many things like JS engine (memory heap , call stack), web apis(like settimeout , console.log) , callback quece  , event loop and a lot of other things.
-// 2- JS engine(google v8) (memory heap , call stack) : it is the piece of code takes an js code as an input
+// 2- JS engine(google V8: translates JavaScript code directly into machine code* ) (memory heap , call stack) : it is the piece of code takes a js code as an input
 
  // it have three stages : 
  //  a- parse : created AST(abstract tree)
- //  b-  JIT : interpreator( execute code one by one) & compiler(produce compress version of optimised code)
- // 3- Execution : finally js code execute with help of memory heap , call stack
- ////Garbage Collection: memory heap is memory storage  which assign memory to every function ,variable etc. 
+ //  b-  JIT => Just-In-Time compilation is a technique: interpreator( execute code one by one) & compiler(produce compress version of optimised code)
+ // 3-c Execution : finally js code execute with help of memory heap , call stack
+ //Garbage Collection: memory heap is memory storage  which assign memory to every function ,variable etc. 
 
  // difference b/w interpreator and compiler
  //ANS : interpreator : increases the speed of js engine
  // compiler :  produce the efficiency
 
+ // SUMMARY OF HOW V8 ENGINE WORKS
+//  TO USE V8 ENGINE WE REQUIRED JRE(JS RUNTIME ENVIRONMENT) :IT IS THE SPACE TO EXECUTE THE JS CODE
+// V8 ENGINE :it is the piece of code takes a js code as an input ,BASICALLY  translates JavaScript code directly into machine code
+// IT CONTAINS THREE STAGES:
+// 1-PARSE THE CODE INTO ABSTRACT TREE
+// 2- AFTER THAT EXECUTE THE CODE ONE BY ONE AND PRODUCE COMPRESS VERSION OF OPTIMISED CODE AT RUNTIME WITH THE HELP OF JIT 
+// COMPILATION TECHNIQUE 
+// 3- EXECUTE THE FINAL CODE
+
  //NOTE
+//A JavaScript engine(v8 engine)is a software component that executes JavaScript code. 
 //The V8 engine's architecture and its components like Ignition and TurboFan enable it to deliver high performance
 //for both client-side applications in browsers and server-side applications in Node.js.
 //Ignition :(Interpreter & Bytecode)
@@ -45,8 +352,7 @@
 
 // Call Stack
 // Event Loop(javascript 's browser)
-// Callback Queue (Task Queue)
-// Microtask Queue (Job Queue)
+// Callback Queue: macrotask (Task Queue) and Microtask Queue (Job Queue)
 // Web APIs (or Node.js APIs)
 // Event Loop Phases (Node.js specific)
 
@@ -179,7 +485,7 @@
 // Children  object in props?
 // what do you mean by default props?
 // what is the props types?
-//  what we use to avoid props drilling  ans: to use context api to avoid props drilling
+// what we use to avoid props drilling  ans: to use context api to avoid props drilling
 
 
 // Interview  Asked Question
@@ -199,7 +505,7 @@
 // Asked about the projects mentioned in resume
 
 //EXTRA QUESTIONS
-// diff b/w  SSR & CSR
+// diff  b/w SSR & CSR
 // coreWebvitals
 // what is the passed method // Json Stringfy
 // Cookies & Session
@@ -211,10 +517,10 @@
 
 //ROUND--1
 
-// 1. explain the flow how browser run an application ? 
- //ANS::
+// 1. explain the flow how browser run an application? 
+//ANS:
 
-// Sure, I can break down how a browser runs an application in simple terms.
+// Sure,I can break down how a browser runs an application in simple terms.
 
 // 1-User Input: It starts when you type a web address (URL) or click on a link.
 
