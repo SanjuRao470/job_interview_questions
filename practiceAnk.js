@@ -399,7 +399,10 @@
 //  console.log(filres)
 //output: [ 13, 11, 61, 17, 45 ]
 
-//Question--
+// //Question--
+//  reduce() method in JavaScript executes a reducer function
+//  for each array element, returning a single accumulated value.
+
 // arr =[1,2,3,4]
 // let sum = arr.reduce((a,b)=>a+b)
 // console.log(sum)

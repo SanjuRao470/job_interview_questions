@@ -1,6 +1,6 @@
 //NOTES-----------
 //MONGO SHELL KNOWN AS CLIENT/ APPLICATION
-// mongodb provide a router called mongos
+//mongodb provide a router called mongos
 
 // interview questions
 
@@ -29,10 +29,10 @@
  // but they differ in their architectures and Use Cases.
 
 
- //MYSQL                                                               //MONGODB
+    //MYSQL                                                                //MONGODB
 //  MySQL is a relational database management                        MongoDB, on the other hand, is a NoSQL database
 //  system (RDBMS) that uses structured query language               management system that uses a document-oriented 
-//   (SQL) for managing and manipulating data.                       data model.It stores data in flexible, JSON-like documents,
+//  (SQL) for managing and manipulating data.                       data model.It stores data in flexible, JSON-like documents,
 
 //3-Does MongoDB support primary key and foreign key relationship?
 // Does MongoDB support primary-key, foreign-key relationships? By default, MongoDB
@@ -66,8 +66,8 @@
 
 
 //BSON (Binary JSON):
-//BSON is a binary representation of JSON-like documents. we can BSON extends JSON with 
-//additional data types, including Date and BinData,
+//BSON is a binary representation of JSON-like documents. we can say BSON extends JSON with 
+//additional data types, including Date and BinData(Creates a binary data object),
 
 //example
 // {
@@ -133,7 +133,7 @@
 //6-Here are five key advantages of BSON over JSON in MongoDB:
 //OR
 
-// 1-Additional Data Types: BSON supports more data types than JSON, such as Date, Binary, ObjectId, Code, and Decimal128,
+// 1-Additional Data Types: BSON supports more data types than JSON,such as Date, Binary, ObjectId, Code, and Decimal128,
 //  allowing for richer and more precise data representation.
 
 // 2-Efficient Encoding and Decoding: BSON is designed for efficient encoding and decoding, 
@@ -150,14 +150,14 @@
 
 
 //7- Define Replication in MongoDB.
-//Replication in MongoDB is the process of creating a copy of the same data set in more than one MongoDB server.
+// Replication in MongoDB is the process of creating a copy of the same data set in more than one MongoDB server.
 
-//  Replication is the process of synchronizing data across multiple MongoDB servers to provide redundancy, 
+// Replication is the process of synchronizing data across multiple MongoDB servers to provide redundancy, 
 // increase availability, and improve scalability. In a replicated MongoDB deployment, one server acts as the 
 // primary server, while the others act as secondary servers. The primary server receives all write operations 
 // and propagates changes to the secondary servers. If the primary server fails, one of the secondary servers is
-//  automatically elected as the new primary.Replication can be used for backup and disaster recovery, load balancing,
-//   and improving read performance.
+// automatically elected as the new primary.Replication can be used for backup and disaster recovery, load balancing,
+// and improving read performance.
 //The set of servers that maintain the same copy of data is known as replica servers or MongoDB instances.
 
 // Key Features of Replication:

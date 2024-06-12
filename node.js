@@ -14,29 +14,27 @@
 
 
 // JavaScript:
-//single thread
+// single thread
 // By default, synchronous / execute sequenctially.
 // Supports asynchronous operations for handling I/O, events, and timers using callbacks, promises, and async/await.
 
 
 // Node.js:
-//single thread but we can make multiple thread using worker
-//By default, asynchronous / execute independently.
+// single thread but we can make multiple thread using worker
+// By default, asynchronous / execute independently.
 // Primarily designed for asynchronous, non-blocking I/O operations.
 // Can execute synchronous code but prefers asynchronous patterns to improve performance and scalability for I/O-bound tasks.
 
 
-
-
 //Q-1 Is Node.js entirely single-threaded?
 // No, Node.js is not entirely single-threaded. It uses an event-driven, non-blocking I/O
-//  model that allows multiple operations to be processed simultaneously. 
-//  However, the execution of JavaScript code is single-threaded.
+// model that allows multiple operations to be processed simultaneously. 
+// However, the execution of JavaScript code is single-threaded.
 // Multi-threaded is possible in Node.js using Worker Threads
 
 
 //2- Is it possible to use Class in Node.js?
-// Yes, it is possible to use Class in Node.js. Node.js supports the use of ES6 syntax,
+// Yes, it is possible to use Class in Node.js.Node.js supports the use of ES6 syntax,
 // including Classes, which can be used to create objects with shared properties and methods. However,
 // it is essential to note that Node.js is mainly designed to use JavaScript's functional programming paradigm.
 
