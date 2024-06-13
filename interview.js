@@ -615,13 +615,60 @@
 // 9. difference b/w promises and async await ?
 
 
-// ###Scanrio based questions 
+// ###Scanrio based questions
+// Pass by value or pass by refence doesn't apply at all here. You're not passing anything
+//  to the enclosed timer function. You're just referencing i from the lexical environment. 
   
 // 1.   for(var i = 1 ; i<= 5; i++){
-//        setTimeOut(function(){
-//            console.log(i)
+//        setTimeout(function(){
+//            console.log(i)//6,6,6,6,6
 //        },1000 * i)
 //      }
+
+//with let
+// for(let i = 0 ; i<= 5; i++){
+//     setTimeout(function timer(){
+//         console.log(i)//0,1,2,3,4,5
+//     },1000 * i)
+//  }
+//------OR-----
+
+// function app(){
+//     for(var i = 0 ; i<= 5; i++){
+//            setTimeout(function(){
+//                console.log(i)//6,6,6,6,6,6
+//            },1000 * i)
+//         }
+//     }
+//    app()
+
+//important case
+//case-1
+// for( let i = 1 ; i<= 5; i++){
+     
+//     setTimeout(function(){
+//         console.log(i)//1,2,3,4,5
+//     },1000 * i)
+    
+//  }
+//--OR---
+//let i;
+// for( i = 1 ; i<= 5; i++){
+     
+//     setTimeout(function(){
+//         console.log(i)//6,6,6,6,6
+//     },1000 * i)
+    
+//  }
+//case-2
+//var i;
+// for( i = 1 ; i<= 5; i++){
+     
+//     setTimeout(function(){
+//         console.log(i)//6,6,6,6,6
+//     },1000 * i)
+    
+//  }
      
 //  #output  print five times 5
 //  # why it print five times 5 and how to correct it 
@@ -737,14 +784,22 @@
 
 // 6.how will u send the sensative information like aadhar ,pancard etc to the server ,
 //ANSWER
+// Use HTTPS: Ensure that the server uses HTTPS (HyperText Transfer Protocol Secure) 
+// to encrypt the data transmitted between the client and server.
+
 //Encrypt Data: Encrypt the sensitive information on the client side before sending it to the server.
 //after that  he/she can decrypt it
 
+//token-based authentication (e.g., JWT):to ensure that only authorized clients can send data to the server.
 // Tokenization: Replace sensitive information with unique tokens before sending. 
 // The server can then map the tokens back to the original data.
 
 // Authentication and Authorization: Ensure that only authenticated and authorized 
 // users can send and access sensitive information.
+
+// . Use POST Method
+// Always use the POST method for sending sensitive data, as GET parameters can be logged
+//  in various places (such as browser history, server logs, etc.).
 
 // 7.what are the project u have done and what are the challenges u faced
 
@@ -782,3 +837,11 @@
 
 
 
+// function app(){
+    for(let i = 0 ; i<= 5; i++){
+           setTimeout(function timer(){
+               console.log(i)
+           },1000 * i)
+        }
+    // }
+    // console.log(app())

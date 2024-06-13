@@ -114,3 +114,12 @@
 // Also, It can have its own methods and property.
 
 //arrow function
+
+//what is the recursive function?
+// the recursiveFunc function calls itself within the body of the function.
+//  It will repeat calling itself until the desired output is achieved.
+
+// function recursiveFunc() {
+//     // some code here... 
+//     recursiveFunc()
+//   }

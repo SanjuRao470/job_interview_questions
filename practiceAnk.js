@@ -978,28 +978,28 @@
 // It is used to look up the prototype chain of a particular instance to understand
 // the inheritance and find properties and methods not directly on the instance itself.
 
- const a = {
-    fname:'abc'
- }
- console.log(a)
- console.log(Number.prototype)
- console.log(a.__proto__)
+//  const a = {
+//     fname:'abc'
+//  }
+//  console.log(a)
+//  console.log(Number.prototype)
+//  console.log(a.__proto__)
  
- let b={
-    subObj :{
-        salary:10000
-    }
- }
- a.__proto__ = b
- b.__proto__ ={
-    lname:'dhawan',
-    subObj1 :{
-        age:30
-    }
-}
+//  let b={
+//     subObj :{
+//         salary:10000
+//     }
+//  }
+//  a.__proto__ = b
+//  b.__proto__ ={
+//     lname:'dhawan',
+//     subObj1 :{
+//         age:30
+//     }
+// }
 
-console.log("---", b.lname)
-console.log("====", b )
+// console.log("---", b.lname)
+// console.log("====", b )
 
 
 
