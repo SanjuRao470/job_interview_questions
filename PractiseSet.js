@@ -586,11 +586,11 @@
 
 //  let name ="Nia"
 //  newname = "Pi" + name[2] 
-//  console.log(newname) //Pia
+//  //console.log(newname) //Pia
 
-// let name ='sanju'
-// let rename = name[0].toUpperCase() + name.slice(1)// by using it will give substring
-// console.log(rename) //Sanju
+// let Fname ='sanju'
+// let rename = Fname[0].toUpperCase() + Fname.slice(1)// by using it will give substring
+// //console.log(rename) //Sanju
 
 //Question************************
 // let products = "DataRequired"

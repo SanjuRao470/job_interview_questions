@@ -337,8 +337,9 @@
 //         // Cleanup function (optional)
 //         return () => {
 //            // Cleanup function to cancel the fetch request
-// abortController.abort();
+//         abortController.abort();
 //         };
+
 //     }, [url]); // Trigger useEffect when 'url' changes
 
 //     return { data, loading, error };
@@ -384,9 +385,9 @@
 // TOPIC REDUX-TOOLKIT
 // FOLDER STRUCTURE: 
 //redux=> 
-//=>providers  :<Provider store={store}></App></Provider>
-// => slice:create reducer and action with createSlice
-// => store : create redux store
+//=>providers :<Provider store={store}></App></Provider>
+//=> slice: create reducer and action with createSlice
+//=> store : create redux store
 
 //process step:
 //1-npm install @reduxjs/toolkit
@@ -444,6 +445,7 @@
 {/* <Provider store={store}>
 <App />
 </Provider>, */}
+
 //6-useSelector/useDispatch both are hook provided by reduxtookit
 //useSelector: use to access the state data from redux store  // const counter = useSelector(state => state.counter);
 //useDispatch : provide a reference call Dispatch fucnction that allow a react component to

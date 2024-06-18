@@ -838,10 +838,10 @@
 
 
 // function app(){
-    for(let i = 0 ; i<= 5; i++){
-           setTimeout(function timer(){
-               console.log(i)
-           },1000 * i)
-        }
+    // for(let i = 0 ; i<= 5; i++){
+    //        setTimeout(function timer(){
+    //            console.log(i)
+    //        },1000 * i)
+    //     }
     // }
     // console.log(app())
