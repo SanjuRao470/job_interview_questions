@@ -1,3 +1,4 @@
+//NODE SETUP-- 1- NPM INIT ,2- npm install express.js
 //IMPORTANT NOTES
 //Node.js is a popular runtime environment that allows developers to
 // build scalable network applications using JavaScript. 
@@ -17,6 +18,16 @@
 // single thread
 // By default, synchronous / execute sequenctially.
 // Supports asynchronous operations for handling I/O, events, and timers using callbacks, promises, and async/await.
+
+
+//Typscript
+//it is a superset of JavaScript with having advance feature  that was developed and 
+//is maintained by Microsoft. its makes our cade easy to read , write, maintain we can write typescript in js code
+
+
+// TypeScript allows you to add type annotations to variables, function parameters,
+//  and return values. This helps catch type-related errors at compile time rather than runtime.
+
 
 
 // Node.js:
@@ -49,3 +60,36 @@
 //2-Break complex functions into smaller, simpler functions.
 
 //3-Use control flow libraries such as Async.js or Promises to handle asynchronous operations.
+
+
+
+//ARCHITECTURE-----------------------
+//1- MONOLITHIC ARCHITECTURE:-- if you make your entire application on single inter-connected unit that's called MONOLITHIC ARCHITECTURE
+// include : presentation layer, bussiness layer ,database layer
+//we can not use monolithic architecture as a web services
+
+
+//2-MICRO-SERVICES?
+// microservice architecture - is an architectural style where a large application breaks down into small components/collections
+//of services 
+//Independently deployable ,Loosely coupled to its ability to create scalable and maintainable systems.
+
+//Two common approaches are:
+// event-based architecture ---The key features of event-based architecture include asynchronous communication
+// request-based architecture. --The key features of request-based architecture include synchronous requests and responses.
+
+
+//3-WHAT IS THE WEB-SERVICES (services delivered over the web called web services)
+
+//if you have two system written in deffrent language having communication via web services
+//web service can be apis but api can not be web service
+
+//example----
+//if you have end url by hiting it you get response respect to that url and able to use it anywhere.
+
+//typw of web services
+//1- soap in which geeting response in xml  
+//2- restfull(80% of use  because of having different state like plain, json, xml ,)
+
+
+//4- APIS----- it is third party utility you can use it in your application  to make easy

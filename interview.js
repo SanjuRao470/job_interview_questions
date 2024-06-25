@@ -427,7 +427,7 @@
 // explain reduce method.
 // diff. b/w promises and callback,async and await?
 // what is the callback hell?
-// diff. b/w loop and enet queue.
+// diff. b/w loop and event queue.
 // diff. b/w spread oprator, rest oprator, destructring.
 // how you swap two values without using any third variable and loop in js?
 

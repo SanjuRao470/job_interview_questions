@@ -10,11 +10,6 @@
 // }, intialValue);
 
 
-
-
-
-
-
 // Q-1 Find the sum of all array element
 
 // arr = [2,4,6,8]
@@ -94,7 +89,7 @@
 //     let newArray = [];
 
 //     for (let i = 0; i < array1.length; i++) {
-//         if (array1[i] === index) {
+//         if (i === index) {
 //             newArray.push(55);
 //         }else{
 //              newArray.push(array1[i]);
@@ -394,7 +389,7 @@
   
 //     // If spread operator is not used 
 //     nums1.push(nums2, nums3); 
-//     console.log(nums1); // [1, 2, 3, 4, [3, 4, 5, 6], [5, 6, 7, 8]]
+//     console.log(nums1); // [1, 2, 3, 4, [3, 4, 5, 6],[5, 6, 7, 8]]
 
 
 
