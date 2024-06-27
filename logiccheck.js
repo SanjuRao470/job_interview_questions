@@ -1,3 +1,15 @@
+//--------NOTES---------------------
+// arr.reduce((e)=(i,j)=>i+j)
+
+// arr.forEach(ele=>{
+//    // sum += ele
+// })
+
+
+
+
+
+
 // The reduce() method 
 // in JavaScript executes a reducer function
 // for each array element, returning a single accumulated value. It skips empty array
@@ -240,8 +252,8 @@
 // let  duplicateFun = (array)=>{
 //     duplicates=[]
     
-// for (let i = 0; i < array.length; i++) {
-//     for (let j = i + 1; j < array.length; j++) {
+// for(let i = 0; i < array.length; i++) {
+//     for(let j = i + 1; j < array.length; j++){
 //         if (array[i] === array[j]) {
 //             if (!duplicates.includes(array[i])) {
 //                 duplicates.push(array[i]);
