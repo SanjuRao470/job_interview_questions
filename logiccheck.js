@@ -17,6 +17,9 @@
 
 // accumulated value: it is itreable value
 
+//function in JavaScript that iterates over an array and applies a reducer
+ //function to each element,  resulting in a single output value.
+ 
 // const sum = numbers.reduce((accumulator, currentValue) => {
 //     return accumulator + currentValue;
 // }, intialValue);
@@ -45,7 +48,6 @@
 //     //newarr= arr[0] //case-2
 //     for(i=0; i< arr.length; i++){
 //         newarr=newarr+arr[i]
-        
 //     }
 //     return newarr;
 // }
@@ -221,6 +223,22 @@
 // console.log(isPalindrome(str1));
 // console.log(isPalindrome(str2));
 // console.log(isPalindrome(str3));
+
+
+//QUESTION--//Reverse the Given String
+
+// function reverseString(str){
+//     let reverseStr =''
+//     for(let i = str.length-1; i>=0; i--){
+//         reverseStr+= str[i]
+        
+//     }
+//     return reverseStr;
+// }
+
+// const StringVar ='abcd'
+// const result= reverseString(StringVar)
+// console.log(result)//dcba
 
 
 //Qusetion-6  Write a function to remove a specific value from an array, modifying it in place

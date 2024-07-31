@@ -208,6 +208,15 @@
 //       return a + b;
 //     };
 //   }
+
+// function CurringFun(a){
+//     return function(b){
+//        return function(c){
+//         return a+b*c   //  start working from left
+//     } 
+//     }
+// }
+// console.log(CurringFun(4)(3)(2))  //CurringFun(2)(3)(4)//10
   
 
 //   // Usage
@@ -491,6 +500,7 @@
 // Interview  Asked Question
 
 // Questions asked in interview
+//.env file
 // React working flow
 // High order components
 // Dom, virtual dom
@@ -501,7 +511,10 @@
 // Redux working flow
 // Middleware
 // Useeffect hook
-// Difference between functional and class components 
+// Difference between functional and class components
+//horizonatal and vertical scaling
+//curring,rest opreator, prototype,reucer in redux (update salary) 
+//pre-Redndering
 // Asked about the projects mentioned in resume
 
 //EXTRA QUESTIONS
@@ -621,7 +634,7 @@
   
 // 1.   for(var i = 1 ; i<= 5; i++){
 //        setTimeout(function(){
-//            console.log(i)//6,6,6,6,6
+//            console.log(i)//6,6,6,6,6,6
 //        },1000 * i)
 //      }
 

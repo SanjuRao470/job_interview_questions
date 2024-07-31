@@ -1,5 +1,6 @@
 //Typescript : it is a superset of JavaScript with having advance feature  that was developed and 
 //is maintained by Microsoft. its makes our cade easy to read , write, maintain we can write typescript in js code
+//Both client-side and server-side JavaScript applications can be built with TypeScript.
 //example
 // In Js
 // let fname ='abc'
@@ -13,10 +14,18 @@
 //    fname = 123
 //    fname = true
 //   console.log(fname)  // this will show error because of fname declare with string datatype now it can not take anything
-// else datatpye instead of string
+// else datatpye instead of string and fname taking boolean datatype
 
 
 //Key Features
+// Here are some benefits of using TypeScript:
+
+// Optional static typing.
+// Type inference.
+// Ability to use Interfaces
+
+
+//OR--
 // Static Typing:
 // TypeScript allows you to add type annotations to variables, function parameters,
 //  and return values. This helps catch type-related errors at compile time rather than runtime.
@@ -37,7 +46,7 @@
 
 // console.log(greet("World")); // Output: Hello, World!
 
-// // Interface for a person object
+// Interface for a person object
 // interface Person {
 //  firstName: string;
 //  lastName: string;

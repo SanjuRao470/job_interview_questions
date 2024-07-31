@@ -69,6 +69,7 @@
 //BSON is a binary representation of JSON-like documents. we can say BSON extends JSON with 
 //additional data types, including Date and BinData(Creates a binary data object),
 
+
 //example
 // {
 //     "name": "Alice",
@@ -125,7 +126,7 @@
 
 
 // Key Points
-// Collection:  The users collection holds multiple documents.
+// Collection: The users collection holds multiple documents.
 // Document:   The whole JSON object we inserted is a document.
 // Embedded Document(we can say nested document): The address field within the document is an embedded document,
 //  containing its own set of key-value pairs.

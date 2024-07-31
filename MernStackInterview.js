@@ -2,6 +2,7 @@
 
 // Certainly! Below are some frequently asked interview questions for React, Node.js, HTML5, CSS3, and JavaScript:
 
+
 // React:
 // What is React and what are its main features?
 // What are the differences between Class Components and Functional Components?
@@ -13,8 +14,6 @@
 // What are Higher-Order Components (HOCs) in React?
 // What is Redux and how does it work with React?
 // What is React Router and how does it work?
-
-
 
 
 
@@ -60,7 +59,6 @@
 
 
 
-
 // JavaScript:
 // What are the data types in JavaScript?
 // Explain the difference between == and === operators in JavaScript.
@@ -72,17 +70,6 @@
 // What is event bubbling and event capturing in JavaScript?
 // What are arrow functions in JavaScript?
 // What is AJAX and how does it work in JavaScript?
-
-
-
-
-
-
-
-
-
-
-
 
 
 

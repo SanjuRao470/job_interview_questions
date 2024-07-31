@@ -208,7 +208,7 @@
 // Used in array literals, function calls, object literals, etc.
 // Creates a shallow copy of the original array/string.
 
-// Rest parameter gathers function arguments into an array.
+//Rest parameter gathers function arguments into an array.
 //REST::The rest parameter syntax allows a function to accept an indefinite number of arguments as an array,
 //EXAMPLE
 // function app(a,b,c,...rest){

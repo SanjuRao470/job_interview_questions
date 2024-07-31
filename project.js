@@ -25,6 +25,9 @@
 
 
 // General Project Questions
+//IMPORTANT Question: Tell me about your experience like
+// how many project you done, and which technology you have good command , which project recenty you have done
+
 // 1-Can you give a brief overview of your project, interviewApp?
 
 // // answer:  Be prepared to explain the purpose, key features, and overall architecture of the app.
