@@ -1,3 +1,16 @@
+//------------------DURING INTERVIEW FACED THE PROBLEM----------------------------
+// Interviewer: How do you determine which components should update in a React application?
+
+// You: To determine and control which components should update in a React application, I use several strategies:
+
+// React DevTools: I use this tool to inspect and profile component re-renders, which helps identify unnecessary updates.
+// shouldComponentUpdate: For class components, I implement the shouldComponentUpdate lifecycle method to control updates based on state and prop changes.
+// React.memo: For functional components, I use React.memo to prevent re-renders when props haven't changed.
+// useMemo and useCallback: I optimize expensive calculations and callbacks within functional components using useMemo and useCallback.
+// PureComponent: For class components, I extend React.PureComponent to enable shallow comparison of props and state, reducing unnecessary re-renders.
+
+
+
 //in React everthing treated as component that component contain state and if state change component will render than dom has created.
 
 //React has been complete cycle in among -----//Hooks---//Redux----//Dom------!
@@ -54,6 +67,11 @@
 //runs on every render       //runs only on the first render           //in this case useEffect will only runs when any of the dependency have changed b/w the renders.
 // CWU                           // CDM                                       // CDU
 
+// or  this is also know as CWU
+// useEffect(()=>{
+//     return ()=>{} cleanup function used to reduse the memory leak
+//     hook can return cleanup function as its return value
+// })
 
 // what is the memoization?
 // it is an optimization techanique that can be used to reduce time consuming calculation by saving

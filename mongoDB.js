@@ -2,11 +2,11 @@
 //MONGO SHELL KNOWN AS CLIENT/ APPLICATION
 //mongodb provide a router called mongos
 
-// interview questions
+//interview questions
 
 //1- How can you find a document with an array containing a specific value in MongoDB?
-// it is Projection Operators
-// Both the $ operator and the $elemMatch operator project the first matching element from an array based on a condition.
+//it is Projection Operators
+//Both the $ operator and the $elemMatch operator project the first matching element from an array based on a condition.
 
 // You can use the $elemMatch operator to find a document with an array containing a specific value 
 // in MongoDB. For example, to find documents in the "collection" collection with an array 
@@ -182,11 +182,15 @@
 //Sharding TOPIC
 //Each Shard holds some pieces of data
 //8-What is Sharding in MongoDB, and how does it work?
-// Sharding is a process of partitioning data across multiple servers in a MongoDB cluster.
-// It helps in scaling the database horizontally, by distributing the data across multiple servers.
-//  In sharding, the data is divided into small chunks called shards, and each shard is stored
-//  on a different server. MongoDB uses a sharding key to determine
-//  which shard the data should be stored on, based on the value of the sharding key.
+//Sharding is a process of partitioning data across multiple servers in a MongoDB cluster.
+//It helps in scaling the database horizontally, by distributing the data across multiple servers.
+//In sharding, the data is divided into small chunks called shards, and each shard is stored
+//on a different server. MongoDB uses a sharding key to determine
+//which shard the data should be stored on, based on the value of the sharding key.
+
+
+//IMP POINT:A MongoDB cluster refers to a group of MongoDB servers
+
 
 //Advantages of Sharding
 // Sharding adds more server to a data field automatically adjust data loads across various servers.
@@ -196,8 +200,8 @@
 // Total capacity will get increased by adding multiple shards.
 
 //Conclusion
-// Both Replication(duplication of dataset) and sharding(distribution of dataset in horizontally) in MongoDB helps in scaling of database.
-//  Where replication helps in data availability, sharding is useful to horizontally scale large datasets.
+//Both Replication(duplication of dataset) and sharding(distribution of dataset in horizontally) in MongoDB helps in scaling of database.
+//Where replication helps in data availability, sharding is useful to horizontally scale large datasets.
 
 
 //9- When should you embed one document within another in MongoDB?

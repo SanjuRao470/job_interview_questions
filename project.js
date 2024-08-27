@@ -71,7 +71,7 @@
 
 // why you choose next.js over React.js?(next.js is framework of react.js)
 
-//because Next.js offers server-side rendering, static site generation, and built-in routing,
+//because Next.js offers server-side rendering, static site generation, and folder based rounting,
 //which improve performance and SEO. It also includes features like Image Optimization and API routes,
 //making development faster and more efficient.
 

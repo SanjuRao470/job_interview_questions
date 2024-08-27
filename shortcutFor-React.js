@@ -1,0 +1,1 @@
+//Hoisting means:  variable declared with keyword not initialize the value into variable.

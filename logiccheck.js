@@ -7,9 +7,6 @@
 
 
 
-
-
-
 // The reduce() method 
 // in JavaScript executes a reducer function
 // for each array element, returning a single accumulated value. It skips empty array
@@ -23,6 +20,61 @@
 // const sum = numbers.reduce((accumulator, currentValue) => {
 //     return accumulator + currentValue;
 // }, intialValue);
+
+
+
+//----CONCEPTS-------
+
+//const arr = [2,5,1,3]
+
+// IMPORTANT POINTS
+//1- reduce() we can do achive both total sum of array element and multiplication
+//2-map() we can only achieve multiplication  and add new element to old element or we can say sum of each elements.
+
+
+//Example-1
+// const SumValues = arr.reduce((acc , curr) => acc + curr)
+// console.log(SumValues)//11
+
+
+////Example-2
+// const MultiplicationValue = arr.map((item)=> item*3) 
+// console.log(MultiplicationValue)//[ 6, 15, 3, 9 ]
+
+
+// const arr = [2,5,1,3]
+// const SumEachValue = arr.map((item)=> item+3) 
+// console.log(SumEachValue)//[ 5, 8, 4, 6 ]
+
+
+////Example-3
+// const arr = [1, 2, 3, 4, 5];
+// const mappedArr = arr.map(item => item);
+// const sum = mappedArr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+// console.log(sum); // Output: 15
+
+
+// const arr = [2, 5, 1, 3];
+// const result = arr.forEach(item => item * 2);
+// console.log(result); //undefined
+
+//REASON:================
+//result will be undefined because forEach does not return the transformed array.
+//If you want to see the transformed values, you should use map instead of forEach.
+
+
+// const arr = [2, 5, 1, 3];
+// const result = arr.forEach(item => console.log(item*2));
+// 4
+// 10
+// 2
+// 6
+
+
+// map: Transforms each element and returns a new array.
+// reduce: Accumulates values into a single result and returns that result.
+// forEach: Executes a function on each element without returning a new array.
+
 
 
 // Q-1 Find the sum of all array element
@@ -238,7 +290,7 @@
 
 // const StringVar ='abcd'
 // const result= reverseString(StringVar)
-// console.log(result)//dcba
+// console.log(result)//dcba`
 
 
 //Qusetion-6  Write a function to remove a specific value from an array, modifying it in place
@@ -308,6 +360,54 @@
 // console.log(resilt); // Output: 10
 
 
+//----QUESTION FIND SECOND LARGEST ELEMENT FROM ARRAY--------------
+
+// function SecondLargest(array){
+//     let largest = -Infinity;             // can be also inialize with 0
+//      let SecondLargestNum = -Infinity;   // can be also inialize with 0
+     
+//      for(let i=0; i< array.length; i++){
+//          if(array[i] > largest){
+//              SecondLargestNum=largest
+//              largest=array[i]
+//          }else if(array[i] > SecondLargestNum  &&  array[i] !== largest){
+//              SecondLargestNum=array[i]
+//          }
+         
+//      }
+//     return SecondLargestNum;
+// }
+// const arr= [2,4,5,6,8]
+// const result = SecondLargest(arr)
+// console.log(result)//6
+
+
+
+// FIND SECOND LARGEST WORD FROM GIVEN SENTENCE=================
+
+
+// function SecondLargestWord (sentence){
+//     let words = sentence.split(" ")
+//     let largest = ""
+//     let secondLargest =""
+    
+//     for(let i=0; i< words.length; i++){
+       
+//         if(words[i].length > largest.length ){
+//             secondLargest = largest
+//             largest = words[i]
+            
+//      }else if(words[i].length > secondLargest.length  &&   words[i].length < largest.length ){
+//          secondLargest=words[i] 
+///          secondLargest=words[i].length   ////9
+//          }
+// }
+//     return secondLargest;
+//     }
+// const sentence ="Regularly Asyncchronouse at least once every week"
+// const result =SecondLargestWord(sentence)
+// console.log(result)//Regularly
+
 
 // Question-9   Write a function to reverse the elements of an array.
 
@@ -316,13 +416,33 @@
 // 2-using in buildIn method// Array.reverse()
 //3- using loop/stack method
 
+// const arr = [2,3,4,5,7]
+
+// function ReverseArray(array){
+//    let reverseArr =[];
+//     for(let i=0; i<array.length; i++){
+//         reverseArr.push(array[i])
+//     }
+//     for(let i=0; i<array.length; i++){
+//       arr[i]= reverseArr.pop()
+//     }
+//     return arr;  //if you return here  reverseArr array it will give empty array
+// }
+// const result = ReverseArray(arr)
+// console.log(result)//[7,5,4,3,2]
+
+
+
+
+//anthor------
+
 // let  reverseArray =(arr)=> {
 //     let newarr = [];
 //     for (let i = 0; i < arr.length; i++) {
-//         newarr.push(arr[i]);
+//         newarr.push(arr[i]);      ///to add element from at the end of the array.
 //     }
 //     for (let i = 0; i < arr.length; i++) {
-//         arr[i] = newarr.pop();
+//         arr[i] = newarr.pop();     ///to remove element from at the end of the array.
 //     }
 //     return newarr; // here whether newarr you return or not  it does not matter 
 //     //because we  are not getting our final output in newarr
@@ -367,6 +487,86 @@
 //  let arr=[1,2,4,6,7,9]
 //  const result =  OddFun(arr)
 //  console.log(result)//[ 1,7,9 ]
+
+
+//QUESTION  Sort the given an array ================
+
+
+// function sortAscending(arr){
+//     for( let i=0; i<arr.length; i++){
+//         for(let j=0; j<arr.length-1-i; j++){
+//             if(arr[j] > arr[j+1]){   
+//                 //TIPS:  if you want to make it decending (arr[j] < arr[j+1])
+//                 let temp =arr[j]
+//                 arr[j]=arr[j+1]
+//                 arr[j+1]=temp
+//                  }
+//           }
+//     }
+//     return arr;
+
+// }
+// const arr =[2,3,4,6,5,7,8,9,32,11]
+// console.log(sortAscending(arr))//[ 2, 3, 4,  5,  6,7, 8, 9, 11, 32]
+
+
+
+// function sortDecending(array){
+//     for( let i=0; i<array.length; i++){
+//         for(let j=0; j<array.length-1-i; j++){
+//             if(array[j] < array[j+1]){   
+//                 let temp =array[j]
+//                 array[j]=array[j+1]
+//                 array[j+1]=temp
+//                  }
+//           }
+//     }
+//     return array;
+
+// }
+// const array =[2,3,4,6,5,7,8,9,32,11]
+// console.log(sortDecending(array))//[ 32, 11, 9, 8, 7, 6,  5, 4, 3, 2]
+
+
+// Sort the array by Method 
+
+//const arr =[2,3,4,6,5,7,8,9,32,11]
+// arr.sort((a,b)=> a-b)
+// console.log(arr)//a[2, 3, 4,  5,  6,7, 8, 9, 11, 32]
+
+// arr.sort((a,b)=> b-a)
+// console.log(arr)//d[ 32, 11, 9, 8, 7,6,  5, 4, 3, 2]
+
+
+
+/// CONBINE SORT AND DUPLICATE ARRAY
+
+// function SortedArray(array){
+    
+//     let duplicateSortedArray=[]
+        
+//         for(let i=0; i<array.length; i++){
+//             if(!duplicateSortedArray.includes(array[i])){
+//                 duplicateSortedArray.push(array[i])
+//             }
+            
+//         }
+        
+//         for(let i=0; i<duplicateSortedArray.length; i++){
+//             for(let j=0; j<duplicateSortedArray.length-i-1 ;j++){
+//                 if(duplicateSortedArray[j] < duplicateSortedArray[j+1] ){
+//                     let temp = duplicateSortedArray[j]
+//                     duplicateSortedArray[j] =  duplicateSortedArray[j+1]
+//                     duplicateSortedArray[j+1] = temp
+//                 }
+//             }
+//         }
+//         return duplicateSortedArray;
+        
+//     }
+//     const arr = [1,2,34,5,66,77,88,6,9,9]
+//     const result = SortedArray(arr)
+//     console.log(result)//[88, 77, 66, 34, 9,  6,  5,  2,  1]
 
 
 // diffrent ways to solve:
@@ -434,6 +634,87 @@
 //   arr=[1,2,3,5]
 //   let result = MultiFun(arr)
 //   console.log(result)//[ 1, 4, 9, 25 ]
+
+
+//QUESTION--------------
+
+// Input: nums = [2,7,11,15], target = 9
+// Output: [0,1]
+// Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+// function twoSum(nums, target) {
+//     for (let i = 0; i < nums.length; i++) {
+//         for (let j = i + 1; j < nums.length; j++) {
+//             if (nums[i] + nums[j] === target) {
+//                 return [i, j];
+//             }
+//         }
+//     }
+//     return [];   /// point: no need to return here
+// }
+
+// // Example Usage:
+// const nums = [2, 7, 11, 15];
+// const target = 9;
+// const result = twoSum(nums, target);
+// console.log(result); // Output: [0, 1]
+
+
+//-----------        ========
+// Input: nums = [3,2,4], target = 6
+// Output: [1,2]
+
+// function twoSum(nums, target) {
+//     for (let i = 0; i < nums.length; i++) {
+//         for (let j = i + 1; j < nums.length; j++) {
+//             if (nums[i] + nums[j] === target) {
+//                 return [i, j];
+//             }
+//         }
+//     }
+// }
+
+// // Example Usage:
+// const nums = [3, 2, 4];
+// const target = 6;
+// const result = twoSum(nums, target);
+// console.log(result); // Output: [1, 2]
+
+
+// QUESTION------- GIVEN CONVERT INTO THREE SET OF ARRAY
+
+
+//const input = [1,2,3,4,5,6,7,8,9] 
+
+// const [arg,arg1,agr3, arg4,arg5,agr6 ,...rest] =input
+// console.log([[arg,arg1,agr3],[arg4,arg5,agr6] ,rest])
+//[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
+
+
+
+// function App(array){
+//     let chunkSize =3
+//     let outputArray = [];
+//     for(let i=0; i<array.length; i+=chunkSize){
+//         outputArray.push(array.slice(i,i + chunkSize))
+//     }
+//     return outputArray;
+// }
+// const input = [1,2,3,4,5,6,7,8,9]
+// const result = App(input)
+// console.log(result)//[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -593,6 +874,56 @@
 
 
 
+//////COUNTER-TIMER--------------
+
+
+// import React, { useState, useEffect } from "react";
+
+// export default function ConuterTime() {
+//   //const [timeLeft, setTimeLeft] = useState(CountTimeApp());
+
+//   const CountTimeApp = () => {
+//     const targetData = new Date("December 31 ,2024 23:59:59").getTime();
+//     const now = new Date().getTime();
+//     const difference = targetData - now;
+
+//     let timeLeft = {};
+
+//     if (difference > 0) {
+//       timeLeft = {
+//         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+//         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+//         minutes: Math.floor((difference / 1000 / 60) % 60),
+//         seconds: Math.floor((difference / 1000) % 60),
+//       };
+//     }
+
+//     return timeLeft;
+//   };
+
+//   const [timeLeft, setTimeLeft] = useState(CountTimeApp());
+
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       setTimeLeft(CountTimeApp());
+//     }, 1000);
+//     return () => clearInterval(timer);
+//   }, []);
+
+//   return (
+//     <>
+//       <h1>first conter timer</h1>
+//       {timeLeft.days !== undefined ? (
+//         <p>
+//           {timeLeft.days} | {timeLeft.hours} | {timeLeft.minutes} |{" "}
+//           {timeLeft.seconds}{" "}
+//         </p>
+//       ) : (
+//         <p> that is the time</p>
+//       )}
+//     </>
+//   );
+// }
 
 
 
