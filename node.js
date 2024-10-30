@@ -24,7 +24,7 @@
 
 //NODE SETUP-- 1-
 // NPM INIT -y ,
-//2- npm install express.js
+//2- npm install express.js+
 
 // const express = require('express');
 // const app = express();
@@ -63,6 +63,30 @@
 // app.listen(port, () => {
 //   console.log(`Server running at http://localhost:${port}`);
 // });
+
+
+//----------------------------------
+
+//NOTES
+//GET
+// app.get(): Defines a route for handling GET requests to /.
+// (req, res) => { ... }:
+// The callback function has two parameters:
+// req: The request object, containing information about the incoming request (headers, query parameters, etc.).
+// res: The response object, used to send a response back to the client.
+// res.json(data):  method automatically converts the object to JSON format.
+
+// //POST
+// app.post(): Defines a route for handling POST requests to /app/product.
+// req.body: Contains the data sent by the client in the request body.//For this to work, you need middleware like express.json() to parse the incoming JSON body in your app.
+// res.status(201): Sets the HTTP status code to 201 Created.
+// res.json(item): Sends the item as a JSON response.
+
+
+
+
+
+
 
 
 
@@ -136,12 +160,18 @@
 // It provides a way to define functions, classes, or interfaces that can operate on different data types
 
 // function identity<T>(arg: T): T {
-//     return arg;
+//     return arg;    
 // }
 
 // const result1 = identity<number>(42); // result1 is of type number
 // const result2 = identity<string>("Hello"); // result2 is of type string
 
+
+//note----
+ //function identity<T>(...) declares a function named identity.
+//<T> is a generic type parameter that allows the function to work with any data type. 
+//arg: T specifies that the function takes one parameter named arg, which is of the type T.
+//: T indicates that the function returns a value of type T. The return type matches the input type, ensuring type safety.
 
 
 // access modifiers are keywords that set the accessibility of properties and methods within classes.
@@ -316,6 +346,8 @@
 // }
 // console.log( sum.call(null,1,5))//6
 
+// here we using null to avoid unneccessery context
+
 
 // function multiply(a,b){
 //     return a*b
@@ -392,20 +424,44 @@
 //     graphiql: true
 //   }));
 
+//defination
+// CORS (Cross-Origin Resource Sharing) is a middleware or security feature 
+// that allows web applications to request resources from a different domain than the one that served the web application. 
+// It uses HTTP headers to specify which domains are permitted to access the resources and
+// which HTTP methods and headers are allowed in those requests.
 
 
+//// Apply CORS middleware
 //To enable CORS with various options:
+//const cors = require('cors');
 
 // app.use(cors({
-//HEADER
-//   origin: 'http://example.com',
-//   methods: ['GET', 'POST'],
-//   allowedHeaders: ['Content-Type', 'Authorization']
+//HTTP headers
+//   origin: 'http://example.com',// specifies that only requests from http://example.com are permitted to access the resources.
+//HTTP methods 
+//   methods: ['GET', 'POST'], //allows only GET and POST HTTP methods for these requests.
+//headers 
+//   allowedHeaders: ['Content-Type', 'Authorization'] //this is optional 
+// to ensures that your application can handle necessary headers. and enhancing both security and functionality.
+
 // }));
 
-
+// Content-Type: Allows clients to specify the type of data being sent (e.g., JSON).
+// Authorization: Permits clients to send authentication tokens or credentials.
 
 //JWT (JSON WEB TOKEN)
+
+// JWT (JSON Web Token) is a compact, self-contained token used for secure data exchange between a client and a server. 
+// It’s commonly used for authentication, where after login, the server issues a token to the client.
+// The client then includes this token in the header of future requests to prove their identity.
+
+
+//The payload of a JWT carries the actual data you want to transmit.
+//Secret: A private key used to sign  and varify the token.
+//Specifies the hashing algorithm (HMAC SHA-256) used for signing the token, providing security against tampering.
+//Ensures that the token hasn’t been altered. If someone tries to modify the payload,
+
+
 
 // const jwt = require('jsonwebtoken');
 
@@ -413,7 +469,7 @@
 
 // // Create a token
 // const payload = { sub: '1234567890', name: 'John Doe', iat: Math.floor(Date.now() / 1000) };
-// const token = jwt.sign(payload, secret, { algorithm: 'HS256' });
+// const token = jwt.sign( payload, secret, { algorithm: 'HS256' } );
 
 // console.log('Token:', token);
 
@@ -430,7 +486,7 @@
 // QUESTION --how to connect database(mongodb )to server side code(node.js)?
 
 // Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. 
-// It provides a straightforward, schema-based solution to model your application data
+// It provides a straightforward, schema-based solution to model your application data.
 
 
 // STEPS-----
@@ -491,6 +547,34 @@
 // Configuration Management: Easily manage and change configuration settings without modifying the code.
 // Environment Separation: Allows different settings for development, testing, and production environments.
 
+//EVENT EMITTER==============
+
+// An EventEmitter is a core feature in Node.js that allows objects to emit and listen for events.
+//  It is part of the events module and provides a way to handle asynchronous events in an application. 
+//  When an event is emitted, any listener or handler associated with that event is executed.
+
+// Key Concepts:
+// Emit: Triggers an event.
+// Listener: A function that gets executed when a specific event is emitted.
+
+
+//EventEmitter Class:
+// const EventEmitter = require('events');
+
+//Creating an Instance:
+// const eventEmitter = new EventEmitter();
+
+// // Create an event listener
+
+// eventEmitter.on('greet', () => {
+//   console.log('Hello, World!');
+// });
+
+
+//Emitting Events:
+
+// // Emit the 'greet' event
+// eventEmitter.emit('greet');
 
 
 //output questins
@@ -807,6 +891,14 @@
 // middleware2
 // middleware3
 
+//orrrrrrrrrr==
+// middleware1
+// next called
+// middleware2
+// next called
+// middleware3
+
+
 
 //QUESTION---  SHALLOW  & DEEPCOPY
 // let a ={a:10}
@@ -869,3 +961,171 @@
 // app()
 
 
+//QUESTION -----
+//WRITE CALLBACK HELL CODE
+// function step1(callback) {
+//     setTimeout(() => {
+//       console.log("Step 1 completed");
+//       callback();
+//     }, 1000);
+//   }
+  
+//   function step2(callback) {
+//     setTimeout(() => {
+//       console.log("Step 2 completed");
+//       callback();
+//     }, 1000);
+//   }
+  
+//   function step3(callback) {
+//     setTimeout(() => {
+//       console.log("Step 3 completed");
+//       callback();
+//     }, 1000);
+//   }
+  
+//   function step4(callback) {
+//     setTimeout(() => {
+//       console.log("Step 4 completed");
+//       callback();
+//     }, 1000);
+//   }
+  
+//   // Calling each function in a nested way (Callback Hell)
+//   step1(() => {
+//     step2(() => {
+//       step3(() => {
+//         step4(() => {
+//           console.log("All steps completed");
+//         });
+//       });
+//     });
+//   });
+
+//RESULT:===========
+// Step 1 completed
+// Step 2 completed
+// Step 3 completed
+// Step 4 completed
+// All steps completed
+  
+
+
+//QUESTION
+// -----------DIFFERENCE B/W Dependencies and devDependencies?
+
+// In a project, dependencies and devDependencies are both packages that you add to your project but serve different purposes:
+
+//1--Dependencies (dependencies):
+
+// These are the packages or libraries your project needs to run in production.
+// They are essential for the core functionality of your application.
+// Examples might include frameworks, libraries for handling HTTP requests, or database drivers.
+// In package.json, they are listed under the dependencies section and are installed using npm install <package-name>.
+
+// //"dependencies": {
+//     "express": "^4.17.1",
+//     "mongoose": "^5.10.9"
+//   }
+
+
+// Dependencies:
+// express - Web framework for Node.js.
+// react - Frontend library for building user interfaces.
+// mongoose - MongoDB object modeling tool.
+// axios - Promise-based HTTP client for making API requests.
+// lodash - Utility library for common JavaScript functions.
+// redux - State management library.
+// socket.io - Library for real-time, bidirectional communication.
+// jsonwebtoken - Library for creating and verifying JWT tokens.
+// moment - Library for parsing, validating, and formatting dates.
+// bcrypt - Library for password hashing.
+
+
+
+// 2--DevDependencies (devDependencies):
+
+// These packages are only required during development, not in production.
+// They include tools like testing frameworks, linters, build tools, or transpilers.
+// In package.json, they are listed under the devDependencies section and are installed using npm install <package-name> --save-dev (or simply npm i -D).
+
+// //"devDependencies": {
+//     "jest": "^26.6.3",
+//     "eslint": "^7.11.0"
+//   }
+  
+
+// DevDependencies:
+// jest - Testing framework for JavaScript.
+// eslint - Linter for identifying and fixing JavaScript errors.
+// webpack - Module bundler for bundling JavaScript files.
+// babel - JavaScript compiler (often used with React and ES6+).
+// typescript - Superset of JavaScript adding static typing.
+// nodemon - Tool for automatically restarting the server on file changes.
+// mocha - Testing framework for Node.js.
+// chai - Assertion library for testing.
+// ts-node - TypeScript execution environment for Node.js.
+// prettier - Code formatter.
+
+// Key Differences:
+// Dependencies are needed to run your app in production.
+// DevDependencies are only needed for development and testing purposes.
+
+// Usage in package.json
+// The package.json file will automatically separate dependencies into dependencies and devDependencies if specified when installing.
+
+
+
+
+//QUESTION--- how do we handle input and output operation in node js?
+
+//Node.js provides a variety of built-in modules (like process, fs, http, https, and database connectors) || (console, file system, network, and database) 
+//to handle input and output efficiently.
+//Node.js’s asynchronous, non-blocking architecture is ideal for handling high I/O operations while maximizing application performance.
+
+// Here’s a quick, point-by-point comparison:
+
+// Console I/O:
+
+// Input: process.stdin to capture user input.
+// Output: console.log() or process.stdout.write() to display output.
+
+// process.stdin.on('data', (data) => {
+//     console.log(`Input received: ${data.toString().trim()}`);
+//   });
+  
+// File System I/O:
+
+// Read: fs.readFile (asynchronous) or fs.readFileSync (synchronous) for reading files.
+// Write: fs.writeFile or fs.writeFileSync to write data to files.
+
+// const fs = require('fs');
+// fs.readFile('example.txt', 'utf8', (err, data) => {
+//   if (err) throw err;
+//   console.log(data);
+// });
+
+// Network I/O:
+
+// HTTP Server: http.createServer to listen and respond to HTTP requests.
+// HTTP Request: https.get or libraries like axios for making API requests.
+
+// const http = require('http');
+// const server = http.createServer((req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader('Content-Type', 'text/plain');
+//   res.end('Hello, World!');
+// });
+// server.listen(3000, () => console.log('Server running on port 3000'));
+
+// Database I/O:
+
+// Connect: Database drivers or ORMs like Mongoose (MongoDB) or Sequelize (SQL) for connecting and querying databases.
+
+// const mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost:27017/mydb', { useNewUrlParser: true, useUnifiedTopology: true });
+// const userSchema = new mongoose.Schema({ name: String });
+// const User = mongoose.model('User', userSchema);
+// User.find({}, (err, users) => console.log(users));
+
+// Each type has specific methods/modules optimized for handling asynchronous operations in Node.js.

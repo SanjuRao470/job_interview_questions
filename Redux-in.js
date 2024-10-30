@@ -1,3 +1,88 @@
+ // Here’s a simple breakdown of the three concepts and how they differ from each other: 
+ //---/// Context API      ///useContext Hook    //Props Drilling
+
+//1. Context API
+// What it is: A tool in React that allows you to create a "global" state that can be shared across any component without manually passing props.
+// Role: The Context API creates a central place to store data (like a user object or theme) that can be accessed by any component in the app.
+// Without Context API: You would need to pass props down manually through multiple components (this is called props drilling).
+
+// 2. useContext Hook
+// What it is: A hook in React used specifically in functional components to access the values stored in the Context API.
+// Role: useContext makes it easy to retrieve the value provided by Context API without needing to write extra code.
+
+
+// 3. Props Drilling
+// What it is: The process of passing data through multiple components via props, even if only the deeply nested component needs it.
+// Role: Props drilling is the "manual" way of sharing data from a parent component to a deeply nested child component.
+// Without props drilling: You would use the Context API to share the data directly without having to pass it through each level manually.
+
+ 
+//-------With Context API (Avoiding Props Drilling)
+
+// import React, { createContext, useContext } from 'react';
+
+// // Create a context
+// const UserContext = createContext();
+
+// function App() {
+//   const user = "Sanju Rao";
+
+//   return (
+//     <UserContext.Provider value={user}>
+//       <ParentComponent />
+//     </UserContext.Provider>
+//   );
+// }
+
+// function ParentComponent() {
+//   return <ChildComponent />;
+// }
+
+// function ChildComponent() {
+//   return <GrandChildComponent />;
+// }
+
+// function GrandChildComponent() {
+
+//   // Use useContext to access the shared value
+//   const user = useContext(UserContext);
+
+//   return <div>User: {user}</div>;
+// }
+
+// export default App;
+
+
+
+///----Without Context API (Props Drilling)
+
+// import React from 'react';
+
+// function App() {
+//     const user = "Sanju Rao";
+//     return (
+//       <div>
+//         <ParentComponent user={user} />
+//       </div>
+//     );
+//   }
+  
+//   function ParentComponent({ user }) {
+//     return <ChildComponent user={user} />;
+//   }
+  
+//   function ChildComponent({ user }) {
+//     return <GrandChildComponent user={user} />;
+//   }
+  
+//   function GrandChildComponent({ user }) {
+//     return <div>User: {user}</div>;
+//   }
+  
+//   export default App;
+  
+ 
+ 
  //Redux-Toolkit
 //First create a folder call redux  which contains all files.
 //redux this is the folder
@@ -199,3 +284,63 @@
 
 //counterSlice is a variable that holds the output of calling createSlice
   
+
+
+// ===== WITH USING REDUX-------------
+
+
+//------QUESTION------
+// To write a reducer function in Redux to update an existing salary, you'll need to follow these steps:
+
+// Define the action type.and created it.
+// Write the reducer to handle the action.
+// Update the salary based on the payload passed.
+// To pass a new salary in Redux,Dispatching the action to update salary
+
+
+//1. Define the Action Type
+//const UPDATE_SALARY = 'UPDATE_SALARY';
+
+
+//2. Action Creator (optional, but typically used)
+
+// const updateSalary = (newSalary) => {
+//     return {
+//       type: UPDATE_SALARY,
+//       payload: newSalary
+//     };
+//   };
+  
+//3. Write the Reducer
+
+// const initialState = {
+//     salary: 50000  // Example initial salary
+//   };
+  
+//   const salaryReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//       case UPDATE_SALARY:
+//         return {
+//           ...state,
+//           salary: action.payload  // Updating the salary with the new value
+//         };
+//       default:
+//         return state;
+//     }
+//   };
+
+
+//Explanation:
+// Action Type (UPDATE_SALARY): This defines the type of action we're dealing with.
+// Action Creator: A function that returns an action object with the new salary.
+// Reducer (salaryReducer): This listens for the UPDATE_SALARY action, and when triggered, 
+// it updates the salary in the state with the value provided in the action's payload.
+  
+
+//To pass a new salary in Redux, you would dispatch the updateSalary action with the new salary value as the payload.
+//// Dispatching the action to update salary
+//store.dispatch(updateSalary(60000));  // Updating salary to 60,000
+
+
+//----STEPS--------
+//1- 

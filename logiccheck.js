@@ -76,99 +76,11 @@
 // forEach: Executes a function on each element without returning a new array.
 
 
-
-// Q-1 Find the sum of all array element
-
-// arr = [2,4,6,8]
-// sum =0;
-// for(let i=0; i< arr.length; i++){
-//     //sum+= arr[i]
-//     sum = sum+arr[i]
-// }
-// console.log("sum",sum)
-// by reduce method---------
-// let sum1 = arr.reduce( (e)= (i,j) =>i+j )
-// console.log("sum",sum1)
+//NOTES--- AND / OR operator=========
+// && requires both sides to be true.
+// || requires at least one side to be true.
 
 
-//---------------OR
-
-// arr=[1,2,4]
-
-// function SumFun(arr){
-//     //newarr= 0 //case -1
-//     //newarr= arr[0] //case-2
-//     for(i=0; i< arr.length; i++){
-//         newarr=newarr+arr[i]
-//     }
-//     return newarr;
-// }
-// let result = SumFun(arr)
-// console.log(result)// case -1  7 // case-2 8 
-
-
-// QUESTION-2 Write a function to count the frequency of each element in an array.
-//  arr=[1,2,3,1,2,3,4,5,1,1,5]
- 
-//  function freObj(arr){
-//      let frequency={};
-     
-//      for(let i=0; i<arr.length; i++){
-//          let ele = arr[i]
-//          frequency[ele] ?  frequency[ele]+=1 :  frequency[ele]=1
-       
-//     //      if(frequency[ele]){
-//     //           frequency[ele]+=1
-//     //      }else{
-//     //         frequency[ele]=1
-//     //      }
-    
-//      }
-//      return frequency
-     
-//  }
-//  let result = freObj(arr)
-//  console.log(result)
-
-// //or----------
-
-//  arr=[1,2,3,1,2,3,4,5,1,1,5]
- 
-//  let frequency = arr.reduce((freObj, ele)=>{
-//      freObj[ele] ?  freObj[ele]+=1 : freObj[ele] =1
-//      return freObj;
-//  },{})
-//  console.log(frequency)
-
-// QUESTION-3 Add the new element in the eixiting array at specific postion.
-// different ways:
-// 1- using slice
-// 2- using reduce
-// 3- using loop
-
-
-// ------function----------
-
-
-// let indexElement = (array1, index) => {
-   
-//     let newArray = [];
-
-//     for (let i = 0; i < array1.length; i++) {
-//         if (i === index) {
-//             newArray.push(55);
-//         }else{
-//              newArray.push(array1[i]);
-//         }
-//     }
-//     return newArray;
-// };
-
-// let array1 = [1, 2, 3, 4, 5];
-// let index = 2;
-// let result1 = indexElement(array1, index);
-
-// console.log("Adding elements: " + result1);//Adding elements: 1,55,3,4,5
 
 
 // arr = [23,45,67,78,99,10]
@@ -257,46 +169,62 @@
 // 1- using loop
 // 2-using split, join , reverse
 
-// function isPalindrome(str) {
-// 	let j = str.length -1  //backward check
-// 	for (let i = 0; i < str.length ; i++) {
-// 		if (str[i] != str[j]) {  //forward change
-// 			return false;
-// 		}
-// 		j--;
-// 	}
-// 	return true;
-// }
-
-// let str1 = "racecar";
-// let str2 = "nitin";
-// let str3 = "Rama";
-
-// console.log(isPalindrome(str1));
-// console.log(isPalindrome(str2));
-// console.log(isPalindrome(str3));
 
 
-//QUESTION--//Reverse the Given String
+// QUESTION-3 Add the new element in the eixiting array at specific postion.
+// different ways:
+// 1- using slice
+// 2- using reduce
+// 3- using loop
 
-// function reverseString(str){
-//     let reverseStr =''
-//     for(let i = str.length-1; i>=0; i--){
-//         reverseStr+= str[i]
-        
-//     }
-//     return reverseStr;
-// }
-
-// const StringVar ='abcd'
-// const result= reverseString(StringVar)
-// console.log(result)//dcba`
-
+//QUESTION-8 Write a function to find the largest number in an array of numbers.
+// diffrent ways to solve:
+// 1- using spread
+// 2-using reduce(), ForEach() ,sort() 
+//3- using loop
+    
 
 //Qusetion-6  Write a function to remove a specific value from an array, modifying it in place
 // diffrent ways to solve:
 // 1- using loop
 // 2-using pop(), shift() ,filter() ,splice()
+
+
+
+
+// Question-9   Write a function to reverse the elements of an array.
+
+// diffrent ways to solve:
+// 1- using recursion
+// 2-using in buildIn method// Array.reverse()
+//3- using loop/stack method
+
+// const arr = [2,3,4,5,7]
+//note-----
+// let arr = [1, 2, 3];
+// arr.push(4);  // Adds 4 to the end => [1, 2, 3, 4]
+// arr.pop();    // Removes 4 from the end => [1, 2, 3]
+
+
+//anthor------
+
+// let  reverseArray =(arr)=> {
+//     let newarr = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         newarr.push(arr[i]);      ///to add element from at the end of the array.
+//     }
+//     for (let i = 0; i < arr.length; i++) {
+//         arr[i] = newarr.pop();     ///to remove element from at the end of the array.
+//     }
+//     return newarr; // here whether newarr you return or not  it does not matter 
+//     //because we  are not getting our final output in newarr
+// }
+
+// let arr = [1, 2, 3, 4, 5];
+//  reverseArray(arr);
+// console.log("Reversed Array:", arr);//Reversed Array: [ 5, 4, 3, 2, 1 ]
+
+
 
 // let removeElement = (array, removedElem) => {
    
@@ -317,140 +245,42 @@
 // console.log("Remaining elements: " + result);//Remaining elements: 1,3,4,5
 
 
-// QUESTION-7 find duplicate  from given an array 
 
-// let  duplicateFun = (array)=>{
-//     duplicates=[]
-    
-// for(let i = 0; i < array.length; i++) {
-//     for(let j = i + 1; j < array.length; j++){
-//         if (array[i] === array[j]) {
-//             if (!duplicates.includes(array[i])) {
-//                 duplicates.push(array[i]);
-//             }
-//         }
+
+
+
+
+// Q-1 Find the sum of all array element
+//example sum+= sum+array[i] => sum+sum+array[i]
+
+// arr = [2,4,6,8]
+// sum =0;
+// for(let i=0; i< arr.length; i++){
+//     //sum+= arr[i]
+//     sum = sum+arr[i]
+
+// }
+// console.log("sum",sum)
+// by reduce method---------
+// let sum1 = arr.reduce( (e)= (i,j) =>i+j )
+// console.log("sum",sum1)
+
+
+//---------------OR
+
+// arr=[1,2,4]
+
+// function SumFun(arr){
+//     //newarr= 0 //case -1
+//     //newarr= arr[0] //case-2
+//     for(i=0; i< arr.length; i++){
+//         newarr=newarr+arr[i]
 //     }
+//     return newarr;
 // }
-//  return duplicates
-// }
+// let result = SumFun(arr)
+// console.log(result)// case -1  7 // case-2 8 
 
-// const array = [1, 2, 3, 2, 4, 5, 4, 5, 9, 7, 9];
-// let resilt = duplicateFun(array)
-// console.log(resilt); // Output: [2, 4, 5, 9]
-
-//QUESTION-8 Write a function to find the largest number in an array of numbers.
-// diffrent ways to solve:
-// 1- using spread
-// 2-using reduce(), ForEach() ,sort() 
-//3- using loop
-    
-// let  Fun = (array)=>{
-//     let largestNum = [];//This is actually a mistake in the code because largestNum should be initialized to a number (e.g., let largestNum = -Infinity or let largestNum = array[0]), not an array.
-// largestNum = array[0]
-// for (let i = 0; i < array.length; i++ ) {
-//  if (array[i] > largestNum) { // If the current element is greater than largestNum, largestNum is updated to this current element
-//        largestNum = array[i];
-//    }
-// }
-// return largestNum
-// }
-
-// const array = [1, 2, 3, 2, 4, 5, 4, 5, 9, 7, 9,10];
-// let resilt = Fun(array)
-// console.log(resilt); // Output: 10
-
-
-//----QUESTION FIND SECOND LARGEST ELEMENT FROM ARRAY--------------
-
-// function SecondLargest(array){
-//     let largest = -Infinity;             // can be also inialize with 0
-//      let SecondLargestNum = -Infinity;   // can be also inialize with 0
-     
-//      for(let i=0; i< array.length; i++){
-//          if(array[i] > largest){
-//              SecondLargestNum=largest
-//              largest=array[i]
-//          }else if(array[i] > SecondLargestNum  &&  array[i] !== largest){
-//              SecondLargestNum=array[i]
-//          }
-         
-//      }
-//     return SecondLargestNum;
-// }
-// const arr= [2,4,5,6,8]
-// const result = SecondLargest(arr)
-// console.log(result)//6
-
-
-
-// FIND SECOND LARGEST WORD FROM GIVEN SENTENCE=================
-
-
-// function SecondLargestWord (sentence){
-//     let words = sentence.split(" ")
-//     let largest = ""
-//     let secondLargest =""
-    
-//     for(let i=0; i< words.length; i++){
-       
-//         if(words[i].length > largest.length ){
-//             secondLargest = largest
-//             largest = words[i]
-            
-//      }else if(words[i].length > secondLargest.length  &&   words[i].length < largest.length ){
-//          secondLargest=words[i] 
-///          secondLargest=words[i].length   ////9
-//          }
-// }
-//     return secondLargest;
-//     }
-// const sentence ="Regularly Asyncchronouse at least once every week"
-// const result =SecondLargestWord(sentence)
-// console.log(result)//Regularly
-
-
-// Question-9   Write a function to reverse the elements of an array.
-
-// diffrent ways to solve:
-// 1- using recursion
-// 2-using in buildIn method// Array.reverse()
-//3- using loop/stack method
-
-// const arr = [2,3,4,5,7]
-
-// function ReverseArray(array){
-//    let reverseArr =[];
-//     for(let i=0; i<array.length; i++){
-//         reverseArr.push(array[i])
-//     }
-//     for(let i=0; i<array.length; i++){
-//       arr[i]= reverseArr.pop()
-//     }
-//     return arr;  //if you return here  reverseArr array it will give empty array
-// }
-// const result = ReverseArray(arr)
-// console.log(result)//[7,5,4,3,2]
-
-
-
-
-//anthor------
-
-// let  reverseArray =(arr)=> {
-//     let newarr = [];
-//     for (let i = 0; i < arr.length; i++) {
-//         newarr.push(arr[i]);      ///to add element from at the end of the array.
-//     }
-//     for (let i = 0; i < arr.length; i++) {
-//         arr[i] = newarr.pop();     ///to remove element from at the end of the array.
-//     }
-//     return newarr; // here whether newarr you return or not  it does not matter 
-//     //because we  are not getting our final output in newarr
-// }
-
-// let arr = [1, 2, 3, 4, 5];
-//  reverseArray(arr);
-// console.log("Reversed Array:", arr);//Reversed Array: [ 5, 4, 3, 2, 1 ]
 
 
 //Question - 10   Write a function to filter out even/Odds numbers from an array of numbers.
@@ -487,6 +317,444 @@
 //  let arr=[1,2,4,6,7,9]
 //  const result =  OddFun(arr)
 //  console.log(result)//[ 1,7,9 ]
+
+
+//QUESTION-13 To make square value from each elements 
+// function MultiFun(arr){
+//     let  mutliValue =[]
+//       for(let i=0; i<arr.length; i++){
+//         mutliValue.push(arr[i]*arr[i])
+//       }
+//       return mutliValue;
+//   }
+//   arr=[1,2,3,5]
+//   let result = MultiFun(arr)
+//   console.log(result)//[ 1, 4, 9, 25 ]
+
+
+//FIND COMMAN ELEMENTS FROM GIVEN ARRAY====================
+
+
+// const arr1 =[2,3,45,66,6]
+// const arr2 =[3,4,5,6,77]
+
+// function CommanElement(arr1,arra2){
+//     const commanNewArray =[];
+//     for(let i=0; i<arr1.length; i++){
+//          for(let j=0; j<arr2.length; j++){
+//         if(arr1[i] === arr2[j])
+//         commanNewArray.push(arr1[i])
+//         }
+//     }
+//     return commanNewArray;
+// }
+// const result = CommanElement(arr1,arr2)
+// console.log(result)//[3,6]
+
+
+//QUESTION--- how do you count the occurence of each character  from given string. or frequency
+
+// function countCharOccurrences(str){
+    
+//     let CountChar = {};
+    
+//     for(let i=0 ; i<str.length; i++){
+//         CountChar[str[i]] ?  CountChar[str[i]]+=1 : CountChar[str[i]]=1 
+//another ways----   
+//         // CountChar[str[i]] = (CountChar[str[i]] || 0) +1
+//           }
+//     return CountChar;
+     
+//  }
+
+//  let str4 = "programming"
+//  const result = countCharOccurrences(str4)
+//  console.log(result)//{ p: 1, r: 2, o: 1, g: 2, a: 1, m: 2, i: 1, n: 1 }
+ 
+
+// QUESTION-2 Write a function to count the frequency of each element in an array.
+//  arr=[1,2,3,1,2,3,4,5,1,1,5]
+ 
+//  function freObj(arr){
+//      let frequency={};
+     
+//      for(let i=0; i<arr.length; i++){
+//          let ele = arr[i]
+//          frequency[ele] ?  frequency[ele]+=1 :  frequency[ele]=1
+       
+//another ways--------------
+//     //      if(frequency[ele]){
+//     //           frequency[ele]+=1
+//     //      }else{
+//     //         frequency[ele]=1
+//     //      }
+    
+//      }
+//      return frequency
+     
+//  }
+//  let result = freObj(arr)
+//  console.log(result)
+
+// //or----------
+
+//  arr=[1,2,3,1,2,3,4,5,1,1,5]
+ 
+//  let frequency = arr.reduce((freObj, ele)=>{
+//      freObj[ele] ?  freObj[ele]+=1 : freObj[ele] =1
+//      return freObj;
+//  },{})
+//  console.log(frequency)
+
+
+// ------ Question function----------
+
+
+// function indexElement(array1, index){
+   
+//     let newArray = [];
+
+//     for (let i = 0; i < array1.length; i++) {
+//         // if (array1[i] == index) { //now representing element //[ 1, 55, 3, 4, 5 ]  element === 2
+//         if (i == index) {  //now representing index  //[ 1, 2, 55, 4, 5 ]            index === 2
+//             newArray.push(55);
+//         }else{
+//              newArray.push(array1[i]);
+//         }
+//     }
+//     return newArray;
+// };
+
+// let array1 = [1, 2, 3, 4, 5];
+// let index = 2;
+// let result1 = indexElement(array1, index);
+// console.log(result1)
+
+
+
+//QUESTION------ check given string is palindrome or not ?
+
+// A palindrome is a string that reads the same forwards and backwards. In other words,
+//  if you reverse the string, it will remain unchanged.
+
+// function isPalindrome(str) {
+//     str = str.toLowerCase();
+//   let j = str.length -1  //backward check
+//   for (let i = 0; i < j;  i++) {  //// only iterate until the middle
+//       if (str[i] != str[j]) {  //forward change//checks if the character at index i is not equal
+//If they are not equal, the function immediately returns the string 'not palindrome', indicating that the input string is not a palindrome.
+//           return false; ///   return 'not plindrome'
+//       }else{
+//    j--;  //If the characters are equal, the index j is decremented (j--) to check the next character from the end in the next iteration.
+//     }   
+//  }
+//   return true; //   return 'plindrome'
+// }
+
+// let str1 = "rAcecar";
+// let str2 = "niTin";
+// let str3 = "Rama";
+
+// console.log(isPalindrome(str1));//true
+// console.log(isPalindrome(str2));//true
+// console.log(isPalindrome(str3));//false
+
+//-----//madam
+
+//QUESTION--//Reverse the Given String
+
+// function reverseString(str){
+//     let reverseStr =''
+//     for(let i = str.length-1; i>=0; i--){
+//         reverseStr+= str[i]
+//     }
+//     return reverseStr;
+// }
+
+// const StringVar ='abcd'
+// const result= reverseString(StringVar)
+// console.log(result)//dcba`
+
+
+//QUESTION--//Reverse the Given Array
+
+
+// function ReverseArray(array){
+//    let reverseArr =[];
+//     for(let i=0; i<array.length; i++){
+//         reverseArr.push(array[i])
+//     }
+//     for(let i=0; i<array.length; i++){
+//       arr[i]= reverseArr.pop()
+//     }
+//     return arr;  //if you return here  reverseArr array it will give empty array
+// }
+// const result = ReverseArray(arr)
+// console.log(result)//[7,5,4,3,2]
+
+
+
+// QUESTION------ REVERSE EACH WORD FROM GIVEN SENTENCE
+
+// function reverseWords(str){
+//     let reverse = '';
+//     let word = '';
+    
+//      for(let i=0; i<str.length ; i++){
+         
+//          if(str[i] !== ' '){ //provide a space here
+//  // Instead of appending (word + str[i]), we are prepending the character (str[i] + word).
+//              word = str[i] + word    // word+str[i]
+//          }else{
+//              reverse += word + ' '  /////provide a space here
+//              word =''
+//          }
+//     }
+//       reverse += word
+//          return reverse
+// }
+//  let str = 'my name is Rohan';
+// const result = reverseWords(str)
+// console.log(result)//ym eman si nahoR
+//NOTES----
+// console.log(result)//ym eman si // without adding after the loop //reverseStr+=word
+// console.log(result)//ym eman si nahoR // with adding after the loop  //reverseStr+=word
+//The loop doesn't handle the last word because it doesn't end with a space. This step ensures that the final word
+// (which doesn't have a space after it) is added to reverseStr
+
+/// QUESTION ----ANAGRAM STRING-------------------
+//Anagrams: Same length + Same characters (with same frequency).
+
+// function AnagramString(str1,str2){
+
+//     //step-1
+
+//        if(str1.length !== str2.length){
+//             return ' not anagram'; //return false;
+//        }
+       
+//        //step-2
+//        let charCount1 = {};
+//        let charCount2 =  {};
+       
+//        // step -3
+//        for(let i=0; i<str1.length ; i++){
+           
+//             charCount1[str1[i]] = (charCount1[str1[i]] || 0) + 1;
+//         }
+       
+//        for(let i=0; i< str2.length ; i++){
+           
+//              charCount2[str2[i]] = (charCount2[str2[i]] || 0) + 1;   
+//        }
+       
+//        //step-3
+       
+//        for(let char in charCount1 ){
+           
+//            if(charCount1[char] !== charCount2[char]){
+//                 return ' not anagram'; //return false;
+//            }
+           
+//        }
+//              return ' anagram'; //return true;
+//    }
+   
+//    let str1 = 'listen' 
+//    let str2 = 'silent'
+//    const result = AnagramString(str1,str2)
+//    console.log(result)//true
+
+
+// QUESTION ---To find the first non-repeating character in a string.
+
+
+// function FirstNonRepeatingChar(str){
+//     let CountChar = {};
+    
+//     for(let i=0; i<str.length; i++){
+//     // step-1 find occurence of each character   
+//         let char = str[i]
+//         if(CountChar[char] === undefined){
+//            CountChar[char] = 1; 
+//         }else{
+//             CountChar[char]++;
+//         }
+//     }
+    
+//     for(let i=0; i<str.length; i++){
+// // step-2 find non repeating character
+//         let char = str[i]
+//         if(CountChar[char] === 1){
+//           return char; 
+//         }
+//     }
+    
+//     return 'not found any non repeating character'
+// }
+// let str = 'programming'
+// const result = FirstNonRepeatingChar(str)
+//  console.log(result)// ANS:p
+
+
+
+// QUESTION-7 find duplicate  from given an array 
+
+// function  duplicateFun(array){
+//     duplicates=[]
+    
+// for(let i = 0; i < array.length; i++) {
+//     for(let j = i + 1; j < array.length; j++){
+//         if (array[i] === array[j]) {// compares two elements from an array (at positions i and j).
+//             if (!duplicates.includes(array[i])) {  //if both are equal This checks if the current value (array[i]) is not already present in the duplicate array.
+//If array1[i] is not in the duplicate array, the condition becomes true.
+//                 duplicates.push(array[i]);
+//             }
+//         }
+//     }
+// }
+//  return duplicates
+// }
+
+// const array = [1, 2, 3, 2, 4, 5, 4, 5, 9, 7, 9];
+// let resilt = duplicateFun(array)
+// console.log(resilt); // Output: [2, 4, 5, 9]
+
+//// QUESTION-7 find duplicate  from given an string 
+
+// function App(str){
+    
+//     let duplicateChar = '';
+//     let seenObj = {};
+    
+//     for(i=0; i<str.length; i++){
+//         let char =str[i]
+//          seenObj[char] ? seenObj[char]+=1
+//   : seenObj[char]=1  
+  
+//   if(seenObj[char] === 2){
+//         duplicateChar+=char
+//     }
+//     }
+    
+//    return duplicateChar
+//   }
+//   let str = ' programming'
+//   const result = App(str)
+//   console.log(result)//rmg
+
+
+
+
+// QUESTION-- How do you remove duplicate character from a string.
+
+// function RemoveDuplicatesStr(str) {
+//     let result = '';
+//     let seeObj = {};  // Object to track seen characters
+    
+//     for (let i = 0; i < str.length; i++) {
+//         let char = str[i];  // Current character
+        
+//         if (!seeObj[char]) {
+//             seeObj[char] = true;  // Mark character as seen
+//             result += char;       // Append to result if not seen
+//         }
+//     }
+    
+//     return result;  // Return the result string with no duplicates
+//  }
+ 
+//  let str4 = "programming";
+//  const result = RemoveDuplicatesStr(str4);
+//  console.log(result);  // Output: "progamin"
+ 
+
+// QUESTION ---- find largest number from given array.
+
+// function LargestNumFun (array){
+//     let largestNum = [];//This is actually a mistake in the code because largestNum should be initialized to a number (e.g., let largestNum = -Infinity or let largestNum = array[0]), not an array.
+// largestNum = array[0]
+// for (let i = 0; i < array.length; i++ ) {
+//  if (array[i] > largestNum) { // If the current element is greater than largestNum, largestNum is updated to this current element
+//        largestNum = array[i];
+//    }
+// }
+// return largestNum
+// }
+
+// const array = [1, 2, 3, 2, 4, 5, 4, 5, 9, 7, 9,10];
+// let resilt = Fun(array)
+// console.log(resilt); // Output: 10
+
+
+// QUESTION ---- find largest word from given sentence.
+
+// function LargestWord(sentence1){
+//     let word = sentence1.split(' '); ////because you're splitting the string str into an array of words.
+//     let largest = '';
+
+//     for(let i=0 ; i<word.length; i++){
+//         if(word[i].length > largest.length){
+//            largest = word[i]
+//     }
+   
+// }
+// return largest;
+// }
+
+// let sentence = 'Digital and IT operations are based out of Pune, Maharashtra.'
+// const result = LargestWord(sentence)
+// console.log(result)//Maharashtra.
+
+
+//----QUESTION FIND SECOND LARGEST ELEMENT FROM ARRAY--------------
+
+// function SecondLargest(array){
+//     let largest = -Infinity;             // can be also inialize with 0
+//      let SecondLargestNum = -Infinity;   // can be also inialize with 0
+     
+//      for(let i=0; i<array.length; i++){
+//          if(array[i] > largest){
+//              SecondLargestNum=largest
+//              largest=array[i]
+//          }else if(array[i] > SecondLargestNum  &&  array[i] !== largest){
+//              SecondLargestNum=array[i]
+//          }
+         
+//      }
+//     return SecondLargestNum;
+// }
+// const arr= [2,4,5,6,8]
+
+// const result = SecondLargest(arr)
+// console.log(result)//6
+
+
+
+// FIND SECOND LARGEST WORD FROM GIVEN SENTENCE=================
+
+
+// function SecondLargestWord (sentence){
+//     let words = sentence.split(" ")
+//     let largest = ""
+//     let secondLargest =""
+    
+//     for(let i=0; i< words.length; i++){
+       
+//         if(words[i].length > largest.length ){
+//             secondLargest = largest
+//             largest = words[i]
+            
+//      }else if(words[i].length > secondLargest.length  &&   words[i].length < largest.length ){
+//          secondLargest=words[i] 
+///          secondLargest=words[i].length   ////9
+//          }
+// }
+//     return secondLargest;
+//     }
+// const sentence ="Regularly Asyncchronouse at least once every week"
+// const result =SecondLargestWord(sentence)
+// console.log(result)//Regularly
 
 
 //QUESTION  Sort the given an array ================
@@ -527,6 +795,30 @@
 // const array =[2,3,4,6,5,7,8,9,32,11]
 // console.log(sortDecending(array))//[ 32, 11, 9, 8, 7, 6,  5, 4, 3, 2]
 
+//-- FOR UNDERSTANDING-----------------
+
+ //j represents the current index being compared with its next neighbor (j + 1).
+//  function SortedFunction(array){//Function Declaration: SortedFunction(array)
+     
+//     for(let i=0; i<array.length; i++){//The outer loop runs from 0 to the length of the array. 
+//         for(let j=0; j<array.length-1-i; j++){// Inner loop is responsible for comparing adjacent elements and swapping them if neccessary.
+//         //The loop runs up to array.length - 1 - i to avoid checking elements that are already sorted.
+//             if(array[j] < array[j+1]){ //If true: It swaps the two elements so that the larger one comes first (to ensure descending order).
+//                 let temp = array[j]//The value of array[j] is temporarily stored in a variable temp.
+//                 array[j] = array[j+1]//Then array[j] is replaced by array[j+1].
+//                 array[j+1] = temp//Finally, array[j+1] is set to the original array[j] value from temp.
+
+//             }
+//         }
+//     }
+// return array; 
+// }
+
+
+// const arr = [8,6,2,9,6,3,4,]
+// const result = SortedFunction(arr)
+// console.log(result)//[ 9, 8, 6, 6, 4, 3, 2]
+
 
 // Sort the array by Method 
 
@@ -540,6 +832,8 @@
 
 
 /// CONBINE SORT AND DUPLICATE ARRAY
+// Bubble Sort is a simple sorting algorithm that repeatedly swaps adjacent elements 
+// if they are in the wrong order until the list is sorted.
 
 // function SortedArray(array){
     
@@ -569,71 +863,57 @@
 //     console.log(result)//[88, 77, 66, 34, 9,  6,  5,  2,  1]
 
 
-// diffrent ways to solve:
-// 1-  filter() method
-// 2-using for/while loop
-// 3- using forEach() method
 
-// QUESTION-11 How to convert the first letter of string in UpperCase
+//QUESTION : MERGE TWO SORTED ARRAYS INTO SINGLE SORTED ARRAY
 
-//  let name ="Nia"
-//  newname = "Pi" + name[2] 
-//  //console.log(newname) //Pia
+//we can use the for loop also  (;i < arr1.length && j < arr2.length) ,(;i < arr1.length)  ,(;j < arr2.length)
 
-// let Fname ='sanju'
-// let rename = Fname[0].toUpperCase() + Fname.slice(1)// by using it will give substring
-// //console.log(rename) //Sanju
+// function mergeSortedArrays(arr1, arr2) {
+//     let mergedArray = [];
+//     let i = 0; // Pointer for arr1
+//     let j = 0; // Pointer for arr2
 
+//     // Merge elements from both arrays
+//     while (i < arr1.length  &&  j < arr2.length) {
+//         if (arr1[i] < arr2[j]){         //if (arr1[i] > arr2[j])
+//             mergedArray.push(arr1[i]);
+//             i++;
+//         } else {
+//             mergedArray.push(arr2[j]);
+//             j++;
+//         }
+//     }
 
-//QUESTION-12 Merge Arrays: Write a function to merge two arrays into a single array.
+//     // Handle any remaining elements in arr1
+//     while (i < arr1.length) {
+//         mergedArray.push(arr1[i]);
+//         i++;
+//     }
 
-// function MergeFun(...arr3){
-//     mergearr = []
-//    arr3.forEach(arr3 => {
-//      // mergearr.push(...arr3)
-//     //mergearr = mergearr.concat(arr3)
-//     // mergearr = [...mergearr , ...arr3]
-//    })
-//    return mergearr; 
+//     // Handle any remaining elements in arr2
+//     while (j < arr2.length) {
+//         mergedArray.push(arr2[j]);
+//         j++;
+//     }
+//     return mergedArray;
 // }
 
-// let arr1 =[2,3,5]
-// let arr2 = [6,7,8,2]
-// let result =  MergeFun(arr1 ,arr2)
-//  console.log(result)// [2,3,5,6,7,8,2]
+// // Example Usage:
+// //there is three snerio which need to focus 
+// // 1- already given sorted array
+// // 2- unsorted array given
+// // 3- one is sorted another is unsoterd
+// let unsortedArr1 = [40, 10, 30, 20];
+// let unsortedArr2 = [35, 15, 45, 25];
 
-// diffrent ways to solve:
-// 1-  spread() ,push(), concat(), method
-// 2-using for loop
-// 3- using forEach() method
-// 4-using reduce() method
-// 5- using filter() method
+// // Sort the arrays before merging
+// unsortedArr1.sort((a, b) => a - b);           ///((a, b) => b-a)
+// unsortedArr2.sort((a, b) => a - b);             //((a, b) => b-a)
 
- //EXAMPLE   -------------- NOTE
-//  let nums1 = [1, 2, 3, 4]
-//  let nums2 = [3, 4, 5, 6]
-//  let nums3 = [5, 6, 7, 8]
-
-//  nums1.push(...nums2, ...nums3); 
-//     console.log(nums1); // [1, 2, 3, 4, 3, 4, 5, 6, 5, 6, 7, 8]
-  
-//     // If spread operator is not used 
-//     nums1.push(nums2, nums3); 
-//     console.log(nums1); // [1, 2, 3, 4, [3, 4, 5, 6],[5, 6, 7, 8]]
+// let sortedMergedResult = mergeSortedArrays(unsortedArr1, unsortedArr2);
+// console.log(sortedMergedResult); // Output: [10, 15, 20, 25, 30, 35, 40, 45]
 
 
-
-//QUESTION-13 To make square value from each elements 
-// function MultiFun(arr){
-//     let  mutliValue =[]
-//       for(let i=0; i<arr.length; i++){
-//         mutliValue.push(arr[i]*arr[i])
-//       }
-//       return mutliValue;
-//   }
-//   arr=[1,2,3,5]
-//   let result = MultiFun(arr)
-//   console.log(result)//[ 1, 4, 9, 25 ]
 
 
 //QUESTION--------------
@@ -690,12 +970,14 @@
 // console.log([[arg,arg1,agr3],[arg4,arg5,agr6] ,rest])
 //[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
 
-
+//NOTES:
+// array.slice(i, i + chunks) extracts elements from the array starting from index i and ending at index i + chunks (non-inclusive).
+// The slice method returns a portion of the array
 
 // function App(array){
-//     let chunkSize =3
+//     let chunkSize =3 //size of each subarray 
 //     let outputArray = [];
-//     for(let i=0; i<array.length; i+=chunkSize){
+//     for(let i=0; i<array.length; i+=chunkSize){  //i+=chunkSize = i=i+chunkSize
 //         outputArray.push(array.slice(i,i + chunkSize))
 //     }
 //     return outputArray;
@@ -706,12 +988,73 @@
 
 
 
+// QUESTION JUST OPPOSITE===================
+
+// function OneDArray(array){
+//     const flattenedArray=[];
+//     for(let i=0; i<array.length; i++){
+//         for(let j=0; j<array[i].length; j++){           //arr[i].length gives the number of elements in the current sub-array.
+//             flattenedArray.push(array[i][j])
+//         }
+//     }
+//     return flattenedArray;
+// }
+// const arr = [ [ 2, 3, 4, 5 ], [ 6, 7, 78, 8 ], [ 9, 12, 23, 45 ] ]
+// const result =OneDArray(arr)
+// console.log(result)//[2,3,4,5,6,7,78,8,9,12,23,45]
+
+
+// ================= ANOTHER WAYS  ===============
+
+// const arr = [ [ 2, 3, 4, 5 ], [ 6, 7, 78, 8 ], [ 9, 12, 23, 45 ] ]
+// const result= arr.flat()
+// console.log(result)//[2,3,4,5,6,7,78,8,9,12,23,45]
 
 
 
+//        ================= curially most asked questions  =============================
 
+//QUESTION--------------------------------
 
+// const obj = {
+//     a: { b: "jitendra" },
+//     c: { d: "Vishwakarma" },
+//     e: "address"
+// };
 
+// function flattenObject(obj) {
+//     const flattened = {};  //step-1
+
+//     // Iterate over each key in the original object
+//     for (let key in obj) {  //step-2
+//         if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+//             // If the value is an object (and not an array), flatten its nested keys
+//             const nestedObj = obj[key];    //{ b: "jitendra" } &  { d: "Vishwakarma" }
+//             for (let nestedKey in nestedObj) {
+//                 // Construct the flattened key by joining parent key and nested key with a dot
+//                 const flattenedKey = `${key}.${nestedKey}`; //a.b &  c.d
+//                 // Assign the value to the flattened key in the result object
+//                 flattened[flattenedKey] = nestedObj[nestedKey]; /// jitendra & Vishwakarma or we can say {'a.b':'jitendra', 'c.d':'Vishwakarma' ,e:'address'}
+//             }
+//         } else {
+//             // If the value is not an object (primitive value), simply assign it to the result object
+//             flattened[key] = obj[key];  // {key:value} like this we get answer
+
+//         }
+//     }
+
+//     return flattened;
+// }
+
+// const flattenedObj = flattenObject(obj);
+// console.log(flattenedObj);
+
+// //output
+// {
+//     'a.b': 'jitendra',
+//     'c.d': 'Vishwakarma',
+//     e: 'address'
+// }
 
 
 
@@ -862,73 +1205,4 @@
 // } 
 
 // console.log(mergeNoDuplicates(nums1, nums2, nums3)); 
-
-
-
-
-
-
-
-
-
-
-
-
-//////COUNTER-TIMER--------------
-
-
-// import React, { useState, useEffect } from "react";
-
-// export default function ConuterTime() {
-//   //const [timeLeft, setTimeLeft] = useState(CountTimeApp());
-
-//   const CountTimeApp = () => {
-//     const targetData = new Date("December 31 ,2024 23:59:59").getTime();
-//     const now = new Date().getTime();
-//     const difference = targetData - now;
-
-//     let timeLeft = {};
-
-//     if (difference > 0) {
-//       timeLeft = {
-//         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-//         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-//         minutes: Math.floor((difference / 1000 / 60) % 60),
-//         seconds: Math.floor((difference / 1000) % 60),
-//       };
-//     }
-
-//     return timeLeft;
-//   };
-
-//   const [timeLeft, setTimeLeft] = useState(CountTimeApp());
-
-//   useEffect(() => {
-//     const timer = setInterval(() => {
-//       setTimeLeft(CountTimeApp());
-//     }, 1000);
-//     return () => clearInterval(timer);
-//   }, []);
-
-//   return (
-//     <>
-//       <h1>first conter timer</h1>
-//       {timeLeft.days !== undefined ? (
-//         <p>
-//           {timeLeft.days} | {timeLeft.hours} | {timeLeft.minutes} |{" "}
-//           {timeLeft.seconds}{" "}
-//         </p>
-//       ) : (
-//         <p> that is the time</p>
-//       )}
-//     </>
-//   );
-// }
-
-
-
-
-
-
-
 

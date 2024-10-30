@@ -19,14 +19,14 @@
 
 
 
-//Hooks: hooks are reuable functions.
+//Hooks: hooks are re-useable functions.
 //why we use Hooks?
 //Beacuse it provide a very easily understandable and much cleaner way of writing code.
 // useState
 // useEffect
 // useCallback
 // useMemo
-// (HOC)React.Memo  // used to wrap React Function components to prevent re-renderings //  Memoize entire component.
+// (HOC)React.Memo/forwardRef  // used to wrap React Function components to prevent re-renderings //  Memoize entire component.
 // useReducer
 // useContext
 // useRef
@@ -69,7 +69,7 @@
 
 // or  this is also know as CWU
 // useEffect(()=>{
-//     return ()=>{} cleanup function used to reduse the memory leak
+//     return ()=>{} cleanup function used to reduce the memory leak
 //     hook can return cleanup function as its return value
 // })
 
@@ -270,3 +270,9 @@
 //DOM: virtual representation of real dom.
 //why we need to use the VDOM?
 //Because we wants to makes the application's performance faster.
+
+
+
+// Flux: A unidirectional data flow architecture for managing state in React application.
+// Event: A user interaction in React that triggers a function or state update.(like clicks, key presses, etc.) 
+//OR=== a signal in React, as it indicates a user interaction or action that triggers a function or state change.

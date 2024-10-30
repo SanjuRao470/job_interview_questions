@@ -1,7 +1,159 @@
+//INTERVIEW QUESTIONS-------
+//QUESTION---  What is the TS?
+
+////Type annotation in TypeScript refers to explicitly specifying the type of a variable,
+
+// TypeScript allows you to add type annotations to variables,function parameters,
+// and return values. This helps catch type-related errors at compile time rather than runtime.
+
+
+//TypeScript is a superset of javascript with having advance feature and offers several advantages over JavaScript, 
+//such as static typing, interfaces, enums, and advanced tooling support. These features can lead to fewer bugs, improved code quality,
+
+//2--What are the key differences between TypeScript and JavaScript?
+// the main difference  which i found between TS and JS.
+
+// JS------- 1- Dynamic typing   2-error occur at runtime.
+//let age = 25; // Type is determined at runtime and can change during execution  ,age = "twenty-five"; // Allowed in dynamic typing
+
+//TS------ 1- static typing   2-error occur at compile time rather than runtime.
+//let age: number = 25; // Type is declared and checked at compile-time
+
+
+//QUESTION-3 What are TypeScript interfaces, and how do they differ from types?
+//TypeScript interfaces can be used in various ways--
+
+//Basic Interface: Defines the structure for an object with properties and their types.
+// interface User {
+//     name: string;
+//     age: number;
+//   }
+  
+//Interface with Methods: Interfaces can define methods along with properties.
+// interface User {
+//     name: string;
+//     greet(): void; // Method definition
+//   }
+  
+//Function Interfaces: Used to define the structure of a function.
+// interface MathOperation {
+//     (x: number, y: number): number;
+//   }
+  
+//Extending Interfaces: One interface can inherit properties from another using extends.
+// interface Person {
+//     name: string;
+//   }
+  
+//   interface Developer extends Person {
+//     skills: string[];
+//   }
+  
+
+//both interface and type can be used to define the shape of an object.
+//Interfaces define the shape of objects and can be extended, while types are more flexible 
+//or can say allow to make union and intersection but cannot be extended in the same way as we able to do with the interface.
+
+//---- Interfaces: Can be extended
+
+ // interface Person {
+//     name: string;
+//     age: number;
+//   }
+  
+//   interface Developer extends Person {
+//     skills: string[];
+//   }
+  
+//   const sanju: Developer = {
+//     name: "Sanju",
+//     age: 25,
+//     skills: ["JavaScript", "TypeScript", "React"]
+//   };
+  
+//. Types: Cannot be extended in the same way
+// type Person = {
+//     name: string;
+//     age: number;
+//   };
+  
+//   type Developer = Person & {
+//     skills: string[];
+//   };
+  
+//   const sanju: Developer = {
+//     name: "Sanju",
+//     age: 25,
+//     skills: ["JavaScript", "TypeScript", "React"]
+//   };
+  
+//QUESTION-4 ---What are generics in TypeScript, and how are they used?
+//generics provide a way to create reusable components that can work with a variety of types instead of a single one.
+//Generics: The function is generic, allowing it to accept and return values of any type.
+
+// A generic type in TypeScript allows you to create reusable components that can work with 
+// a variety of types instead of a single one.
+// It provides a way to define functions, classes, or interfaces that can operate on different data types
+
+// function identity<T>(arg: T): T {
+//     return arg;    
+// }
+
+// const result1 = identity<number>(42); // result1 is of type number
+// const result2 = identity<string>("Hello"); // result2 is of type string
+
+
+//note----
+ //function identity<T>(...) declares a function named identity.
+//<T> is a generic type parameter that allows the function to work with any data type. 
+//arg: T specifies that the function takes one parameter named arg, which is of the type T.
+//: T indicates that the function returns a value of type T. The return type matches the input type, ensuring type safety.
+
+
+/////QUESTION-5  ---What is the difference between never , any and unknown types in TypeScript?
+//In TypeScript, never, unknown, and any are special types that serve different purposes:
+
+//In TypeScript,
+// never :  represents values that never occur, 
+//unknown  :  Requires type checking before you can use it, making it safer to handle.
+// any  : Allows any operation without type checks, leading to potential runtime errors.
+
+
+///QUESTION-6 ---What is the difference between any and unknown types in TypeScript?
+//unknown promotes safer code practices, while any provides maximum flexibility but sacrifices type safety.
+
+//QUESTION-6 ---What is Enums?
+
+// Enums in TypeScript are a way of defining named constants which can
+//  makes it easier to create a set of distinct cases. and improving code readability.
+// TypeScript supports both numeric and string enums.
+
+
+
+//or
+//For example, enums can be useful when dealing with fixed categories like days of the week, user roles, or states of a system:
+//EXAMPLE-------
+
+// enum Direction {
+//     Up,
+//     Down,
+//     Left,
+//     Right
+// }
+
+// let move: Direction = Direction.Up;
+
+// console.log(move); // Outputs: 0 (default index value)
+// console.log(Direction[move]); // Outputs: "Up"
+
+
+
 //Typescript : it is a superset of JavaScript with having advance feature  that was developed and 
 //is maintained by Microsoft. its makes our cade easy to read , write, maintain we can write typescript in js code
 //Both client-side and server-side JavaScript applications can be built with TypeScript.
 //example
+
+
 // In Js
 // let fname ='abc'
 // fname = 123
@@ -36,6 +188,7 @@
 
 
 //EXAMPLE-----------
+
 // // Type annotation for a variable
 // let message: string = "Hello, TypeScript";
 

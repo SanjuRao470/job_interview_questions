@@ -691,6 +691,6 @@
 // months.sort();
 // console.log(months);
 
-const array1 = [1,2,3,4,5,6];
-array1.sort();
-console.log(array1);
+// const array1 = [1,2,3,4,5,6];
+// array1.sort();
+// console.log(array1);

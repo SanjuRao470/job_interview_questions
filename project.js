@@ -224,33 +224,151 @@
 //answer: Talk about security practices such as data encryption, securing WebSocket connections, and preventing common vulnerabilities (e.g., SQL injection, XSS).
 
 
-
+//TESTING FRAMEWORKS------  jest-cucumber" & "jest-enzyme
 
 // Testing and Quality Assurance Questions
 //1- How do you test your application?
 //answer: Explain your testing strategy, including the tools and frameworks used
 // for unit tests, integration tests, and end-to-end tests.
-// like Jest is a JavaScript testing framework
+// like Jest is a JavaScript/TypeScript testing framework
+
+//When testing a web application, a variety of languages and frameworks can be used depending on the testing approach
+// (unit, integration, end-to-end) 
 
 //unit tests
 // Purpose: Test individual units/components of a software in isolation (e.g., functions, methods).
+// Unit tests check individual pieces of code, usually a single function or component, to make sure it works correctly.
+//Example: Testing a function that adds two numbers to ensure it returns the correct result.
 
 // // integration tests
 // Purpose: Test the interaction between integrated units/components to ensure they work well together.
+//Integration tests check if different pieces of code work well together. They test the interaction between multiple units
+// (e.g., functions, components, services, etc.).
+//Example: Testing if a function that saves data to a database correctly integrates with the database and saves the data properly.
+
+
 
 // // and end-to-end tests
 // Purpose: Test the flow of an application as a whole to ensure that the entire process of user input and output works smoothly.
+//What they are: E2E tests simulate real-world scenarios where the whole system is tested from start to finish, as a user would experience it.
+//Testing an e-commerce site where you add a product to the cart, check out, and receive a confirmation message,
+// ensuring the full flow works.
+
+
+
 
 //ANSWER
-// there are three common types of testing: Unit Tests, Integration Tests, and End-to-end Tests.
+// there are three common types of testing approaches: Unit Tests, Integration Tests, and End-to-end Tests.
 // I used the unit testing because unit tests are quick, reliable, and easy to maintain
 // while E2E tests are often slow, brittle, and require more maintenance.
+
+
+// I used the Jest: (jest-enzyme is for unit testing React components and their interactions.)
+//A widely-used testing framework for unit and integration tests. It’s known for its simplicity and ability to mock functions.
+
+//Jest is a testing framework that provides a complete testing environment,
+// including test runner, assertion library, and mocking capabilities.
+//  Enzyme is a utility that works alongside Jest to provide a more intuitive API for testing React components,
+// allowing for shallow, mount, and render testing.
+
+//DIFFERENCE BETWEEN UNIT TEST AND INTEGRATION TEST
+
+//Scope:
+
+// Unit Tests: Test individual components or functions in isolation.
+// Integration Tests: Test how different components or modules work together.
+
+// Focus:
+
+// Unit Tests: Focus on correctness of specific logic or functionality.
+// Integration Tests: Focus on the interaction between components (e.g., API calls, database).
+
+// Speed:
+
+// Unit Tests: Fast, as they test small parts in isolation.
+// Integration Tests: Slower, due to testing across multiple parts.
+
+// Complexity:
+
+// Unit Tests: Simple, focus on isolated code.
+// Integration Tests: More complex, involve multiple systems.
 
 //example------------
 // test('renders learn react link', () => {
 //     render(<App />);
    
 //   });
+
+
+//EXAMPLE---------
+//Jest Unit Test Case (e.g., add.test.js):
+//STEPS---
+//1-npm install --save-dev jest
+//2- "scripts": {//ADD SCRIPT IN PACKAGE.JSON FILE
+//   "test": "jest"
+// }
+//3- npm test --(run test case)
+
+
+
+// add.test.js
+// const add = require('./add'); // Import the add function
+
+// test('adds 2 + 3 to equal 5', () => {
+//   expect(add(2, 3)).toBe(5); // Test case for adding 2 and 3
+// });
+
+// test('adds -1 + 1 to equal 0', () => {
+//   expect(add(-1, 1)).toBe(0); // Test case for adding -1 and 1
+// });
+
+// test('adds 0 + 0 to equal 0', () => {
+//   expect(add(0, 0)).toBe(0); // Test case for adding 0 and 0
+// });
+
+
+///-------- How to create Mock function
+
+// Step 1 npm install --save-dev jest
+// Step 2  You can create a mock function using jest.fn() in your test file.
+// Step 3: Write the Test Code
+
+// EXAMPLE-1 FOR BASIC MOCK FUNCTION
+// // Step 3.1: Create a mock function
+// const mockFunction = jest.fn();
+
+// // Step 3.2: Call the mock function
+// mockFunction();
+
+// // Step 3.3: Assert that the function was called once
+// test('Mock function is called once', () => {
+//   expect(mockFunction).toHaveBeenCalledTimes(1);
+// });
+
+
+// EXAMPLE -2FOR BASIC MOCK FUNCTION
+
+// const mockFunction = jest.fn().mockImplementation((a, b) => a + b);
+
+// // Call the mock function with arguments
+// const result = mockFunction(2, 3);
+
+// // Test the result of the function call
+// expect(result).toBe(5);
+
+
+
+// // Step 3.1: Create a mock function with a return value
+// const mockFunction = jest.fn(() => 'Hello, Jest!');
+
+// // Step 3.2: Call the mock function
+// const result = mockFunction();
+
+// // Step 3.3: Assert the return value of the mock function
+// test('Mock function returns the correct value', () => {
+//   expect(result).toBe('Hello, Jest!');
+// });
+
 
 
 //2- How do you ensure code quality and maintainability?

@@ -23,6 +23,24 @@
 //{ "_id" : 4, "students" : [ { "name" : "ruth", "school" : 102, "age" : 16 } ] }/// THIS IS CALL DOCUMENT  {}
  // HOW TO USE THIS { "_id" : 4, "students" : [ $elemMatch: { "name" : "ruth", "school" : 102, "age" : 16 } ] }
 
+// 
+
+//Question:
+
+// why do you choose mongoDB?
+// because it offers greater flexbility and schema less design and making it easier to handle unstructured DataSet.
+
+
+//what do you think to choose  between mongodb and  other database like Mysql and Post greSql?
+
+// When choosing between MongoDB, MySQL, and PostgreSQL, it depends on the use case:
+
+// MongoDB: Best for unstructured or rapidly changing data, scalability, and flexibility. (e.g., real-time apps).
+// MySQL: Ideal for structured data, simple queries, and transactions. (e.g. e-commerce, banking).
+// PostgreSQL: Best for complex queries, strong data integrity, and extensibility. (e.g., analytics, geospatial apps).
+
+// Choose MongoDB for flexibility, MySQL for simplicity, and PostgreSQL for complexity and reliability.
+
 
  //2- diff b/w MySQL and MongoDB
  //MySQL and MongoDB are both popular database management systems,
@@ -33,6 +51,27 @@
 //  MySQL is a relational database management                        MongoDB, on the other hand, is a NoSQL database
 //  system (RDBMS) that uses structured query language               management system that uses a document-oriented 
 //  (SQL) for managing and manipulating data.                       data model.It stores data in flexible, JSON-like documents,
+
+//Schema:
+
+// SQL: Fixed schema with predefined tables and columns. 
+ //For example, if you create a users table with columns name, email, and age, every entry in the table must have these fields.
+
+ // MongoDB: Flexible schema with JSON-like documents.
+ //For example, one document might have name and email, while another might have name, email, and age.
+
+// Scalability:
+
+// SQL: Vertical scaling.
+//SQL  scale by adding more power like (CPU, RAM, etc.) to a single server
+
+// MongoDB: Horizontal scaling.
+//MongoDB scales by distributing data across multiple servers in mongoDB cluster(which is also known as sharding).
+
+//IMPORTANT NOTES :---
+//Both Replication(duplication of dataset) and sharding(distribution of dataset in horizontally) in MongoDB helps in scaling of database.
+//Where replication helps in data availability, sharding is useful to horizontally scale large datasets.
+
 
 //3-Does MongoDB support primary key and foreign key relationship?
 // Does MongoDB support primary-key, foreign-key relationships? By default, MongoDB
@@ -299,3 +338,79 @@
 // Redis is often a better choice for applications that require high-speed data access, 
 // such as real-time messaging systems or caching layers, while MongoDB is better suited 
 // for applications that require more complex queries and support for a wider range of data types.
+
+
+
+///INDEXING
+
+// Indexing in MongoDB improves query performance by creating a data structure that
+//  allows faster data retrieval without scanning the entire collection.
+
+// Indexing in MongoDB is a process that improves query performance by allowing the database to 
+// quickly locate and retrieve specific data. An index is a special data structure that stores
+// a portion of the data in a way that makes queries more efficient. Without an index, MongoDB
+// must scan every document in a collection, resulting in slower queries. Indexes can be created on fields
+// (e.g., single-field, compound-field) to optimize searches, sorting, and filtering.
+
+
+//EXAMPLE :  db.collection.createIndex({ name: 1 });
+
+//const users =[
+// {
+//   "_id": 1,
+//   "name": "John",
+//   "age": 25
+// },
+// {
+//   "_id": 2,
+//   "name": "Alice",
+//   "age": 30
+// },
+// {
+//   "_id": 3,
+//   "name": "Bob",
+//   "age": 22
+// }
+//]
+
+// //create an index
+// db.users.createIndex({ age: 1 }) // 1 for ascending order
+// db.users.find({ age: 25 })
+
+// MongoDB would have to scan all documents to find the matching ones. However, 
+// if you create an index on age, MongoDB will use this index to quickly locate the relevant documents.
+
+
+// Why it works
+// The index structure allows MongoDB to skip irrelevant documents.
+// Queries with filters, sorting, or range conditions on indexed fields become faster because they don't need to scan all records.
+
+
+
+//Here are some commonly asked Mongoose methods in interviews:
+
+// save() - Saves a document to the database.
+// find() - Retrieves multiple documents that match a query.
+// findOne() - Retrieves a single document that matches a query.
+// findById() - Finds a document by its _id field.
+// updateOne() - Updates a single document that matches a query.
+// deleteOne() - Deletes a single document that matches a query.
+// findByIdAndUpdate() - Finds a document by _id and updates it.
+// populate() - Populates referenced documents in a query.
+// countDocuments() - Counts documents matching a query.
+// aggregate() - Performs aggregation operations on data.
+
+
+//QUESTION-----
+//To merge 5 APIs from Google and 5 from Facebook into MongoDB?
+
+//- Fetch Data: Use axios to call 5 Google and 5 Facebook APIs.
+// const googleData = await axios.get('google_api_url');
+// const facebookData = await axios.get('facebook_api_url');
+
+//- Merge Data: Combine responses into one array.
+//---const mergedData = [...googleData.data, ...facebookData.data];
+
+//-Insert Data into MongoDB: Use the insertMany() method to insert the combined data into a MongoDB collection.
+//await YourModel.insertMany(mergedData);
+
