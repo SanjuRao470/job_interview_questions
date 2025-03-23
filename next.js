@@ -1,3 +1,25 @@
+//Important points for Interview--------------
+//we know React is perform CSR whereas Next.js perform both SSR(pre-render pages)/SSG(pre-render html at built time)
+//what kind of functionality next.js provide  to website becomes seo friendly which react can no?
+//Reason behind why next.js enhance SEO beacuse 
+//1-
+// Summary: Why Next.js is Better for SEO?
+// Feature	Next.js	                          ///React
+// ✅ Server-Side Rendering (SSR)	✅ Yes	❌ No
+// ✅ Static Site Generation (SSG)	✅ Yes	❌ No
+// ✅ Fast Image Optimization	✅ Yes	❌ No
+// ✅ SEO-Friendly URLs	✅ Yes	❌ No
+// ✅ Sitemap & Robots.txt	✅ Yes	❌ No
+// ✅ Built-in Meta Tags	✅ Yes	❌ No
+
+// Final Answer for the Interviewer:
+// "Next.js improves SEO because it supports SSR (Server-Side Rendering) and SSG (Static Site Generation),
+//  making content instantly accessible to search engines. Unlike React, which relies on Client-Side Rendering 
+//  (CSR), Next.js pre-renders pages, improves page speed, optimizes images, and allows dynamic meta tag updates. 
+// This leads to faster indexing, higher Google rankings, and better user experience, which React alone cannot achieve."
+
+
+
 //Tutorial Points:------------------------------
 //1
 // points of video

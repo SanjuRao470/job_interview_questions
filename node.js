@@ -247,6 +247,15 @@
 // event-based architecture ---The key features of event-based architecture include asynchronous communication
 // request-based architecture. --The key features of request-based architecture include synchronous requests and responses.
 
+//IMPORTANT--------
+// Q1: How to Connect One Microservice to Another in Node.js?
+
+// In a microservices architecture, services must communicate with each other. This can be done using different methods:
+
+// REST API Calls (Synchronous Communication)
+// Message Brokers (RabbitMQ, Kafka, NATS, etc.) (Asynchronous Communication)
+// gRPC (High-Performance Communication)
+// Service Discovery (Kubernetes, Consul, Eureka)
 
 //3-WHAT IS THE WEB-SERVICES (services delivered over the web called web services)
 

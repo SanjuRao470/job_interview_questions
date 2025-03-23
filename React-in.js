@@ -73,6 +73,12 @@
 //     hook can return cleanup function as its return value
 // })
 
+//IMPORTANT NOTES-------
+//Can We Call These "Side Effects"?
+// Yes! In React, side effects refer to anything that affects something outside of the component’s local 
+// execution—like modifying the DOM, fetching data, or setting timers. Since React’s rendering should remain pure and predictable, 
+// side effects are handled inside useEffect instead of directly in the component body.
+
 // what is the memoization?
 // it is an optimization techanique that can be used to reduce time consuming calculation by saving
 // previous input to something call cache and returning the result from it.
