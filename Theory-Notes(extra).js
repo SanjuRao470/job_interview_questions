@@ -1,4 +1,51 @@
 //INTERVIEW QUESTIONS-------
+
+//✅ Interpreted/ scripting  Language (in simple terms):
+//An interpreted language runs code line by line at runtime, without needing a separate compilation step.
+
+//-------differnce b/w js and Ts-----------
+// ✅ **Slightly Detailed (Interview Friendly):
+// “JavaScript is a dynamic, interpreted language used for web development. 
+// TypeScript builds on top of JavaScript by adding optional static typing, 
+// interfaces, and other features that help catch bugs early, improve code quality,
+//  and make large projects easier to manage. TypeScript code is compiled to plain JavaScript before running in the browser.
+
+
+// 🟩 1. Conversational Style (Good for Interviews)
+// JavaScript is a dynamic scripting language used in web development, while TypeScript is a statically typed superset of JavaScript.
+// The key difference is that TypeScript catches errors at compile-time using types, whereas JavaScript finds errors at runtime.
+// JS runs directly in browsers, but TS needs to be compiled into JS first.
+// TypeScript also gives us features like interfaces, enums, and generics, making it ideal for building large, maintainable codebases.
+
+// 🟦 2. Clean Bullet Format (Great for Notes or Slides)
+// 🔸 JavaScript:
+// Dynamically typed (no type enforcement)
+
+// Interpreted by browsers (no compile step)
+
+// Errors show up while running
+
+// Easier to start with
+
+// Good for small to large projects
+
+// Only includes core JS features
+
+// 🔹 TypeScript:
+// Statically typed (optional type enforcement)
+
+// Must be compiled to JavaScript
+
+// Errors caught at compile time
+
+// Slightly higher learning curve
+
+// Best for large, scalable applications
+
+// Adds interfaces, enums, generics, access modifiers
+
+
+
 //QUESTION---  What is the TS?
 
 ////Type annotation in TypeScript refers to explicitly specifying the type of a variable,
@@ -18,6 +65,20 @@
 
 //TS------ 1- static typing   2-error occur at compile time rather than runtime.
 //let age: number = 25; // Type is declared and checked at compile-time
+
+//JavaScript:
+
+// js
+// function greet(name) {
+//   return "Hello, " + name;
+// }
+
+// TypeScript:
+
+// ts
+// function greet(name: string): string {
+//   return "Hello, " + name;
+// }
 
 
 //QUESTION-3 What are TypeScript interfaces, and how do they differ from types?
@@ -146,6 +207,15 @@
 // console.log(move); // Outputs: 0 (default index value)
 // console.log(Direction[move]); // Outputs: "Up"
 
+
+
+// access modifiers are keywords that set the accessibility of properties and methods within classes.
+//  They determine whether the properties and methods can be
+//  accessed from outside the class or not. The three main access modifiers in TypeScript are public, private, and protected.
+
+// public =Members are accessible from anywhere
+// private = Members are only accessible within the class they are defined.
+// protected = Members are accessible within the class and subclasses.
 
 
 //Typescript : it is a superset of JavaScript with having advance feature  that was developed and 

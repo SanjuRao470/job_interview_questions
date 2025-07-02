@@ -196,6 +196,15 @@
 
 
 
+// access modifiers are keywords that set the accessibility of properties and methods within classes.
+//  They determine whether the properties and methods can be
+//  accessed from outside the class or not. The three main access modifiers in TypeScript are public, private, and protected.
+
+// public =Members are accessible from anywhere
+// private = Members are only accessible within the class they are defined.
+// protected = Members are accessible within the class and subclasses.
+
+
 // Node.js:
 // single thread but we can make multiple thread using worker
 // By default, asynchronous / execute independently.
@@ -253,7 +262,7 @@
 // In a microservices architecture, services must communicate with each other. This can be done using different methods:
 
 // REST API Calls (Synchronous Communication)
-// Message Brokers (RabbitMQ, Kafka, NATS, etc.) (Asynchronous Communication)
+// Message Brokers (RabbitMQ, Kafka, NATS,  Google pub/sub etc.) (Asynchronous Communication)
 // gRPC (High-Performance Communication)
 // Service Discovery (Kubernetes, Consul, Eureka)
 

@@ -230,7 +230,7 @@
 //1- How do you test your application?
 //answer: Explain your testing strategy, including the tools and frameworks used
 // for unit tests, integration tests, and end-to-end tests.
-// like Jest is a JavaScript/TypeScript testing framework
+// like Jest is a JavaScript/TypeScript testing framework and MOCHA for node.js
 
 //When testing a web application, a variety of languages and frameworks can be used depending on the testing approach
 // (unit, integration, end-to-end) 

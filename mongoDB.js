@@ -414,3 +414,135 @@
 //-Insert Data into MongoDB: Use the insertMany() method to insert the combined data into a MongoDB collection.
 //await YourModel.insertMany(mergedData);
 
+
+
+//------ AGGREGATION FRAMEWORK----------
+
+// MongoDB Aggregation Framework → A set of tools and methods in MongoDB for processing and transforming data. such as grouping, sorting,filtering
+
+// Aggregation Pipeline → A step-by-step data processing method within the Aggregation Framework, where data flows through multiple transformation stages. 🚀
+
+//SERIES OF STAGES------
+// $match: Filters documents based on specified criteria.
+// $group: Groups documents by a specified key and performs aggregate computations.
+// $project: Reshapes documents by including, excluding, or adding new fields.
+// $sort: Sorts documents by specified fields.
+// $limit: Limits the number of documents passed to the next stage.
+// $skip: Skips a specified number of documents.
+// $unwind: Deconstructs an array field into multiple documents.
+// $lookup: Performs a left outer join with another collection.
+
+
+//EXAMPLE-------
+
+// documents in a sales collection:
+
+// [
+//   { "item": "apple", "quantity": 10, "price": 1.0, "date": "2023-05-01" },
+//   { "item": "banana", "quantity": 5, "price": 0.5, "date": "2023-05-01" },
+//   { "item": "apple", "quantity": 7, "price": 1.0, "date": "2023-05-02" },
+//   { "item": "banana", "quantity": 10, "price": 0.5, "date": "2023-05-02" }
+// ]
+
+//Step 1: $match Stage
+//Filter documents to include only those with a quantity greater than 5:
+
+
+// {
+//   $match: { quantity: { $gt: 5 } }
+// }
+
+
+// Step 2: $group Stage
+// Group the documents by the item field and calculate the total quantity and total sales:
+
+// {
+//   $group: {
+//     _id: "$item",
+//     totalQuantity: { $sum: "$quantity" },
+//     totalSales: { $sum: { $multiply: ["$quantity", "$price"] } }
+//   }
+// }
+
+//Step 3: $sort Stage
+// Sort the results by totalSales in descending order: HIGHEST TO LOWEST
+
+// {
+//   $sort: { totalSales: -1 }
+// }
+
+
+// Step 4: $project Stage ///Reshape output to remove _id and rename fields
+// Reshape the output documents to include only the fields item, totalQuantity, and totalSales:
+
+// {
+//   $project: {
+//     _id: 0,
+//     item: "$_id",
+//     totalQuantity: 1,
+//     totalSales: 1
+//   }
+// }
+
+
+
+// Complete Pipeline
+// Combining these stages into a complete pipeline:
+
+// db.sales.aggregate([
+//   { $match: { quantity: { $gt: 5 } } },
+//   { $group: { _id: "$item", totalQuantity: { $sum: "$quantity" }, totalSales: { $sum: { $multiply: ["$quantity", "$price"] } } } },
+//   { $sort: { totalSales: -1 } },
+//   { $project: { _id: 0, item: "$_id", totalQuantity: 1, totalSales: 1 } }
+// ])
+// Output: The result of running this pipeline might be:
+
+// [
+//   { "item": "banana", "totalQuantity": 15, "totalSales": 7.5 },
+//   { "item": "apple", "totalQuantity": 17, "totalSales": 17.0 }
+// ]
+
+
+//NOTES------
+//Here, "$quantity" and "$price" represent the values of the quantity and price fields.
+// $fieldName	Refers to a field’s value in a document
+// $operatorName	Performs an operation (e.g., $match, $group, $sum)
+
+// Similar Operators
+// Operator	Meaning
+// $gt	Greater than (> in SQL)
+// $gte	Greater than or equal to (>= in SQL)
+// $lt	Less than (< in SQL)
+// $lte	Less than or equal to (<= in SQL)
+// $eq	Equal to (= in SQL)
+// $ne	Not equal to (!= in SQL)
+
+
+//SORTING-----
+// { $sort: { fieldName: 1 or -1 } }
+
+// 1 → Sorts in ascending order (smallest to largest).
+// -1 → Sorts in descending order (largest to smallest).
+
+
+//====== PROJECT------
+// {
+//   $project: {
+//     _id: 0,          // Exclude the default `_id` field
+//     item: "$_id",    // Rename `_id` to `item`
+//     totalQuantity: 1, // Include `totalQuantity`
+//     totalSales: 1     // Include `totalSales`
+//   }
+// }
+// 🔹 What This Does
+// _id: 0 → Removes the _id field from the output.
+
+// item: "$_id" → Renames _id (which was created in the $group stage) to item.
+
+// totalQuantity: 1 → Keeps the totalQuantity field in the output.
+
+// totalSales: 1 → Keeps the totalSales field in the output.
+
+
+//1 → Include the field in the output
+//0 → Exclude the field from the output

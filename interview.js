@@ -669,6 +669,324 @@
 //     });
 
 
+
+//-------INTERVIEW QUESTION------------
+// const  ReturnAllPromise = async () =>{
+//     try{
+//         const apis = [p, p2, p3 ]
+   
+//    const apisCall = apis.map((url)=> fetch(url).then(res => res.json())) 
+//    const [user,api,todo] = await Promise.all(apisCall)
+   
+//    console.log('api user result', user)
+//      console.log('api api result', api)
+//        console.log('api todo result', todo)
+   
+//     }catch(error){
+//         console.error("apis rejected", error)
+//     }
+// }
+// ReturnAllPromise() 
+
+
+
+//=========================
+// ✅ Problem:
+// Promise.all() fails entirely if even one promise rejects.
+
+// So if one URL fails, all your state values stay empty, and no partial data is shown.
+
+// ✅ Solution:
+// To prevent complete failure, use Promise.allSettled() instead of Promise.all()
+
+
+
+// import React, { useEffect, useState } from "react";
+
+// export default function App() {
+//   const Apis = [
+//     "https://jsonplaceholder.typicode.com/users",
+//     "https://jsonplaceholder.typicode.com/todos",
+//     "https://jsonplaceholder.typicode.com/posts",
+//     "https://jsonplaceholder.typicode.com/albums",
+//     "https://jsonplaceholder.typicode.com/comments",
+//   ];
+//   const [data, setData] = useState([]);
+//   const [s1, setS1] = useState([]);
+//   const [s2, setS2] = useState([]);
+//   const [s3, setS3] = useState([]);
+//   const [s4, setS4] = useState([]);
+
+//   console.log("user data========", data);
+//   console.log("todo s1========", s1);
+//   console.log("tableData s2========", s2);
+//   console.log("list s3========", s3);
+//   console.log("columnData s4========", s4);
+
+//   useEffect(() => { 
+//     const fetchData = async () => {
+//       try {
+//         const ApisCall = Apis.map((url) => ////bad practise
+//           fetch(url).then((res) => res.json())
+//         );
+//         // const results = await Promise.all(ApisCall);
+//         //OR------
+//         const [user, todo, tableData, list, columnData] = await Promise.all(
+//           ApisCall
+//         );
+//         console.log("user data========", user);
+//         setData(user);
+//         setS1(todo);
+//         setS2(tableData);
+//         setS3(list);
+//         setS4(columnData);
+//       } catch (err) {
+//         console.error("Error fetching data", err);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <div>
+//       {data.map((item, idx) => (
+//         <pre key={idx}>{JSON.stringify(item, null, 2)}</pre>
+//       ))}
+//     </div>
+//   );
+// }
+
+  //===========   Promise.all()   ===============//
+//   import React, { useEffect, useState } from "react";
+
+// export default function AllStrictComponent() {
+//   const Apis = [
+//     "https://jsonplaceholder.typicode.com/users",
+//     "https://jsonplaceholder.typicode.com/todos",
+//     "https://jsonplaceholder.typicode.com/posts",
+//     "https://jsonplaceholder.typicode.com/albums",
+//     "https://jsonplaceholder.typicode.com/comments",
+//   ];
+
+//   const [data, setData] = useState([]);
+//   const [s1, setS1] = useState([]);
+//   const [s2, setS2] = useState([]);
+//   const [s3, setS3] = useState([]);
+//   const [s4, setS4] = useState([]);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const fetchWithCheck = (url) => //helper function
+//           fetch(url).then((res) => {
+//             if (!res.ok) throw new Error(`Failed with ${res.status} on ${url}`);
+//             return res.json();
+//           });
+
+//         const results = await Promise.all(Apis.map(fetchWithCheck));
+
+//         setData(results[0]);
+//         setS1(results[1]);
+//         setS2(results[2]);
+//         setS3(results[3]);
+//         setS4(results[4]);
+//       } catch (err) {
+//         setError(err.message);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <div>
+//       <h2>Strict Version (Promise.all)</h2>
+//       {error && <div style={{ color: "red" }}>Error: {error}</div>}
+//       {data.map((item, id) => (
+//         <pre key={id}>{JSON.stringify(item, null, 2)}</pre>
+//       ))}
+//     </div>
+//   );
+// }
+
+ 
+///=============   Promise.allSettled()   ==============///
+
+// import React, { useEffect, useState } from "react";
+
+// export default function AllSafeComponent() {
+//   const Apis = [
+//     "https://jsonplaceholder.typicode.com/users",
+//     "https://jsonplaceholder.typicode.com/todos",
+//     "https://jsonplaceholder.typicode.com/posts",
+//     "https://jsonplaceholder.typicode.com/albums",
+//     "https://jsonplaceholder.typicode.com/comment",
+//   ];
+
+//   const [data, setData] = useState([]);
+//   const [s1, setS1] = useState([]);
+//   const [s2, setS2] = useState([]);
+//   const [s3, setS3] = useState([]);
+//   const [s4, setS4] = useState([]);
+//   const [errors, setErrors] = useState([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const fetchSafe = async (url, index) => {
+//         try {
+//           const res = await fetch(url);
+//           if (!res.ok) throw new Error(`Failed with ${res.status} on ${url}`);
+//           return await res.json();
+//         } catch (err) {
+//           setErrors((prev) => [
+//             ...prev,
+//             `API ${index + 1} failed: ${err.message}`,
+//           ]);
+//           return []; // fallback
+//         }
+//       };
+
+//       const results = await Promise.allSettled(
+//         Apis.map((url, idx) => fetchSafe(url, idx))
+//       );
+
+//       const values = results.map((r) =>
+//         r.status === "fulfilled" ? r.value : []
+//       );
+
+//       setData(values[0]);
+//       setS1(values[1]);
+//       setS2(values[2]);
+//       setS3(values[3]);
+//       setS4(values[4]);
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <div>
+//       <h2>Safe Version (Promise.allSettled)</h2>
+//       {errors.length > 0 && (
+//         <div style={{ color: "red" }}>
+//           <h4>Errors:</h4>
+//           <ul>
+//             {errors.map((e, idx) => (
+//               <li key={idx}>{e}</li>
+//             ))}
+//           </ul>
+//         </div>
+//       )}
+//       {data.map((item, idx) => (
+//         <pre key={idx}>{JSON.stringify(item, null, 2)}</pre>  //JSON.stringify() to convert a JavaScript object or array into a JSON-formatted string. 
+////=======OR
+//  <div>
+//           {/* <p key={idx}>{item.id}</p> */}
+//           <pre key={idx}>{JSON.stringify(item, null, 2)}</pre>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// Note :
+// JSON.stringify(value, replacer, space)
+
+// value: The object you want to convert
+
+// replacer: null means "include all properties"
+
+// space: Adds indentation (spaces or tabs) for formatting
+  
+
+//<pre> is an HTML tag that stands for "preformatted text."
+//<pre>
+// Name: Sanju
+// Age: 26
+// Location: delhi
+// </pre>
+//Output will preserve the line breaks and spacing — unlike <div> or <p>, which collapse extra spaces.
+
+
+
+//   const  ReturnAllPromise = async () =>{
+//     try{
+//         const apis = [p,,p2,p3 ]
+   
+//   const results = await Promise.allSettled(apis); // ✅ use correct variable
+
+//    results.forEach((res, i) => {
+//      if (res.status === "fulfilled") {
+//        console.log(`✅ API ${i + 1} success:`, res.value);
+//      } else {
+//        console.log(`❌ API ${i + 1} failed:`, res.reason);
+//      }
+//    });
+   
+//     }catch(error){
+//         console.error("apis rejected", error)
+//     }
+// }
+// ReturnAllPromise() 
+   
+
+// const debounceApiCalls = async (apiUrls, delay = 1000) => {
+//     for (let i = 0; i < apiUrls.length; i++) {
+//       await new Promise(resolve => setTimeout(resolve, delay)); // delay before each API
+//       try {
+//         const res = await fetch(apiUrls[i]);
+//         const data = await res.json();
+//         console.log(`✅ API ${i + 1} success:`, data);
+//       } catch (err) {
+//         console.error(`❌ API ${i + 1} failed:`, err.message);
+//       }
+//     }
+//   };
+  
+//   const apis = [
+//     'https://jsonplaceholder.typicode.com/posts/1',
+//     'https://jsonplaceholder.typicode.com/users/1',
+//     'https://jsonplaceholder.typicode.com/todos/1'
+//   ];
+  
+//   debounceApiCalls(apis, 1000); // calls each API with a 1-second gap
+  
+
+//✅ 1. Fetch data from API and save to localStorage
+// async function fetchAndSaveToLocalStorage() {
+//     try {
+//       const res = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+//       const data = await res.json();
+  
+//       // Save to localStorage as a string
+//       localStorage.setItem('postData', JSON.stringify(data));
+  
+//       console.log('Data saved to localStorage:', data);
+//     } catch (err) {
+//       console.error('Failed to fetch API:', err);
+//     }
+//   }
+  
+//🔁 2. Retrieve from localStorage
+// function getDataFromLocalStorage() {
+//     const storedData = localStorage.getItem('postData');
+  
+//     if (storedData) {
+//       const parsedData = JSON.parse(storedData); // Convert back to object
+//       console.log('Data from localStorage:', parsedData);
+  
+//       // You can now use parsedData to show on UI
+//       showOnUI(parsedData);
+//     } else {
+//       console.log('No data found in localStorage');
+//     }
+//   }
+  
+
+
+
 //SERVER SIDE
 
 // const express = require('express');
@@ -752,10 +1070,10 @@
 //  }
 //case-2
 //var i;
-// for( i = 1 ; i<= 5; i++){
+// for( i = 1 ; i< 5; i++){
      
 //     setTimeout(function(){
-//         console.log(i)//6,6,6,6,6
+//         console.log(i)//6,6,6,6 only four because of the i<5 not have i<=5 remember this
 //     },1000 * i)
     
 //  }

@@ -33,6 +33,16 @@
 // forwardRef
 // createRef
 // customHook(useFetch)
+// useActionState
+// useFormStatus 
+// useOptimistic
+//useSelector
+//diffrence b/w useDispatch and useReducer
+//diffrence b/w useContext and useReducer
+
+//useSelector is a React-Redux hook used to read (or select)  / access data from the Redux store in a functional component.
+// useReducer is a React hook for local state management;
+// useDispatch is a function provided by Redux to dispatch actions to a global store.
 
 
 
@@ -65,13 +75,151 @@
 // three cases---------------
 //1-useEffect(()=>{})          2-useEffect(()=>{},[])                    3-useEffect(()=>{},[props])
 //runs on every render       //runs only on the first render           //in this case useEffect will only runs when any of the dependency have changed b/w the renders.
-// CWU                           // CDM                                       // CDU
+// CWU                           // CDM                                       // CDU   ====it will first render and if also runs when any of the dependency have changed b/w the renders
 
 // or  this is also know as CWU
 // useEffect(()=>{
 //     return ()=>{} cleanup function used to reduce the memory leak
 //     hook can return cleanup function as its return value
 // })
+
+ //OUTPUT QUESTION-----
+//  Yes, useEffect(() => {}, [props]) does run on the first render, and then again only when props changes.
+
+// 🔹 Answer 1: Does useEffect run on the first render?
+// ✅ Yes, it runs after the initial render, once the DOM is painted.
+
+// 🔹 Answer 2: Does it only run when the dependency changes?
+// ✅ Yes, for subsequent renders, it only runs if the value of props in the dependency array has changed (based on shallow comparison).
+
+
+// "Subsequent renders" simply means:
+// 🟢 Any render that happens after the initial (first) render of a React component.
+
+// 🔁 Breakdown:
+// ✅ First render: When the component loads for the first time.
+
+// 🔁 Subsequent renders: When the component re-renders due to:
+
+// a state change (useState)
+
+// a prop change
+
+// a context update
+
+// or a parent component re-rendering
+
+// 📌 Example:
+
+// const [count, setCount] = useState(0);
+// First render: count is 0.
+
+// User clicks a button → setCount(1) is called.
+
+// React re-renders → this is a subsequent render.
+
+
+ //OUTPUT QUESTION-----
+//  ...react component
+ 
+// Const [value , setValue ] = useState(0)
+ 
+// console.log("line1")
+ 
+// UseEffect(()=>{
+ 
+ 
+// console.log("line2")
+ 
+// return()=>{
+// console.log("line3")
+// }
+ 
+ 
+// },[value])
+ 
+// console.log("line4")
+
+// console.log("line1")
+// console.log("line4")
+// console.log("line2")
+// console.log("line3")
+
+///=========ANSWER
+// Why?
+// console.log("line1") and console.log("line4") run during every render, because they're in the body of the component.
+
+// console.log("line2") runs after the render, inside useEffect.
+
+// On subsequent renders (when value changes):
+
+// React runs the cleanup function from the previous useEffect → console.log("line3").
+
+// Then it runs the new effect again → console.log("line2").
+
+// So the full timeline:
+// Initial render:Expected Console Output on Initial Render:
+
+// line1      // during render
+// line4
+// line2      // after render (useEffect)
+
+
+// On value update:Now, when setValue is called and value changes:
+//You’ll get this:
+
+// line1      // render again
+// line4
+// line3      // cleanup from previous effect
+// line2  
+
+//----------------------------///
+// import React, { useEffect, useState } from 'react';
+
+// const MyComponent = () => {
+//   const [value, setValue] = useState(0);
+
+//   console.log("line1");
+
+//   useEffect(() => {
+//     console.log("line2");
+
+//     return () => {
+//       console.log("line3");
+//     };
+//   }, [value]);
+
+//   console.log("line4");
+
+//   return <div>{value}</div>;
+// };
+
+
+//---EXAMPLE=====
+
+// import React, { useEffect, useState } from "react";
+
+// function DemoComponent({ count }) {
+//   useEffect(() => {
+//     // componentDidMount
+//     console.log("Mounted");
+
+//     return () => {
+//       // componentWillUnmount
+//       console.log("Unmounting...");
+//     };
+//   }, []);
+
+//   useEffect(() => {
+//     // componentDidUpdate for count
+//     console.log("Count updated:", count);
+//   }, [count]);
+
+//   return <div>Count: {count}</div>;
+// }
+
+
+
 
 //IMPORTANT NOTES-------
 //Can We Call These "Side Effects"?
@@ -143,6 +291,22 @@
 //The useReducer Hook returns the current state and a dispatch method.
 
 //const [state, dispatch] = useReducer(reducer, initialState);
+
+
+//Notes------
+// One-liner to Remember:
+// 🔁 useState is for simple state updates, useReducer is for structured, complex logic with multiple actions.
+//example like a to-do list or shopping cart using useReducer!
+
+
+
+// Why Is useReducer Different from useState?
+
+// Feature	          useState	                                                       useReducer
+// Simplicity	Good for simple state (like a number or string)          	Good for complex state logic
+// Structure	No need to define a reducer function	                        Needs a reducer function
+// Updates	You set the new state directly	                                 You dispatch actions
+// Best for	Simple forms, toggles, flags	                             State with many conditions or updates like to do list, shopping cart
 
 
 
@@ -257,12 +421,75 @@
 
 
 
+// useActionState()
+//const [state, action] = useActionState(actionFunction, initialState);
+
+
+// Purpose: Manages the state of an async server action (loading, success, error).
+// Use Case: Complex forms with custom error handling and multi-step submissions.
+
+// useFormStatus()
+//const { pending, data, method, action } = useFormStatus();
+
+
+// Purpose: Tracks the submission status of a form (e.g., pending state).
+// Use Case: Disable buttons or show loading indicators during form submission.
+
+// useOptimistic()
+//const [optimisticState, updateOptimistic] = useOptimistic(initialState, updaterFunction);
+
+
+// Purpose: Provides instant UI updates while waiting for a server action.
+// Use Case: Real-time interactions like counters, likes, or optimistic updates.
+
+
+//difference b/w controlled and uncontrolled components
+// Controlled Component: A component where form data is handled by React state. Input value is controlled via useState or this.state.
+
+// Uncontrolled Component: A component where form data is handled by the DOM. Accessed using ref.
 
 
 
+//Controlled Component:
+// import { useState } from 'react';
+
+// function ControlledInput() {
+//   const [value, setValue] = useState('');
+
+//   return (
+//     <input 
+//       type="text" 
+//       value={value} 
+//       onChange={(e) => setValue(e.target.value)} 
+//     />
+//   );
+// }
+// Input is controlled by React state (value).
+
+// Updates are handled via onChange.
 
 
 
+// Uncontrolled Component:
+
+// import { TextField, Button } from '@mui/material';
+// import { useRef } from 'react';
+
+// function MuiUncontrolledInput() {
+//   const inputRef = useRef();
+
+//   const handleSubmit = () => {
+//     console.log('Value:', inputRef.current.value);
+//   };
+
+//   return (
+//     <>
+//       <TextField inputRef={inputRef} label="Your Name" />
+//       <Button onClick={handleSubmit}>Submit</Button>
+//     </>
+//   );
+// }
+//"In MUI, I used inputRef with TextField to directly access the value, making it an uncontrolled component."
 
 
 
@@ -282,3 +509,8 @@
 // Flux: A unidirectional data flow architecture for managing state in React application.
 // Event: A user interaction in React that triggers a function or state update.(like clicks, key presses, etc.) 
 //OR=== a signal in React, as it indicates a user interaction or action that triggers a function or state change.
+
+
+
+
+// ------ ErrorBoundry------------

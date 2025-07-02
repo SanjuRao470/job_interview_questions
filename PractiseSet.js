@@ -391,7 +391,40 @@
 
 
 // Primitive data type   ///  string, number, boolean, undefined, null , BigInt=2113434n// VALUE TYPE
+//example:
+// let a = 10;      // Primitive value (Number)
+// let b = a;      // Copy of the value
+
+// b = 20;         // Changing 'b' does not affect 'a'
+// console.log(a); // 10
+// console.log(b); // 20
+// ✅ Characteristics of Primitive Data Types:
+
+// Stored in Stack Memory: Fast and efficient.
+
+// Immutable: Cannot be changed directly.
+
+// Value Copy: Each assignment creates a new independent copy.
+
+
+
 // Non-primitive (reference) data type   //objects, arrays, functions  // REFERENCE TYPE // all return type is an object
+// Example:
+// let obj1 = { name: "Alice" }; // Reference value (Object)
+// let obj2 = obj1;              // Copy the reference
+
+// obj2.name = "Bob";            // Changes reflect in both variables
+
+// console.log(obj1.name); // "Bob"
+// console.log(obj2.name); // "Bob"
+// ✅ Characteristics of Reference Data Types:
+
+// Stored in Heap Memory: More flexible but slower access.
+
+// Mutable: Can be modified even after creation.
+
+// Reference Copy: Assigning a reference data type shares the same memory location—changing one affects the other.
+
 
 //NOTE
 // a reference data type (or reference type) refers to a type of data that stores references 

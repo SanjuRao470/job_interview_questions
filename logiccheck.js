@@ -343,7 +343,7 @@
 //     for(let i=0; i<arr1.length; i++){
 //          for(let j=0; j<arr2.length; j++){
 //         if(arr1[i] === arr2[j])
-//         commanNewArray.push(arr1[i])
+//         commanNewArray.push(arr1[i]) or  commanNewArray.push(arr2[j])
 //         }
 //     }
 //     return commanNewArray;
@@ -407,6 +407,46 @@
 //  console.log(frequency)
 
 
+
+///===========QUESTION================
+//Group elements by first letter
+
+// function SetkeyValue(input){
+//      let output = {}
+//      for(let i=0; i<input.length; i++){
+//          const word = input[i]
+//          const firstletter = word[0]
+        
+//     if( output[firstletter]){
+//          output[firstletter].push(word)
+//     }else{
+//          output[firstletter] = [word]
+//     }
+//      }
+//      return output 
+//  }
+//  input= ['apple', 'banana', 'apricot', 'blueberry', 'avocado', 'mango']
+// const result = SetkeyValue(input)
+// console.log(result)
+
+// // output:{
+// //   a: ['apple', 'apricot', 'avocado'],
+// //   b: ['banana', 'blueberry'],
+// //   m: ['mango']
+// // }
+
+// /////////
+// // output:{
+// //   a: '3',
+// //   b: '2',
+// //   m: '1'
+//  //}
+
+
+
+
+
+
 // ------ Question function----------
 
 
@@ -432,6 +472,29 @@
 
 
 
+////=================================//
+
+
+// function indexElement(array1, ele){
+   
+//     let newArray = [];
+
+//     for (let i = 0; i < array1.length; i++) {
+//         if (array1[i] !== ele) {  
+//             newArray.push(array1[i]);
+//         }
+//     }
+//     return newArray;
+// };
+
+// let array1 = [1, 2, 3, 4, 5];
+// let ele = 2;
+// let result1 = indexElement(array1,ele);
+// console.log(result1)//[ 1, 3, 4, 5 ]
+
+
+
+
 //QUESTION------ check given string is palindrome or not ?
 
 // A palindrome is a string that reads the same forwards and backwards. In other words,
@@ -439,8 +502,9 @@
 
 // function isPalindrome(str) {
 //     str = str.toLowerCase();
-//   let j = str.length -1  //backward check
-//   for (let i = 0; i < j;  i++) {  //// only iterate until the middle
+//   let j = str.length -1  //backward check 6
+//   for (let i = 0; i < j;  i++) {  //// only iterate until the middle ---  i=0, j=6 | i=1 ,j=5 |i=2, j=4 | i=3 , j=3 
+//The loop condition i < j is now false (3 < 3 is false), so it exits and returns 'palindrome'
 //       if (str[i] != str[j]) {  //forward change//checks if the character at index i is not equal
 //If they are not equal, the function immediately returns the string 'not palindrome', indicating that the input string is not a palindrome.
 //           return false; ///   return 'not plindrome'
@@ -460,6 +524,36 @@
 // console.log(isPalindrome(str3));//false
 
 //-----//madam
+
+
+//QUESTION-------------- //////  -----------
+
+//  function FindPalindrome(sentence){
+//      const words = sentence.split(' ');
+//      let output= [];
+      
+//     for(let i=0; i<words.length; i++){
+//         const word = words[i].toLowerCase();
+//          let reverseWord = '';
+         
+//         for(let j=word.length-1; j>=0; j--){
+//             reverseWord+=word[j]
+//         }
+        
+//          if(word === reverseWord && word.length > 1){
+//             output.push(words[i])
+//         }
+        
+//          }
+    
+//     return output;
+    
+//  }
+//  const sentence = 'please madaM tell aBout Level to niTin'
+//  const Result = FindPalindrome(sentence)
+//  console.log(Result)//[ 'madaM', 'Level', 'niTin' ]
+
+
 
 //QUESTION--//Reverse the Given String
 
@@ -494,6 +588,111 @@
 
 
 
+
+// Problem Statement: Rotate an Array to the Left by k Positions (Without Using Built-in Methods)
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// const rotateBy = 3;
+// const n = arr.length;
+
+// const rotated = [];
+
+// // Step 1: Push the last 'rotateBy' elements to the front
+// for (let i = n - rotateBy; i < n; i++) {
+//   rotated.push(arr[i]);
+// }
+
+// // Step 2: Push the remaining elements
+// for (let i = 0; i < n - rotateBy; i++) {
+//   rotated.push(arr[i]);
+// }
+
+// console.log(rotated);
+// // Output: [5, 6, 7, 1, 2, 3, 4]
+
+
+//--------QUESTION---------
+
+// function DimentionalArray(array){
+//     const Rotated = []
+//     const rotateBy= 2
+//     const position = array.length-rotateBy
+   
+//    //  for(let i=position; i<array.length; i++){
+//    //      Rotated.unshift(array[i])//[ 8, 6, 2, 3, 4, 5 ]
+//    // }
+   
+//    //OR----
+   
+//    for(let i=position; i<array.length; i++){
+//         Rotated.push(array[i])//[ 6, 8, 2, 3, 4, 5 ]
+//    }
+   
+//    for(let i=0; i<position; i++){
+//        Rotated.push(array[i])
+//    }
+//      return Rotated;
+// }
+// const  arr = [2,3,4,5,6,8]  //[6,8,2,3,4,5]
+
+
+// const result = DimentionalArray(arr)
+// console.log(result)
+
+
+
+
+//=========FOR TRIAL--------
+// function CountFunction(array){
+  
+//     let result = []
+//     let rotatesBy = 4
+//     const n = array.length //8
+    
+//     for(let i=n-rotatesBy; i<n ;i++){
+//        result.unshift(array[i])//[8,7,6,5,1,2,3,4]
+//     }
+
+//     for(let i=n-rotatesBy; i<n ;i++){
+//        result.push(array[i])//[5,6,7,8,1,2,3,4]
+//     }
+
+//     for(let i=0; i<n-rotatesBy ;i++){
+//        result.push(array[i])
+//     }
+//   return result
+// }
+//  const arr = [1,2,3,4,5,6,7,8]//[8,7,6,5,1,2,3,4]
+//  const result = CountFunction(arr)
+//  console.log(result)
+
+
+
+
+//---QUESTION----- exclude the element from an array who comes  exaclty twice
+
+// function CountFunction(array){
+
+//     //Case -1 1st find frequency
+//     let frequency = {}
+//     for(let i=0; i<array.length;i++){
+//         let ele = arr[i]
+//         frequency[ele] ?  frequency[ele]+=1 : frequency[ele] =1
+//     }
+
+//   //Case-2  Now Filter out numbers that appear exactly twice
+//   let count = []      
+//      for(let i=0; i<array.length;i++){
+// if(frequency[array[i]] !== 2){      //countMap[arr[i]] looks up the value in the object (countMap) using the element as the key.
+//     count.push(array[i])
+// }
+//     }
+//     return count
+// }
+//  const arr = [22,22,22,2,1,4,1,5,5]
+//  const result = CountFunction(arr)
+//  console.log(result)//[ 22, 22, 22, 2, 4 ]
+
+
 // QUESTION------ REVERSE EACH WORD FROM GIVEN SENTENCE
 
 // function reverseWords(str){
@@ -522,6 +721,74 @@
 //The loop doesn't handle the last word because it doesn't end with a space. This step ensures that the final word
 // (which doesn't have a space after it) is added to reverseStr
 
+//---------------OR-------------
+// function App(str) {
+//   const words = str.split(' ');
+//   let output = '';
+
+//   for (let i = 0; i < words.length; i++) {
+//     const word = words[i];
+//     let reversedWord = '';
+
+//     // Reverse the current word using a loop
+//     for (let j = word.length - 1; j >= 0; j--) {
+//       reversedWord += word[j];
+//     }
+
+//     output += reversedWord;
+
+//     // Add space between words except after the last one
+//     if (i < words.length - 1) {
+//       output += ' ';
+//     }
+//   }
+
+//   return output;
+// }
+
+// const str = 'my name is khan';
+// const result = App(str);
+// console.log(result); // ➞ "ym eman si nahk"
+
+
+
+// //== just for trial============================
+
+// function CountFunction(str){
+//     //let Restr = ''
+//     let frequency = {}
+  
+//     for(let i=0; i<str.length ;i++){
+//        let char = str[i]
+//        frequency[char] ? frequency[char]+=1 : frequency[char] =1
+       
+//        //case-1
+//     //   if( frequency[char] === 2){
+//     //       Restr+=char//rmg
+//     //   }
+       
+//        //case-2
+//     //   if( frequency[char] === 1){
+//     //       Restr+=char//progamin
+//     //   }
+//     }
+    
+// //case-3
+//     for(let i=0; i<str.length ;i++){
+//         let char  =str[i]
+//       if( frequency[char] === 1){
+//            return char//p
+        
+//       }
+//     }
+// }
+
+// let str = 'programming' //rgm
+//  const result = CountFunction(str)
+//  console.log(result)
+
+
+
 /// QUESTION ----ANAGRAM STRING-------------------
 //Anagrams: Same length + Same characters (with same frequency).
 
@@ -548,7 +815,7 @@
 //              charCount2[str2[i]] = (charCount2[str2[i]] || 0) + 1;   
 //        }
        
-//        //step-3
+//        //step-4
        
 //        for(let char in charCount1 ){
            
@@ -761,7 +1028,7 @@
 
 
 // function sortAscending(arr){
-//     for( let i=0; i<arr.length; i++){
+//     for(let i=0; i<arr.length; i++){
 //         for(let j=0; j<arr.length-1-i; j++){
 //             if(arr[j] > arr[j+1]){   
 //                 //TIPS:  if you want to make it decending (arr[j] < arr[j+1])
@@ -861,6 +1128,9 @@
 //     const arr = [1,2,34,5,66,77,88,6,9,9]
 //     const result = SortedArray(arr)
 //     console.log(result)//[88, 77, 66, 34, 9,  6,  5,  2,  1]
+
+
+
 
 
 
@@ -993,9 +1263,10 @@
 // function OneDArray(array){
 //     const flattenedArray=[];
 //     for(let i=0; i<array.length; i++){
-//         for(let j=0; j<array[i].length; j++){           //arr[i].length gives the number of elements in the current sub-array.
-//             flattenedArray.push(array[i][j])
-//         }
+//         for(let j=0; j<array[i].length; j++){           // at i=2  =>[ 7, 8, 9 ]   arr[2].length  => 3   , gives the number of elements in the current sub-array.
+//             flattenedArray.push(array[i][j])             //array[i][j] => at j=0 ,array[2][0] =>7, array[2][1]=>8 ,array[2][2] =>9
+                                                           //// at i=0  =>[ 1, 2, 3 ]   arr[0].length  => 3 
+//         }                                                ////array[i][j] => at j=0 ,array[0][0] =>1, array[0][1]=>2 ,array[0][2] =>3
 //     }
 //     return flattenedArray;
 // }
