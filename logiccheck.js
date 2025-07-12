@@ -887,6 +887,30 @@
 // let resilt = duplicateFun(array)
 // console.log(resilt); // Output: [2, 4, 5, 9]
 
+
+
+
+//--- find only those element which appear only once-----
+
+// function duplicateArray (array){
+//      const map = {};
+//     const duplicateElement = [];
+//     for(let i =0; i<array.length; i++){
+//         const ele = array[i]
+//         map[ele] ?   map[ele]+=1 :   map[ele] =1
+        
+//         if(map[ele] ===1){
+//                duplicateElement.push(array[i])
+//           }
+//       }
+//    return  duplicateElement;
+// } 
+//  const arr = [2,3,4,56,2,4,9,9]
+//  const result = duplicateArray(arr)
+//  console.log(result)//[ 2, 3, 4, 56, 9 ]
+
+
+
 //// QUESTION-7 find duplicate  from given an string 
 
 // function App(str){
@@ -1244,6 +1268,8 @@
 // array.slice(i, i + chunks) extracts elements from the array starting from index i and ending at index i + chunks (non-inclusive).
 // The slice method returns a portion of the array
 
+//--- Basic Chunking Function
+
 // function App(array){
 //     let chunkSize =3 //size of each subarray 
 //     let outputArray = [];
@@ -1255,6 +1281,36 @@
 // const input = [1,2,3,4,5,6,7,8,9]
 // const result = App(input)
 // console.log(result)//[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
+
+
+
+///---------- Chunk + Sort + Format Function
+
+// function CountApp(array) {
+//   const chunkSize = 3;
+//   const res = [];
+
+//   for (let i = 0; i + chunkSize - 1 < array.length; i += chunkSize) {
+//     res.push([array[i], array[i + 1], array[i + 2]]);
+//   }
+
+//   for (let i = 0; i < res.length - 1; i++) {
+//     for (let j = i + 1; j < res.length; j++) {
+//       if ((res[i][0] + res[i][2]) > (res[j][0] + res[j][2])) {
+//         let temp = res[i];
+//         res[i] = res[j];
+//         res[j] = temp;
+//       }
+//     }
+//   }
+
+//   const formatted = res.map(item => `{ ${item[0]}, ${item[1]}, ${item[2]} }`);
+//   console.log("[" + formatted.join(", ") + "]");
+// }
+//const array = [-5, -3, 0, 3, 5, 1, 2];
+// const result = CountApp(array)
+// console.log(result)//[{ -5, 0, 5 }, { -3, 0, 3 }, { -3, 1, 2 }]
+
 
 
 

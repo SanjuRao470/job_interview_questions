@@ -338,6 +338,14 @@
 //  import React from "react";
 
 //  export default function ResuableComponent({ title, content, type }) {
+//   // console.log("Props received:", { title, content, type });
+//another ways
+
+// export default function ResuableComponent(props) {
+//   console.log("Received props:", props);
+
+//   const { title, content, type } = props;
+
 //    const cardStyle = {
 //      border: "1px solid #ccc",
 //      padding: "20px",

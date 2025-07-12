@@ -154,7 +154,7 @@
 //    function Inner() {
 //      console.log(x);//10
 //   }
-//   Inner()
+//  return Inner()
 // }
 // closureFun()
 

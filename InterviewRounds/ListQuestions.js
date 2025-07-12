@@ -305,6 +305,8 @@
 //        }
       
 //        for (let key in frequency) {
+    // console.log(key)
+//     console.log(map[key])
 //     output.push({ target: key, count: frequency[key] });
 //   } 
     
