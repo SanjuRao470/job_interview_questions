@@ -1,3 +1,31 @@
+//-----------------INTERVIEW DSA QUESTION----------------------
+
+// function placeElementAtEnd(arr){
+//     const output = [];
+//     let zerosCount = 0;
+//     for(let count of arr){
+//         if(count === 0){
+//             zerosCount++;
+//         }else{
+//            output.push(count) 
+//         }
+//     }
+//     while(zerosCount--){
+//         output.push(0)
+//     };
+//     return output;
+//     }
+// const arr = [0,2,3,4,5,7,8,9,0,4,0]
+// const result = placeElementAtEnd(arr)
+// console.log(result)
+// //[
+// //   2, 3, 4, 5, 7,
+// //   8, 9, 4, 0, 0,
+// //   0
+// // ]
+
+
+
 //1. Finding Duplicate Elements in an Array
 
 // function findDuplicates(array) {

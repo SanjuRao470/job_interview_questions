@@ -68,6 +68,8 @@
 //      for(let i=0; i<str.length; i++){
 //          const char = str[i];
 //          frequency[char] ?  frequency[char]+=1 : frequency[char]=1
+///OR WRITE IN ANOTHER WORD------
+// frequency[i] =( frequency[i] || 0)+1
          
 //         //  if(  frequency[char] === 2){
 //         //       output+=char//rmg
@@ -465,3 +467,37 @@
 
 
 //const arr = [-5, -3, 0, 3, 5, 1, 2]
+
+
+//question based  on recursion ----
+
+// function CountKeys(obj){
+//     let count =0;
+//     for(let key in obj){
+//     count++;//count the current key
+    
+//      // if the value is a nested object (not array or null), recurse
+//     if(typeof obj[key] === 'object' &&  obj[key] !== null &&   !Array.isArray(obj[key]) ){
+//         count+=CountKeys(obj[key])// // add keys from the nested object
+//     }
+//        }
+//        return count;
+// }
+
+
+// const obj = {
+//   a: "1",
+//   b: {
+//     a: 1,
+//     b: "q",
+//     n: {
+//       a: 1
+//     },
+//     h: {
+//       b: 1
+//     }
+//   },
+//   h: 1
+// };
+// const result = CountKeys(obj)
+// console.log(result)//9
