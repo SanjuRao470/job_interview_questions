@@ -6,6 +6,14 @@
 
 //=====INTERVIEWER ASKED QUESTIONS=====================//
 
+// 🔹 1. Understanding this First:
+// The behavior of this depends on how a function is called,
+//  not how it is declared. It’s also influenced by execution context: global, function, object method, arrow functions, and classes.
+
+//Q: Does the this keyword ever care about var, let, or const?
+//answer: No, this is not affected by the keyword used (var, let, or const) to declare a variable. 
+//It depends on how the function is invoked, not how variables are declared.
+
 
 // const person = {
 //   name: 'Alice',
@@ -56,6 +64,52 @@
 
 
 
+
+
+// //-----------------------------///////
+
+
+// const obj = {
+//   name: 'sanju',
+
+//   regular: function () {
+//     return this.name;
+//   },
+
+//   arrorwFn: function () { //or// arrorwFn (){
+//     return {
+//       arrow: () => {
+//         return this.name;
+//       }
+//     };
+//   },
+
+//   arrow: () => {
+//     return this.name;
+//   }
+// };
+// ✅ obj.regular()
+// Regular function binds this to the calling object, so this.name refers to obj.name.
+
+// ✅ obj.arrorwFn().arrow()
+// Arrow function inherits this from its enclosing regular function, which is called by obj, so this.name is obj.name.
+
+// ❌ obj.arrow()
+// Arrow function doesn’t have its own this and inherits it from the global scope, not obj, so this.name is undefined.
+
+
+
+
+// //SUMMERY----------------------------------------
+// So to summarize:
+
+// Regular functions get this from how they're called — in this case, obj.regular() binds this to obj.
+
+// Arrow functions get this from where they are defined — 
+// and since arrow was defined directly inside the object 
+// (but not using a regular function), it inherits this from the outer lexical scope (which is not obj), so this.num is undefined.
+
+
 //-----------
 
 // const obj = {
@@ -65,13 +119,45 @@
 //     return this.num;
 //   },
 
-//   arrow: () => {
+//   arrow: () => {//In this case, the surrounding scope is the global context, not the obj. sothat 's why this.num inside the arrow function doesn’t point to obj.num, but instead to undefined (or window.num in browsers.)
 //     return this.num;
 //   }
 // };
 
 // console.log(obj.regular()); // ✅ 100
-// console.log(obj.arrow());   // ❌ undefined
+// console.log(obj.arrow());   // ❌ undefined/window.num
+
+
+//---------CORRECT VERSION--------------
+
+// const obj={
+//     name:'sanju',
+//     regular: function (){
+//       return this.name
+//     },
+//      arrorwFn : function() {
+//          return {
+//        arrow: () => {
+//       return this.name
+//     }  
+//  }
+//   }
+    
+// }
+// console.log(obj.regular())//sanju// here we can say regular function called as an object method in javascript.
+// console.log(obj.arrorwFn().arrow())//sanju
+
+
+
+//NOTE----
+
+////arrorwFn is a regular function, so when called like obj.arrorwFn(),  returns an object
+
+// {
+//   arrow: () => { return this.name; }
+// }
+// this inside arrorwFn refers to obj.
+// So, this inside the arrow function is same as this inside arrorwFn, which is obj.
 
 
 
@@ -145,9 +231,72 @@
 // console.log(b); // [1, 2, 3, 4] → b references same array as a
 // They point to the same memory.
 
+//----------
+// let a = [1, 2, 3];
+// let b = [...a]; // or Array.from(a), or a.slice()
+// a.push(4);
+// console.log(a)//[ 1, 2, 3, 4 ]
+// console.log(b)//[ 1, 2, 3 ]
+
+
+//------NOTES-------------
+// let a = [1, 2, 3];
+
+// a is a reference to a memory location where the array [1, 2, 3] is stored.
+
+// let b = a;
+
+// Now, b doesn’t create a new copy of the array.
+
+// Instead, b just points to the same memory location as a.
+
+// a.push(4);
+
+// Since both a and b point to the same array in memory, modifying the array through a also affects what b sees.
+
+    
+//----------IMPORTANT NOTES -----------------
+//  In short:
+// Arrays (and objects) are reference types in JavaScript.
+
+// When you assign them to a new variable (let b = a), you're copying the reference, not the actual data.
+
+// So any changes made via one reference (a.push(4)) will be visible to the other (b).
+
 
 
 //=====INTERVIEWER ASKED QUESTIONS=====================//
+
+// function test() {
+//   var a = 1;
+//   let b = 2;
+//   const c = 3;
+
+//   console.log(this.a); // ❌ undefined
+//   console.log(this.b); // ❌ undefined
+//   console.log(this.c); // ❌ undefined
+// }
+
+// test();
+// ✅  this does not refer to local variables, no matter how they are declared.
+
+
+
+//QUESTION--- With var, let, and const in Global Scope:
+
+// var x = 10;
+// let y = 20;
+// const z = 30;
+
+// console.log(window.x); // ✅ 10 (attached to global `window`)
+// console.log(window.y); // ❌ undefined
+// console.log(window.z); // ❌ undefined
+// ✅ Explanation:
+
+// var is function-scoped and attached to the global object (window in browser).
+
+// let and const are block-scoped and are not added to the global object.
+
 
 // {
 //   var innerVar = 'a';
