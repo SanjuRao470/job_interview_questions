@@ -180,12 +180,82 @@
 //------------------------------------
 //fetching apis
 +
-// const FetchApi = async ()=>{
-//   const response = await fetch('url');
-//   const responseData = await response.json();
-//   setData(responseData)
+//  const fetchApiData = async () => {
+//     try {
+//       const response = await fetch("https://fakestoreapi.com/users");
+//       if (!response.ok) {
+//         throw new Error("response is not good");
+//       }
+//       const responseData = await response.json();
+//       setData(responseData);
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
+
+
+
+///-----   EXECEPTION HANDLING CODE ------------------------
+// import React, { useState, useEffect } from "react";
+
+// export default function App() {
+//   const [data, setData] = useState([]);
+//   const [error, setError] = useState(null);//can't use useState([])
+//   console.log("00--", data);
+
+//   const FetchApiData = async () => {
+//     try {
+//       const response = await fetch(
+//         "https://jsonplaceholder.typicode.com/users"
+//       );
+//       if (!response.ok) {
+//         throw new Error("response is not good");
+//       }
+//       const responseData = await response.json();
+//       setData(responseData);
+//       console.log(responseData);
+//     } catch (err) {
+//       console.error("api response failed");
+//       setError(err);
+//     }
+//   };
+
+//   useEffect(() => {
+//     FetchApiData();
+//   }, []);
+
+//   return (
+//     <div>
+
+//  <ul>
+//         {data.map((item) => (
+//           <li key={item.id}>{item.name}</li>
+//         ))}
+//       </ul>
+
+//       <h1>Hello CodeSandbox </h1>
+
+//       {/* JSX syntax error in: {data.length ? {data.name} : "not found"} */}
+
+//       {/* Problems:
+// data is an array, not an object. You can't do data.name.
+// You're using {} inside {} → invalid in JSX.
+// You're not showing any valid content from the data. */}
+
+//       <p>Hello CodeSandbox {data.length ? data[1].name : "not found"}</p>
+//     </div>
+//   );
 // }
 
 
+//----NODE EXECEPTION HANDLING----
 
-///----- 
+// const mongoose = require('mongoose');
+// async function ConnectDb(){
+//     try{
+//           await mongoose.connet('url')
+//           console.log("DB is successfully connected")
+//     }catch(error){
+//         console.log.error("DB is failed" ,error.message)
+//     }
+//   }

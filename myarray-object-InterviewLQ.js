@@ -1,4 +1,46 @@
 
+///----------------------------///
+//  1. split() Method
+// 🔹 split(' ') – Split by space (for words)
+// const str = "my name is sanju";
+// const result = str.split(' ');
+// console.log(result); 
+// // ➤ ['my', 'name', 'is', 'sanju']
+// 🔸 Use when you want to split a sentence into words.
+
+
+
+// 🔹 split('') – Split by character
+// const str = "sanju";
+// const result = str.split('');
+// console.log(result); 
+// // ➤ ['s', 'a', 'n', 'j', 'u']
+// 🔸 Use when you want to split a string into individual characters.
+
+
+
+
+// 🔗 2. join() Method
+// 🔹 join(' ') – Join with space
+// const words = ['my', 'name', 'is', 'sanju'];
+// const result = words.join(' ');
+// console.log(result); 
+// // ➤ "my name is sanju"
+// 🔸 Use to combine words into a sentence.
+
+
+
+
+// 🔹 join('') – Join without space
+// const chars = ['s', 'a', 'n', 'j', 'u'];
+// const result = chars.join('');
+// console.log(result); 
+// // ➤ "sanju"
+// 🔸 Use to combine characters into a word.
+
+
+
+
 //QUESTION-------------
 
 //  const arr = [3,4,5,6]

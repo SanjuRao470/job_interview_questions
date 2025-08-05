@@ -668,7 +668,10 @@
 //         console.error('Error fetching data:', error);
 //     });
 
-
+//res.json()//JSON-formatted string) and converts it into a JavaScript object.
+// I’m mapping through each URL in the api array  ///apis.map((url)=>
+//  and calling fetch(url) on it. Then,      ////fetch(url)
+//  I’m chaining .then((res) => res.json()) to convert the response into JSON format. 
 
 //-------INTERVIEW QUESTION------------
 // const  ReturnAllPromise = async () =>{
@@ -698,6 +701,43 @@
 
 // ✅ Solution:
 // To prevent complete failure, use Promise.allSettled() instead of Promise.all()
+
+//------INTERVIEW IMPORTANT---------//
+// import React, { useEffect } from "react";
+// import "./styles.css";
+
+// export default function App() {
+//   const fetchApiData = async () => {
+//     try {
+//       const api = [
+//         "https://jsonplaceholder.typicode.com/users",
+//         "https://jsonplaceholder.typicode.com/todos",
+//         "https://jsonplaceholder.typicode.com/albums",
+//       ];
+//       const apiCalls = api.map((url) => fetch(url).then((res) => res.json()));
+//       const [user, todo, list] = await Promise.allSettled(apiCalls);
+//        const [user, todo, list] = await Promise.all(apiCalls);
+//       console.log("00-", user);
+//       console.log("111-", todo);
+//       console.log("22-", list);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+//   useEffect(() => {
+//     fetchApiData();
+//   }, []);
+
+//   return (
+//     <div className="App">
+//       <h1>Hello CodeSandbox</h1>
+//       <h2>Start editing to see some magic happen!</h2>
+//     </div>
+//   );
+// }
+
+
+
 
 
 

@@ -19,9 +19,14 @@
 
 
 
-//Hooks: hooks are re-useable functions.
+//Hooks:  Hook is a feature which react provide us 
+// hooks they  are re-useable functions.usen in FC and some of the hooks are alternative of or can mimic the lifecycle methods.
 //why we use Hooks?
 //Beacuse it provide a very easily understandable and much cleaner way of writing code.
+
+
+//-----THEY ARE HOOKS---
+
 // useState
 // useEffect
 // useCallback
@@ -55,6 +60,17 @@
 
 //const [state, setState] = useState(initialState);
 
+////--INTERVIEW ASKED QUESTION
+//--1. Can we swap state like this: const [setState, state]?
+
+// ✅ Concept:
+// In React, useState returns [state, setState], not [setState, state].
+//  The first value is the current state, the second is the updater function.
+
+// ✅ Ideal answer:
+// "No, this is incorrect. useState returns [state, setState]. 
+// Reversing the order would make your state updates and reads fail or behave unexpectedly."
+
 
 
 //============ useEffect ======
@@ -73,9 +89,41 @@
 
 
 // three cases---------------
-//1-useEffect(()=>{})          2-useEffect(()=>{},[])                    3-useEffect(()=>{},[props])
-//runs on every render       //runs only on the first render           //in this case useEffect will only runs when any of the dependency have changed b/w the renders.
-// CWU                          // CDM  // run only once mount                                     // CDU   ====it will first render and if also runs when any of the dependency have changed b/w the renders
+
+//       1-useEffect(() => {}, []) 
+//// CDM  // run only once mount  
+// //runs only on the first render
+//When it runs: Only once after the component is mounted (rendered the first time).//after initial render
+//The empty dependency array ([]) ensures it runs only once (like componentDidMount).  
+//Example use case: Fetching data when a component first loads.    
+
+
+
+
+
+//     2-useEffect(()=>{},[props/state])//useEffect(() => {}, [dep])
+ //in this case useEffect will only runs when any of the dependency have changed b/w the renders.
+  // CDU   ====it will first render and if also runs when any of the dependency have changed b/w the renders
+  // When it runs: Every time the component updates, i.e., when state or props change.
+📦 //Used for: Running logic when specific data changes.
+
+
+
+  //3-useEffect(() => { return () => {} }, [])   
+////runs on every render 
+//// CWU 
+// When it runs: Right before the component is removed from the DOM.
+//📦 Used for: Cleanup — removing listeners, timers, closing WebSocket connections.
+
+
+//--INTERVIEW ASKED QUESTION
+//---Can we use useEffect without passing an empty dependency array?
+// Yes, useEffect can be used:
+
+// Without any dependency array → runs on every render
+// useEffect(() => {})
+
+
 
 // //useEffect runs side effects in functional components.
 // It replaces:
@@ -84,14 +132,15 @@
 
 // componentDidUpdate → useEffect(() => {}, [deps])
 
-// componentWillUnmount → return cleanup function.
+// componentWillUnmount → return cleanup function.  useEffect(() => { return () => {} }, []) 
+
 
 
 //mount means:(appears on the screen)
 
 
 
-// ✅ 1. useEffect(() => {})
+// ✅ 1. useEffect(() => {},[])
 // 🔁 Runs after every render — including:
 
 // Initial mount ✅
@@ -327,6 +376,15 @@
 // side effects are handled inside useEffect instead of directly in the component body.
 
 
+//example---
+// Data fetching
+
+// DOM manipulation
+
+// Subscriptions
+
+// Timers
+
 //====OR
 //  In React, useEffect lets you perform side effects —
 //   which are operations that interact with the outside world or something outside the component's render process.
@@ -344,13 +402,35 @@
 
 
 // There are key differences:
+//they are optimization tool---
 
+//----which means when component doesn't received any props.
+// React.memo: Memoizes a whole component to prevent unnecessary re-renders when the props haven't changed. 
+
+
+// --when component accept props and state--
 // useMemo: Memoizes the result of a computation to avoid re-calculating it on every render.
-
-// React.memo: Memoizes a whole component to prevent unnecessary re-renders when the props haven't changed.
 
 // useCallback: Memoizes a callback function to prevent it from being recreated on every render,
 //  which is useful for passing stable references to child components.
+
+//-------------------IMPORTANT------------------------
+// Nested Child Re-render Prevention Strategy:
+
+// To prevent re-renders in nested children:
+
+// Wrap child components with React.memo
+
+// Use useCallback for functions passed as props
+
+// Use useMemo for derived data passed as props
+
+
+//------------------------#####################-------------------
+// 📌 Who Accepts Props vs. Who Doesn't?
+// React.memo-wrapped components still accept props. It just skips re-rendering if the props haven't changed.
+
+// useCallback / useMemo don’t accept or reject props; they support memoization of values/functions passed as props to child component.
 
 
 //============ useCallback ======
@@ -484,8 +564,14 @@
 //Purpose:
 
 // useRef: Used to create a reference to a DOM element or a value that persists across renders. only returns one item that is an Object called current.
-// forwardRef is used to forward a ref from a parent component to a child component’s DOM node. It allows the parent to directly access the child’s internal DOM—
+// forwardRef is used to forward a ref from a parent component to a child component’s DOM node. 
+// It allows the parent to directly access the child’s internal DOM—
 // //for example, focusing an input element from the parent."
+
+
+// forwardRef is not a hook. It's a higher-order function that lets you pass refs to child components.
+
+// React components don’t accept refs by default. forwardRef allows a parent to access child DOM or component refs.
 
 // useRef: const ref = useRef(initialValue);
 // forwardRef: const Component = forwardRef((props, ref) => {...});

@@ -496,6 +496,14 @@
 
 
 //QUESTION------ check given string is palindrome or not ?
+// Anagram:
+// ➤ Two strings are anagrams if they contain the same characters with the same frequency, but possibly in a different order.
+// Example: 'listen' and 'silent'
+
+// Palindrome:
+// ➤ A string is a palindrome if it reads the same forward and backward.
+// Example: 'madam', 'racecar'
+
 
 // A palindrome is a string that reads the same forwards and backwards. In other words,
 //  if you reverse the string, it will remain unchanged.
@@ -568,6 +576,23 @@
 // const StringVar ='abcd'
 // const result= reverseString(StringVar)
 // console.log(result)//dcba`
+
+
+
+// ------ANOTHER--------------------
+// function reverseEachWord(str) {
+//   let reversedWord = '';
+//     for (let char of str) {
+//       reversedWord = char + reversedWord; 
+//       console.log( "=====",reversedWord)
+//     }
+//    return reversedWord;
+// }
+
+// const str = 'ujnas';
+// const result = reverseEachWord(str);
+// console.log(result); // sanju
+
 
 
 //QUESTION--//Reverse the Given Array
@@ -721,6 +746,32 @@
 //The loop doesn't handle the last word because it doesn't end with a space. This step ensures that the final word
 // (which doesn't have a space after it) is added to reverseStr
 
+//---- VERY IMPORTANT ------
+// function reverseStr(str){
+//     const  words = str.split(' ');
+//     let output = '';
+//     for(let word of words){
+//          let reverse = '';
+//         //CASE-1
+//         for(let char of word){
+//              reverse = char + reverse
+//          }
+//          CASE-2
+//         //  for(let i= word.length-1 ; i>=0 ;i--){
+//         //      reverse+= word[i]
+//         //  }
+//        output+= reverse + ' '
+//     }
+//     return output;
+//     }
+
+// const str ='ym si eman nahk'
+// const result = reverseStr(str)
+// console.log(result)//my is name khan 
+
+
+
+
 //---------------OR-------------
 // function App(str) {
 //   const words = str.split(' ');
@@ -750,6 +801,49 @@
 // const result = App(str);
 // console.log(result); // ➞ "ym eman si nahk"
 
+
+
+//-----------------------------------QUESTION----------------
+// function reverseStr(str){
+//     const words =str.split(' ');
+//     let output='';
+    
+//     for(let word of words){
+//        let reverseStr = '';
+//         for(let char of word){
+//         reverseStr= char + reverseStr;
+//    }
+//      output+=reverseStr + ' ';
+//    }
+//    return output;
+// }
+// const str = 'ujnas oar'
+// const result = reverseStr(str)
+// console.log(result)//sanju rao
+
+
+
+///--------------------------METHODS--------------------
+
+// const str = 'ujnas oar'
+// let output = str.split(' ');
+
+// let result= output.map(word => word.split('').reverse().join('')).join(' ');
+
+// console.log(output)
+// console.log(result)// sanju rao
+// //str.split(' '); vs str.split('');
+// //join(' ') vs join('')
+//reverse()
+
+// for(let/const char in/of str){
+
+// }
+
+//------EXAMPLE------------------
+// const str =   [ 'ujnas', 'oar' ] 
+// let output = str.join(' ');
+// console.log(output)//ujnas oar
 
 
 // //== just for trial============================
@@ -1382,6 +1476,70 @@
 //     'c.d': 'Vishwakarma',
 //     e: 'address'
 // }
+
+//------/////////////////////////////////////---
+
+//  function groupByValue(input){
+//     const output={};
+//      for(let word of input){
+//           const keys = word.city
+//             if(!output[keys]){
+//                  output[keys] = []
+//           }
+//           output[keys].push(word)
+//           }
+//       return output;
+//  }
+ 
+// const input = [{city:'NY'},{city:'LA'},{city:'NY'}];
+// const result = groupByValue(input)
+// console.log(result)
+//{ NY: [ { city: 'NY' }, { city: 'NY' } ], LA: [ { city: 'LA' } ] }
+
+
+
+//---------------------------------------------
+//  function groupById(input){
+//      const output={};
+//      for( let item of input){
+//          const keys = item.id
+//          if(!output[keys]){
+//              output[keys] = {};
+//          }
+//          output[keys]=item
+//      }
+//     return output; 
+//  }
+//  const input= [{id:1,name:'a'},{id:2,name:'b'}]
+//  const result = groupById(input)
+//  console.log(result)
+//  //{ '1': { id: 1, name: 'a' }, '2': { id: 2, name: 'b' } }
+
+
+
+
+
+//---------------- FIND DUPLICATES BY ID---------------------
+//  function getDuplicatesById(input){
+//      const output=[];
+//      for(let i=0; i<input.length; i++){
+//         for(let j=i+1; j<input.length; j++){
+//             console.log(input[i].id)
+//               if(input[i].id === input[j].id){
+//                   output.push(input[i])
+//               }
+//   }
+//       }
+//     return output; 
+//  }
+//  const input= [{id:1},{id:2},{id:1},{id:2},{id:4},{id:3}]
+//  const result = getDuplicatesById(input)
+//  console.log(result)
+// /// result: [ { id: 1 }, { id: 2 } ]
+
+
+
+//---------------- SORT BY NESTED KEY---------------------
 
 
 

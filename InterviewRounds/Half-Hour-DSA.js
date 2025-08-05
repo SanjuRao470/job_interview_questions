@@ -1,5 +1,71 @@
 //-----------------INTERVIEW DSA QUESTION----------------------
 
+//---------------commonly asked recursion-based DSA questions using arrays and objects, ----------------------------------
+
+// function firstNoOfKey(obj){
+//     let count  = 0;
+//    for(let key in obj){
+//        count++;
+//        if(typeof obj[key] === 'object' && obj[key] !== null &&  !Array.isArray(obj[key])){
+//            count+=firstNoOfKey(obj[key])
+//        }
+//    }
+//   return count;
+//    }
+// const obj = {
+//   a: 1,
+//   b: {
+//     c: 2,
+//     d: {
+//       e: 3
+//     }
+//   },
+//   f: 4
+// };
+
+// const result = firstNoOfKey(obj)
+// console.log(result)//6
+
+
+//-----------------
+// function flattenArray(array) {
+//   const output = [];
+
+//   for(let ele of array){
+//       if(Array.isArray(ele)){
+//           output.push(...flattenArray(ele))
+//       }else{
+//          output.push(ele)
+//       }
+//   }
+//   return output;
+// }
+
+// const arr = [[4,5],[9,6] ,[3, 4]];
+// const result = flattenArray(arr);
+// console.log(result); //[ 4, 5, 9, 6, 3, 4 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function placeElementAtEnd(arr){
 //     const output = [];
 //     let zerosCount = 0;
