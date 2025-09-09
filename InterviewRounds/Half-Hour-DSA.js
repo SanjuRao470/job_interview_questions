@@ -1,13 +1,24 @@
 //-----------------INTERVIEW DSA QUESTION----------------------
 
 //---------------commonly asked recursion-based DSA questions using arrays and objects, ----------------------------------
+//I use recursion to handle nesting object 
+// ///Does the nested structure have the same pattern inside it (self-similarity)?
 
-// function firstNoOfKey(obj){
+//---Mindset Summary for Recursion
+//----When you see nested / repeated structure:
+//1-Identify: Is the problem self-similar at smaller levels? Yes → recursion candidate.
+//2-Base Case: Define when to stop recursion.
+//3-Recursive Step: Decide what smaller problem to solve next.
+//4-Combine: Merge the smaller results.
+//5-Test Small Cases: Trace by hand before coding fully.
+
+//-QUESTION-Count current level keys → if nested object, count inside it using the same function.
+// function countKey(obj){
 //     let count  = 0;
 //    for(let key in obj){
 //        count++;
 //        if(typeof obj[key] === 'object' && obj[key] !== null &&  !Array.isArray(obj[key])){
-//            count+=firstNoOfKey(obj[key])
+//            count+=countKey(obj[key])  ////recursive call
 //        }
 //    }
 //   return count;
@@ -23,17 +34,51 @@
 //   f: 4
 // };
 
-// const result = firstNoOfKey(obj)
+// const result = countKey(obj)
 // console.log(result)//6
 
 
+///---------------------------//
+//-QUESTION-Sum current numbers → if nested object, sum its numbers recursively.
+//  function sumObjectValues(obj){
+//     let  sum = 0;
+//     for(let key in obj){
+//     if(typeof obj[key] === 'object' &&  obj[key] !== null && obj[key] !== Array.isArray(obj[key])){
+//       sum += sumObjectValues(obj[key]) //recursive call
+//      }
+//      else if(typeof obj[key] === 'number'){
+//           sum += obj[key]
+//     }
+//     }
+//     return sum;
+// }
+
+// const obj = { 
+//     a:1,
+//     b:{
+//         h:2,
+//         c:{
+//             d:3
+//         }
+//     },
+//     e:{
+//         f:4
+//         },
+//         g:6,
+//         k:"s"
+//     }
+// const result = sumObjectValues(obj)
+// console.log(result)//16
+
+
 //-----------------
+//-QUESTION-For each element → if it’s an array, flatten it → else add to result.
 // function flattenArray(array) {
 //   const output = [];
 
 //   for(let ele of array){
 //       if(Array.isArray(ele)){
-//           output.push(...flattenArray(ele))
+//           output.push(...flattenArray(ele)) ////recursive call
 //       }else{
 //          output.push(ele)
 //       }
@@ -45,7 +90,14 @@
 // const result = flattenArray(arr);
 // console.log(result); //[ 4, 5, 9, 6, 3, 4 ]
 
+// 🧠 Takeaway
+// You must handle both cases:
 
+// If it's an array → recursively flatten
+
+// If not → push directly
+
+// Without the else, the non-array values are ignored, leading to an empty result.
 
 
 

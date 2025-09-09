@@ -21,17 +21,60 @@
 // }
 // app()//50  // latest updated value
 
+//or
+// function app() {
+//   var x;     // hoisted, x = undefined
+//   x = 10;    // assignment
+//   x = 50;    // overwrite with 50
+//   console.log(x); // prints 50
+// }
+
+
 ////QUESTION---
 
 // I used with let  // this asked INTERVIEWER interview // what you get if you use let instead of var
 //  function app(){
-   
-//      x=10;
+//        x=10;
 //      let x= 10  //ReferenceError: Cannot access 'x' before initialization
 //      console.log(x)
    
 //  }
 //  app()
+
+
+//-------------------------
+
+//  function app(){
+//      console.log(x)// always get Refference error
+//         x=10;
+//          console.log(x)// always get Refference error
+//      let x= 10  
+//       console.log(x)// always get Refference error
+//    }
+//  app()
+//from at top of the scope to line  let x= 10  called TDZ. in the area anywhere if you access variable then always get Refference error
+
+
+
+///-------------REASON---------
+// Why the behaviors differ
+
+// var
+
+// Hoisted and initialized to undefined at the start of the scope.
+
+// Accessible anywhere in the function after hoisting.
+
+// Function-scoped. Redeclaration allowed.
+
+// let
+
+// Hoisted but uninitialized until its declaration line executes.
+
+// In the TDZ before that line—any access/assignment throws ReferenceError.
+
+// Block-scoped. No redeclaration in the same scope.
+
 
 
 //CASES:-------
@@ -56,15 +99,15 @@
 //   }
 //   app();
 
+
 //CASE-2
-// function app(){
+// function app(){//can not re-declare the same variable in let
 
 //     x=10;////ReferenceError: Cannot access 'x' before initialization
 //     let  x= 50  
 //    console.log(x)
 //       console.log(x)
 //   // result: //ReferenceError: Cannot access 'x' before initialization
- 
 // }
 // app()
 
@@ -196,6 +239,28 @@
 // counter1();//4
 
 
+
+//--here how it works..
+//--here createCounter() call only once to create private variable(count) and return anonymous function
+//--counter1() ==  the anonymous inner function
+//--You’re not calling createCounter() again — you’re calling the anonymous function that createCounter() returned.
+//--This anonymous function:
+//--Accesses count from the closure
+//--Updates it (count++)
+//--Logs it
+
+//--Since count lives in the closure’s memory:
+//--First counter() → count goes from 0 → 1
+//--Second counter() → count goes from 1 → 2
+//--And so on…
+
+//----IMPORTANT NOTE:
+// Why it’s always the same count?
+// Closures don’t copy variables — they keep a reference to them.
+// So all calls to counter() are reading and writing the exact same variable count in memory.
+
+
+
 //QUESTION //IIFE:it is a function that runs immediately after its definition and it is enclosed() and executed right away, it used to prevent global scope pollution.
 
 // function app(){
@@ -207,6 +272,7 @@
 //    }
 // }
 // app()
+
 
 // function app(){
 //    for(var i=0;  i<3; i++){
@@ -344,22 +410,26 @@
 // export default function App() {
 //   const [counter, setCounter] = useState(0);
 
-//   // working fine
-//   // const Increment = () => {
-//   //   setCounter(counter + 1);
-//   // };
+// working fine
+  // const Increment = () => {
+  //   setCounter(counter + 1);//ANS: final output incresed by only 1,2,3,4..so on
+  // };
+
+  // const Increment = () => {
+  //   setCounter((prev) => prev + 1);//ANS: final output incresed by only 1,2,3,4..so on
+  // };
 
 //   // const Increment = () => {
 //   //   setCounter(counter + 1);
 //   //   setCounter(counter + 1);
 //   // };
-//   // ANSWER::1 final output incresed by only 1
+//   // ANSWER::1 final output incresed by only 1,2,3,4..so on
 
 //   // const Increment = () => {
 //   //   setCounter((prev) => prev + 1);
 //   //   setCounter((prev) => prev + 1);
 //   // };
-//   //  // ANSWER::2 final output incresed by only 2
+//   //  // ANSWER::2 final output incresed by only 2,4,6...so on 
 
 //   return (
 //     <div>

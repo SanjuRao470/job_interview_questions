@@ -601,10 +601,10 @@
 // function ReverseArray(array){
 //    let reverseArr =[];
 //     for(let i=0; i<array.length; i++){
-//         reverseArr.push(array[i])
+//         reverseArr.push(array[i])   // copy all elements from array into reverseArr
 //     }
 //     for(let i=0; i<array.length; i++){
-//       arr[i]= reverseArr.pop()
+//       arr[i]= reverseArr.pop()      //reassign elements back into the original array, but in reverse order
 //     }
 //     return arr;  //if you return here  reverseArr array it will give empty array
 // }
@@ -1055,6 +1055,10 @@
  
 
 // QUESTION ---- find largest number from given array.
+//----NOTES   Infinity is a special numeric value in JavaScript that represents a value larger than any other number.
+//Conversely, -Infinity represents a value smaller than any other number, essentially the lowest possible number.
+
+
 
 // function LargestNumFun (array){
 //     let largestNum = [];//This is actually a mistake in the code because largestNum should be initialized to a number (e.g., let largestNum = -Infinity or let largestNum = array[0]), not an array.
@@ -1113,6 +1117,37 @@
 
 // const result = SecondLargest(arr)
 // console.log(result)//6
+
+/////--- another ways----
+
+// notes------
+//   //in javaScript -0 as same as 0 mean -0 === 0
+
+//if defined 
+//      let largest =0;
+//      let Secondlargest = 0;  
+//zero to both  it works numbers >= 0 which not works for negetive numbers but if we use -Infinity works for all casees
+
+
+//  function app(array){
+//      let largest = -Infinity;
+//      let SecondLargest = -Infinity;
+     
+//      for(let i=0; i<array.length; i++){
+//         if(array[i] > largest){
+//             SecondLargest = largest;
+//             largest = array[i]
+//         }else if(array[i] > SecondLargest && array[i] < largest){
+//             SecondLargest = array[i]
+//         }
+//      }
+//      return SecondLargest;
+//  }
+
+// const arr = [-4,-5,-3,-1]//-3
+// // const arr = [-0,-4,-5,-3,-1]//-1
+//  const result = app(arr)
+//  console.log(result)//-3
 
 
 
@@ -1378,6 +1413,237 @@
 
 
 
+//---------------------------------------
+
+// function flattenArray(array) {
+//   const output = [];
+
+//   for(let ele of array){
+//       if(Array.isArray(ele)){
+//           output.push(...flattenArray(ele)) ////recursive call
+//       }else{
+//          output.push(ele)
+//       }
+//   }
+//   return output;
+// }
+
+// const arr = [[4,5],[9,6] ,[3, 4]];
+// const result = flattenArray(arr);
+// console.log(result); //[ 4, 5, 9, 6, 3, 4 ]
+
+
+
+
+// function splitArray(arr, k) {
+//   let result = [];
+//   let partSize = arr.length / k;
+
+//   if (arr.length % k !== 0) {
+//     return "Array cannot be divided into equal parts";
+//   }
+
+//   for (let i = 0; i < arr.length; i += partSize) {
+//     result.push(arr.slice(i, i + partSize));
+//   }
+
+//   return result;
+// }
+// const arr = [2, 5, 6, 8, 9, 0]
+// const k =3
+// console.log(splitArray(arr,k));
+// // [[2, 5], [6, 8], [9, 0]]
+
+
+
+//---------------for oddd-------------
+// Math.ceil(x) returns the smallest integer greater than or equal to x.
+// In simple words → it rounds UP to the nearest integer.
+
+// 🔹 Examples:
+// console.log(Math.ceil(4.1));   // 5   (rounds up)
+// /console.log(Math.ceil(-4.2));  // -4  (rounds UP towards zero)
+
+
+
+// function splitArray(arr, k) {
+//   let result = [];
+//   let partSize = Math.ceil(arr.length / k);
+
+//   for (let i = 0; i < arr.length; i += partSize) {
+//     result.push(arr.slice(i, i + partSize));
+//   }
+
+//   return result;
+// }
+// const arr = [2, 5, 6, 8, 9, 0,7]
+// const k =3
+// console.log(splitArray(arr,k));
+// // [ [ 2, 5, 6 ], [ 8, 9, 0 ], [ 7 ] ]
+
+
+//---------------------------QUESTION SERIES---------------------------------------
+ 
+//  function rearrangePosNeg(array){
+//      const positives = [];
+//      const negetives = [];
+//      for(let ele of array){
+//          if(ele >= 0){
+//              positives.push(ele)
+//          }else{
+//               negetives.push(ele) 
+//          }
+//      }
+//      return [...positives, ...negetives]
+//  }
+//  const arr = [1, -2, 3, -4, 5]
+//  const result = rearrangePosNeg(arr)
+//  console.log(result)//[ 1, 3, 5, -2, -4 ]
+
+
+//--------------------------
+
+//  function sumAdjacent(array){
+//      const output = [];
+//      for(let i=0; i<array.length; i++){
+//         if(i < array.length-1){
+//            output.push(array[i] +array[i+1]) 
+//         }else{
+//            output.push(array[i])  
+//         }
+//      }
+//      return output;
+//  }
+//const arr = [2, 4, 6, 8]
+//  const arr = [2,5,6,8,9,0]//[ 7, 11, 14, 17, 9, 0 ]
+//  const result = sumAdjacent(arr)
+//  console.log(result)//[ 6, 10, 14, 8 ]
+
+//------IMPORTANT QUESTION-----
+
+// Merge Two Objects
+// Input: {a:1, b:2} and {b:3, c:4} → Output: {a:1, b:3, c:4}
+
+
+
+// function mergeObjects(o1, o2) {
+//   const result = {};
+
+//   // copy all keys from obj1
+//   for (let key in o1) {
+//     result[key] = o1[key];
+//   }
+
+//   // copy all keys from obj2 (overwrite if key already exists)
+//   for (let key in o2) {
+//     result[key] = o2[key];
+//   }
+
+//   return result;
+// }
+
+// const obj1 = {a:1, b:2};
+// const obj2 = {b:3, c:4};
+
+// console.log(mergeObjects(obj1, obj2)); 
+// // {a:1, b:3, c:4}
+
+
+
+
+
+// Find Keys with Highest Value
+// Input: {a:5, b:12, c:3} → Output: b
+
+
+// function findMaxKey(o) {
+//   let maxKey = null;
+//   let maxValue = -Infinity;
+
+//   for (let key in o) {
+//     if (o[key] > maxValue) {
+//       maxValue = o[key];
+//       maxKey = key;
+//     }
+//   }
+
+//   return maxKey;
+// }
+
+
+// const obj = {a:5, b:12, c:3};
+
+// console.log(findMaxKey(obj)); 
+// // "b"
+
+
+
+//------/////////////////////////////////////---
+
+//  function groupByValue(input){
+//     const output={};
+//      for(let word of input){
+//           const keys = word.city
+//             if(!output[keys]){
+//                  output[keys] = []
+//           }
+//           output[keys].push(word)
+//           }
+//       return output;
+//  }
+ 
+// const input = [{city:'NY'},{city:'LA'},{city:'NY'}];
+// const result = groupByValue(input)
+// console.log(result)
+//{ NY: [ { city: 'NY' }, { city: 'NY' } ], LA: [ { city: 'LA' } ] }
+
+
+
+//---------------------------------------------
+//  function groupById(input){
+//      const output={};
+//      for( let item of input){
+//          const keys = item.id
+//          if(!output[keys]){
+//              output[keys] = {};
+//          }
+//          output[keys]=item
+//      }
+//     return output; 
+//  }
+//  const input= [{id:1,name:'a'},{id:2,name:'b'}]
+//  const result = groupById(input)
+//  console.log(result)
+//  //{ '1': { id: 1, name: 'a' }, '2': { id: 2, name: 'b' } }  in case   output[keys]=item
+// { '1': [ { id: 1, name: 'a' } ], '2': [ { id: 2, name: 'b' } ] } in case    output[keys]=[item]
+
+
+
+
+
+//---------------- FIND DUPLICATE OBJECTS BY ID---------------------
+//  function getDuplicatesById(input){
+//      const output=[];
+//      for(let i=0; i<input.length; i++){
+//         for(let j=i+1; j<input.length; j++){
+//             console.log(input[i].id)
+//               if(input[i].id === input[j].id){
+//                   output.push(input[i])
+//               }
+//   }
+//       }
+//     return output; 
+//  }
+//  const input= [{id:1},{id:2},{id:1},{id:2},{id:4},{id:3}]
+//  const result = getDuplicatesById(input)
+//  console.log(result)
+// /// result: [ { id: 1 }, { id: 2 } ]
+
+
+
+
+
+
 ///---------- Chunk + Sort + Format Function
 
 // function CountApp(array) {
@@ -1477,65 +1743,6 @@
 //     e: 'address'
 // }
 
-//------/////////////////////////////////////---
-
-//  function groupByValue(input){
-//     const output={};
-//      for(let word of input){
-//           const keys = word.city
-//             if(!output[keys]){
-//                  output[keys] = []
-//           }
-//           output[keys].push(word)
-//           }
-//       return output;
-//  }
- 
-// const input = [{city:'NY'},{city:'LA'},{city:'NY'}];
-// const result = groupByValue(input)
-// console.log(result)
-//{ NY: [ { city: 'NY' }, { city: 'NY' } ], LA: [ { city: 'LA' } ] }
-
-
-
-//---------------------------------------------
-//  function groupById(input){
-//      const output={};
-//      for( let item of input){
-//          const keys = item.id
-//          if(!output[keys]){
-//              output[keys] = {};
-//          }
-//          output[keys]=item
-//      }
-//     return output; 
-//  }
-//  const input= [{id:1,name:'a'},{id:2,name:'b'}]
-//  const result = groupById(input)
-//  console.log(result)
-//  //{ '1': { id: 1, name: 'a' }, '2': { id: 2, name: 'b' } }
-
-
-
-
-
-//---------------- FIND DUPLICATES BY ID---------------------
-//  function getDuplicatesById(input){
-//      const output=[];
-//      for(let i=0; i<input.length; i++){
-//         for(let j=i+1; j<input.length; j++){
-//             console.log(input[i].id)
-//               if(input[i].id === input[j].id){
-//                   output.push(input[i])
-//               }
-//   }
-//       }
-//     return output; 
-//  }
-//  const input= [{id:1},{id:2},{id:1},{id:2},{id:4},{id:3}]
-//  const result = getDuplicatesById(input)
-//  console.log(result)
-// /// result: [ { id: 1 }, { id: 2 } ]
 
 
 

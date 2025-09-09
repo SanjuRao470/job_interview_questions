@@ -4,16 +4,214 @@
 //Node-- single thread but we make multiple thread using worker thread --- be default asynchronouse
 
 
+//----QUESTION---
+
+// const a = {};
+// const b = {key: 'b'};
+// const c = {key :'c'};
+// a[b] = 123;
+// a[c] = 456;
+// console.log(a[c]) //456
+// console.log(a[b]) //456
+
+// const a = {};
+// const b = {key: 'b'};
+// const c = {key :'c'};
+// a[b] = 123;
+// a[c] = 456;
+// console.log(a[c]) //456
+// console.log(a[b]) //456
+
+
+// Dot vs bracket
+// a.b → key is literally "b".
+// a["b"] and a[b] (if b === "b") are the same.
+
+
+
+// Step 2: What happens with a[b] = 123;
+// You are using bracket notation: a[b].
+// But b is an object ({ key: 'b' }).
+
+// ⚠️ Plain JavaScript objects ({}) cannot use another object directly as a key.
+// So, JavaScript automatically converts it into a string.
+
+// 👉 Conversion rule:
+// Objects are converted with .toString(), unless they have Symbol.toPrimitive or valueOf.
+// For plain objects, b.toString() → "[object Object]"
+
+// --EXAMPLE
+// const b = { key: 'b' };
+// const c = { key: 'c' };
+
+// console.log(b.toString()); // "[object Object]"
+// console.log(c.toString()); // "[object Object]"
+// Both objects → same string.
+
+// a[b] = 123; // becomes a["[object Object]"] = 123
+// a[c] = 456; // becomes a["[object Object]"] = 456 (overwrites!)
+
+
+
+// Why "[object Object]" specifically?
+// This comes from Object.prototype.toString implementation.
+// By spec, its output format is:[object <Type>]
+
+
+// --example
+// For plain objects, <Type> = "Object".
+
+// For arrays, it would be "[object Array]".
+
+// For dates: "[object Date]".
+
+
+// Step 3: What happens with a[c] = 456;
+// Again, c is an object ({ key: 'c' }).
+// JavaScript converts it the same way: c.toString() → "[object Object]".
+// So:
+
+// a["[object Object]"] = 456;
+
+// ⚡ This overwrites the previous value (123), because the key string is the same.
+
+// Now a looks like:
+
+// { "[object Object]": 456 }
+
+
+
+
+
+// const a = {};
+// const b = {key: 'b'};
+// const c = {key :'c'};
+// a[b] = 123;
+// a[c] = 456;
+// console.log(a)//{ '[object Object]': 456 }
+// console.log(b)//{ key: 'b' }
+// console.log(c)//{ key: 'c' }
+// console.log(b.toString())//[object Object]
+// console.log(a[c]) //456
+// console.log(a[b]) //456
+
+
+
+
+
 //=====INTERVIEWER ASKED QUESTIONS=====================//
 
 // 🔹 1. Understanding this First:
 // The behavior of this depends on how a function is called,
 //  not how it is declared. It’s also influenced by execution context: global, function, object method, arrow functions, and classes.
 
+// What is this in JavaScript?
+// this is a special keyword in JavaScript.
+// Its value is determined at runtime (when the code runs, not when you write it).
+//It usually refers to the object that is executing the current function. 
+// Its value depends on how the function is called, not where it is defined.
+
+
+// default value of this is window
+// how do you update this value -- using  call(), apply(), bind()
+
+
 //Q: Does the this keyword ever care about var, let, or const?
 //answer: No, this is not affected by the keyword used (var, let, or const) to declare a variable. 
 //It depends on how the function is invoked, not how variables are declared.
 
+
+
+/////////----------------------------///////
+
+// 📌 How this works in different cases
+
+// In Global Scope (non–strict mode)
+
+// console.log(this); 
+// // In browser → window
+// // In Node.js → {}
+
+
+// Inside a function (non–strict mode)
+
+// function show(){
+//   console.log(this);
+// }
+// show(); // In browser → window
+
+
+// Inside a function (strict mode)
+
+// "use strict";
+// function show(){
+//   console.log(this);
+// }
+// show(); // undefined
+
+
+// Inside an object method
+
+// const user = {
+//   name: "Sanju",
+//   greet: function() {
+//     console.log(this.name);
+//   }
+// };
+// user.greet(); // "Sanju"
+
+
+// Here, this refers to the object (user).
+
+// Inside a class
+
+// class Person {
+//   constructor(name){
+//     this.name = name;
+//   }
+//   greet(){
+//     console.log("Hello, " + this.name);
+//   }
+// }
+// const p = new Person("Sanju");
+// p.greet(); // "Hello, Sanju"
+
+
+// Arrow functions
+// Arrow functions don’t have their own this.
+// They take this from the surrounding (lexical) scope.
+
+// const user = {
+//   name: "Sanju",
+//   greet: () => {
+//     console.log(this.name);
+//   }
+// };
+// user.greet(); // undefined (because arrow takes `this` from outside object → global)
+
+// 📌 Special cases with this
+
+// Event handlers in DOM
+
+// document.querySelector("button").addEventListener("click", function(){
+//   console.log(this); // the button element
+// });
+
+
+// Using bind, call, apply
+
+// function greet(){
+//   console.log("Hello " + this.name);
+// }
+// const person = { name: "Sanju" };
+
+// greet.call(person);   // Hello Sanju
+// greet.apply(person);  // Hello Sanju
+// const boundFn = greet.bind(person);
+// boundFn();            // Hello Sanju
+
+
+// ✅ Interview-style
 
 // const person = {
 //   name: 'Alice',
@@ -219,6 +417,19 @@
 // const arrowFn = obj.getArrow();
 // console.log(arrowFn()); // ✅ 100
 
+
+// ✅ → Pass by Value: This means a copy of the value is made. 
+
+// When you pass a variable, you're sending a duplicate of its value. Changes in the function do not affect the original variable. 
+
+// Commonly used in languages like C and Java for primitive types. 
+
+
+// ✅ → Pass by Reference: Instead of a copy, you pass a reference to the actual variable. 
+
+// This means changes made in the function will reflect on the original variable. 
+
+// Frequently seen with objects in languages like Java and Python. 
 
 
 

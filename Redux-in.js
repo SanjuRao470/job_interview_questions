@@ -254,6 +254,12 @@
 // export const { increment, decrement, incrementByAmount } = counterSlice.actions
 // export default counterSlice.reducer
 
+///--NOTES---------
+// This matches the common Redux Toolkit pattern where you export the actions for dispatching, and the reducer for configuring the store.
+
+// So yes — you export both the actions and the reducer from the slice.
+
+
 
 // //Reducer Functions
 // The code defines three reducer functions inside the counterSlice:

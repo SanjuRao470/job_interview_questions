@@ -29,6 +29,7 @@
 
 // useState
 // useEffect
+//useLayoutEffect
 // useCallback
 // useMemo
 // (HOC)React.Memo/forwardRef  // used to wrap React Function components to prevent re-renderings //  Memoize entire component.
@@ -45,7 +46,7 @@
 //diffrence b/w useDispatch and useReducer
 //diffrence b/w useContext and useReducer
 
-//useSelector is a React-Redux hook used to read (or select)  / access data from the Redux store in a functional component.
+// useSelector is a React-Redux hook used to read (or select)  // access data from the Redux store in a functional component.
 // useReducer is a React hook for local state management;
 // useDispatch is a function provided by Redux to dispatch actions to a global store.
 
@@ -108,6 +109,16 @@
 //====OR
 //  In React, useEffect lets you perform side effects —
 //   which are operations that interact with the outside world or something outside the component's render process.
+
+
+
+///QUESTION FORMATION DESIGN-----
+
+// - during render (when they are inside the body of the component not inside the useEffect)
+// - on mount
+// -on update
+//  on WillUnMount
+
 
 
 
@@ -252,6 +263,10 @@
 
 // React runs the cleanup function one last time (prints "line3").
 
+// //
+// on mount   → line2
+// on update  → line3, line2
+// on unmount → line3
 
 
 
@@ -324,7 +339,15 @@
 // console.log("line2")
 // console.log("line3")
 
-///=========ANSWER
+///=========ANSWER  
+// line1//during render
+// line4
+// line2//mount
+// line1
+// line4
+// line3
+// line2//update
+// line3//WillUnmount
 
 // line1
 // line4
@@ -372,6 +395,66 @@
 
 
 
+// ///QUESTIONS-------
+
+// Case 1: With dependency → [value]
+
+// useEffect(() => {
+//   console.log("line2");
+
+//   return () => {
+//     console.log("line3");
+//   };
+// }, [value]);
+
+// Correct Behavior
+
+// On Mount: effect runs → line2
+
+// On Update (when value changes):
+
+// Cleanup from previous effect → line3
+
+// New effect runs → line2
+
+// On Component Will Unmount (CWU): cleanup runs → line3
+
+// ✅ Correct sequence:
+
+// on mount   → line2
+// on update  → line3, line2
+// on unmount → line3
+
+
+// 👉 Your answer here is ✅ correct.
+
+
+
+
+// Case 2: With empty dependency → []
+
+// useEffect(() => {
+//   console.log("line2");
+
+//   return () => {
+//     console.log("line3");
+//   };
+// }, []);
+
+// Correct Behavior
+
+// On Mount: effect runs once → line2
+
+// On Update: does not run again (because no dependency).
+
+// On Unmount: cleanup runs → line3
+
+// ✅ Correct sequence:
+
+// on mount   → line2
+// on unmount → line3
+
+
 ///----QUESTION-----
 
 // console.log("line1")
@@ -383,6 +466,23 @@
 //     console.log("line3")
 //   }
 // }, [])
+
+
+// Execution Flow
+
+// During render (synchronous in function body):
+// → console.log("line1") ✅ prints line1
+
+// After first paint (mount, because [] dependency runs only once):
+// → console.log("line2") ✅ prints line2
+
+// On component unmount (cleanup of the effect):
+// → console.log("line3") ✅ prints line3
+
+// ✅ Correct Sequence
+// during render → line1
+// on mount      → line2
+// on unmount    → line3
 
 
 //WHAT WILL BE ANSWER---
@@ -446,7 +546,27 @@
 
 
 
-// what is the memoization?
+///------------------//useLayoutEffect// --------
+
+// What is useLayoutEffect?
+
+// useLayoutEffect runs synchronously, immediately after DOM updates but before the browser paints.
+
+// It is blocking → React waits for it to finish before updating the screen.
+
+// Good for DOM measurements and synchronous mutations (like measuring element sizes/positions, scroll adjustments, animations).
+
+// useLayoutEffect(() => {
+//   console.log("useLayoutEffect runs before paint");
+//   const height = document.getElementById("box").offsetHeight;
+//   console.log("Box height:", height);
+// }, []);
+
+
+
+
+// what is the memoization?-------
+
 // it is an optimization techanique that can be used to reduce time consuming calculation by saving
 // previous input to something call cache and returning the result from it.
 
@@ -579,6 +699,12 @@
 // Access DOM elements.
 // Store previous values.
 // Avoid re-renders (like a global variable).
+
+
+//----Practical Use Case=-----------
+// “In my e-commerce project, I used useRef for the product image slider (carousel) so I could directly control the scrolling smoothly.”
+
+// “I also used it to store a WebSocket connection, so it stays the same across re-renders and doesn’t reconnect every time.”
 
 
 //useRef() only returns one item. It returns an Object called current.

@@ -1,4 +1,26 @@
 
+///-------IMPORTANT RESEARCH --- DSA QUESTUION MADE IN THESE AREA-- 70% IN ARRAY / 50% IN STRING  / 30% IN OBJECT
+
+//---/// 70% IN ARRAY
+//---- QUESTIONS ARIVE DIFFERENT TYPE
+
+
+//---/// 50% IN STRING 
+//---- QUESTIONS ARIVE DIFFERENT TYPE-- 
+// -1 REVERSE
+// -2 FREQUENCY
+// -3 PALINDROME
+// -4 ANAGRAM
+
+
+//---/// 30% IN OBJECT
+//---- QUESTIONS ARIVE DIFFERENT TYPE ---
+// -1 COUNTING
+// -2 FREQUENCY
+// -3 GROUPING
+// -4 RECURSION
+
+
 
 // function DimentionalArray(array){
 //     const Rotated = []
@@ -207,6 +229,36 @@
 // const arr = [1, 22, 22, 4, 6, 1, 4, 22, 4, 6, 5, 7];
 // const result = findExactlyThree(arr)
 // console.log(result)//[ 22, 4 ]
+
+
+
+
+
+///--ANOTHER INTERVIEW QUESTION-----
+
+// function findAtLeastK(Input,k){
+//     const map = {};
+//   const output = [];
+
+//   // Count frequency
+//   for (let item of Input) {
+//     map[item] = (map[item] || 0) + 1;
+//   }
+
+//   // Collect elements with frequency >= k
+//   for (let key in map) {
+//     if (map[key] >= k) {
+//       output.push(key);
+//     }
+//   }
+
+//   return output; 
+//        }
+//        const Input= ["react","node","react","mongodb","node","node","redis"]
+// k = 2
+// const result = findAtLeastK(Input,k)
+// console.log(result)//[ 'react', 'node' ]
+
 
 
 
@@ -467,6 +519,13 @@
 
 
 
+
+///---QUESTION-----Find First Repeating Element
+
+
+
+
+
 //------------------------------------------
 
 //1. **Group array elements by first character**
@@ -513,7 +572,7 @@
 // }
 
 
-////-----------------------
+////-----------------------Version A 
 
 //  function groupByFirstLetter(input){
 //      const output={};
@@ -537,8 +596,40 @@
 //   h: [ 'http', 'hcl' ]
 // }
 
+///===== another====Version B
+ 
+//  function groupByFisrtLetter(Input){
+//      const output = {};
+//      for(let item of Input){
+//          const firstLetter = item[0]
+//          if(output[firstLetter]){
+//             output[firstLetter].push(item)  
+//          }else{
+//              output[firstLetter] =  [item] 
+//          }
+//      }
+//      return output;
+//  }
+//  Input= ["apple", "banana", "avocado"]
+//  const result =  groupByFisrtLetter(Input)
+//  console.log(result)
+//  //{ a: [ 'apple', 'avocado' ], b: [ 'banana' ] }
+ 
 
 
+//  Version A → compact, slightly less verbose.
+
+// Version B → clearer, easier for beginners to understand.
+
+// 👉 In interviews, both are fine.
+// If you want to show cleaner intent, go with Version B.
+// If you want to show shorter code, go with Version A.
+ 
+ 
+ 
+ 
+ 
+ 
 //============================//
 //NOTE:
  //for(let i=0; i<obj.length; i++)// for array
@@ -625,6 +716,36 @@
 
 
 ///====================================///
+
+//  function countTarget(input){
+//      const output = {};
+//      const expectedResult = [];
+//      for(let item of input){
+//        const {target} = item
+//        output[target] =(output[target] || 0) +1 
+//      }
+//      for(let key in output){
+//          expectedResult.push({target : key, count:output[key] })
+//      }
+     
+//     return expectedResult;
+//  }
+
+//   const input = [
+//   { target: 'abc' },
+//   { target: 'gft' },
+//   { target: 'abc' }
+// ];
+//  const result =  countTarget(input)
+//  console.log(result)
+
+//[ 
+// { target: 'abc', count: 2 },
+//  { target: 'gft', count: 1 } 
+//]
+
+ 
+//------------ANOTHER WAYS-------------
 
  
 //  function countTargets(array){
@@ -920,6 +1041,17 @@
 
 
 //question based  on recursion ----
+// A && B && C = only true if A and B and C are all true.
+// A || B || C = true if any one of them is true.
+
+
+//---(typeof obj[key] === 'object' &&  obj[key] !== null &&   !Array.isArray(obj[key]) )
+
+//typeof obj[key] === 'object' → the value must be an object type.
+//obj[key] !== null → not null (because typeof null is 'object').
+//!Array.isArray(obj[key]) → not an array.
+
+
 
 // function CountKeys(obj){
 //     let count =0;
@@ -951,6 +1083,121 @@
 // };
 // const result = CountKeys(obj)
 // console.log(result)//9
+
+//------------------//
+//recursion
+//  function sumObjectValues(obj){
+//     let  sum = 0;
+//     for(let key in obj){
+//     if(typeof obj[key] === 'object' &&  obj[key] !== null && !Array.isArray(obj[key])){
+//       sum += sumObjectValues(obj[key])
+//      }
+//      else if(typeof obj[key] === 'number'){
+//           sum += obj[key]
+//     }
+//     }
+//     return sum;
+// }
+
+// const obj = { 
+//     a:1,
+//     b:{
+//         h:2,
+//         c:{
+//             d:3
+//         }
+//     },
+//     e:{
+//         f:4
+//         },
+//         g:6,
+//         k:"s"
+//     }
+// const result = sumObjectValues(obj)
+// console.log(result)//16
+
+
+///---------QUESTION---------------------------
+
+// function getCountByDataType(array){
+//     const output = {};
+//     for(let ele of array){
+//         output[typeof ele]  = (output[typeof ele] || 0)+1
+// }
+//  return output;
+// }
+
+// const arr = [2,{name:'abc'},true,'program',null,undefined,4,false]
+// const result = getCountByDataType(arr)
+// console.log(result)
+// //{ number: 2, object: 2, boolean: 2, string: 1, undefined: 1 }
+// //here null is treated as an onject
+
+
+/////ANOTHER WAYS------
+
+// function getCountByDataType(array){
+//     const output = {};
+//     const expectedOutput = [];
+//     for(let ele of array){
+        
+//         output[typeof ele]  = (output[typeof ele] || 0)+1
+// }
+// for(let key in output){
+//     expectedOutput.push({dataType : key    , count :output[key]})
+//     }
+//  return expectedOutput;
+// }
+
+// const arr = [2,{name:'abc'},true,'program',null,undefined,4,false]
+// const result = getCountByDataType(arr)
+// console.log(result)
+// [
+//   { dataType: 'number', count: 2 },
+//   { dataType: 'object', count: 2 },
+//   { dataType: 'boolean', count: 2 },
+//   { dataType: 'string', count: 1 },
+//   { dataType: 'undefined', count: 1 }
+// ]
+//here null is treated as an onject
+
+
+///------------------ANOTHER--------------------
+// function getCountByDataType(array){
+//     const output = {};
+//     const expectedOutput = [];
+//     for(let ele of array){
+//         let type;// its like box where datatype of ele stored
+//         // // ✅ Separate entry for null
+//         if(ele === null){
+//             type = "null"
+//         }else{
+//             type = typeof ele
+//         }
+//            output[type]  = (output[type] || 0)+1
+// }
+// for(let key in output){
+//     expectedOutput.push({dataType : key    , count :output[key]})
+//     }
+//  return expectedOutput;
+// }
+
+// const arr = [2,{name:'abc'},true,'program',null,undefined,4,false]
+// const arr = [2,true,undefined,{},'program',false,[],null]
+// const result = getCountByDataType(arr)
+// console.log(result)
+// [
+//   { dataType: 'number', count: 2 },
+//   { dataType: 'object', count: 1 },
+//   { dataType: 'boolean', count: 2 },
+//   { dataType: 'string', count: 1 },
+//   { dataType: 'null', count: 1 },
+//   { dataType: 'undefined', count: 1 }
+// ]
+//here null is treated as a seperate dataType
+
+
+///-------- Another question---------
 
 
 

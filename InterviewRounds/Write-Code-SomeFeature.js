@@ -1,92 +1,206 @@
 
 // ✅ 🔹 Interview-Ready Answer (Functional Component, JS)
+
 // 📌 Step-by-step:
 // “Sure! I’ll write a reusable React button component that accepts props like label, onClick, variant, type, and disabled. This way, it can be used consistently across the app with different styles and behaviors.”
 
-// ✅ Code: ReusableButton.jsx
+
+// //----
+// import React from "react";
+// import ResuableComponent from "./ResuableComponent";
+// import ResuableButton from "./ResuableButton";
+
+// export default function App() {
+//   return (
+//     <div>
+//       <div>
+//         <ResuableComponent
+//           title="Info Card"
+//           content="This is an informational card."
+//           type="info"
+//         />
+//         <ResuableComponent
+//           title="Warning Card"
+//           content="This is a warning card."
+//           type="warning" // you can take either danger
+//         />
+//       </div>
+
+
+
+//       <div>
+//         <ResuableButton
+//           type="primary"
+//           label="Primary Button"
+//           onClick={() => alert("Primary clicked")}
+//         />
+
+//         <ResuableButton
+//           type="secondary"
+//           label="Secondary Button"
+//           onClick={() => alert("Secondary clicked")}
+//         />
+
+//         <ResuableButton
+//           type="danger"
+//           label="Delete"
+//           onClick={() => alert("Delete clicked")}
+//         />
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+///--------------------------
 
 // import React from "react";
-// import "./ReusableButton.css"; // Optional for styling
 
-// const ReusableButton = ({
-//   label,
-//   onClick,
-//   type = "button",
-//   variant = "primary",
-//   disabled = false,
-//   className = "",
-//   children,
-// }) => {
+// export default function ResuableButton({ type, label, onClick }) {
+//   // styles based on type
+//   const styles = {
+//     base: {
+//       padding: "10px 16px",
+//       margin: "8px",
+//       borderRadius: "8px",
+//       border: "none",
+//       cursor: "pointer",
+//       fontSize: "14px",
+//       fontWeight: "bold",
+//     },
+//     primary: {
+//       backgroundColor: "blue",
+//       color: "white",
+//     },
+//     secondary: {
+//       backgroundColor: "grey",
+//       color: "white",
+//     },
+//     danger: {
+//       backgroundColor: "red",
+//       color: "white",
+//     },
+//   };
+
+//   // merge base style + type style
+//   const buttonStyle = { ...styles.base, ...styles[type] };
+
 //   return (
-//     <button
-//       type={type}
-//       onClick={onClick}
-//       disabled={disabled}
-//       className={`btn ${variant} ${className}`}
-//     >
-//       {label || children}
+//     <button style={buttonStyle} onClick={onClick}>
+//       {label}
 //     </button>
 //   );
-// };
-
-// export default ReusableButton;
-
-
-
-// ✅ Sample CSS: ReusableButton.css
-
-// .btn {
-//   padding: 10px 20px;
-//   font-size: 1rem;
-//   border-radius: 6px;
-//   border: none;
-//   cursor: pointer;
-//   transition: background 0.3s ease;
 // }
 
-// .btn.primary {
-//   background-color: #007bff;
-//   color: white;
+
+
+///---------------------------
+// import React from "react";
+// export default function ResuableComponent(props) {
+//   console.log("Received props:", props);
+
+//   const { title, content, type } = props;
+
+//   const cardStyle = {
+//     border: "1px solid #ccc",
+//     padding: "20px",
+//     borderRadius: "10px",
+//     backgroundColor: type === "info" ? "orange" : "green",
+//     color: type === "info" ? "white" : "red",
+//   };
+
+//   return (
+//     <>
+//       <h1>Resuable Button---</h1>
+//       <div style={cardStyle}>
+//         <h3>{title}</h3>
+//         <p>{content}</p>
+//       </div>
+//     </>
+//   );
 // }
 
-// .btn.secondary {
-//   background-color: #6c757d;
-//   color: white;
+
+
+
+
+
+// ✅ Code: ReusableButton.jsx
+
+// App.js
+// import React from "react";
+// import ResuableButton from "./ResuableButton";
+
+// export default function App() {
+//   return (
+//     <div>
+//       <h1>Parent Component</h1>
+
+//       <ResuableButton
+//         type="primary"
+//         label="Primary Button"
+//         onClick={() => alert("Primary clicked")}
+//       />
+
+//       <ResuableButton
+//         type="secondary"
+//         label="Secondary Button"
+//         onClick={() => alert("Secondary clicked")}
+//       />
+
+//       <ResuableButton
+//         type="danger"
+//         label="Delete"
+//         onClick={() => alert("Delete clicked")}
+//       />
+//     </div>
+//   );
 // }
 
-// .btn:disabled {
-//   background-color: #ccc;
-//   cursor: not-allowed;
-// }
+
 
 
 // ✅ Usage Example
 
 
-// import ReusableButton from "./ReusableButton";
+// // ReusableButton.js
+// import React from "react";
 
-// function App() {
+// export default function ResuableButton({ type, label, onClick }) {
+
+//   // styles based on type
+//   const styles = {
+//     base: {
+//       padding: "10px 16px",
+//       margin: "8px",
+//       borderRadius: "8px",
+//       border: "none",
+//       cursor: "pointer",
+//       fontSize: "14px",
+//       fontWeight: "bold",
+//     },
+//     primary: {
+//       backgroundColor: "blue",
+//       color: "white",
+//     },
+//     secondary: {
+//       backgroundColor: "grey",
+//       color: "white",
+//     },
+//     danger: {
+//       backgroundColor: "red",
+//       color: "white",
+//     },
+//   };
+
+//   // merge base style + type style
+//   const buttonStyle = { ...styles.base, ...styles[type] };
+
 //   return (
-//     <div>
-//       <ReusableButton
-//         label="Save"
-//         onClick={() => alert("Saved!")}
-//         variant="primary"
-//       />
-
-//       <ReusableButton
-//         variant="secondary"
-//         onClick={() => alert("Cancelled")}
-//       >
-//         Cancel
-//       </ReusableButton>
-
-//       <ReusableButton
-//         label="Delete"
-//         onClick={() => alert("Deleted!")}
-//         variant="danger"
-//       />
-//     </div>
+//     <button style={buttonStyle} onClick={onClick}>
+//       {label}
+//     </button>
 //   );
 // }
 
@@ -105,7 +219,7 @@
 
 
 // npm install react-error-boundary
-//  import {ErrorBoundary} from 'react';
+// import { ErrorBoundary } from "react-error-boundary";
 //  import MyComponent from './MyComponent'
 
 // export default function App(){
@@ -147,7 +261,7 @@
 //---------------------------------------
 //npm install styled-components
 // import React from "react";
-// import styled from "styled-components";
+// import styled from 'styled-components';
 
 //create a style component-------
 
@@ -201,7 +315,7 @@
 // export default function App() {
 //   const [data, setData] = useState([]);
 //   const [error, setError] = useState(null);//can't use useState([])
-//   console.log("00--", data);
+//   console.log("00--", data); //during rendering two times call/show
 
 //   const FetchApiData = async () => {
 //     try {
@@ -223,6 +337,9 @@
 //   useEffect(() => {
 //     FetchApiData();
 //   }, []);
+  //- 2 times on mount 
+  // -2 times on willunmount
+  // total display 4 times data
 
 //   return (
 //     <div>
@@ -247,6 +364,25 @@
 //   );
 // }
 
+//----FINAL RESULT----
+// "00--" []
+// "00--" []
+// "00--" [{INSIDE DATA}]
+// "00--" [{INSIDE DATA}]
+// "00--" [{INSIDE DATA}]
+// "00--" [{INSIDE DATA}]
+
+//NOTES--------------------
+// Key Point
+// Strict Mode: In React 18 development, React deliberately invokes mount, unmount, and remount logic twice for each newly mounted component 
+// (effects run twice, cleanups twice),  to catch potential problems, but keeps state as if the user just tabbed away and back.
+
+// Production Mode: This does NOT happen—only one mount/cycle, so only one set of logs per normal change.
+
+// So, React 18 Strict Mode does simulate two mounts/unmounts in development, causing your logs and renders to appear multiple times. 
+// This does not happen in production. Your understanding is correct.
+
+
 
 //----NODE EXECEPTION HANDLING----
 
@@ -259,3 +395,70 @@
 //         console.log.error("DB is failed" ,error.message)
 //     }
 //   }
+
+
+
+//-------------------------------------
+
+//-------INTERVIEW QUESTION------------
+// const  ReturnAllPromise = async () =>{
+//     try{
+//         const apis = [p, p2, p3 ]
+   
+//    const apisCall = apis.map((url)=> fetch(url).then(res => res.json())) 
+//    const [user,api,todo] = await Promise.all(apisCall)
+   
+//    console.log('api user result', user)
+//      console.log('api api result', api)
+//        console.log('api todo result', todo)
+   
+//     }catch(error){
+//         console.error("apis rejected", error)
+//     }
+// }
+// ReturnAllPromise() 
+
+
+
+//=========================
+// ✅ Problem:
+// Promise.all() fails entirely if even one promise rejects.
+
+// So if one URL fails, all your state values stay empty, and no partial data is shown.
+
+// ✅ Solution:
+// To prevent complete failure, use Promise.allSettled() instead of Promise.all()
+
+//------INTERVIEW IMPORTANT---------//
+// import React, { useEffect } from "react";
+// import "./styles.css";
+
+// export default function App() {
+//   const fetchApiData = async () => {
+//     try {
+//       const api = [
+//         "https://jsonplaceholder.typicode.com/users",
+//         "https://jsonplaceholder.typicode.com/todos",
+//         "https://jsonplaceholder.typicode.com/albums",
+//       ];
+//       const apiCalls = api.map((url) => fetch(url).then((res) => res.json()));
+//       const [user, todo, list] = await Promise.allSettled(apiCalls);
+//        const [user, todo, list] = await Promise.all(apiCalls);
+//       console.log("00-", user);
+//       console.log("111-", todo);
+//       console.log("22-", list);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+//   useEffect(() => {
+//     fetchApiData();
+//   }, []);
+
+//   return (
+//     <div className="App">
+//       <h1>Hello CodeSandbox</h1>
+//       <h2>Start editing to see some magic happen!</h2>
+//     </div>
+//   );
+// }

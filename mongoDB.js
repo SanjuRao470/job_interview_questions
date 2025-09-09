@@ -243,6 +243,102 @@
 //Where replication helps in data availability, sharding is useful to horizontally scale large datasets.
 
 
+//INTERVIEW QUESTIONS------
+
+//-- THERE ARE MAINLY 3 TYPE OF DOCUMENT IN MONGODB----
+
+// When structuring data between collections:
+
+//-1 Embedded Documents → 
+//An embedded document is when related data is stored directly inside a single MongoDB document as a nested object.
+
+//-2 Referenced Documents → 
+//A referenced document is when related data is stored in separate documents/collections, and linked by an ID (like a foreign key in SQL).
+
+//-3 Hybrid Documents → reference + snapshot of important fields (common in e-commerce orders).
+//are a mix of embedded and referenced approaches for storing related data.
+
+
+//---Real-World E-commerce Example
+// Scenario: You have orders and products.
+
+// Embedded (When order items are small & fixed) ==> one to few
+
+// orders collection
+// {
+//   _id: 101,
+//   customer_name: "Alice",
+//   items: [
+//     { product_name: "T-shirt", price: 500, quantity: 2 },
+//     { product_name: "Jeans", price: 1200, quantity: 1 }
+//   ]
+// }
+
+
+
+//----Referenced (When products are large & reused)  ==> one to many or many to many
+
+// orders collection
+// {
+//   _id: 101,
+//   customer_name: "Alice",
+//   product_ids: [
+//     ObjectId("66ab1e4f1234567890abc001"),  //---Referenced ID OR WORKS AS foreign key
+//     ObjectId("66ab1e4f1234567890abc002")    // //---Referenced ID  OR WORKS AS foreign key
+//   ]
+// }
+
+
+
+//---Referenced Documents → 
+
+// // products collection
+// {
+//   _id: ObjectId("66ab1e4f1234567890abc001"),
+//   name: "T-shirt",
+//   price: 500,
+//   stock: 100
+// }
+// {
+//   _id: ObjectId("66ab1e4f1234567890abc002"),
+//   name: "Jeans",
+//   price: 1200,
+//   stock: 50
+// }
+
+
+
+//----- Hybrid Approach
+
+// // orders
+// {
+//   _id: 101,
+//   customer_id: ObjectId("c123"),
+//   items: [
+//     {
+//       product_id: ObjectId("p001"),
+//       product_name: "T-shirt",
+//       price_at_order: 500,
+//       quantity: 2
+//     },
+//     {
+//       product_id: ObjectId("p002"),
+//       product_name: "Jeans",
+//       price_at_order: 1200,
+//       quantity: 1
+//     }
+//   ],
+//   order_date: ISODate("2025-08-13")
+// }
+
+// ✅ Benefits:
+// product_id lets you fetch the latest product details if needed.
+// product_name and price_at_order keep historical data correct even if product changes later.
+// You don’t need a join just to display the order summary.
+
+
+
+
 //9- When should you embed one document within another in MongoDB?
 
 //Embedding one document within another in MongoDB should be done when the two documents have a 
@@ -293,6 +389,8 @@
 // A18: No, MongoDB does not support Foreign Key constraints. However,
 //  it offers a feature called as manual references/embedded document, which is used to mimic the
 //   behavior of Foreign Key constraints.
+
+
 
 //11-How can you implement Transactions in MongoDB?
 // MongoDB supports multi-document transactions in versions 4.0 and later.
