@@ -983,6 +983,24 @@
 
 
 
+//------This keeps the first occurrence of each element and removes later duplicates without changing their position.
+
+// function uniqueArr(array){
+//     const output = [];
+//     for(let i=0; i<array.length;i++){
+//         if(!output.includes(array[i])){
+//             output.push(array[i])
+//         }
+//     }
+//     return output;
+// }
+
+// const arr = [4,2,1,3,4,5,76,8,4,2,5,7,10,8]
+// const result = uniqueArr(arr)
+// console.log(result)
+// //[  4, 2, 1, 3, 5,76, 8, 7, 10]
+
+
 
 //--- find only those element which appear only once-----
 
@@ -1283,6 +1301,35 @@
 //     console.log(result)//[88, 77, 66, 34, 9,  6,  5,  2,  1]
 
 
+//---------------------------
+// //sort them based on name in ascending order
+
+//You’re implementing bubble sort:
+// function sortByNameInAscending(input){
+//     for(let i=0; i<input.length;i++){
+//       for(let j=0; j<input.length-i-1;j++){
+//           if(input[j].name > input[j+1].name){
+//               let temp = input[j].name;
+//               input[j].name = input[j+1].name
+//               input[j+1].name = temp
+//           }
+//          } 
+//     }
+//     return input;
+// }
+
+// const input = [{id:3,name:'I4l'},{id:1,name:'I3l'},{id:4,name:'I5l'},{id:2,name:'I6l'},{id:6,name:'I2l'},{id:5,name:'I1l'}]
+// const result = sortByNameInAscending(input)
+// console.log(result)
+
+// [
+//   { id: 3, name: 'I1l' },
+//   { id: 1, name: 'I2l' },
+//   { id: 4, name: 'I3l' },
+//   { id: 2, name: 'I4l' },
+//   { id: 6, name: 'I5l' },
+//   { id: 5, name: 'I6l' }
+// ]
 
 
 

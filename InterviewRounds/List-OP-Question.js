@@ -602,3 +602,124 @@
 
 // 🔹 x++ → Post-increment  =>x++ returns the original value of x (then increments),
 // 🔹 ++x → Pre-increment  =>++x increments x first, then returns the new value.
+
+
+//--------------SAMSUNG INTERVIEW--------------
+
+
+//---   BEHAVIOUR OF useState-----
+
+// const [count, setCount] = useState(0);
+
+// const handlerCount = () => {
+//   setCount(count + 1);
+//   setCount(count + 1);
+//   setCount(count + 1);
+// };
+// // Final count = 1 (React batches updates, takes last state = 0+1)//--regular
+
+// const handlerCount = () => {
+//   setCount(prev => prev + 1);
+//   setCount(prev => prev + 1);
+//   setCount(prev => prev + 1);
+// };
+// // Final count = 3 (uses latest state each time)//--functional 
+
+
+
+///-----------------
+// With setInterval:
+
+// const handlerCount = () => {
+//   setInterval(() => {
+//     setCount(count + 1);
+//     setCount(count + 1);
+//     setCount(count + 1);
+//   }, 1000);
+// };
+// // Final count = always +1 (stale closure: `count` doesn’t update inside interval)
+
+
+// 👉 Fix: use prev form inside interval.
+
+//✅ Correct version (if you want it to increment properly):
+
+// setInterval(() => {
+//   setCount(prev => prev + 1);
+//   setCount(prev => prev + 1);
+//   setCount(prev => prev + 1);
+// }, 1000);
+// Now every tick increases by 3 (1+1+1).
+
+
+//------------
+
+// const [count, setCount] = useState(0);
+
+// const handlerCount = () => {
+//   setCount(count + 1);
+//   setCount(count + 1);
+//   setCount(prev => prev + 1);
+// };
+// 🔎 Step by step when count = 0 initially:
+
+// setCount(count + 1) → setCount(1)
+
+// setCount(count + 1) → again setCount(1) (still using old render value 0)
+
+// setCount(prev => prev + 1) → takes the latest state (1) and increments → 2
+
+// ✅ Final value of count = 2
+
+
+//--------------------------
+
+// function CurringFun(a) {
+//   return function(b) {
+//     return function(c) {
+//       return a + b * c; // works directly here
+//     }
+//   }
+// }
+
+// console.log(CurringFun(4)(3)(2)); // 10
+//Structure: 3 levels of functions → returns a value directly (not another function).
+
+// Evaluation:
+
+// CurringFun(4) → returns function(b){...}
+// (3) → returns function(c){ return 4 + 3* c }
+// (2) → executes immediately → 4 + 3*2 = 10
+// No extra () at the end needed, because it already returns a value.
+
+
+
+///----------------
+
+// function fun(a) {
+//   return function(b) {
+//     return function(c) {
+//       return function() {
+//         return a + b + c;
+//       };
+//     };
+//   };
+// }
+
+// console.log(fun(2)(3)(4)()); // 9
+//Structure: 4 levels of functions → the last one still returns a function, not a value.
+
+// valuation:
+// fun(2) → returns function waiting for b
+// (3) → returns function waiting for c
+// (4) → returns another function, which when called () finally gives the value
+// You must call with extra () at the end to get the result.
+
+
+// In interviews, you can say:
+
+// First one: direct currying, returns the result immediately.
+
+// Second one: higher-order currying, defers execution until explicitly invoked — 
+// useful when you want to delay evaluation or add extra logic at the end 
+// (like logging, caching, or chaining).
