@@ -215,6 +215,64 @@
 
 
 
+///MAKE EXAMPLE OF HOC--------------
+//  here we need at least two component and the third one is App.js so total three component.
+
+//App.js
+// import React from "react";
+// import Counter from "./Counter";
+// import HOC from "./HOC";
+
+// export default function App() {
+//   // HOC(Counter) returns a new component!
+//   const EnhancedCounter = HOC(Counter);
+//   return (
+//     <div>
+//       <h1>Hello CodeSandbox</h1>
+//       <EnhancedCounter />
+//     </div>
+//   );
+// }
+
+
+
+//Input component---
+// import React, { useState } from "react";
+
+// export default function Counter() {
+//   const [count, setCount] = useState(0);
+//   return (
+//     <div>
+//       {count}
+//       <button onClick={() => setCount(count + 1)}> update</button>
+//     </div>
+//   );
+// }
+
+
+
+
+// // HOC.js
+// import React from "react";
+
+// // HOC expects a component and returns a new one
+// export default function HOC(WrappedComponent) {
+//   // Return a new component that renders WrappedComponent twice with added styles
+//   return function EnhancedComponent(props) {
+//     return (
+//       <div>
+//         <p style={{ backgroundColor: "red", width: "100px", height: "100%" }}>
+//           <WrappedComponent {...props} />
+//         </p>
+//         <p style={{ backgroundColor: "blue", width: "100px" }}>
+//           <WrappedComponent {...props} />
+//         </p>
+//       </div>
+//     );
+//   };
+// }
+
+
 //------------------------------------------
 
 
@@ -250,7 +308,7 @@
 
 // export default function App() {
 //   return <div>
-//     <Suspense  fallback={{<div>Loading...</div>}}>
+//     <Suspense  fallback={<div>Loading...</div>}>
 //       <LazyComponent/>
 //     </Suspense>
 //   </div>;
@@ -306,6 +364,88 @@
 //       console.error(err);
 //     }
 //   };
+
+
+// //----------
+// import React, { useState, useEffect } from "react";
+
+// export default function App() {
+//   const [data, setData] = useState([]);
+//   const [errorMessage, setErrorMessage] = useState(null);
+//   console.log(data);
+
+//   const fetchApisData = async () => {
+//     try {
+//       const response = await fetch(
+//         "https://jsonplaceholder.typicode.com/users"
+//       );
+//       if (!response.ok) {
+//         throw new Error("response is not ok.");
+//       }
+//       const responseData = await response.json();
+//       setData(responseData);
+//     } catch (error) {
+//       setErrorMessage(error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchApisData();
+//   }, []);
+
+//   return (
+//     <>
+//       <h1>stop watch---------</h1>;
+//       {data.length ? (
+//         <ul>
+//           {data.map((item) => (
+//             <li key={item.id}>{item.name}</li>
+//           ))}
+//         </ul>
+//       ) : errorMessage ? (
+//         <p style={{ color: "red" }}>{errorMessage.message}</p>
+//       ) : (
+//         <p>loading....</p>
+//       )}
+//     </>
+//   );
+// }
+
+
+//===============
+// import React, { useState, useEffect } from "react";
+
+// export default function App() {
+//   const [data, setData] = useState("");
+
+//   const fetchApisData = async () => {
+//     try {
+//       const response = await fetch(
+//         "https://jsonplaceholder.typicode.com/users"
+//       );
+//       if (!response.ok) {
+//         throw new Error("response is not ok.");
+//       }
+//       const responseData = await response.json();
+//       setData(responseData);
+//     } catch (error) {
+//       setErrorMessage(error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchApisData();
+//   }, []);
+
+//   return (
+//     <>
+//       <h1>stop watch---------</h1>;
+//       {data.length ? data[0].name :'not found'}
+//     </>
+//   );
+// }
+
+
 
 
 
@@ -462,3 +602,247 @@
 //     </div>
 //   );
 // }
+
+
+
+//----------Promise====
+
+//Question --Write simple promise function
+
+// function demoPromise() {
+//   return new Promise((resolve, reject) => {
+//     console.log("Promise is pending...");
+// //const success = true;//fulfilled
+// const success = false;//rejected
+//     setTimeout(() => {
+//       if (success) {
+//         resolve("Promise fulfilled!");
+//       } else {
+//         reject("Promise rejected!");
+//       }
+//     }, 2000);
+//   });
+// }
+
+// // Usage for fulfilled:
+// demoPromise()
+//   .then(result => console.log(result))   // Logs: Promise fulfilled!
+//   .catch(error => console.error(error));
+
+
+// QUESTION -----
+
+// function callBackFunction(callback) {
+//   setTimeout(() => {
+//     const data = { name: 'Sanju', age: 34 };
+//     callback(data);
+//   }, 2000);
+// }
+
+// callBackFunction((receivedData) => {
+//   console.log("Callback Data:", receivedData);
+// });
+
+
+
+// QUESTION -----
+
+// WRITE CALLBACK HELL CODE
+// function step1(callback) {
+//     setTimeout(() => {
+//       console.log("Step 1 completed");
+//       callback();
+//     }, 1000);
+//   }
+  
+//   function step2(callback) {
+//     setTimeout(() => {
+//       console.log("Step 2 completed");
+//       callback();
+//     }, 1000);
+//   }
+  
+//   function step3(callback) {
+//     setTimeout(() => {
+//       console.log("Step 3 completed");
+//       callback();
+//     }, 1000);
+//   }
+  
+//   function step4(callback) {
+//     setTimeout(() => {
+//       console.log("Step 4 completed");
+//       callback();
+//     }, 1000);
+//   }
+  
+//   Calling each function in a nested way (Callback Hell)
+//   step1(() => {
+//     step2(() => {
+//       step3(() => {
+//         step4(() => {
+//           console.log("All steps completed");
+//         });
+//       });
+//     });
+//   });
+
+// RESULT:===========
+// Step 1 completed
+//  Step 2 completed
+//  Step 3 completed
+//  Step 4 completed
+//  All steps completedmpiler
+
+// console.log("Try programiz.pro");
+
+
+
+
+//--EXAMPLE--------------
+
+// function passByValue(a){
+//     a=8;
+//     console.log("inside",a)//8
+// }
+
+// let num = 10;
+// passByValue(num)
+//   console.log("outside",num)//10
+
+
+// function passByReference(obj) {
+//   obj.name = "Updated"; // modifies the original object
+//   console.log("Inside function:", obj.name);//Updated
+// }
+
+// let user = { name: "Sanju" };
+// passByReference(user);
+
+// console.log("Outside function:", user.name);//Updated
+
+
+
+//--------
+// function safeUpdate(obj) {
+//   let copy = { ...obj }; // clone the object
+//   copy.name = "Updated";
+//   console.log("Inside:", copy.name); // Updated
+// }
+
+// let user = { name: "Sanju" };
+// safeUpdate(user);
+// console.log("Outside:", user.name); // still "Sanju"
+
+
+
+//QUESTION -----
+
+
+//Controlled Component:
+
+// import { useState } from 'react';
+
+// function ControlledInput() {
+//   const [value, setValue] = useState('');
+
+//   return (
+//     <input 
+//       type="text" 
+//       value={value} 
+//       onChange={(e) => setValue(e.target.value)} 
+//     />
+//   );
+// }
+// Input is controlled by React state (value).
+
+// Updates are handled via onChange.
+
+
+
+// Uncontrolled Component:
+
+// import { TextField, Button } from '@mui/material';
+// import { useRef } from 'react';
+
+// function MuiUncontrolledInput() {
+//   const inputRef = useRef();
+
+//   const handleSubmit = () => {
+//     console.log('Value:', inputRef.current.value);
+//   };
+
+//   return (
+//     <>
+//       <TextField inputRef={inputRef} label="Your Name" />
+//       <Button onClick={handleSubmit}>Submit</Button>
+//     </>
+//   );
+// }
+
+//--QUESTION
+//--Event Delegation
+
+// import React from "react";
+
+// export default function DelegationDemo() {
+//   const items = ["Apple", "Banana", "Cherry"];
+
+//   // Handle all clicks on <ul> and check if target was an <li>
+//   function handleListClick(event) {
+//     if (event.target.tagName === "LI") {
+//       alert(`You clicked: ${event.target.textContent}`);
+//       event.stopPropagation(); // Prevent event from bubbling further
+//     }
+//   }
+
+//   return (
+//     <div>
+//       <h1>Event  Delegation</h1>
+//       <ul onClick={handleListClick}>
+//         {items.map((fruit) => (
+//           <li key={fruit}>{fruit}</li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+
+
+//-QUESTION PRACTICAL Diffrence between useEffect and useLayoutEffect
+
+// import React, { useState, useLayoutEffect, useEffect } from "react";
+
+// export default function UseEffectFlicker() {
+//   const [text, setText] = useState("code improve.................");
+//   const [loading, setLoading] = useState(false);
+
+//   useEffect(() => {// visual glitches happens here/ flicker
+//     console.log("useEffect code");
+//     if (!loading) {
+//       setText("useEffect improved");
+//     } else {
+//       setText("useEffect welcome with else");
+//     }
+//   });
+
+//   useLayoutEffect(() => {
+//     console.log("useLayoutEffect code");
+//     if (!loading) {
+//       setText("useLayoutEffect improved");
+//     } else {
+//       setText("useLayoutEffect welcome with else");
+//     }
+//   });
+
+//   // console.log("synchronouse called");
+
+//   return (
+//     <div>
+//       <h1>useEffect flicker example</h1>
+//       <p>Measured width: {text}</p>
+//     </div>
+//   );
+// }
+

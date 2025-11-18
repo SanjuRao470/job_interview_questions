@@ -1,3 +1,5 @@
+
+
 //IMP - NOTES --
 
 // Sorting and Filter: Filter items first, then arrange them in a specific order.
@@ -121,6 +123,9 @@
 //   );
 // }
 
+//---NOTES: IF YOU RUN THIS CODE TO TEST ITS WORKING FINE OR NOT
+//YOU SEE SOMETIME IF YOU USE OUTDATED TIME THEN IT CALL  ELSE PART SO FOR THAT YOU HAVE
+//CHANGE  ("December 31 ,2024 23:59:59") WHICH ARE COMING IN FUTURE. like  ("December 31 ,2025 23:59:59")
 
 
 //QUESTION : Input questions---------------
@@ -672,6 +677,31 @@
 // which guarantees you're working with the latest state value:
 //     }
 //   };
+
+
+//alternative working fine
+// Math.max  and  Math.min   We want to move between pages safely — not go below page 1 and not go beyond totalPage.
+
+
+//if items.length =0 then  Math.max(1, 0) // → returns 1 not 0 otherwise its show invalid
+//Math.max(prev - 1, 1)// So this prevents the page number from ever going below 1.
+//Math.min(prev + 1, totlePage)//So this prevents going beyond the last page.
+
+
+
+// const totlePage = Math.max(1, Math.ceil(items.length / itemPerPage));
+//   console.log("000000-----", totlePage);
+
+
+//   const handlerPrevButton = () => {
+//     setCurrentPage((prev) => Math.max(prev - 1, 1));
+//   };
+
+
+//   const handlerNextButton = () => {
+//     setCurrentPage((prev) => Math.min(prev + 1, totlePage));
+//   };
+
 
 //   return (
 //     <>

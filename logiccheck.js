@@ -281,6 +281,26 @@
 // let result = SumFun(arr)
 // console.log(result)// case -1  7 // case-2 8 
 
+//---
+// Find sum of numbers without a for loop (Hint: reduce() / recursion)
+// const Input= [1,4,3]
+// const output = Input.reduce((acc,cum)=> acc + cum,0);
+// console.log(output)//8
+// // On the first run, accumulator is 0 (the initial value) and currentValue is 1 (first array element):
+// 1st=>0+1,2nd=>1+4,3nd=>5+3=>8
+
+//-------------
+
+// function app(array){
+// const  output = array.reduce((acc,curr) => {
+//         return acc + curr;
+//     },0)
+//     return output;
+// }
+// const arr = [2,3,4,7]
+// const result = app(arr)
+// console.log(result)
+
 
 
 //Question - 10   Write a function to filter out even/Odds numbers from an array of numbers.

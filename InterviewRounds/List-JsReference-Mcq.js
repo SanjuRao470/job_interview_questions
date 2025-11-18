@@ -1,3 +1,6 @@
+//valueOf() is a built-in JavaScript method that returns the primitive value of an object.
+//It tells JavaScript: “Give me the actual value of this object, not the object itself.”
+
 //ToNumber --- js internally used to do type conversion(implicit/automatic happened)
 
 // (123).toString();    // "123"  (number → string)
@@ -5,7 +8,7 @@
 // ({}).toString();     // "[object Object]" (object → string)
 // [1, 2].toString();   // "1,2"  (array → string)
 
-// (123).valueOf();     // 123    (number → primitive)
+// (123).();     // 123    (number → primitive)
 // ('abc').valueOf();   // "abc"  (string → primitive)
 // ({}).valueOf();      // {}     (object itself, no primitive)
 
@@ -13,7 +16,7 @@
 //---Example-----
 
 // const obj = {a:2,name:'abd'}
-// console.log(typeof obj.valueOf())//object
+// console.log(typeof obj.valueOf())//objectvalueOf
 // console.log(typeof obj.toString())//string
 // console.log(obj.valueOf())//{ a: 2, name: 'abd' }
 // console.log(obj.toString())//"[object Object]" or [object Object]
@@ -46,7 +49,20 @@
 // console.log( == 1), console.log( === 1)// here we can use null and undefined// false,false
 // console.log( == "1,2,3"), console.log( === "1,2,3")//similar here also// false,false
 
+// by this rrule:::: JavaScript tries to convert both sides to comparable types (using coercion rules).
 
+//reason behind   // console.log([] == 0), console.log([] === 0)//true,false
+// [].valueOf() → []  // still object, no help
+// [].toString() → "" // empty string
+//Now one side is a string (""), the other is a number (0).
+
+
+ //reason behind   //  // console.log(true == 1), console.log(true === 1)//true,false
+// Number(true) → 1
+// Number(false) → 0
+
+
+//✅ Both [] and {} are truthy values.  means [] =>true  and means {} =>true
 // 1. console.log([] == ![])
 // ![] converts the array [] (which is truthy) to false.
 // The expression becomes [] == false.
@@ -70,9 +86,16 @@
 // false converts to number 0.
 // 0 == NaN is false.
 
+
 // false === 'false':
 // Strict equality compares types and values without coercion.
 // Boolean vs string types differ, so false.
+
+
+
+//console.log(true == 'true') false // console.log(true === 'true')//false
+// 'true' convert into NaN that why
+
 
 
 // 4. console.log(null == '')
@@ -221,6 +244,18 @@
 // console.log(arr3); // Output: [1, 2, 3] (copy unaffected by arr1)
 
 
+//---QUESTION---
+//  const a = { ab: { cd: { ef: true } } };
+//  const b = a; 
+//  const c = { ...a };
+//  console.log(a === b);//true
+//  console.log(a === c);//false
+//  a.ab.cd.ef = false;
+//  console.log(b.ab.cd.ef);//false
+//  console.log(c.ab.cd.ef); //false
+
+
+
 //--------------
 // console.log([1,2,3] + [4,5,6]); // "1,2,34,5,6" (arrays → strings → concatenated)
 
@@ -270,5 +305,7 @@
 // Output: "18number"
 
 
+//------------------------------
+//console.log(true + false)//1+0=>1
 
 

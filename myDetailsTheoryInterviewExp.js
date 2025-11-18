@@ -1,3 +1,455 @@
+//---•	null vs undefined vs NaN
+
+
+// let a = null;
+// console.log(a);            // null
+// console.log(typeof a);     // "object"  (weird but true)
+
+
+// let b;
+// console.log(b);            // undefined
+// console.log(typeof b);     // "undefined"  // itself is datatype
+
+
+// console.log(0 / 0);        // NaN
+// console.log("abc" * 3);    // NaN
+// console.log(parseInt("hi")); // NaN
+// console.log(typeof NaN);   // "number"
+// ✅ Interview line: “NaN is a special numeric value that represents an invalid number.”
+
+
+// console.log(null == undefined); //true
+// console.log(null === undefined); //false
+// console.log(NaN == NaN);//false
+// console.log(NaN === NaN);//false 
+
+
+
+//---  •	Truthy & Falsy values
+
+//  In JavaScript, every value is either “truthy” or “falsy” when used in Boolean contexts (e.g., if, while, logical operators).
+ 
+//why [] and {} are truthy value?
+ // because they are  object in the memory
+
+//  //console.log(Boolean([]))//true
+// // console.log(Boolean({}))//true
+//  //console.log(Boolean(""))//false
+//  //console.log(Boolean(" "))//true
+//   //console.log(Boolean("hello "))//true
+//   //console.log(Boolean(null))//false
+//  //console.log(Boolean(undefined))//false
+// // console.log(Boolean(0))//false
+// // console.log(Boolean(1))//true
+// // console.log(Boolean(0))//false
+// // console.log(Boolean(-0))//false
+// // console.log(Boolean(-1))//true
+// // console.log(Boolean(1))//true
+// // console.log(Boolean(NaN))//false
+// //console.log(Boolean(123));// true
+
+
+
+// 1️⃣ What is ! (NOT operator)?
+// The ! operator converts a value into a Boolean first, then inverts it.
+
+// Example:
+
+// console.log(!true);   // false
+// console.log(!false);  // true
+// console.log(!0);      // true  (0 → falsy → becomes false → invert → true)
+// console.log(!123);    // false (123 → truthy → becomes true → invert → false)
+
+
+// So one ! does:
+// Convert value → Boolean
+// Invert (flip true ↔ false)
+
+
+// 2️⃣ What does !! (Double NOT) do?
+// The first ! converts the value to Boolean and flips it.
+// The second ! flips it back to the original truthiness, leaving only the Boolean conversion.
+// So !!value is the same as Boolean(value).
+
+
+// 3️⃣ Step-by-step Example
+// console.log(!!"world");
+
+
+// Step 1: "world" is a truthy string.
+// Step 2: First ! → !("world") → false
+// Step 3: Second ! → !false → true ✅
+
+
+// 2️⃣ Use Double NOT (!!)
+
+// Shortcut way: !!value converts it to a strict Boolean.
+
+// console.log(!!false);    // false
+// console.log(!!0);        // false
+// console.log(!!"");       // false
+// console.log(!!"world");  // true
+// console.log(!![]);       // true
+// console.log(!!{});       // true
+
+
+
+// EXECUTION CONTEXT & CALL STACK---------------
+
+//--context
+//scope---global,functional.block
+//variable--global,functional.block
+//lexical scope
+//regular call
+//method call
+
+
+//-----using with this keyword-----
+// this keyword alwways work with a regular function and an object using strict and non-strict mode
+
+//--this value depend how a functional call not where and how its defined--
+//  its calculate at runtime
+// this value can update by  call , apply , bind methods
+
+
+///--- why we need this keyword in  js--
+// It tells functions “who is calling me?”
+// Without this, functions would not know the object they belong to.
+
+
+// 2️⃣ Why we need this
+
+// A. To access properties of the object inside methods
+
+// const person = {
+//   name: "Sanju",
+//   greet: function() {
+//     console.log("Hello " + this.name);
+//   }
+// };
+
+// person.greet(); // Hello Sanju
+
+
+// this.name refers to the name of the object that owns the method (person).
+// Without this, you’d have to hardcode person.name inside the method, which makes it non-reusable.
+
+
+// B. To make methods reusable across objects
+
+// function greet() {
+//   console.log("Hello " + this.name);
+// }
+
+// const person1 = { name: "Sanju", greet };
+// const person2 = { name: "Rao", greet };
+
+// person1.greet(); // Hello Sanju
+// person2.greet(); // Hello Rao
+
+
+// Same function behaves differently depending on the context (the object calling it).
+// this allows dynamic behavior → reusability.
+
+
+// C. To handle dynamic execution context
+
+
+// Sometimes we don’t know which object will call the function at runtime.
+// this allows functions to adapt dynamically.
+
+
+// function showName() {
+//   console.log(this.name);
+// }
+
+// const obj = { name: "Sanju" };
+// const obj2 = { name: "Rao" };
+
+// obj.method = showName;
+// obj2.method = showName;
+
+// obj.method();  // Sanju
+// obj2.method(); // Rao
+
+
+// showName function can work for any object.
+
+// D. Works with constructors & classes
+// function Person(name) {
+//   this.name = name;
+// }
+
+// const p1 = new Person("Sanju");
+// console.log(p1.name); // Sanju
+
+
+// this refers to the newly created object in constructors.
+// Without this, constructors cannot assign properties dynamically.
+
+
+// ✅ Summary: Why we need this
+
+// Access object properties dynamically
+
+// Make methods reusable across objects
+
+// Adapt function behavior depending on caller
+
+// Work with constructors/classes to create new objects
+
+
+
+// Scope = “where can I access a variable?” → age inside function
+// Context = “who is executing this function (this)?” → person because it’s a method call
+//Context deals with the object that owns the execution of the function.
+
+
+// function hello() {/// this makes function execution context(FEC)
+//   console.log(this);
+// }
+
+
+// const obj = {
+//   name: "Sanju",
+//   sayHello: hello
+// };
+
+
+// const person = {
+//   name: "Sanju",
+//   greet: function() {  // <-- method of the object(person)
+//     var age = 26;   ////function variable
+//     console.log(this.name); 
+//     console.log(age);  //function scope
+//   }
+// };
+
+
+// var a = 10; // global scope
+
+// function test() {
+//   let b = 20; // function scope
+//   console.log(b); //✅ accessible inside function
+//   if (true) {
+//     const c = 30; // block scope
+//     console.log(c); // 30 //✅ accessible inside  block function
+//   }
+//   // console.log(c); // ❌ ReferenceError
+// }
+
+
+// var a = 10; // global scope
+
+// function outer() {
+//   var b = 20; // function scope of outer
+
+//   function inner() {
+//     console.log(a); // can access global 'a'
+//     console.log(b); // can access outer's 'b' → lexical scope
+//   }
+
+//   inner();
+// }
+
+
+
+// outer();
+// test()
+// hello();       // regular function call → this = window
+// obj.sayHello(); // method call → this = obj
+// person.greet(); // method call → this = person
+
+
+//--- function and object using this along with strict and non-strict
+
+///----FUNCTION
+
+
+//---in the browser
+
+// var name = 'john'
+
+// function foo(){
+//   console.log(this.name)//  window
+// }
+//foo()
+
+// Explanation:
+// foo() is a regular function call, not a method.
+// In non-strict mode, this defaults to the global object.
+// In a browser, global object = window, and window.name = "John" because var creates a property on window.
+
+
+
+// `use strict`
+// var name = 'john'
+
+// function foo(){
+//   console.log(this.name)//undefined
+// }
+// /foo()
+
+// Explanation:
+// In strict mode, regular functions do not default this to the global object.
+// this inside foo() = undefined
+// Accessing this.name → undefined
+
+
+// //--- in Node its an object
+// this in Node top-level function = global object? Actually in Node modules,
+//  this = undefined in strict mode, 
+//  or {} in non-strict inside module.
+
+
+///----OBJECT
+
+// const person = {
+//   name: 'Sanju',
+//   greet: function() {
+//     console.log(t                                                                                                                                                                                                his.name);
+//   }
+// };
+
+// person.greet(); // ?
+// Explanation:
+
+// greet() is called as a method of person → this = person
+
+// Accessing this.name → "Sanju"
+
+
+
+
+
+
+//HOISTING : VARIABLE & FUNCTION-----
+
+// var-------
+
+// console.log(a); // undefined
+// var a = 10;
+
+
+// let
+
+// console.log(b); // ReferenceError
+// let b = 20;
+
+
+// Function declaration-- can call function before its definition
+//Yes,Function hoisted with body
+
+// greet(); // "Hello!"
+// function greet() { console.log("Hello!"); }
+
+
+// Function expression
+//--The function is not hoisted, only the variable.Only the variable is hoisted
+
+// sayHi(); // TypeError
+// var sayHi = function(){ 
+// console.log("Hello!"); 
+//}
+
+// How engine sees it:
+// // During creation phase
+// var sayHi = undefined;
+
+// // During execution
+// sayHi(); // ❌ TypeError: sayHi is not a function
+// sayHi = function() {
+//   console.log("Hi!");
+// };
+
+
+// ----
+// var sayHi = function(){ 
+// console.log("Hello!"); 
+// }
+// sayHi()//Hello!
+
+
+//---- output based questions=====
+// {
+//   function greet() {
+//     console.log("Hi!");
+//   }
+// }
+
+// greet();
+// Answer: ❌ ReferenceError
+// Explanation: Function declarations inside a block are block-scoped in strict mode.
+
+
+//----
+// console.log(foo); 
+// var foo = 1;
+// function foo() {}
+// console.log(foo);
+
+
+//break into parts
+//part--1
+// console.log(foo); 
+// var foo = 1;
+// function foo() {}
+
+
+//--//part--2
+// var foo = 1;
+// function foo() {}
+// console.log(foo);
+
+// Answer:
+// [Function: foo]
+// 1
+
+// Order of hoisting:
+
+// Step 1: Hoisting phase (creation phase)
+// Function declarations are hoisted first, with their full body.
+// function foo() {} // hoisted first
+
+
+// var declarations are hoisted next, initialized to undefined.
+// var foo = undefined; // hoisting only, assignment stays in place
+
+
+// So internally, the engine sees (conceptually):
+
+// function foo() {}  // hoisted
+// var foo; =>undefined 
+
+
+// Step 2: Execution phase
+// First console.log(foo)
+// The function declaration exists, so foo refers to the function.
+// Output: [Function: foo]
+
+// var foo = 1;
+// Assignment happens now, overwriting the function reference with 1.
+// Second console.log(foo)
+// Prints 1 because the variable assignment replaced the function.
+
+
+
+//-----
+
+// IIFE + hoisting
+// var a = 10;
+// (function() {
+//   console.log(a);
+//   var a = 20;
+// })();
+
+
+// Answer:
+// undefined
+// Explanation: Inside the IIFE, var a is hoisted → undefined. Outer a = 10 is shadowed.
+
+
+
 //Interview Exprience--------
 //=====INTERVIEWER ASKED QUESTIONS=====================//
 
@@ -120,7 +572,7 @@
 //   }
 
 
-//let x;  // declaration only
+//let x;  // declaration only           
 //let x = 5;  // declaration + initialization
 
 

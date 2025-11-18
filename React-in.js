@@ -1,4 +1,9 @@
+//-----IMPORTANT NOTES-------
+//----useState → triggers re-renders
+//----useRef → does not trigger re-renders
+
 //------------------DURING INTERVIEW FACED THE PROBLEM----------------------------
+
 // Interviewer: How do you determine which components should update in a React application?
 
 // You: To determine and control which components should update in a React application, I use several strategies:
@@ -23,6 +28,13 @@
 // hooks they  are re-useable functions.usen in FC and some of the hooks are alternative of or can mimic the lifecycle methods.
 //why we use Hooks?
 //Beacuse it provide a very easily understandable and much cleaner way of writing code.
+
+//----
+// Hooks (Execution): Synchronous—functions inside hooks run instantly as part of rendering.
+
+// setState (State Updates): Asynchronous—the updated value is not applied immediately, but on the next render. 
+// This batching helps React optimize re-renders and improves performance
+
 
 
 //-----THEY ARE HOOKS---
@@ -143,6 +155,14 @@
 // useEffect(() => {
 //   console.log("componentDidUpdate");
 // }, [value]);
+
+//CWUM  componentWillUnmount (CWUM)
+// useEffect(() => {
+  //return () => {
+//   console.log("componentWillUnmount");
+ // }
+// }, []);
+
 
 
 // 🔴 C. componentDidUpdate + componentWillUnmount (CDUM)
@@ -334,6 +354,7 @@
  
 // console.log("line4")
 
+
 // console.log("line1")
 // console.log("line4")
 // console.log("line2")
@@ -345,8 +366,7 @@
 // line2//mount
 // line1
 // line4
-// line3
-// line2//update
+// line3,line2//update
 // line3//WillUnmount
 
 // line1
@@ -358,9 +378,12 @@
 // useEFFect runs after component is mounted
 
 //final answer will be:
+//--during rendering
 //line1
 //line4
-//line2
+
+//---on mount
+//line2 
 
 
 // -- value changes --
@@ -578,11 +601,12 @@
 // There are key differences:
 //they are optimization tool---
 
-//----which means when component doesn't received any props.
+// --when component accept props and state--
 // React.memo: Memoizes a whole component to prevent unnecessary re-renders when the props haven't changed. 
 
 
-// --when component accept props and state--
+
+//----which means when component doesn't received any props.
 // useMemo: Memoizes the result of a computation to avoid re-calculating it on every render.
 
 // useCallback: Memoizes a callback function to prevent it from being recreated on every render,

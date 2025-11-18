@@ -1,3 +1,9 @@
+//---- in case of Array
+ // important  points
+ // for  k times  1-- after processing ,2- during processing (order matters-----)
+ // for first non reapting  1- based on value , 2- based on  key  (on both case get different answer)
+
+
 
 ///-------IMPORTANT RESEARCH --- DSA QUESTUION MADE IN THESE AREA-- 70% IN ARRAY / 50% IN STRING  / 30% IN OBJECT
 
@@ -186,6 +192,7 @@
 // console.log(result)//[ 1, 6 ]
 
 
+//--NOTE--  complete sorted order// after complete process
 //------------
 // function findExactlyThree(array){
 //     const countMap = {};
@@ -206,11 +213,13 @@
 // console.log(result)//[ 4, 22 ]
 
 
-//--NOTE
+//--NOTE--  complete sorted order// after complete process
 //--here we are find no of appearance of element based on key of object(countMap) that's why we are getting answer in incresing order 
 //When result is collected:After the full array is traversed and counts are built.
 
 
+
+////--NOTE--  during process  order
 //--------------------------------------
 //✅ Version 2 — Pushing while counting inside the loop
 // function findExactlyThree(array){
@@ -232,6 +241,32 @@
 
 
 
+///--------------
+// function elementsRepeatingTwice(array) {
+//   const countMap = {};
+//   const output = [];
+
+//   for (let ele of array) {
+//     countMap[ele] = (countMap[ele] || 0) + 1;
+//   }
+
+//   for (let item of array) {
+//     if (countMap[item] === 2 && !output.includes(item)) {
+//       output.push(item);
+//     }
+//   }
+
+//   return output;
+// }
+
+// const arr = [4, 5, 1, 4, 6, 7, 1];
+// const result = elementsRepeatingTwice(arr);
+// console.log(result); // [4, 1]
+
+
+
+
+//NOTE--- HERE IS THE DIFFERENCE BETWEEN BOTH VERSION , SEE ORDER ✅ Version 1 IS [4,22] AND ✅ Version 2 IS [22,4]
 
 
 ///--ANOTHER INTERVIEW QUESTION-----
@@ -286,6 +321,29 @@
 //--NOTE
 //--When result is collected:Immediately when any element’s count becomes 2.my recommendation is not use because it returns result immedialty 
 //as element appears two time not exactly two time 
+
+
+//-------firstNonReaptingItem
+
+// function firstNonReaptingItem(array){
+//   const map  = {};
+//   const output = [];
+  
+//   for(let item of array){
+//     map[item] = (map[item] || 0) + 1;
+//   }
+ 
+//   for(let key in map){
+//     if(map[key] == 1){
+//       return key;
+//     }
+//   }
+//   return output;
+// }
+
+// const arr = [3,8,1,3,4,3,8];
+// const result = firstNonReaptingItem(arr);
+// console.log(result);//1
 
 
 
@@ -524,8 +582,6 @@
 
 
 
-
-
 //------------------------------------------
 
 //1. **Group array elements by first character**
@@ -670,6 +726,47 @@
 //  console.log(result)//[ 'a', 'b', 'c', 'd' ]
 
 
+
+//----Interview Question
+
+
+//  function createObject(keys, values) {
+//   const output = {};
+  
+//   for (let i = 0; i < keys.length; i++) {
+//     output[keys[i]] = values[i];
+//   }
+  
+//   return output;
+// }
+
+// const keys = ['name', 'age', 'country'];
+// const values = ['bobby', 30, 'India'];
+
+// const result = createObject(keys, values);
+// console.log(result);
+// //{ name: 'bobby', age: 30, country: 'India' }
+
+
+
+// // Iteration 1 (i = 0)
+
+// // keys[0] → 'name'
+
+// // values[0] → 'bobby'
+
+// // So:
+
+// // output['name'] = 'bobby'
+
+
+// // Now:
+
+// // output = { name: 'bobby' }
+
+
+
+
 //======================================//
 
  
@@ -782,7 +879,7 @@
 
 //--------QUESTION---------------------
 
-// function GroupByLastLetter(input){
+// function groupByLastLetter(input){
 //     const output = {};
 //    for(let item of input){
 //         const { name, dept, role } = item;
@@ -804,7 +901,7 @@
 //   { name: 'Eve', dept: 'Engineering', role: 'Frontend' },
 //   { name: 'Tom', dept: 'HR', role: 'Recruiter' }
 // ];
-// const result =  GroupByLastLetter(input)
+// const result =  groupByLastLetter(input)
 // console.log(result)
 
 /* Output:
@@ -1052,7 +1149,108 @@
 //!Array.isArray(obj[key]) → not an array.
 
 
+//REcursion----
 
+//  function App(number){
+//      if(number <= 0){
+//          return null//0;
+//      }else{
+//          return number + App(number -1)
+//      }
+//  }
+//  console.log(App(6))//21
+
+
+//  function App(number){
+//      if(number <= 0){
+//          return 0;
+//      }else{
+//          return number + App(number -1)
+//      }
+//  }
+//  console.log(App(3))//6
+
+
+/// Recurion question------------
+
+// function App(profile) {
+//   let count = 0;
+
+//   for (let key in profile) {
+//     if (Array.isArray(profile[key])) {
+//       for (let item of profile[key]) {
+//           console.log(item)
+//         count += App(item); // recursively call App for each kid object
+//       }
+//     } else if (typeof profile[key] === 'number') {
+//       count += profile[key]; // add the age
+//     }
+//   }
+
+//   return count;
+// }
+
+// let profile = {
+//   age: 56,
+//   kids: [
+//     { age: 23, kids: [{ age: 1 }, { age: 3, kids: [{ age: 4 }] }] },
+//     { age: 27, kids: [{ age: 4 }] }
+//   ]
+// };
+
+// const result = App(profile);
+// console.log(result); // ✅ Output: 118
+
+
+// //===========================
+//  function App(obj){
+//     let sum =0;
+//     for(let key in obj){
+//          if(typeof  obj[key] === 'object' &&  obj[key] !==null && !Array.isArray(obj[key]) ){
+//            sum+= App(obj[key])
+//        }else if(typeof  obj[key] === 'number'){
+//           sum += obj[key]  
+//        }
+//     }
+//     return sum;
+// }
+
+// const obj ={
+//     a:4,
+//     b:{h:6},
+//     r:0,
+//     y:{h:2,u:{n:1}}
+// }
+
+
+// const result = App(obj)
+// console.log(result)//13
+
+
+
+// function flattenArray(array) {
+//   const output = [];
+
+//   for (let item of array) {
+//     if (Array.isArray(item)) {
+//       // If item is an array, flatten it first
+//       output.push(...flattenArray(item));//recursive call flattenArray([2,[3,4]])  and recursive call flattenArray(..[3,4]) and final recursive call flattenArray(..[2,3,4])
+//     } else {
+//       // If item is a number, add directly
+//       output.push(item);
+//     }
+//   }
+
+//   return output;
+// }
+
+// const arr = [1, [2, [3, 4]]];
+// const result = flattenArray(arr);
+// console.log(result); // [1, 2, 3, 4]
+
+
+
+//-------------------------
 // function CountKeys(obj){
 //     let count =0;
 //     for(let key in obj){
@@ -1115,6 +1313,8 @@
 //     }
 // const result = sumObjectValues(obj)
 // console.log(result)//16
+
+
 
 
 ///---------QUESTION---------------------------
@@ -1198,10 +1398,5 @@
 
 
 ///-------- Another question---------
-
-
-
-
-
 
 

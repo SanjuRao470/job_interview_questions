@@ -4,6 +4,148 @@
 //Node-- single thread but we make multiple thread using worker thread --- be default asynchronouse
 
 
+// Output-Based Questions (JS Execution Order)
+// Q: What is the output of
+
+// console.log(2);
+// setTimeout(() => console.log(3));
+// Promise.resolve(4).then((val) => console.log(val));
+// console.log(5);
+
+//AANSWERE
+// 2
+// 5
+// 4
+// 3
+
+//Question---
+
+// let vs var in Block Scoping
+// Test 1:
+
+// let a = 1;
+// {
+//   let a = 2;
+//   console.log(a); // 2
+// }
+// console.log("af", a); // "af" 1
+// Block-scoped let; inner a is isolated.
+
+// Test 2:
+
+// let a = 1;
+// {
+//   var a = 2;
+//   console.log(a); // 2
+// }
+// console.log("af", a); // "af" 2
+//    ^
+
+//SyntaxError: Identifier 'a' has already been declared
+
+// var is function/global-scoped; redeclares a outside block, so both logs are 2.
+
+// Reason: let == block scope, var == function/global scope; redeclaring with var affects parent/context.
+
+
+//-------
+// let a = 1;
+// var b --hoisted
+// {
+//   var b = 2;
+//   console.log(b); // 2
+// }
+// console.log("af", a); // "af" 2
+//   console.log(b);//2
+
+
+
+//---- QUESTION -----
+// var a = 30;
+// {
+//     let a = 10;
+//    console.log("Try ", a); //10
+// }
+// console.log("Try programiz.pro", a);//30
+
+// Try  10
+// Try programiz.pro 30
+
+
+
+//Question--
+
+// function foo() {
+// 	console.log(this.a);
+// }
+
+// var obj = { 
+// a: 2, 
+// foo: foo
+// }
+
+// var bar = obj.foo;
+// var a = "3";
+
+// bar(); // logs '3' //without strict mode but in strict mode getting undefined
+
+
+
+//Question--
+//there are the  two function calls one is for increment and another one is for  just printing that value
+
+// counter = 0 //
+ 
+// console.log(counter)
+// counter++ // error counter var nor def
+ 
+// incCounter() //  1 ++
+ 
+// printCunter() // ==> 1
+ 
+// incCounter() //2 
+
+//how to solve this?
+
+// let counter = 0;
+// function incCounter() {
+//     counter++;
+// }
+
+// function printCounter() {
+//     console.log(counter);
+// }
+// incCounter(); // 1
+// printCounter(); // 1
+// incCounter(); // 2
+
+
+
+//Question --Write simple promise function
+
+// function demoPromise() {
+//   return new Promise((resolve, reject) => {
+//     console.log("Promise is pending...");
+// //const success = true;//fulfilled
+// const success = false;//rejected
+//     setTimeout(() => {
+//       if (success) {
+//         resolve("Promise fulfilled!");
+//       } else {
+//         reject("Promise rejected!");
+//       }
+//     }, 2000);
+//   });
+// }
+
+// // Usage for fulfilled:
+// demoPromise()
+//   .then(result => console.log(result))   // Logs: Promise fulfilled!
+//   .catch(error => console.error(error));
+
+
+
+
 //----QUESTION---
 
 // const a = {};
@@ -101,6 +243,8 @@
 
 //=====INTERVIEWER ASKED QUESTIONS=====================//
 
+
+//----THIS CONCEPT----------
 // 🔹 1. Understanding this First:
 // The behavior of this depends on how a function is called,
 //  not how it is declared. It’s also influenced by execution context: global, function, object method, arrow functions, and classes.
@@ -211,6 +355,16 @@
 // boundFn();            // Hello Sanju
 
 
+//----diffrent way----
+
+// function greet(){
+//   console.log("Hello " + this.name);
+// }
+//const person = { name: "Sanju" };
+//person.method = greet
+//console.log(person.method()) Hello Sanju
+
+
 // ✅ Interview-style
 
 // const person = {
@@ -259,8 +413,6 @@
 //  var varFn = OuterFun(a)
 //   a.values.c = 30;
 //   varFn();//50
-
-
 
 
 
@@ -417,19 +569,65 @@
 // const arrowFn = obj.getArrow();
 // console.log(arrowFn()); // ✅ 100
 
+ 
 
-// ✅ → Pass by Value: This means a copy of the value is made. 
+//-----
 
-// When you pass a variable, you're sending a duplicate of its value. Changes in the function do not affect the original variable. 
+// Quick Summary
 
-// Commonly used in languages like C and Java for primitive types. 
+//Primitive types are passed by value-----// Pass by Value → Function gets a copy → Original value unchanged (primitives).
+///Non-Primitive types are passed by Reference------ // Pass by Reference → Function gets a reference → Original value changed (objects/arrays).
+
+// 💡 In JavaScript, strictly speaking:
+// Primitives (Number, String, Boolean, Null, Undefined, Symbol, BigInt) → passed by value.
+// Objects (Objects, Arrays, Functions) → reference to the object is passed (so changes reflect).
 
 
-// ✅ → Pass by Reference: Instead of a copy, you pass a reference to the actual variable. 
+// 🔹 Pass by Value
 
-// This means changes made in the function will reflect on the original variable. 
+// When a variable is passed by value, a copy of the actual data is sent to the function.
+// ➡️ Changes made inside the function do not affect the original variable.
 
-// Frequently seen with objects in languages like Java and Python. 
+
+//--EXAMPLE--------------
+// function passByValue(a){
+//     a=8;
+//     console.log("inside",a)//8
+// }
+
+// let num = 10;
+// passByValue(num)
+//   console.log("outside",num)//10
+
+
+// 🔹 Pass by Reference
+
+////--EXAMPLE--------------
+// When a variable is passed by reference, the function gets a reference (address) to the actual data.
+// ➡️ Changes made inside the function directly affect the original variable.
+
+// function passByReference(obj) {
+//   obj.name = "Updated"; // modifies the original object
+//   console.log("Inside function:", obj.name);//Updated
+// }
+
+// let user = { name: "Sanju" };
+// passByReference(user);
+
+// console.log("Outside function:", user.name);//Updated
+
+
+//==============
+// function safeUpdate(obj) {
+//   let copy = { ...obj }; // clone the object
+//   copy.name = "Updated";
+//   console.log("Inside:", copy.name); // Updated
+// }
+
+// let user = { name: "Sanju" };
+// safeUpdate(user);
+// console.log("Outside:", user.name); // still "Sanju"
+
 
 
 
@@ -441,6 +639,15 @@
 // console.log(a); // [1, 2, 3, 4]
 // console.log(b); // [1, 2, 3, 4] → b references same array as a
 // They point to the same memory.
+
+
+//====OR==
+// let a = [1, 2, 3];
+// let b = a;
+// b.push(4);
+// console.log(a); // [1, 2, 3, 4]
+// console.log(b); // [1, 2, 3, 4]
+
 
 //----------
 // let a = [1, 2, 3];
@@ -473,6 +680,33 @@
 // When you assign them to a new variable (let b = a), you're copying the reference, not the actual data.
 
 // So any changes made via one reference (a.push(4)) will be visible to the other (b).
+
+
+
+//---QUESTION----
+// let a1 = a2 = [1, 2, 3];
+// a1.length = 2;
+// console.log(a1);//[1,2]
+// console.log(a2);//[1,2]
+
+// let b = [2,3,4]
+// let c =b
+// b.push(5)
+// console.log(b);//[2,3,4,5]
+// console.log(c);//[2,3,4,5]
+
+
+// let d = [2,3,4,9]
+// let e =[...d]
+// d.push(5)
+// console.log(d);//[2,3,4,9,5]
+// console.log(e);//[2,3,4,9]
+
+// let a = b = [1, 2];
+// b.push(3);
+// console.log(a);//[1, 2,3]
+// console.log(b);//[1, 2,3]
+
 
 
 
@@ -581,27 +815,42 @@
 
 //QUESTION---
 
-// let x = 5;
-// let y = ++x;//This is a pre-increment operation. It means:
-// //x is incremented first → x becomes 6
-// console.log(y);//6
-// console.log(x)//6
+//    // count++ logs the old value then increments,
+//   let x = 5
+//   let y = x++//post
+//   console.log(x)//6
+//    console.log(y)//5
+//   // x++ =>first take 5 , y received same value 5  after that increment 
+  
+ 
 
+// // ++count increments first and logs the new value.
+//    let a = 5
+//   let b = ++a //pre
+//   console.log(a)//6
+//    console.log(b)//6
 
-// let x = 5;
-// let y = x++;//x++ returns the original value of x (then increments),
-// // console.log(y);//5
-// // console.log(x)//6
-
-
-//  or-- both are same
-// let x = 5;
-// let y = x + x;
-// console.log(y); // 6
-// console.log(x); // 6
 
 // 🔹 x++ → Post-increment  =>x++ returns the original value of x (then increments),
 // 🔹 ++x → Pre-increment  =>++x increments x first, then returns the new value.
+
+
+///----
+// function createCounter(){
+//   let count = 0;
+//   //case-1
+//  return function (){ anonyouse function
+//      count++;/++count  /// got same answer
+//      console.log(count)
+//  }
+
+// }
+// const counter1 =  createCounter()
+// counter1();//1
+// counter1();//2
+// counter1();//3
+// counter1();//4
+
 
 
 //--------------SAMSUNG INTERVIEW--------------
@@ -673,11 +922,15 @@
 
 
 //--------------------------
+//--NOTES=== always remember * sign always has higher order so always start calculating with where * start wheather left and right
+//return a + b * c; //10 
+//return a * b + c; //14
 
 // function CurringFun(a) {
 //   return function(b) {
 //     return function(c) {
-//       return a + b * c; // works directly here
+//       return a + b * c; //10 works directly here
+//-------return a * b + c; //14
 //     }
 //   }
 // }
@@ -723,3 +976,35 @@
 // Second one: higher-order currying, defers execution until explicitly invoked — 
 // useful when you want to delay evaluation or add extra logic at the end 
 // (like logging, caching, or chaining).
+
+
+
+//OUTPUT BASED QUESTION -------
+
+
+// useEffect(() => {
+//   console.log('hello');
+//   setC(c + 1);
+//   setC(c + 1);
+//   setC(c + 1);
+// });
+//final value:1
+
+
+//const [count,setCount] = (0)
+// console.log(count);
+
+//   useEffect(() => {
+//     setCount(count + 1); // 0 + 1 = 1
+//     setCount(count + 1); // 0 + 1 = 1
+//     setCount((prev) => prev + 1); // last one uses updated value (1 + 1 = 2)
+//   }, []);
+//final value:2
+
+
+//const [count,setCount] = (0)
+// useEffect(() => {
+//   setC(c + 1);
+//   setC(c + 1);//2
+//   setC(count + 1);//0+1
+// });

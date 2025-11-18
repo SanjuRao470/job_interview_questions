@@ -13,6 +13,23 @@
 
 
 
+// for (var i = 0; i < 10; i++) { 
+// // setTimeout(() => console.log(b[i]), 1000);
+//  // }
+//answer--All 10 callbacks share the same i variable.
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+
+
+
 // 2. Output-based Question
 
 // for (let i = 0; i < 3; i++) {
@@ -24,6 +41,39 @@
 // 1
 // 2
 // Because let is block scoped, a new binding is created in each iteration.
+
+
+
+//wrong ways of writing------
+
+// for (let i = 0; i < 10; i++) {
+//  // setTimeout(() => console.log(b[i]), 1000);
+//  // }
+//answer--So each iteration of the loop gets a new copy of i.
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+//----
+// let b = ['a', 'b', 'c'];
+
+// for (let i = 0; i < 3; i++) {
+//   setTimeout(() => console.log(b[i]), 1000);
+// }
+// ✅ Output after 1 second:
+
+
+// a
+// b
+// c
 
 
 
@@ -99,6 +149,7 @@
 
 // 📌 const vs let
 // 9. Output-based Question
+
 
 // const x = 10;
 // x = 20;

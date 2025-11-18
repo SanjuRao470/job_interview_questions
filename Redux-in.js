@@ -349,6 +349,60 @@
 //   };
   
 
+// ///======== ANother
+// step-1
+// const incrementAction = { type: "INCREMENT", payload: 5 };
+// const decrementAction = { type: "DECREMENT", payload: 2 };
+
+// step-2
+//  const counterReducer = (state = { count: 0 }, action) => {
+//   switch (action.type) {
+//     case "INCREMENT":
+//       return { count: state.count + action.payload }; if { count:  0} =>0+5=>5
+
+//     case "DECREMENT":
+//       return { count: state.count - action.payload }; if { count:  5} =>5-2=>3
+
+//     default:
+//       return state;
+//   }
+// };
+
+//  step3
+//   const store = createStore(counterReducer);
+
+//step-4  ui automatically re-render  with  new data
+
+//--NOTE--
+// Redux actions always have a type property.
+// The switch statement decides which kind of action we received
+
+// default: return state;
+// If the action type doesn’t match any case, return the current state unchanged.
+// Prevents the app from crashing when unknown actions are dispatched.
+
+
+// ✅ Step 1: Optional — use action creators
+
+// You can make it cleaner by wrapping them in functions:
+
+// const increment = (value) => ({
+//   type: "INCREMENT",
+//   payload: value,
+// });
+
+// const decrement = (value) => ({
+//   type: "DECREMENT",
+//   payload: value,
+// });
+
+
+// Now you can just call:
+
+// store.dispatch(increment(5));
+// store.dispatch(decrement(3));
+
+
 
 //Explanation:
 // Action Type (UPDATE_SALARY): This defines the type of action we're dealing with.
