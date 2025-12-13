@@ -692,6 +692,7 @@
 
 
 
+
 //--here how it works..
 //--here createCounter() call only once to create private variable(count) and return anonymous function
 //--counter1() ==  the anonymous inner function
@@ -710,6 +711,69 @@
 // Why it’s always the same count?
 // Closures don’t copy variables — they keep a reference to them.
 // So all calls to counter() are reading and writing the exact same variable count in memory.
+
+
+
+//------------------------  Closure example to prevent memory leak   -------------------------
+// function createDelayedLogger() {
+//   let timers = []; // closure reference
+//   function start() {
+//     for (let i = 0; i < 5; i++) {
+//       const id = setTimeout(() => console.log(i), 2000);
+//       timers.push(id);
+//     }
+//   }
+
+//   function stop() {
+//     timers.forEach(id => clearTimeout(id));
+//     timers = []; // release → avoids leak
+//   }
+
+//   return { start, stop };
+// }
+// const logger = createDelayedLogger();
+// logger.start();
+//0
+//1
+//2
+//3
+//4
+// logger.stop();//-- empty nothing
+
+
+//-------If an empty / undefined element is found → 
+// stop ALL future logs (even previously scheduled ones).
+
+
+// let a = [0, 1, 2,4, 5, 6]; /// let a = [0, 1, 2,undefined,4, 5, 6];
+// function delayTask(ms) {
+//   let timers = [];
+
+//   for (let i = 0; i < a.length; i++) {
+
+//     // ❌  f element doesn't exist → stop everything
+//     if (a[i] === undefined || a[i] === null) {
+//       console.log("No element found. Stopping...");
+//       // clear previously scheduled timers
+//      timers.forEach(id => clearTimeout(id));
+//       return; // exit the function
+//     }
+//   // schedule logging
+//     const id = setTimeout(() => {
+//       console.log(a[i]);
+//     }, ms * (i + 1));
+//       timers.push(id);
+//   }
+// }
+// delayTask(500);
+
+// 0
+// 1
+// 2
+// 4
+// 5
+// 6
+
 
 
 

@@ -242,3 +242,28 @@
 // console.log(original.address.city); // 'Delhi' ✅ Unaffected
 // ✅ Now, changing the nested value in deepCopy does not affect original.
 
+
+
+
+//--Regular Expression-- used
+
+// Regular Expressions (RegEx) in JavaScript —
+// a very powerful way to search, match, and transform text (strings).
+
+// Let’s break this down step by step, so you understand where and why we use:
+// str.replace(), str.match(), and str.test() — especially when combined with regex like /\d+/g.
+
+
+
+// let str = 'asby34 mbnmv778'
+// let str1 = 'asby mbnmv'
+
+// console.log(str.match(/\d+/g))//['34','778']
+// console.log(str.match(/[a-z]+/g))//[ 'asby', 'mbnmv' ]
+
+// console.log(/\d+/.test(str))//true
+// console.log(/\d+/.test(str1))//false
+
+// console.log(str.replace('m','M'))//asby34 Mbnmv778
+// console.log(str.replaceAll('m','M'))//asby34 MbnMv778
+

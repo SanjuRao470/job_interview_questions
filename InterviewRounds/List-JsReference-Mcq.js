@@ -280,6 +280,11 @@
 
 
 //-------------------
+// console.log(1+"1");//11
+// console.log(1-"1");//0
+//console.log([] == ![]);//true
+
+
 // console.log(4 + 1 + "9")
 
 // Left to right evaluation.

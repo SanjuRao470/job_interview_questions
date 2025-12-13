@@ -9,6 +9,7 @@
 
 //---/// 70% IN ARRAY
 //---- QUESTIONS ARIVE DIFFERENT TYPE
+//-----RECURSION
 
 
 //---/// 50% IN STRING 
@@ -1313,6 +1314,536 @@
 //     }
 // const result = sumObjectValues(obj)
 // console.log(result)//16
+
+
+//-- Important------
+
+// function flattenArray(array) {
+//   const count = 0;
+//   for (let item of array) {
+//     if (Array.isArray(item)) {
+//       count+=(flattenArray(item))
+//     } else {
+//     count++
+//     }
+//   }
+
+//   return output;
+// }
+
+// const arr = [1, [2, [3, 4]]];
+// const result = flattenArray(arr);
+// console.log(result); 
+
+
+//------IMPORTANT NOTES----
+
+// for  flatten array we have write result+=(...app(arr)) here spread oprator we using to convert into same level
+ // for both case count/sum we  result+=app(arr) its just go inside the depth of nested arry convert into  single digit
+ // for count =>  depends in else part which is count++ //4
+ // for sum =>  depends in else part which is count+=item//10
+
+
+
+
+//=========
+// case-1 flatten array till  given depth   for that i applied depth
+// case-2  remove duplicate for that i used global Set
+
+
+//note---
+// seen = new Set() is global set or special data structre that stores unique value and remove duplicate for future used.
+
+// function app(arr , depth, seen = new Set() ){
+//     const output  = [];
+//     console.log("000--",seen)
+    
+//     for(let item of arr){
+//         if(Array.isArray(item) &&  depth > 0){
+//      output.push(...app(item , depth- 1, seen))
+//          }else{
+//              if(!seen.has(item)){
+//                  seen.add(item)
+//                  output.push(item)  
+//          }
+//          }
+//     }
+//     return output;
+// }
+// const arr =[1, [2,8, [1, [3]]]]
+// const depth = 2
+// const result = app(arr,depth)
+// console.log(result)
+
+// //[ 1, 2, 8, [ 3 ] ]
+
+
+// console.log("000--",seen) PROOF
+// 000-- Set(0) {}
+// 000-- Set(1) { 1 }
+// 000-- Set(3) { 1, 2, 8 }
+
+
+
+
+//===
+// function maxDepth(arr) {
+//   let innerMax = 1; // current array itself is depth 1
+
+//   for (let item of arr) {
+//     if (Array.isArray(item)) {
+//       // RECURSION
+//       innerMax = Math.max(innerMax, maxDepth(item) + 1);
+//     }
+//   }
+//   return innerMax;
+// }
+// const arr =[100, [2,8, [12, [3,[3,4,[9]]]]]]
+
+// const result = maxDepth(arr)
+// console.log(result)//6
+
+
+
+//=====
+
+// function maxElementOnlyNested(arr , isTopLevel = true){
+//       let elementMax  = -Infinity;
+//     for(let item of arr){
+//         if(Array.isArray(item)){
+//    const elements = maxElementOnlyNested(item , false)
+//    elementMax = Math.max(elementMax , elements)
+//          }
+//          else{
+//              if(!isTopLevel){
+//          elementMax = Math.max(elementMax, item);
+//              }
+//          }
+//      }
+//       return elementMax;
+// }
+// const arr =[100, [2,8, [12, [3,[3,4]]]]]
+
+// const result = maxElementOnlyNested(arr)
+// console.log(result)//12
+
+
+//------
+
+// function maxElementInMain(arr){
+//       let elementMax  = -Infinity;
+//     for(let item of arr){
+//         if(Array.isArray(item)){
+//    const elements = maxElementInMain(item)
+//    elementMax = Math.max(elementMax , elements)
+//          }
+//          else{
+//          elementMax = Math.max(elementMax, item);
+//          }
+//      }
+//       return elementMax;
+// }
+// const arr =[100, [2,8, [12, [3,[3,4]]]]]
+
+// const result = maxElementInMain(arr)
+// console.log(result)//100
+
+// NOTE-- for finding smallest element you just have defined  let elementMin  = Infinity  and use MATH.min()
+
+
+
+//------
+// function stringFormat(arr){
+//       let part  = [];
+//     for(let item of arr){
+//         if(Array.isArray(item)){
+//      part.push(stringFormat(item))// return string into the array like [1, "2,12,3,4"] 
+//  }
+//          else{
+//                part.push(item)
+//               }
+//      }
+//       return part.join(','); //[1, "2,12,3,4"].join(',')
+// }
+// const arr =[1,[2,[12, [3,4]]]]
+
+// const result = stringFormat(arr)
+// console.log(result)//'1,2,12,3,4' 
+
+//--SOLUTION-- but version 1 is best way to solve---
+
+// const result = App(arr)
+// const strResult = result.join(',');
+//  console.log(strResult)//'1,2,12,3,4'  // here is the correct answer
+
+//-------------
+// (stringFormat(item)) return a string
+// (...stringFormat(item)) return a array
+
+
+
+//-----------------------------Objects---------
+// function app(obj) {
+//   let values = [];
+//   let keys = [];
+
+//   for (let key in obj) {
+//     let val = obj[key];
+
+//     // If value is a nested object
+//     if (typeof val === "object" && val !== null && !Array.isArray(val)) {
+//       const inner = app(val);
+//       //console.log(inner)
+//       values.push(...inner.values);
+//       keys.push(...inner.keys);
+//     } 
+    
+//     else {
+//       values.push(val);
+//       keys.push(key);
+//     }
+//   }
+
+//   return { values, keys };
+// }
+
+// const data = { a: 10, b: { c: 2, d: { e: 3 } }, d: 4 };
+
+// const result = app(data);
+// console.log(result)//{ values: [ 10, 2, 3, 4 ], keys: [ 'a', 'c', 'e', 'd' ] }
+// //console.log([...result.values, ...result.keys])
+// //// → [10, 2, 3, 4, "a", "b", "c", "d", "e"]
+
+
+
+
+//----------------RECURSTION WITH OBJECTS-------------------------
+
+//Input: { 'a.b.c': 1, 'g.u.r': 7 }
+//Output: { a: { b: { c: 1 } }, g: { u: { r: 7 } } }
+
+// function unflattenObj(obj){
+//     const output = {};
+    
+//      for(let key in obj){
+//         const value = obj[key];
+//         const keys = key.split('.');
+        
+//         let current = output;
+        
+//         keys.forEach((key , index)=>{
+//             if(index === keys.length -1){
+//                current[key] = value 
+//             }else{
+//                 if(!current[key]){
+//                     current[key] = {} 
+//                 }
+//                  current =  current[key] // go deeper
+////////-------  current[key] =  value //{a:1,b:1,c:1} // if we want this answer---
+//            }
+//            })
+//        }
+// return output;    
+// }
+// const obj = { 'a.b.c': 1, 'g.u.r': 7 }
+// const result = unflattenObj(obj)
+// console.log(result);//{ a: { b: { c: 1 } }, g: { u: { r: 7 } } }
+
+
+
+//--------------------------
+
+// Input: { a: { b: { c: 1 } } }
+// Output: { 'a.b.c': 1 }
+
+// function flattenObject(obj, parentKey = '', object = {}){
+    
+//     for(let key in obj){
+//         const value = obj[key];
+//         let newKey = parentKey ? parentKey + "." + key : key;
+//         if(typeof value === 'object' && value !== null && !Array.isArray(value)){
+//               flattenObject(value, newKey, object)
+//         }else{
+//           object[newKey]   = value
+//         }
+//         }
+// return object;    
+// }
+// const obj = { a: { b: { c: 1 }}, g:{u:{r:7}} }
+// const result = flattenObject(obj)
+// console.log(result);////{ 'a.b.c': 1, 'g.u.r': 7 }
+
+
+
+//--------------------
+// Input: { a:{ b: { c: 1 } } }
+// Output: ['a','a.b','a.b.c']
+
+
+
+// function getAllKeys(obj , parentKey = '' , output= []){
+  
+//      for(let key in obj){
+//          const value = obj[key]
+//          let newKeys = parentKey ? parentKey + '.' + key : key
+//          output.push(newKeys)
+//          if(typeof value === 'object' && value !==null && !Array.isArray(value)){
+//              getAllKeys(value, newKeys , output )
+//          }
+//      }      
+//        return output;    
+// }
+// const obj = { a:{ b: { c: 1 } } }
+// const result = getAllKeys(obj)
+// console.log(result);['a','a.b','a.b.c']
+
+
+
+
+///--------------------Regex----
+
+   //  const digitArr = item.match(/\d/g)//20 ---['4' ,'5']/['0' ,'1']/['8']/['2'] --indiviual
+
+
+   //  const digitArr = item.match(/\d+/g)//56 ---['45']/['01']/['8']/['2'] --group
+
+
+
+//  function app(arr){
+//      let output =0;
+//      for(let item of arr){
+//      const digitArr = item.match(/\d+/g )
+
+//        if(digitArr){           
+//        for(let digit of digitArr){
+      //     output+=Number(digit) 
+//           }
+//         }
+
+//      }
+//   return output;  
+//  }
+
+//  const arr = ['dd45', 'nn01' , 'bb' ,'o8o','yy2']
+//  const result = app(arr)
+
+// console.log(result);//56
+
+
+//-------------------------
+//  function app(arr){
+//      let output ='';
+//      for(let item of arr){
+//      const digitArr = item.match(/\d+/g)
+//        if(digitArr){
+//             output+= digitArr.join('')
+//         }
+//      }
+//   return output;  
+//  }
+
+//  const arr = ['dd45', 'nn01' , 'bb' ,'o8o','yy2']
+//  const result = app(arr)
+
+// console.log(result);////'450182'
+
+
+////-----------------------------------------
+
+// ❗ Why do we need the if (digitArr){}?
+
+// Because .match() returns:
+// an array → when digits are found
+// null → when NO digits are found
+
+//------------------------------------------
+
+
+//----------------------
+
+// function freq(str) {
+//   return {
+//     uppercase: (str.match(/[A-Z]/g) || []).length,
+//     lowercase: (str.match(/[a-z]/g) || []).length,
+//     digits:    (str.match(/[0-9]/g) || []).length,
+//     special:   (str.match(/[^a-zA-Z0-9]/g) || []).length
+//   };
+// }
+
+// console.log(freq('A47&*1CJK9/yw'));
+// { uppercase: 4, lowercase: 2, digits: 4, special: 3 }
+
+
+//----------------------------
+
+// function freq(str) {
+// const  result = {
+//           up:(str.match(/[A-Z]/g) || []).length,
+//           lc: (str.match(/[a-z]/g) || []).length,
+//           n:(str.match(/[0-9]/g) || []).length,
+//           sc:(str.match(/[^a-zA-Z0-9]/g) || []).length
+//       }
+//       return result;
+//}
+//{ up: 4, lc: 2, n: 4, sc: 3 }
+
+
+
+//--------------------------------------
+//  function app(str){
+//      let  result = {
+//           up:0,
+//           lc:0,
+//           n:0,
+//           sc:0
+//       }
+//       for(let char of str){
+//           if(/[A-Z]/.test(char)){
+//              result.up++ 
+//           }else if(/[a-z]/.test(char)){
+//              result.lc++ 
+//           }else if(/[0-9]/.test(char)){
+//              result.n++ 
+//           }else{
+//              result.sc++  
+//           }
+//       }
+      
+//       return result;
+//  }
+
+//  const str = 'A47&*1CJK9/7yw'
+//  const result = app(str)
+//  console.log(result)
+
+ //{ up: 4, lc: 2, n: 5, sc: 3 }
+
+
+
+//------------------
+
+
+// function countFrequency(str) {
+//   let result = {
+//     uppercase: 0,
+//     lowercase: 0,
+//     digits: 0,
+//     special: 0
+//   };
+
+//   for (let char of str) {
+
+//     if (/[A-Z]/.test(char)) {
+//       result.uppercase++;
+
+//     } else if (/[a-z]/.test(char)) {
+//       result.lowercase++;
+
+//     } else if (/[0-9]/.test(char)) {
+//       result.digits++;
+
+//     } else {
+//       result.special++;
+//     }
+//   }
+
+//   return result;
+// }
+
+// const str = 'A47&*1CJK9/yw';
+// console.log(countFrequency(str));
+// { uppercase: 4, lowercase: 2, digits: 4, special: 3 }
+
+
+//---------------NOTES-------------
+
+// If matches /[A-Z]/ → uppercase
+// ✔ If matches /[a-z]/ → lowercase
+// ✔ If matches /[0-9]/ → digit
+// ✔ Else →  /[^a-zA-Z0-9]/  special character
+
+
+
+// /g = global flag — it tells .match() to return all matches in the string as an array.
+
+// Without /g .match() usually returns only the first match (and extra info for capture groups), not a list of all.
+
+// So to count occurrences you must use /g.
+
+//|| [] makes sure you always have an array: if .match() is null, it falls back to an empty array [].
+
+
+
+
+//-------------------------------------------------
+
+//  function app(str){
+//     //  let result = ''
+//       let result = []
+//      for(let char of str){
+//        const upChar = char.match(/[A-Z]/g)//match(/[a-z]/g)
+//        if(upChar){
+
+//           //result+= upChar.join('')//'ACJK'//'acjk'
+
+//           for(let item of upChar){
+//                result.push(item)//[ 'A', 'C', 'J', 'K' ]//['a' , 'c' , 'j' ,'k']
+//           }
+         
+//        }
+//      }
+//     return result; 
+//  }
+
+//  const str = 'A47&*1CJK9/yw'
+//  const result = app(str)
+//  console.log(result)
+
+
+//----------------------------------------
+
+//  function app(str){
+//       let result = []
+//      for(let char of str){
+//        const upChar = char.match(/[0-9]/g)
+//        if(upChar){
+        
+//           for(let item of upChar){
+//                result.push(Number(item))//[ 4, 7, 1, 9 ]
+//           }
+         
+//        }
+//      }
+//     return result; 
+//  }
+
+//  const str = 'A47&*1CJK9/yw'
+//  const result = app(str)
+//  console.log(result)
+
+
+
+//-------------------
+
+//  function app(str){
+//       let result = []
+//      for(let char of str){
+//        const upChar = char.match(/[^a-zA-Z0-9]/g)
+//        if(upChar){
+        
+//           for(let item of upChar){
+//                result.push((item))//[ '&', '*', '/' ]
+//           }
+         
+//        }
+//      }
+//     return result; 
+//  }
+
+//  const str = 'A47&*1CJK9/yw'
+//  const result = app(str)
+//  console.log(result)
+
 
 
 

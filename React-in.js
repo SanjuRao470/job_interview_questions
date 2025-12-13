@@ -16,7 +16,7 @@
 
 
 
-//in React everthing treated as component that component contain state and if state change component will render than dom has created.
+//in React everything treated as component that component contain state and if state change component will render than dom has created.
 
 //React has been complete cycle in among -----//Hooks---//Redux----//Dom------!
 
@@ -90,7 +90,7 @@
 // Batching means React groups multiple state updates together and performs a single re-render instead of one for each update.
 
 //which follow two form 1-regular form and 2-functional form
-//regular form  may take stale state value with cause re-render but funcyional form always take fresh value
+//regular form  may take stale state value with cause re-render but funtional form always take fresh value
 // setState(value+1) it increment by 1 and  setState(prev => prev + 1) it incremented by 2
 
 

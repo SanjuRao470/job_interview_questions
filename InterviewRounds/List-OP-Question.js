@@ -710,6 +710,18 @@
 
 
 
+///----------IMPORTANT---
+// const a=[9,8,7]
+// const b = [a]
+// const c =[...a]
+// b.push(5)
+// c.push(3)
+// console.log("Try programiz.pro",a); //[ 9, 8, 7 ]
+// console.log("Try ",b); //[ [ 9, 8, 7 ], 5 ]
+// console.log("programiz.",c); //[ 9, 8, 7, 3 ]
+
+
+
 //=====INTERVIEWER ASKED QUESTIONS=====================//
 
 // function test() {
@@ -833,6 +845,63 @@
 
 // 🔹 x++ → Post-increment  =>x++ returns the original value of x (then increments),
 // 🔹 ++x → Pre-increment  =>++x increments x first, then returns the new value.
+
+
+
+//--
+// console.log(typeof(NaN));
+//answer : number
+
+
+//Destructuring Error Example
+// const example = ({ a, b, c }) => {
+//   console.log(a, b, c);
+// };
+// example(0, 1, 2);
+////answer undefined
+//TypeError: Cannot destructure property 'a' of 'undefined' as it is undefined.
+
+
+//reason :What happens internally?
+//Your function expects one argument, and that argument must be an object:
+// Only the first argument (0) is passed to the function.
+// The other values 1 and 2 are ignored.
+
+// Inside the function, JavaScript tries to do:
+// const { a, b, c } = 0;
+
+
+// But 0 is not an object, so destructuring fails.
+// Therefore it throws:
+
+
+
+// ANOTHER WAYS--
+// const example = ({ a, b, c }) => {
+//   console.log(a, b, c);
+// };
+// example({ a: 0, b: 1, c: 2 }); // Output: 0 1 2
+
+
+
+//----
+//Difference Between slice() and splice()
+
+// a = [1, 2, 3, 4, 5];
+// console.log(a.slice(2, 4)); // [3, 4]
+// console.log(a);//[1, 2, 3, 4, 5]
+
+//slice() does not modify the original array.
+//It returns a shallow copy between given indexes.
+
+
+// a = [1, 2, 3, 4, 5];
+// console.log(a.splice(2, 4)); // [3, 4, 5]
+// console.log(a);//[1, 2]
+
+
+// 👉 splice(start, deleteCount) mutates the original array.
+// It removes elements starting from index 2, removing 4 elements (or until array ends).
 
 
 ///----

@@ -842,6 +842,21 @@
 // console.log(result)//sanju rao
 
 
+//-------------------
+
+// function App(str){
+//     let output='';
+    
+//     for(let item of str){
+//   if(item.length > output.length){
+//       output=item
+//   }
+//   }
+//     return output;
+// }
+// let str = [ 'ujnas', 'oar' ,'nhtf','thtfdes' ]
+// const result = App(str)
+// console.log(result)//thtfdes
 
 ///--------------------------METHODS--------------------
 
@@ -1215,6 +1230,25 @@
 // console.log(result)//Regularly
 
 
+///----------------
+
+// function App(str){
+//     let output='';
+    
+//     for(let item of str){
+//   if(item.length > output.length){
+//       output=item
+//   }
+//   }
+//     return output;
+// }
+// let str = [ 'ujnas', 'oar' ,'nhtf','thtfdes' ]
+// const result = App(str)
+// console.log(result)//thtfdes
+
+
+
+
 //QUESTION  Sort the given an array ================
 
 
@@ -1240,7 +1274,7 @@
 // function sortDecending(array){
 //     for( let i=0; i<array.length; i++){
 //         for(let j=0; j<array.length-1-i; j++){
-//             if(array[j] < array[j+1]){   
+//             if(array[j] < array[j+1]){  //comparision + swaping happens here---If the left number is bigger than the right number → This moves smaller numbers to the end. 
 //                 let temp =array[j]
 //                 array[j]=array[j+1]
 //                 array[j+1]=temp
@@ -1252,6 +1286,36 @@
 // }
 // const array =[2,3,4,6,5,7,8,9,32,11]
 // console.log(sortDecending(array))//[ 32, 11, 9, 8, 7, 6,  5, 4, 3, 2]
+
+
+
+//---------------
+//simpler ways to swap- two value----
+  //[duplicate[j], duplicate[j+1]] = [duplicate[j+1], duplicate[j]];
+
+
+//   if(duplicate[j] > duplicate[j+1]){
+//          [duplicate[j], duplicate[j+1]] = [duplicate[j+1], duplicate[j]];
+//      }
+
+// [duplicate[j], duplicate[j+1]]
+// represents the left side → the two positions you want to update.
+
+
+// [duplicate[j+1], duplicate[j]]
+// represents the right side → the swapped values.
+
+// JavaScript just assigns them:
+
+
+//------ here is the logic of swaping or not used const to declare variable------
+// let a =4;
+// let b = 7;
+// [a ,b] = [b,a]
+
+// console.log("Try ",a);//7
+// console.log("Try pro",b);//4
+
 
 //-- FOR UNDERSTANDING-----------------
 

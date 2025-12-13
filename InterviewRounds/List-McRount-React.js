@@ -1,3 +1,36 @@
+// ✔ (/)Division gives the whole units
+// (example: total seconds → hours)
+
+// ✔(%) Modulo gives the remaining part
+// (example: leftover seconds after removing hours)
+
+
+
+// function formTime(givenTime) {
+//   // const h = Math.floor(givenTime / 3600);
+//   // const m = Math.floor((givenTime % 3600) / 60);
+//   // const s = givenTime % 60;
+
+//   const d = Math.floor(givenTime / 86400);
+//   const h = Math.floor((givenTime % 86400) / 3600);
+//   const m = Math.floor((givenTime % 3600) / 60);
+//   const s = givenTime % 60;
+
+//   return (
+// `
+//  ${String(d)}:${String(h)}: ${String(m)}: ${String(s)}
+
+//${String(h).padStart(2,'0')}: ${String(m).padStart(2,'0')}: ${String(s).padStart(2,'0')}
+    
+    //     `;
+//    )
+// }
+// const givenTime = 5400;
+// const result = formTime(givenTime);
+// console.log(result);
+
+
+
 //QUESTION---
 //Hands ON Task :
 // Typical Interview Requirements
@@ -664,7 +697,7 @@
 // import React, { useState } from "react";
 
 // export default function App() {
-//   const [openId, setOpenId] = useState(false);
+//   const [openId, setOpenId] = useState(null);
 
 //   const data = [
 //     { id: 1, title: "T-shirt", description: "Cotton round-neck T-shirt" },
@@ -1113,3 +1146,161 @@
 //         {startIndex + cardsPerView < data.length && (
 //           <button onClick={handlerNext}>Next</button>
 //         )}
+
+
+
+
+
+//---------------------------TIME BASED FEATURES-----
+//Timing / Interval Pattern Used when UI updates with time. 
+// setTimeout/setInterval/clearInterval/clearTimeout
+// useState/useEffect/useRef
+//String/Math.floor/ceil/pad.Start(2,'0')
+// `${}`
+
+
+
+//-------TIMER
+
+// import { useState, useEffect, useRef } from "react";
+
+// export default function App() {
+//   const [seconds, setSeconds] = useState(0);
+//   const timerRef = useRef(null);
+//   console.log(timerRef);
+
+//   useEffect(() => {
+//     timerRef.current = setInterval(() => {
+//       setSeconds((prev) => prev + 1);
+//     }, 1000);
+
+//     return () => clearInterval(timerRef.current);
+//   }, []);
+
+//   return <h1>Time: {seconds} sec</h1>;
+// }
+
+
+
+
+//------- OTP TIMER
+
+
+// import React, { useState, useEffect, useRef } from "react";
+
+// export default function OtpTimer() {
+//   const [counter, setCounter] = useState(10);
+//   const timerRef = useRef(null);
+
+//   useEffect(() => {
+//     if (counter === 0) return;
+
+//     timerRef.current = setInterval(() => setCounter((prev) => prev - 1), 1000);
+
+//     return () => clearInterval(timerRef.current);
+//   }, [counter]);
+
+//   return (
+//     <div>
+//       <h1>Resend OTP in: {counter}s</h1>
+
+//       {counter === 0 && <button>Resend OTP</button>}
+//     </div>
+//   );
+// }
+
+//-----------------COUNTDOWN------
+
+// import React, { useState, useEffect ,useRef } from "react";
+
+// export default function Countdown() {
+//   const [time, setTime] = useState(10);
+//   const timerRef = useRef(null);
+
+//   useEffect(() => {
+//     if (time === 0) return;
+//     timerRef.current  = setInterval(() => {
+//       setTime((prev) => prev - 1);
+//     }, 1000);
+
+//     return () => clearInterval( timerRef.current );
+//   }, [time]);
+
+//   return <h1>Countdown: {time}</h1>;
+// }
+
+
+//----------------------
+
+// import React, { useState, useEffect, useRef } from "react";
+
+// export default function Countdown() {
+//   const [time, setTime] = useState(0);
+//   const timerRef = useRef(null);
+
+//   const hours = String(Math.floor(time / 3600)).padStart(2, "0");
+//   const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, "0");
+//   const seconds = String(time % 60).padStart(2, "0");
+
+//   useEffect(() => {
+//     timerRef.current = setInterval(() => {
+//       setTime((prev) => prev + 1);
+//     }, 1000);
+
+//     return () => clearInterval(timerRef.current);
+//   }, []);
+
+//   return (
+//     <h1>
+//       Countdown: {hours} : {minutes} : {seconds}
+//     </h1>
+//   );
+// }
+
+
+
+////------------STOPWATCH---
+//--------
+// import React, { useState, useRef, useEffect } from "react";
+
+// export default function Stopwatch() {
+//   const [time, setTime] = useState(0); // seconds
+//   const [isRunning, setIsRunning] = useState(false);
+//   const timerRef = useRef(null);
+
+//   const start = () => {
+//     if (!isRunning) {
+//       setIsRunning(true);
+//       timerRef.current = setInterval(() => setTime(prev => prev + 1), 1000);
+//     }
+//   };
+
+//   const pause = () => {
+//     setIsRunning(false);
+//     clearInterval(timerRef.current);
+//   };
+
+//   const reset = () => {
+//     setIsRunning(false);
+//     clearInterval(timerRef.current);
+//     setTime(0);
+//   };
+
+//   useEffect(() => {
+//     return () => clearInterval(timerRef.current); // cleanup
+//   }, []);
+
+//   const hours = String(Math.floor(time / 3600)).padStart(2, "0");
+//   const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, "0");
+//   const seconds = String(time % 60).padStart(2, "0");
+
+//   return (
+//     <div>
+//       <h2>Stopwatch</h2>
+//       <div>{hours}:{minutes}:{seconds}</div>
+//       <button onClick={start} disabled={isRunning}>Start</button>
+//       <button onClick={pause}>Pause</button>
+//       <button onClick={reset}>Reset</button>
+//     </div>
+//   );
+// }
