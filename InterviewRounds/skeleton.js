@@ -232,4 +232,113 @@
 //  for of  → Value //good for([]//{}//'')
 // doe in → Index / Key ////good only for(//{}//[])
 
+
+
+
+
+
+
+// import React, { useState } from "react";
+
+// const folderData = {
+//   name: "root",
+//   type: "folder",
+//   children: [
+//     {
+//       name: "src",
+//       type: "folder",
+//       children: [
+//         { name: "index.js", type: "file" },
+//         { name: "App.js", type: "file" },
+//         {
+//           name: "components",
+//           type: "folder",
+//           children: [
+//             { name: "Button.js", type: "file" },
+//             { name: "Card.js", type: "file" },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       name: "package.json",
+//       type: "file",
+//     },
+//   ],
+// };
+
+// const FolderTree = ({ data }) => {
+//   const [isOpen, setIsOpen] = useState(true);
+
+//   const handleToggle = () => {
+//     if (data.type === "folder") {
+//       setIsOpen(!isOpen);
+//     }
+//   };
+
+//   return (
+//     <div style={{ marginLeft: 20 }}>
+//       {/* FOLDER */}
+//       {data.type === "folder" && (
+//         <div
+//           onClick={handleToggle}
+//           style={{
+//             cursor: "pointer",
+//             fontWeight: "bold",
+//             color: "#1a73e8",
+//           }}
+//         >
+//           📁 {data.name}
+//         </div>
+//       )}
+
+//       {/* FILE */}
+//       {data.type === "file" && (
+//         <div style={{ marginLeft: 20 }}>📄 {data.name}</div>
+//       )}
+
+//       {/* CHILDREN */}
+//       {data.children && isOpen && (
+//         <div>
+//           {data.children.map((child, index) => (
+//             <FolderTree key={index} data={child} />
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default function App() {
+//   return (
+//     <div>
+//       <h2>📂 Folder Structure</h2>
+//       <FolderTree data={folderData} />
+//     </div>
+//   );
+// }
+
   
+////------------
+
+// ⚡ Most Efficient Way (Production + Interview Best)
+
+// Use nullish coalescing assignment pattern:
+
+// function app(users){
+//   const output = {};
+
+//   for (const {department, name} of users) {//✅ for-of loop + destructuring
+//     (output[department] ??= []).push(name);
+//   }
+
+//   return output;
+// }
+
+// What this does
+// if output[department] is null/undefined
+//     create []
+// then push
+
+
+// One line. Clean. Fast. Senior-level style.

@@ -1269,8 +1269,8 @@
 //   const timerRef = useRef(null);
 
 //   const start = () => {
-//     if (!isRunning) {
-//       setIsRunning(true);
+//     if (!isRunning) {//!isRunning means only start the timer if it is NOT running.
+//       setIsRunning(true);//Updates the state isRunning to true.
 //       timerRef.current = setInterval(() => setTime(prev => prev + 1), 1000);
 //     }
 //   };
@@ -1301,6 +1301,147 @@
 //       <button onClick={start} disabled={isRunning}>Start</button>
 //       <button onClick={pause}>Pause</button>
 //       <button onClick={reset}>Reset</button>
+//     </div>
+//   );
+// }
+
+
+
+
+
+//---------------------------------------
+
+
+
+// import React, { useState } from "react";
+
+// export default function App() {
+//   const data = [
+//     { id: 1, name: "Sanju", role: "Frontend", age: 25 },
+//     { id: 2, name: "Aman", role: "Backend", age: 28 },
+//     { id: 3, name: "Riya", role: "Frontend", age: 24 },
+//     { id: 4, name: "Ankit", role: "Backend", age: 18 },
+//     { id: 5, name: "Rupa", role: "Frontend", age: 14 },
+//   ];
+
+//   const [users, setUsers] = useState(data);
+//   const [search, setSearch] = useState("");
+//   const [sortAsc, setSortAsc] = useState(true);
+
+//   const [editId, setEditId] = useState(null);
+
+//   const [editForm, setEditForm] = useState({
+//     name: "",
+//     role: "",
+//     age: "",
+//   });
+
+//   const filteredUser = users.filter((user) =>
+//     user.name.toLowerCase().includes(search.toLowerCase())
+//   );
+
+//   const sortedUser = [...filteredUser].sort((a, b) =>
+//     sortAsc ? a.age - b.age : b.age - a.age
+//   );
+
+//   const deletedUser = (id) => {
+//     setUsers(users.filter((user) => user.id !== id));
+//   };
+
+//   const startEdit = (user) => {
+//     setEditId(user.id);
+//     setEditForm({
+//       name: user.name,
+//       role: user.role,
+//       age: user.age,
+//     });
+//   };
+
+//   const saveEdit = (id) => {
+//     setUsers(
+//       users.map((user) => (user.id === id ? { ...user, ...editForm } : user))
+//     );
+//     setEditId(null);
+//   };
+
+//   return (
+//     <div>
+//       <h1>Table</h1>
+
+//       <div>
+//         <input
+//           placeholder="seach by name"
+//           onChange={(e) => setSearch(e.target.value)}
+//         />
+//         <button onClick={() => setSortAsc(!sortAsc)}>sort by age</button>
+
+//         <table border="1">
+//           <thead>
+//             <tr>
+//               <th>name</th>
+//               <th>role</th>
+//               <th>age</th>
+//               <th>action</th>
+//             </tr>
+//           </thead>
+
+//           <tbody>
+//             {sortedUser.map((user) => (
+//               <tr key={user.id}>
+//                 <td>
+//                   {editId === user.id ? (
+//                     <input
+//                       value={editForm.name}
+//                       onChange={(e) =>
+//                         setEditForm({ ...editForm, name: e.target.value })
+//                       }
+//                     />
+//                   ) : (
+//                     user.name
+//                   )}
+//                 </td>
+
+//                 <td>
+//                   {editId === user.id ? (
+//                     <input
+//                       value={editForm.role}
+//                       onChange={(e) =>
+//                         setEditForm({ ...editForm, role: e.target.role })
+//                       }
+//                     />
+//                   ) : (
+//                     user.role
+//                   )}
+//                 </td>
+//                 <td>
+//                   {editId === user.id ? (
+//                     <input
+//                       value={editForm.age}
+//                       onChange={(e) =>
+//                         setEditForm({ ...editForm, age: e.target.age })
+//                       }
+//                     />
+//                   ) : (
+//                     user.age
+//                   )}
+//                 </td>
+//                 <td>
+//                   {editId === user.id ? (
+//                     <button onClick={() => saveEdit(user.id)}>save</button>
+//                   ) : (
+//                     <>
+//                       <button onClick={() => startEdit(user)}>edit</button>
+//                       <button onClick={() => deletedUser(user.id)}>
+//                         delete
+//                       </button>
+//                     </>
+//                   )}
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
 //     </div>
 //   );
 // }

@@ -1,3 +1,5 @@
+
+
 //  function FirstPromise(){
 //     return new Promise((resolve ,reject)=>{
 // const status = true;
@@ -13,7 +15,6 @@
 //  FirstPromise()
 //  .then(result => console.log("result"))
 //   .catch(error => console.log("error"))
-
 
 
 

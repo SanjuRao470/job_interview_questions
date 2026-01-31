@@ -62,7 +62,7 @@
 // Number(false) → 0
 
 
-//✅ Both [] and {} are truthy values.  means [] =>true  and means {} =>true
+//✅ Both [] and {} are truthy values.  means [] =>true  and means {} =>true 
 // 1. console.log([] == ![])
 // ![] converts the array [] (which is truthy) to false.
 // The expression becomes [] == false.
@@ -72,6 +72,9 @@
 // Then "" == 0.
 // The empty string is coerced to number 0.
 // So the comparison boils down to 0 == 0, which is true.
+
+
+//----![]  → !true → false
 
 
 // 2. console.log(['x'] == 'x')
@@ -116,6 +119,22 @@
 
 
 
+//IMPORTANT------- Notes--------------
+
+//console.log([] == ![]);//true
+//console.log([] == false);//true
+//console.log(false == 'false')//false
+//console.log(true == 'true')false
+//console.log(['x'] == 'x')//true
+//console.log(" " == 0)//true
+//console.log([] + []);// ''
+//console.log({} + {}); //[object Object][object Object]
+// console.log(0 || "hello");//"hello"
+// console.log("hello" && 0);//0
+
+
+
+
 //=================
 
 // Two distinct {} create two distinct objects in memory — different references.
@@ -133,6 +152,25 @@
 // console.log({} === {})//false     \\due to different references.
 // console.log([] == [])//false      \\due to different references.
 // console.log([] === [])//false      \\due to different references.
+
+
+
+// console.log([] + []);   // ""
+// console.log([] + {});   // "[object Object]"
+// console.log({} + []);   // 0   (in non-strict JS / browser console)
+
+
+
+//----- REASON-----
+// [] + []	"" + ""   	""
+// [] + {}	"" + "[object Object]"   	"[object Object]"
+// { } + []	block + +[]   → 0	             0
+// ({} + [])	object + string	        "[object Object]"
+
+
+// 3️⃣ { } + [] → ❗ Tricky one
+// if we does not wrap inside paranthese { } treated as empty block  , ignored it
+// block + []=>0
 
 
 // const obj = {}
@@ -154,6 +192,7 @@
 
 // console.log(NaN == NaN); // false
 // console.log(NaN === NaN); // false
+//typeof NaN === "number"//"number" === "number" => true
 
 
 //-----------------
@@ -244,6 +283,28 @@
 // console.log(arr3); // Output: [1, 2, 3] (copy unaffected by arr1)
 
 
+
+//  let obj = {a:1}
+//  let ref = obj
+//  obj.x = obj ={a:2}//Rule 2: Property access (obj.x) is decided before assignment
+//  (old object).x = { a: 2 }
+//  console.log(ref)//{ a: 1, x: { a: 2 } }
+//  console.log(ref.x)//{ a: 2 }
+//  console.log(obj.x)//undefined
+//  console.log(obj)//{ a: 2 }
+
+
+
+//   //The object is not destroyed yet because ref1 is still pointing to it.
+//  let obj1 = {a:1}
+//  let ref1 = obj1
+//  obj1 = null
+//  console.log(ref1.a)//1
+//  console.log(obj1)//null
+
+
+
+
 //---QUESTION---
 //  const a = { ab: { cd: { ef: true } } };
 //  const b = a; 
@@ -280,9 +341,61 @@
 
 
 //-------------------
+// REASON-----
+// ✔ If any operand is a string, + will concatenate
+// ✔ All other operators (-, *, /, %) will convert strings to numbers
+
 // console.log(1+"1");//11
 // console.log(1-"1");//0
-//console.log([] == ![]);//true
+
+
+
+
+////------------------------
+// Why does JavaScript do this?
+
+// Because operators like -, *, /, % always expect numbers.
+// So JavaScript forces the string to become a number.
+
+// Only the + operator behaves differently, because 
+// it can perform string concatenation as well.
+
+
+
+// ✅ Examples
+// 1. Subtraction (-)
+// console.log("10" - "2");  
+
+
+// ✔ "10" → 10
+// ✔ "2" → 2
+// Output: 8
+
+// 2. Multiplication (*)
+// console.log("5" * "3");
+
+
+// ✔ "5" → 5
+// ✔ "3" → 3
+// Output: 15
+
+// 3. Division (/)
+// console.log("20" / "4");
+
+
+// ✔ "20" → 20
+// ✔ "4" → 4
+// Output: 5
+
+// 4. Modulus (%)
+// console.log("10" % "3");
+
+
+// ✔ "10" → 10
+// ✔ "3" → 3
+// Output: 1
+
+
 
 
 // console.log(4 + 1 + "9")
@@ -314,3 +427,23 @@
 //console.log(true + false)//1+0=>1
 
 
+//---------------------------
+
+// Relational operators (<, >) return booleans,
+// and booleans are coerced to numbers when compared with numbers.
+
+// JavaScript evaluates 1 < 2 < 3 left to right.
+// 1 < 2 becomes true, which is coerced to 1, and 1 < 3 is true.
+
+// console.log(1 < 2 < 3);//true
+
+// 1 < 2  return true < 3 => 1 < 3  return true
+
+// console.log(3 < 2 < 1);//true
+
+//// 3 < 2  return false < 3 => 0 < 3  return true
+
+
+//console.log(3 > 2 > 1);
+
+//// 3 > 2  return true > 1 => 1  > 1  return false

@@ -673,6 +673,23 @@
 //  }
 //  OuterFn()
 
+//CLOSURE------
+
+// 3️⃣ Access to latest values inside async callbacks
+// Meaning:
+// Closures allow async code (setTimeout, API calls, events)
+// to use values from outside, even later.function greet(name) { 
+
+//---------------------------
+// function greet(name) {
+//   setTimeout(() => {
+//     console.log("Hello", name);
+//   }, 2000);
+// }
+
+// greet("Sanju");
+
+//--data privacy-----
 
 //----------counter----
 // function createCounter(){
@@ -682,9 +699,8 @@
 //      count++; // // Maintained state
 //      console.log(count)
 //  }
-
 // }
-// const counter1 =  createCounter()
+// const counter1 = createCounter()
 // counter1();//1
 // counter1();//2
 // counter1();//3
@@ -774,7 +790,48 @@
 // 5
 // 6
 
+//----------------------------------------------------------
 
+
+// 3️⃣ React REAL-WORLD comparison (INTERVIEW GOLD)
+// ❌ Memory leak in React
+// useEffect(() => {
+//   const id = setInterval(() => {
+//     console.log(state);
+//   }, 1000);
+// }, []); // ❌ no cleanup
+
+// Problem
+
+// Effect runs once
+// Interval never cleared
+// Closure keeps state alive
+// Component unmounts → memory leak
+
+
+
+// ✅ Prevented memory leak in React
+// useEffect(() => {
+//   const id = setInterval(() => {
+//     console.log(state);
+//   }, 1000);
+
+//   return () => clearInterval(id); // ✅ cleanup
+// }, [state]);
+
+// Why this works
+
+// Cleanup runs on unmount / update
+// Interval removed
+// Closure released
+// Memory freed
+
+
+//Interview-ready final answer
+
+// “Closures cause memory leaks only when they keep references alive through
+//  uncleaned timers, listeners, or subscriptions. When used correctly with proper cleanup and limited scope, 
+// closures actually help prevent memory leaks by avoiding global variables.”
 
 
 //QUESTION //IIFE:it is a function that runs immediately after its definition and it is enclosed() and executed right away, it used to prevent global scope pollution.
@@ -808,10 +865,9 @@
 
 
 
-
 //Question------
 //difference between var ,let ,const
- // let , var ,cost
+// let , var ,cost
 
 
 //  function App1(){
@@ -918,7 +974,6 @@
 
 
 
-
 ///------------------COUNTER BUTTON---------
 
 // import React, { useState } from "react";
@@ -956,12 +1011,10 @@
 
 
 
-//       {/* <button onClick={setCounter(counter + 1)}>+</button> what is the reson: ×
+//   {/* <button onClick={setCounter(counter + 1)}>+</button> what is the reson: ×
 // Error
 // Too many re-renders. React limits the number of renders to prevent an infinite loop.
 //       here */}
-
-
 
 
 //       <button onClick={Increment}>+</button>

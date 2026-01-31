@@ -875,6 +875,54 @@
 
 // }
 
+//MOST EFFICIENT WAY OF WRITING --------
+
+// function app(str) {
+//   const res = []
+
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     res.push(str[i])
+//      }
+//  return res.join('')
+// }
+// const str = 'oar'
+// const result =app(str)
+// console.log(result);//rao
+
+
+// function app(str) {
+//     const words = str.split(' ')
+//     const res = []
+//   for(let word of words){
+//       const output = []
+//   for (let i = word.length - 1; i >= 0; i--) {
+//      output.push(word[i])
+//      }
+//      res.push(output.join(''))
+// }
+//  return res.join(' ')
+// }
+// const str = 'ujnas oar'
+// const result =app(str)
+// console.log(result);//sanju rao
+
+
+//-------------------------
+
+// const arr = 'sanju'
+// console.log(arr[0].toUpperCase() + arr.slice(1).toLowerCase());//Sanju
+
+//-----------
+// const str = "sanju"
+//  console.log(str[2].toUpperCase() + str.slice(1).toLowerCase())//Nanju
+// console.log(str[2].toUpperCase() + str.slice(0).toLowerCase())//Nsanju
+
+//NOTE--- collect all at the end str.slice(1) => at the end
+
+
+
+
+
 //------EXAMPLE------------------
 // const str =   [ 'ujnas', 'oar' ] 
 // let output = str.join(' ');
@@ -1513,6 +1561,43 @@
 // const target = 6;
 // const result = twoSum(nums, target);
 // console.log(result); // Output: [1, 2]
+
+
+
+//-----ALTERNATIVE QUESTION
+
+//1--Given an array arr and a number target and reurn number of pairs
+//(i, j) such that 0 ≤ i < j < n and arr[i] + arr[j] > target is 2.
+// input:[2, 5, 1, 3, 4]
+
+//2---Given an array arr and a number target and reurn count of pairs
+
+
+// function getIndexPairs(arr, target) {
+//    const pairs = [];
+// // let count = 0
+
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[i] + arr[j] > target) {
+//          // count++
+//         pairs.push([i, j]);
+//       }
+//     }
+//   }
+
+//   return pairs;
+//    // return count;
+// }
+
+// // Example
+// const arr = [-1, 1, 2, 4, 1];
+// const target = 2;
+
+// console.log(getIndexPairs(arr, target));
+// //[ [ 0, 3 ], [ 1, 2 ], [ 1, 3 ], [ 2, 3 ], [ 2, 4 ], [ 3, 4 ] ]
+// //6
+
 
 
 // QUESTION------- GIVEN CONVERT INTO THREE SET OF ARRAY

@@ -1,3 +1,45 @@
+//-------------NEW QUESTIONS------------
+
+
+// var a = 10;
+// function test() {
+//  console.log(a);
+//  var a = 20;
+// }
+// test();
+
+
+
+// Q9 output:-
+// let x = { b: 1, c: 2 }; 
+// let y = Object.keys(x); 
+// console.log(y.length)//2
+
+
+
+// Q6 Output question:
+// var z = 1, y = z = typeof y;
+// console.log(y);//undefined
+
+
+// Q7 Output question:
+// var trees = ["pine", "apple", "ocean", "maple", "cherry"];
+// delete trees[3];
+// console.log(trees.length)//5
+
+// Q8output:-
+// var Employee = {
+// company: 'Acme'
+// }
+// var employee1 = Object.create(Employee);
+// delete employee1.company
+// console.log(employee1.company);
+
+//-----
+
+
+
+
 // 🔁 FOR LOOP + var vs let (Classic Closure Trap)
 // 1. Output-based Question
 
@@ -75,6 +117,8 @@
 // b
 // c
 
+
+//---TDZ-The period from scope entry until declaration where access triggers a ReferenceError
 
 
 // 🧠 Hoisting & TDZ (Temporal Dead Zone)

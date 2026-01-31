@@ -25,7 +25,7 @@
 
 
 //Hooks:  Hook is a feature which react provide us 
-// hooks they  are re-useable functions.usen in FC and some of the hooks are alternative of or can mimic the lifecycle methods.
+//hooks they are re-useable functions.usen in FC and some of the hooks are alternative of or can mimic the lifecycle methods.
 //why we use Hooks?
 //Beacuse it provide a very easily understandable and much cleaner way of writing code.
 
@@ -288,7 +288,12 @@
 // on update  → line3, line2
 // on unmount → line3
 
+//QUESTION--
+//why there is need to call Component unmounts line3 ← final cleanup
 
+//line3 runs on unmount to do any final cleanup
+//to prevent memory leak
+// Prevent unwanted side effects
 
 
 //--INTERVIEW ASKED QUESTION
@@ -663,9 +668,35 @@
 //   });
 
 
+
 //============ useReducer ======
 //useReducer Hook is similar to the useState Hook.
-//keeping track of multiple pieces of state that rely on complex logic within a single component
+
+//useReducer is react hook , used to manage multiple pieces of state with complex or interdependent logic by centralizing
+//state updates through actions, making the state more predictable and easier to maintain.
+
+//Senior tip
+
+// Reducers must be pure functions
+// Never mutate state directly
+// Works very similar to Redux reducer
+
+//---- Why useReducer here?
+
+// Multiple actions
+// State depends on previous value
+// Logic is centralized
+// Easy to extend
+
+//--- When to prefer useReducer
+
+// Complex forms
+// Many state transitions
+// Conditional updates
+// Large components
+
+
+
 
 // The useReducer Hook accepts two arguments.
 

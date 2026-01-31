@@ -3,6 +3,205 @@
 //js-- single thread --- by default synchronouse but suports asynchronouse
 //Node-- single thread but we make multiple thread using worker thread --- be default asynchronouse
 
+// JavaScript Arrays – Internal Behavior-----------------
+
+//---------Difference between empty slots and undefined
+
+// const arr = [];
+// arr.length = 3;
+// console.log(arr);
+// Output:
+// [ <3 empty items> ]
+
+// Here:
+// Index 0, 1, 2 do not exist
+// They are empty slots
+
+
+//----
+
+// Compare with undefined
+// const arr = [undefined, undefined, undefined];
+// console.log(arr);
+
+// Output:
+// [ undefined, undefined, undefined ]
+
+// Here:
+// Index 0, 1, 2 exist
+// Their value is undefined
+
+
+//--REASON--
+//map() skips empty slots
+
+// const arr = [];
+// arr.length = 3;
+
+// console.log(arr.map(() => "X")); // [ <3 empty items> ]
+
+
+//--REASON--
+//But works with undefined
+// [undefined, undefined, undefined].map(() => "X");
+// // [ 'X', 'X', 'X' ]
+
+
+
+
+// CASE-1
+// //you set length OF THE ARR = 4 BUT THIER SLOT ARE EMPTY NOT UNDEFINED , MEANS THEIR INDEX NOT HAVE ELEMENT.
+// const arr = [];
+// arr.length = 4;
+// console.log(arr);//[ <4 empty items> ]// Index 0, 1, 2,3 do not exist
+
+
+//-------------
+
+// const arr = [1,2]
+// arr.length = 4
+// console.log(arr)//[ 1, 2, <2 empty items> ]
+//console.log(arr.length)//4
+
+
+
+// let arr = [1, 2, 3];
+// arr[10] = 4;
+// console.log(arr.length);//11
+
+// {
+//   0: 1,
+//   1: 2,
+//   2: 3,
+//   10: 4,
+//   length: 11
+// }
+//Array length = highest index + 1
+
+
+// // CASE-2
+// You directly assign a value at index 4
+// JavaScript arrays are 0-based
+// Highest index = 4
+
+// const arr = [];
+// arr[4] = 6;
+// console.log(arr.length);//5
+
+
+
+// const x = [1,2,3];
+// x.length = 1;
+// console.log(x);//[1]
+
+// {
+//   0: 1
+//   length: 1
+// }
+
+// How this works internally array is an object
+// 1️⃣ Initial array
+// {
+//   0: 1,
+//   1: 2,
+//   2: 3,
+//   length: 3
+// }
+
+// JavaScript arrays are objects with a mutable length property.
+// Reducing length truncates elements, and assigning to a high index increases length to index + 1.
+
+
+
+//----
+// Index:  0   1   2   3   4
+// Slots: [ ] [ ] [ ] [ ] [ ]
+
+//---------
+
+// let a = [10, 20];
+
+// Index:  0    1
+// Slots: [10] [20]
+
+// Slot exists
+// Value exists
+
+
+// const a = [];
+// a.length = 100;
+// console.log(a); // [ <100 empty items> ]
+
+// Index does NOT exist
+// No memory allocated
+
+// {
+//   length: 100
+//   // no 0,1,2...99 keys exist
+// }
+
+
+//----<empty items> means the array has a length but no elements at those indexes — the slots do not exist in memory.
+// Why DevTools shows <empty items>
+
+// Because:
+// Slots are missing
+// JS engine knows the length
+// But there’s no element at those positions
+
+
+//--------------
+
+// function test() {
+//   return (
+//       {
+//     a: 1
+//   }
+//   )
+  
+// }
+// console.log(test());//{ a: 1 }
+
+
+
+// function test() {
+//   return {
+//     a: 1
+//   }
+//   }
+// console.log(test());//{ a: 1 }
+
+
+
+// function test() {
+//   return
+//   {
+//     a: 1
+//   }
+// }
+// console.log(test());//undefined
+//// ASI inserts semicolon here,The { a: 1 } block is now unreachable code.
+
+
+
+// JavaScript has Automatic Semicolon Insertion (ASI)
+// JS may insert a semicolon automatically in certain situations.
+
+// One critical rule:
+// A semicolon is inserted after return if there is a line break immediately after it.
+
+
+// How JS reads it
+// return { a: 1 };
+// return ({ a: 1 });
+
+
+// const arr = [1, 2, 3];
+// arr.forEach((num) => num * 2);
+
+// console.log(arr);//[1, 2, 3]
+
+
 
 // Output-Based Questions (JS Execution Order)
 // Q: What is the output of
@@ -17,6 +216,32 @@
 // 5
 // 4
 // 3
+
+// 2.
+// In the Node.js event loop, which of the following is executed immediately after the current operation completes, regardless of the current phase?
+
+// A.
+// setImmediate()
+
+//  Not quite 
+// This is a macrotask that runs in the 'check' phase of the event loop.
+
+// B.
+// Promise.then()
+
+// C.
+// setTimeout(fn, 0)
+
+// D.
+// process.nextTick()
+
+//  Right answer 
+// NextTick callbacks are processed immediately after the current operation, even before the microtask queue (Promises).
+
+// //process.nextTick()
+
+
+
 
 //Question---
 
@@ -33,6 +258,7 @@
 
 // Test 2:
 
+// var a --hoisted
 // let a = 1;
 // {
 //   var a = 2;
@@ -56,7 +282,7 @@
 //   console.log(b); // 2
 // }
 // console.log("af", a); // "af" 2
-//   console.log(b);//2
+// console.log(b);//2
 
 
 
@@ -239,8 +465,6 @@
 
 
 
-
-
 //=====INTERVIEWER ASKED QUESTIONS=====================//
 
 
@@ -282,7 +506,7 @@
 // function show(){
 //   console.log(this);
 // }
-// show(); // In browser → window
+// show(); // In browser → window -------  Object [global] 
 
 
 // Inside a function (strict mode)
@@ -583,28 +807,37 @@
 // Objects (Objects, Arrays, Functions) → reference to the object is passed (so changes reflect).
 
 
-// 🔹 Pass by Value
+// 🔹 Pass by Value/Call by Value
 
-// When a variable is passed by value, a copy of the actual data is sent to the function.
-// ➡️ Changes made inside the function do not affect the original variable.
+// A copy of the variable is passed to the function, 
+// so changes inside the function do not affect the original value.
+
+//This is how primitives behave in JavaScript.
 
 
 //--EXAMPLE--------------
 // function passByValue(a){
+//console.log( "before reassignment ", a)//10
 //     a=8;
-//     console.log("inside",a)//8
+//     console.log("after reassignment ",a)//8
 // }
 
 // let num = 10;
 // passByValue(num)
-//   console.log("outside",num)//10
+// console.log("outside",num)//10
 
 
-// 🔹 Pass by Reference
+
+
+// 🔹 Pass by Reference/Call by Reference
 
 ////--EXAMPLE--------------
-// When a variable is passed by reference, the function gets a reference (address) to the actual data.
-// ➡️ Changes made inside the function directly affect the original variable.
+// A reference to the same memory is passed to the function, 
+// so changes inside the function affect the original variable.
+
+//This is how objects and arrays appear to behave.
+
+
 
 // function passByReference(obj) {
 //   obj.name = "Updated"; // modifies the original object
@@ -681,17 +914,50 @@
 
 // So any changes made via one reference (a.push(4)) will be visible to the other (b).
 
+//----
+//Example
+//  const arr = [1,2,3,5]
+//  console.log(arr.join(','))//1,2,3,5
+
+//  let str = 'bharat mata ki jai'
+// console.log(str.split(' '))//[ 'bharat', 'mata', 'ki', 'jai' ]
+
 
 
 //---QUESTION----
+
+//--------
+// let a = b = 10;
+// console.log(a)//10
+// console.log(b)//10
+
+// What is b?
+
+// A. block scoped
+// B. global ✅
+// C. undefined
+// D. const
+
+// Why: b leaks to global
+
+
+
 // let a1 = a2 = [1, 2, 3];
 // a1.length = 2;
 // console.log(a1);//[1,2]
 // console.log(a2);//[1,2]
 
+
 // let b = [2,3,4]
 // let c =b
 // b.push(5)
+// console.log(b);//[2,3,4,5]
+// console.log(c);//[2,3,4,5]
+
+
+// let b = [2,3,4]
+// let c =b
+// c.push(5)
 // console.log(b);//[2,3,4,5]
 // console.log(c);//[2,3,4,5]
 
@@ -701,6 +967,15 @@
 // d.push(5)
 // console.log(d);//[2,3,4,9,5]
 // console.log(e);//[2,3,4,9]
+
+
+
+// let d = [2,3,4,9]
+// let e =[...d]
+// e.push(8)
+// console.log(d);//[2,3,4,9]
+// console.log(e);//[ 2, 3, 4, 9, 8 ]
+
 
 // let a = b = [1, 2];
 // b.push(3);
@@ -719,6 +994,8 @@
 // console.log("Try programiz.pro",a); //[ 9, 8, 7 ]
 // console.log("Try ",b); //[ [ 9, 8, 7 ], 5 ]
 // console.log("programiz.",c); //[ 9, 8, 7, 3 ]
+
+
 
 
 
@@ -815,6 +1092,44 @@
 
 
 //QUESTION---
+// var with different scopes
+
+//SCOPE
+// * No block scope, and can be re-declared
+// * Only had function scope
+// * var are hoisted, so they can be used before the declaration
+
+// var x = 1;
+// var x = 2; // valid
+
+
+// console.log(y)//--undefined // valid
+// var y = 3
+
+
+// z=4
+// console.log(z) -- 4 // valid
+// var z;
+
+//-------------------------------
+
+// const with different scopes
+
+// * const creates a block scope
+// * Re-declaration in NOT allowed
+// * Re-assignment is NOT allowed
+// * Must be assigned at declaration time.
+
+
+// { // block scope
+// const x; //Error
+// const y=0;
+// y=3;
+// }
+// console.log(x); // Error in global scopе
+
+
+
 
 // console.log(a);
 // //  var a = 10;/undefined
@@ -853,26 +1168,47 @@
 //answer : number
 
 
-//Destructuring Error Example
-// const example = ({ a, b, c }) => {
-//   console.log(a, b, c);
+//Destructuring Rule----
+
+//Object destructuring works only with objects; array destructuring works only with arrays.
+
+//❌ Cannot destructure null or undefined.
+
+
+//  const arrowFn = ({a,b,c})=>{
+//  console.log(a,b,c)//1,2,3
+//  }
+// arrowFn({a:1,b:2,c:3});
+
+
+//  const arrowFn = (a,b,c)=>{
+//  console.log(a,b,c)//3,4,undefiend
+//  }
+// arrowFn(3,4);
+
+
+// const arrowFn = (str)=>{
+//  console.log(str)//hell
+//  }
+// arrowFn("hell");
+
+
+// const arrowFn = ([a, b, c]) => {
+// console.log(a, b, c);//1,2,3
 // };
-// example(0, 1, 2);
-////answer undefined
-//TypeError: Cannot destructure property 'a' of 'undefined' as it is undefined.
+// arrowFn([1, 2, 3]);
 
 
-//reason :What happens internally?
-//Your function expects one argument, and that argument must be an object:
-// Only the first argument (0) is passed to the function.
-// The other values 1 and 2 are ignored.
-
-// Inside the function, JavaScript tries to do:
-// const { a, b, c } = 0;
+//  const arrowFn = (name)=>{
+//  console.log(name)//null
+//  }
+// arrowFn(null);
 
 
-// But 0 is not an object, so destructuring fails.
-// Therefore it throws:
+//  const arrowFn = (name)=>{
+//  console.log(name)//undefined
+//  }
+// arrowFn(undefined);
 
 
 
@@ -881,6 +1217,113 @@
 //   console.log(a, b, c);
 // };
 // example({ a: 0, b: 1, c: 2 }); // Output: 0 1 2
+
+
+
+// const fn = (...args) => args;
+
+// fn(1, 2, 3); // [1, 2, 3]
+
+//--------------
+
+// const fn = () => arguments;
+// fn(1, 2);
+// ➡️ ReferenceError
+// Because arguments doesn’t exist globally.
+
+
+//----------------
+
+// function outer() {
+//   const fn = () => arguments;
+//   return fn(1, 2);
+// }
+
+// outer(10, 20);//[10,20]
+
+
+
+// Promise.resolve(1)
+//   .then(() => { throw 2 })
+//   .catch(e => e)
+//   .then(console.log);//2
+
+
+//-------------
+// const obj = {
+//   a: 1,
+//   b: () => this.a
+// }
+// console.log(obj.b());//undefined
+
+
+//-------------------
+// parseInt reads digits from the start of the string and stops at the first invalid character; 
+// if the string doesn’t start with a digit, it returns NaN.
+
+
+// parseInt must start with a digit if its not invalid first character
+
+//console.log(parseInt("10px"));//10  // start with valid digit
+//console.log(parseInt("px10")) // NaN   //// start with invalid first character
+
+
+///-------------------------
+// Number() requires the entire string to be numeric
+// No partial parsing
+
+// 1️⃣ parseInt vs Number
+// Number("10px") // NaN
+
+
+
+//----------------------------------------------
+
+// console.log(JSON.stringify(undefined));//undefined
+// console.log(JSON.stringify([undefined]));//[null]
+//JSON.stringify({ a: undefined }) // "{}"
+// console.log(JSON.stringify(4));//4
+// console.log([].length)//0
+
+//---------------------------
+
+//--Unary + → Number conversion
+// Number(true) → 1
+// Number(false) → 0
+
+// console.log(+true);//1
+// console.log(+false);//0
+
+//---------------------------
+
+// const a = {};
+// const b = { key: "b" };
+// a[b] = 123;
+// console.log(a);//"[object Object]"
+
+//--------------------------------LOGICAL OR
+// Why?
+
+// 0 is falsy
+// || returns first truthy value
+
+// 📌 Rule:
+// A || B → if A is falsy → return B
+
+// console.log(0 || "hello");//"hello"
+
+
+//----------------------------------LOGICAL AND
+
+///Why?
+
+// "hello" is truthy
+// && returns first falsy value
+
+// 📌 Rule:
+
+// A && B → if A is truthy → return B
+// console.log("hello" && 0);//0
 
 
 
@@ -1077,3 +1520,48 @@
 //   setC(c + 1);//2
 //   setC(count + 1);//0+1
 // });
+
+
+
+
+//-------------------
+
+
+//App();//ReferenceError: Cannot access 'App' before initialization
+
+//  /const/let  App = function(){
+//   let count = 0;
+//   console.log(count)
+//}
+//App(); accessiable
+
+
+
+//counterClosure() //accessiable
+//    function counterClosure() {
+//   let count = 0;
+//   console.log(count)
+// }
+//counterClosure() //accessiable
+
+
+/////-------
+
+// var firstname = computeName();
+
+// let name = "Yomesh";
+
+// function computeName() {
+//   return `${name} Gupta`;
+// }
+
+// console.log(firstname);
+
+
+//---------
+// (function () {
+//   var first = second = 5;
+// })();
+
+//console.log(second);
+

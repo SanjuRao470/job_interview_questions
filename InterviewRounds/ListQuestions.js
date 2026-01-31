@@ -1261,6 +1261,10 @@
 //     if(typeof obj[key] === 'object' &&  obj[key] !== null &&   !Array.isArray(obj[key]) ){
 //         count+=CountKeys(obj[key])// // add keys from the nested object
 //     }
+
+//---optional
+//-----      count++;
+//
 //        }
 //        return count;
 // }
@@ -1928,6 +1932,205 @@
 //here null is treated as a seperate dataType
 
 
-///-------- Another question---------
+///-------- Another question  formule---------
+// const arr =  [9, 2, 1, 4, 50, 3,8]
+// console.log(arr.sort((a,b)=>a-b))
+// console.log(arr.sort((a,b)=>b-a))
+
+
+ //const arr= [9, 2,[ 1, 4, [50,6], 3,8]]
+//console.log(arr.flat())//[ 9, 2, 1, 4, [ 50, 6 ], 3, 8 ] first leyar flatten
+//console.log(arr.flat(Infinity))//[  9, 2, 1, 4, 50, 6, 3, 8]
+
+
+
+
+/// INTERVIEW QUESTION------
+
+
+//Get names of active Engineering users, sorted alphabetically
+
+//  function getNameByEngg(users){
+//       const output = [];
+      
+//        for(let user of users){
+//            // const {name, department, active } = user
+//            if(user.department === 'Engineering' &&  user.active === true){
+//                output.push(user.name)
+//            }
+//        }
+//       return output.sort(); FOR SORT
+//        //  return output
+//  }
+//   const users = [ { id: 1, name: 'Tom', department: 'Engineering', salary: 80000, active: true },
+//  { id: 2, name: 'Bob', department: 'Engineering', salary: 75000, active: false }, 
+// { id: 3, name: 'Charlie', department: 'Sales', salary: 60000, active: true }, 
+// { id: 4, name: 'Paul', department: 'Engineering', salary: 90000, active: true },
+//  { id: 5, name: 'Eva', department: 'Marketing', salary: 65000, active: true },
+//  { id: 6, name: 'Frank', department: 'Sales', salary: 58000, active: false }, 
+// { id: 7, name: 'Grace', department: 'HR', salary: 70000, active: true },
+//  { id: 8, name: 'Alice', department: 'Engineering', salary: 95000, active: true }, 
+// { id: 9, name: 'Ivy', department: 'Marketing', salary: 62000, active: false },
+//  { id: 10, name: 'Jack', department: 'Finance', salary: 72000, active: true },
+//  { id: 11, name: 'Kate', department: 'Sales', salary: 67000, active: true }, 
+// { id: 12, name: 'Leo', department: 'Engineering', salary: 78000, active: false },
+//  { id: 13, name: 'Maya', department: 'HR', salary: 68000, active: true },
+//  { id: 14, name: 'Noah', department: 'Finance', salary: 85000, active: true }, 
+// { id: 15, name: 'Olivia', department: 'Marketing', salary: 71000, active: true }, 
+// { id: 16, name: 'Hanery', department: 'Engineering', salary: 82000, active: true },]
+ 
+//  const result = getNameByEngg(users)
+//  console.log(result)
+// //[ 'Alice', 'Hanery', 'Paul', 'Tom' ]
+
+
+
+ ////. Calculate average salary of active users by department
+ //avgSalary = sum/count
+ 
+//  function getAvgSalaryByDept(users){
+//      const output = {}
+//      for(let user of users){
+//          let {name,department,active,salary} = user
+//          if(active === true){
+//               if(!output[department]){
+//              output[department] = { sum: salary  ,count:1}
+//          }else{
+//            output[department].sum +=salary
+//              output[department].count +=1   
+//         }
+//          }
+//           }
+//            for(let department in output){
+//         output[department].avg =   output[department].sum /  output[department].count
+//          }
+//      return  output;
+//  }
+ 
+//  const  result = getAvgSalaryByDept(users)
+//  console.log(result)
+//  {
+//   Engineering: { sum: 347000, count: 4, avg: 86750 },
+//   Sales: { sum: 127000, count: 2, avg: 63500 },
+//   Marketing: { sum: 136000, count: 2, avg: 68000 },
+//   HR: { sum: 138000, count: 2, avg: 69000 },
+//   Finance: { sum: 157000, count: 2, avg: 78500 }
+// }
+
+
+//  for this format--
+
+//   const map = {};
+//            for(let department in output){
+//         map[department] = output[department].sum /  output[department].count
+//          }
+//      return  map;
+
+//      {
+//   Engineering: 86750,
+//   Sales: 63500,
+//   Marketing: 68000,
+//   HR: 69000,
+//   Finance: 78500
+// }
+ 
+ //NOTE-----
+
+ 
+//Aggregation = collecting multiple values and combining them into one result.
+// Examples of Aggregation
+
+// From many numbers → one value:
+
+// Sum
+// Average
+// Count
+// Min
+// Max
+// Total
+
+//---- most efficient way of solving-----
+//  function app(users){
+//      const output = {};
+
+//      for(const {name , department,active} of users){
+//          if(active === true ){
+//          (output[department] ??= []).push(name)
+//          }
+//      }
+//    return output;
+//  }
+
+//  const users = [ { id: 1, name: 'Tom', department: 'Engineering', salary: 80000, active: true },
+//  { id: 2, name: 'Bob', department: 'Engineering', salary: 75000, active: true }, 
+// { id: 3, name: 'Tharlie', department: 'Sales', salary: 60000, active: true }, 
+// { id: 4, name: 'Paul', department: 'Engineering', salary: 90000, active: true },
+//  { id: 5, name: 'Gva', department: 'Marketing', salary: 65000, active: true },
+//  { id: 6, name: 'Brank', department: 'Sales', salary: 58000, active: false }, 
+// { id: 7, name: 'Grace', department: 'HR', salary: 70000, active: true }]
+
+//  const  result = app(users)
+//  console.log(result)
+
+
+//-----MOST IMPORTTANT SALARY, COUNT----
+
+
+//  function app(data){
+// const output = {};      // category → count
+// const outcomes = [];    // final result array
+// const map = {};         // category → sum
+// const outputUser = {};  // category → users list
+
+//       for(const {category,amount,user} of data){
+//         output[category] = (output[category] || 0) +1;
+//       map[category] = ( map[category] ?? 0) + amount;
+//               (outputUser[category] ??=[]).push(user)
+//      }
+
+//      for(let key in  output){
+//          outcomes.push({
+//              category:key,
+//              count:output[key],
+//              sum:map[key],
+//             agvSum:Math.floor(map[key]/output[key] ),
+//             users:outputUser[key]
+//          })
+//      }
+      
+//     return outcomes
+// }
+
+//  const  data = [
+//   { id: 1, user: "Amit", category: "Food", amount: 200 },
+//   { id: 2, user: "Riya", category: "Travel", amount: 500 },
+//   { id: 3, user: "Amit", category: "Food", amount: 150 },
+//   { id: 4, user: "Riya", category: "Food", amount: 300 },
+//   { id: 5, user: "Neha", category: "Travel", amount: 400 }
+// ]
+//  const result = app(data)
+//  console.log(result)
+ 
+ 
+//  [
+//   {
+//     category: 'Food',
+//     count: 3,
+//     sum: 650,
+//     agvSum: 216,
+//     users: [ 'Amit', 'Amit', 'Riya' ]
+//   },
+//   {
+//     category: 'Travel',
+//     count: 2,
+//     sum: 900,
+//     agvSum: 450,
+//     users: [ 'Riya', 'Neha' ]
+//   }
+// ]
+
+
+
+ 
 
 
