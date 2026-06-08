@@ -19,7 +19,7 @@
 // }
 // console.log(y); // 10
 
-////reason: redeclare same variable because var does have block scope due to this it does not affects outer variable as well.
+////reason: redeclare same variable because let does have block scope due to this it does not affects outer variable as well.
 //Re-declaration: Can not be re-declared within the same scope.
 
 

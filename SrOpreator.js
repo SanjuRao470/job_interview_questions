@@ -219,7 +219,7 @@
 //------------------------
 // One-Line Interview Answer
 
-// Object.assign copies references, Object.freeze blocks top-level changes but not nested ones. Both are shallow.
+//Object.assign copies references, Object.freeze blocks top-level changes but not nested ones. Both are shallow.
 //Object.freeze prevents changes, Object.assign copies data — they solve opposite problems.
 
 //Use assign to change data safely, use freeze to stop data from changing.
@@ -255,6 +255,7 @@
 // Can change nested	    ✅ Yes
 // Purpose	        	Prevent mutation(stop : update,add,delete)
 // Shallow	          	✅ Yes
+
 
 // const obj ={
 //     age:20,

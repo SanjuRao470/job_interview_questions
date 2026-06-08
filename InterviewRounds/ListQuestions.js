@@ -557,29 +557,49 @@
 //------------FIND MISSING ELEMENTS OF THE ARRAY--------
 
 // function FindMissingElement(array){
+// function app(arr){
 //     const output = [];
-//     array.sort((a,b)=> a-b);
-//     for(let i=1; i<array.length; i++){
-//         const currentEle  = array[i]
-//         console.log("currentEle",currentEle)
-//         const previous = array[i-1] 
-//         console.log("previous",previous)
-//         if(currentEle - previous > 1 ){//This checks if there is a gap between the current and previous elements.
-//            for(let j = previous+1 ; j < currentEle ; j++){//If there's a gap, we use another for loop to fill in the missing numbers between priviousEle + 1 and currentEle.
-//                 output.push(j)  
-//             }
+//   arr.sort((a,b)=> a-b)
+//     for(let i=0; i<arr.length - 1; i++){
+//         if(arr[i +1] !== arr[i]+1){
+//           output.push(arr[i] + 1)
+//           //return arr[i] +1
 //         }
-//         }
-//    return output; 
+//      }
+//     return output
 // }
-// const array = [1,2,5,6,4,8]
-// const result = FindMissingElement(array)
-// console.log(result)//[ 3, 7 ]
+// const arr = [1,2,5,6,4,8] //--[1,2,4,5,6,8]
+// const result = app(arr)
+// console.log(result)//[ 3, 7]
+// explaination next number is  at i =1 arr[i+1] =>arr[2] =>4
+// current number is  at i =1 arr[i] +1 =>arr[1] + 1 => 2+1 =>3
+//  check 4!==3 here 3 is missing
 
 
 
 
 ///---QUESTION-----Find First Repeating Element
+
+
+//best -------If output[firstletter] is null/undefined → assign []
+
+//  function reverseFn(array){
+//      const output = {};
+     
+//      for(let item of array){
+//          const firstletter = item[0]
+//          output[firstletter] ??=[];
+//          output[firstletter].push(item)
+//      }
+       
+//     return output;  
+//  }
+
+//  const arr = ["apple", "banana", "avocado"]
+//  const result = reverseFn(arr)
+//  console.log(result)//{ a: [ 'apple', 'avocado' ], b: [ 'banana' ] }
+
+
 
 
 
@@ -916,6 +936,82 @@
   }
 }
 */
+
+
+
+
+// ////-----
+
+
+// function groupByFn(array){
+//     const output = {};
+//     const outcome = [];
+
+//     for(const { name, dept, role } of array){
+
+//         // Initialize dept
+//         output[dept] ??= {
+//             names: [],
+//             count: 0,
+//             roles: {}
+//         };
+
+//         // Add name
+//         output[dept].names.push(name);
+
+//         // Count
+//         output[dept].count++;
+
+//         // Group by role inside dept
+//         output[dept].roles[role] ??= [];
+//         output[dept].roles[role].push(name);
+//     }
+
+//     // Convert to desired format
+//     for(let key in output){
+//         outcome.push({
+//             dept: key,
+//             names: output[key].names,
+//             count: output[key].count,
+//             roles: output[key].roles
+//         });
+//     }
+
+//     return outcome;
+// }
+
+
+//   const arr =  [
+//   { name: 'Alice', dept: 'Engineering', role: 'Frontend' },
+//   { name: 'Bob', dept: 'Engineering', role: 'Backend' },
+//   { name: 'Eve', dept: 'Engineering', role: 'Frontend' },
+//   { name: 'Tom', dept: 'HR', role: 'Recruiter' }
+// ];
+//  const result = groupByFn(arr)
+//  console.log(result)
+
+
+
+
+// [
+//   {
+//     dept: "Engineering",
+//     names: ["Alice", "Bob", "Eve"],
+//     count: 3,
+//     roles: {
+//       Frontend: ["Alice", "Eve"],
+//       Backend: ["Bob"]
+//     }
+//   },
+//   {
+//     dept: "HR",
+//     names: ["Tom"],
+//     count: 1,
+//     roles: {
+//       Recruiter: ["Tom"]
+//     }
+//   }
+// ]
 
 
 
@@ -1367,7 +1463,7 @@
 //      output.push(...app(item , depth- 1, seen))
 //          }else{
 //              if(!seen.has(item)){
-//                  seen.add(item)
+//                  seen.add(item)5
 //                  output.push(item)  
 //          }
 //          }
@@ -2036,7 +2132,18 @@
  
  //NOTE-----
 
+//  note---
+//??=[] (Nullish Coalescing Assignment) means If outcome[department] is null or undefined, assign it []
+// ?? 0 Nullish Coalescing Assignment) means If outcome[department] is null or undefined, assign it 0
+
  
+// Difference from ||:
+
+// || treats 0 as false
+// ?? does NOT treat 0 as false
+
+
+
 //Aggregation = collecting multiple values and combining them into one result.
 // Examples of Aggregation
 
@@ -2074,6 +2181,188 @@
 
 
 //-----MOST IMPORTTANT SALARY, COUNT----
+
+
+//  function  app(users){
+//      const output = {};
+//      const map = {};
+//        const newOutput = {};
+//      const finalOutcomes = []; 
+     
+//      for(const {name,active,department,salary} of users){
+//          if(active === true){
+//              (output[department] ??=[]).push(name)
+//              map[department] = ( map[department] || 0)+1  or    map[department] = ( map[department] ?? 0)+1
+//              newOutput[department] = ( newOutput[department] ?? 0 )+ salary
+//          }
+//      }
+     
+//      for(let key in output){
+//          finalOutcomes.push({
+//              dept: key,
+//              [key] : output[key],
+//              count : map[key],
+//              sum : newOutput[key],
+//              avgSalary : newOutput[key] /  map[key]
+// })
+//      }
+//   return finalOutcomes;
+//  }
+ 
+//  const users = [ { id: 1, name: 'Tom', department: 'Engineering', salary: 80000, active: true },
+//  { id: 2, name: 'Bob', department: 'Engineering', salary: 75000, active: false }, 
+// { id: 3, name: 'Charlie', department: 'Sales', salary: 60000, active: true }, 
+// { id: 4, name: 'Paul', department: 'Engineering', salary: 90000, active: true },
+//  { id: 5, name: 'Eva', department: 'Marketing', salary: 65000, active: true },
+//  { id: 6, name: 'Frank', department: 'Sales', salary: 58000, active: false }, 
+// { id: 7, name: 'Grace', department: 'HR', salary: 70000, active: true },
+//  { id: 8, name: 'Alice', department: 'Engineering', salary: 95000, active: true }, 
+// { id: 9, name: 'Ivy', department: 'Marketing', salary: 62000, active: false },
+//  { id: 10, name: 'Jack', department: 'Finance', salary: 72000, active: true },
+//  { id: 11, name: 'Kate', department: 'Sales', salary: 67000, active: true }, 
+// { id: 12, name: 'Leo', department: 'Engineering', salary: 78000, active: false },
+//  { id: 13, name: 'Maya', department: 'HR', salary: 68000, active: true },
+//  { id: 14, name: 'Noah', department: 'Finance', salary: 85000, active: true }, 
+// { id: 15, name: 'Olivia', department: 'Marketing', salary: 71000, active: true }, 
+// { id: 16, name: 'Hanery', department: 'Engineering', salary: 82000, active: true },]
+// const result = app(users)
+// console.log(result)
+
+// [
+//   {
+//     dept: 'Engineering',
+//     Engineering: [ 'Tom', 'Paul', 'Alice', 'Hanery' ],
+//     count: 4,
+//     sum: 347000,
+//     avgSalary: 86750
+//   },
+//   {
+//     dept: 'Sales',
+//     Sales: [ 'Charlie', 'Kate' ],
+//     count: 2,
+//     sum: 127000,
+//     avgSalary: 63500
+//   },
+//   {
+//     dept: 'Marketing',
+//     Marketing: [ 'Eva', 'Olivia' ],
+//     count: 2,
+//     sum: 136000,
+//     avgSalary: 68000
+//   },
+//   {
+//     dept: 'HR',
+//     HR: [ 'Grace', 'Maya' ],
+//     count: 2,
+//     sum: 138000,
+//     avgSalary: 69000
+//   },
+//   {
+//     dept: 'Finance',
+//     Finance: [ 'Jack', 'Noah' ],
+//     count: 2,
+//     sum: 157000,
+//     avgSalary: 78500
+//   }
+// ]
+
+//---------------------ANOTHER WAYS--------------------
+
+
+// function groupByDepartment(array){
+//     const output = [];
+//     const map = {};
+    
+//     for(let {name,department, salary, active} of array){
+//         if(!active) continue; // skip who are inctive and include only active  ✅ fix
+//         map[department] ??= {
+//             users: [],
+//             count: 0,
+//             sum: 0
+//         }
+          
+//         map[department].users.push(name);
+//         map[department].count++;
+//         map[department].sum += salary;
+//     }
+          
+//     for(let key in map){
+//         output.push({
+//             dept: key,
+//             user: map[key].users,
+//             count: map[key].count,
+//             sum: map[key].sum,
+//             avgSalary: map[key].sum / map[key].count // ✅ fix
+//         }) 
+//     }
+     
+//     return output;
+// }
+//  const users = [ { id: 1, name: 'Tom', department: 'Engineering', salary: 80000, active: true },
+//  { id: 2, name: 'Bob', department: 'Engineering', salary: 75000, active: false }, 
+// { id: 3, name: 'Charlie', department: 'Sales', salary: 60000, active: true }, 
+// { id: 4, name: 'Paul', department: 'Engineering', salary: 90000, active: true },
+//  { id: 5, name: 'Eva', department: 'Marketing', salary: 65000, active: true },
+//  { id: 6, name: 'Frank', department: 'Sales', salary: 58000, active: false }, 
+// { id: 7, name: 'Grace', department: 'HR', salary: 70000, active: true },
+//  { id: 8, name: 'Alice', department: 'Engineering', salary: 95000, active: true }, 
+// { id: 9, name: 'Ivy', department: 'Marketing', salary: 62000, active: false },
+//  { id: 10, name: 'Jack', department: 'Finance', salary: 72000, active: true },
+//  { id: 11, name: 'Kate', department: 'Sales', salary: 67000, active: true }, 
+// { id: 12, name: 'Leo', department: 'Engineering', salary: 78000, active: false },
+//  { id: 13, name: 'Maya', department: 'HR', salary: 68000, active: true },
+//  { id: 14, name: 'Noah', department: 'Finance', salary: 85000, active: true }, 
+// { id: 15, name: 'Olivia', department: 'Marketing', salary: 71000, active: true }, 
+// { id: 16, name: 'Hanery', department: 'Engineering', salary: 82000, active: true },]
+
+// const result = groupByDepartment(users)
+// console.log(result)
+
+
+// //---
+// [
+//   {
+//     dept: 'Engineering',
+//     user: [ 'Tom', 'Paul', 'Alice', 'Hanery' ],
+//     count: 4,
+//     sum: 347000,
+//     avgSalary: 86750
+//   },
+//   {
+//     dept: 'Sales',
+//     user: [ 'Charlie', 'Kate' ],
+//     count: 2,
+//     sum: 127000,
+//     avgSalary: 63500
+//   },
+//   {
+//     dept: 'Marketing',
+//     user: [ 'Eva', 'Olivia' ],
+//     count: 2,
+//     sum: 136000,
+//     avgSalary: 68000
+//   },
+//   {
+//     dept: 'HR',
+//     user: [ 'Grace', 'Maya' ],
+//     count: 2,
+//     sum: 138000,
+//     avgSalary: 69000
+//   },
+//   {
+//     dept: 'Finance',
+//     user: [ 'Jack', 'Noah' ],
+//     count: 2,
+//     sum: 157000,
+//     avgSalary: 78500
+//   }
+// ]
+
+
+
+
+///////////////----------------------------------------------------------------------
+
 
 
 //  function app(data){
@@ -2131,6 +2420,89 @@
 
 
 
- 
+///-----------------------
 
+
+// function groupByDepartment(array){
+//     const output = [];
+//     const map = {};
+    
+//     for(let {user,amount,category} of array){
+        
+//         map[category] ??= {
+//             users:[],
+//             count:0,
+//             sum:0
+//         }
+//         map[category].users.push(user)
+//            map[category].count++
+//            map[category].sum+=amount
+        
+//   }
+  
+//   for(let key in  map){
+//       output.push({
+//           category:key,
+//           [key]:map[key].users,
+//           count: map[key].count,
+//           sum:map[key].sum,
+//           avgAmount: map[key].sum / map[key].count
+//       })
+//   }
+//     return output;
+// } 
+
+
+
+//  const  data = [
+//   { id: 1, user: "Amit", category: "Food", amount: 200 },
+//   { id: 2, user: "Riya", category: "Travel", amount: 500 },
+//   { id: 3, user: "Amit", category: "Food", amount: 150 },
+//   { id: 4, user: "Riya", category: "Food", amount: 300 },
+//   { id: 5, user: "Neha", category: "Travel", amount: 400 }
+//  ]
+
+// const result = groupByDepartment(data)
+// console.log(result)
+
+// [
+//   {
+//     category: 'Food',
+//     Food: [ 'Amit', 'Amit', 'Riya' ],
+//     count: 3,
+//     sum: 650,
+//     avgAmount: 216.66666666666666
+//   },
+//   {
+//     category: 'Travel',
+//     Travel: [ 'Riya', 'Neha' ],
+//     count: 2,
+//     sum: 900,
+//     avgAmount: 450
+//   }
+// ]
+
+
+
+///--------------Move all even numbers to left and odd to right while maintaining order.
+ 
+// function rearrange(arr) {
+//   const even = [];
+//   const odd = [];
+
+//   for (let num of arr) {
+//     if (num % 2 === 0) {
+//       even.push(num);
+//     } else {
+//       odd.push(num);
+//     }
+//   }
+
+//   return [...even, ...odd];
+// }
+
+// const arr = [2,4,6,8,1,3,5,7]
+// const result = rearrange(arr)
+// console.log(result);
+// // Output: [2,4,6,8,1,3,5,7]
 

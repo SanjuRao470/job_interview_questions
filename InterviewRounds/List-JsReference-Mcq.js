@@ -76,6 +76,10 @@
 
 //----![]  → !true → false
 
+//console.log([] == ![]) => true
+//--console.log([] === ![]) =>false  ==> ![] convert into !true  ==>false
+// [] === false is false because type must be true.
+
 
 // 2. console.log(['x'] == 'x')
 // The array ['x'] coerces to a string via .toString(), which gives "x".
@@ -123,14 +127,27 @@
 
 //console.log([] == ![]);//true
 //console.log([] == false);//true
-//console.log(false == 'false')//false
+//console.log(false == 'false')//false//NaN
 //console.log(true == 'true')false
-//console.log(['x'] == 'x')//true
 //console.log(" " == 0)//true
+//console.log([] == 0)//true
+//console.log([] == "")//false//NaN
 //console.log([] + []);// ''
 //console.log({} + {}); //[object Object][object Object]
 // console.log(0 || "hello");//"hello"
 // console.log("hello" && 0);//0
+//console.log(['x'] == 'x')//true
+
+//--------
+// console.log(4 + 1 + "9")
+// Left to right evaluation.
+
+//------
+//This works because assignment happens from right to left.
+// b = [1,2,3];
+// const a = b; //--- takes reference
+
+//  const a =  b =  [1,2,3];
 
 
 
@@ -222,6 +239,11 @@
 
 
 //----------------
+// This works because assignment happens from right to left.
+// b = [1,2,3];
+// const a = b; //--- takes reference
+
+
 //  const a =  b =  [1,2,3];
 // b.push(5)
 // console.log(a);//[ 1, 2, 3, 5 ]
@@ -233,6 +255,7 @@
 // const arr = [1, 2];
 // const a = arr;
 // const b = arr;
+
 
 // console.log(a === b); // Output: true
 

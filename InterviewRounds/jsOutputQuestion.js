@@ -38,8 +38,6 @@
 //-----
 
 
-
-
 // 🔁 FOR LOOP + var vs let (Classic Closure Trap)
 // 1. Output-based Question
 

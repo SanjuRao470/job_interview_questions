@@ -326,6 +326,18 @@
 //   );
 // }
 
+//---
+// “Explain your approach for stopwatch.”
+
+// You say:
+
+// I first clarified that the stopwatch needs start, pause, and reset functionality.
+// Instead of storing hours, minutes, and seconds separately, I store a single state variable called time which represents total seconds.
+// I kept total seconds as the single source of truth and derived hours, minutes, and seconds from it.
+// I handled the interval logic using useRef and ensured cleanup to avoid memory leaks.
+// I also prevented multiple intervals from running simultaneously.
+// Finally, I formatted the output and ensured performance correctness.
+
 
 
 ///--QUESTION-------
@@ -1445,3 +1457,571 @@
 //     </div>
 //   );
 // }
+
+
+
+//-----------------------------
+// import React, { useState, useEffect } from "react";
+
+// export default function App() {
+//   const [users, setUsers] = useState([]);
+//   const [errorMessage, setErrorMessage] = useState("");
+
+
+//   useEffect(() => {
+//     const fetchApisData = async () => {
+//       try {
+//         const response = await fetch(
+//           "https://jsonplaceholder.typicode.com/users"
+//         );
+//         if (!response.ok) {
+//           throw new Error("response is not ok!");
+//         }
+//         const responseData = await response.json();
+//         setUsers(responseData);
+//       } catch (err) {
+//         setErrorMessage(err.message);
+//       }
+//     };
+//     fetchApisData();
+//   }, [])
+
+//   return (
+//     <div>
+//       <h1>Hello CodeSandbox</h1>
+
+//       <table border="1">
+//         <thead>
+//           <tr>
+//             <th>Name</th>
+//             <th>age</th>
+//             <th>address</th>
+//           </tr>
+//         </thead>
+
+//         <tbody>
+//           {users.map((item) => (
+//             <tr key={item.id}>
+//               <td>{item.name}</td>
+//               <td>{item.phone}</td>
+//               <td>{item.username}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+
+//       {users && <p> {users.length && users[0].name}</p>}
+//       {errorMessage && <p style={{ color: "red" }}> {errorMessage}</p>}
+//     </div>
+//   );
+// }
+
+
+///---- File/folder Explore----
+
+
+// import React, { useState } from "react";
+
+// const folderData = {
+//   name: "root",
+//   type: "folder",
+//   children: [
+//     {
+//       name: "src",
+//       type: "folder",
+//       children: [
+//         { name: "index.js", type: "file" },
+//         { name: "App.js", type: "file" },
+//         {
+//           name: "components",
+//           type: "folder",
+//           children: [
+//             { name: "Button.js", type: "file" },
+//             { name: "Card.js", type: "file" },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       name: "package.json",
+//       type: "file",
+//     },
+//   ],
+// };
+
+// const FolderTree = ({ data }) => {
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   const handlerToggle = () => {
+//     if (data.type === "folder") {
+//       setIsOpen((prev) => !prev);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <div onClick={handlerToggle}>
+//         <p>
+//           {" "}
+//           {data.type === "folder" ? "F" : "f"}
+//           {data.name}
+//         </p>
+//       </div>
+
+//       <div>
+//         {data.children && isOpen && (
+//           <div>
+//             {data.children.map((child) => (
+//               <FolderTree key={child.name} data={child} />
+//             ))}
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default function App() {
+//   return (
+//     <div>
+//       <h1>Hello CodeSandbox</h1>
+//       <FolderTree data={folderData} />
+//     </div>
+//   );
+// }
+
+
+// //-----------------------  success---- error-- loading      ----------------------
+
+// import React, { useEffect, useState } from "react";
+
+// export default function App() {
+//   const [data, setData] = useState([]);
+//   const [errorMessage, seteErrorMessage] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   console.log(data);
+
+//   useEffect(() => {
+//     const fetchApisData = async () => {
+//       setLoading(true);
+//       try {
+//         const response = await fetch("https://dummyjson.com/products");
+//         if (!response.ok) {
+//           throw new error("response was not good!");
+//         }
+//         const responseData = await response.json();
+//         const listItems = responseData.products;
+//         setData(listItems);
+//       } catch (err) {
+//         seteErrorMessage(err.errorMessage);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchApisData();
+//   }, []);
+
+//   return (
+//     <div>
+//       <h1>Hello------</h1>
+//       {loading && (
+//         <p style={{ color: "green" }}>{loading} loading----------- </p>
+//       )}
+
+//       {errorMessage && <p style={{ color: "red" }}>{errorMessage} </p>}
+
+//       {!loading &&
+//         !errorMessage &&
+//         data.map((item) => <li key={item.id}>{item.brand}</li>)}
+//     </div>
+//   );
+// }
+
+
+
+//------------ filter--------------------
+
+
+// import React, { useEffect, useState } from "react";
+
+// export default function App() {
+//   const [data, setData] = useState([]);
+//   const [errorMessage, seteErrorMessage] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [search, setSearch] = useState("");
+
+//   console.log(data);
+
+//   useEffect(() => {
+//     const fetchApisData = async () => {
+//       setLoading(true);
+//       try {
+//         const response = await fetch("https://dummyjson.com/products");
+//         if (!response.ok) {
+//           throw new Error("response was not good!");
+//         }
+//         const responseData = await response.json();
+//         const listItems = responseData.products;
+//         setData(listItems);
+//       } catch (err) {
+//         seteErrorMessage(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchApisData();
+//   }, []);
+
+//   const filtered = data.filter((item) =>
+//     item.brand?.toLowerCase().includes(search.toLowerCase())
+//   );
+
+//   return (
+//     <div>
+//       <h1>Hello------</h1>
+//       {loading && (
+//         <p style={{ color: "green" }}>{loading} loading----------- </p>
+//       )}
+
+//       {errorMessage && <p style={{ color: "red" }}> {errorMessage} </p>}
+
+//       <input
+//         type="text"
+//         placeholder="type here....."
+//         value={search}
+//         onChange={(e) => setSearch(e.target.value)}
+//       />
+
+//       {!loading &&
+//         !errorMessage &&
+//         filtered.map((item) => <li key={item.id}>{item.brand}</li>)}
+//     </div>
+//   );
+// }
+
+
+
+///------------- select--option -------------
+
+
+// import React, { useEffect, useState } from "react";
+
+// export default function App() {
+//   const [data, setData] = useState([]);
+//   const [filteredData, setFilteredData] = useState([]);
+//   const [errorMessage, seteErrorMessage] = useState(null);
+//   const [loading, setLoading] = useState(false);
+//   const [categories, setCategories] = useState([]);
+
+//   console.log(categories);
+//   console.log("filteredData---", filteredData);
+
+//   useEffect(() => {
+//     const fetchApisData = async () => {
+//       setLoading(true);
+//       try {
+//         const response = await fetch("https://dummyjson.com/products");
+//         if (!response.ok) {
+//           throw new Error("response was not good!");
+//         }
+//         const responseData = await response.json();
+//         const listItems = responseData.products;
+//         setData(listItems);
+//         const uniqueCategories = [
+//           ...new Set(listItems.map((item) => item.category)),
+//         ];
+//         setCategories(uniqueCategories);
+//       } catch (err) {
+//         seteErrorMessage(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchApisData();
+//   }, []);
+
+//   const handlerCategories = (value) => {
+//     if (value === "") {
+//       setFilteredData(data);
+//     } else {
+//       const result = data.filter((item) => item.category === value);
+//       setFilteredData(result);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h1>Hello------</h1>
+
+//       {loading && (
+//         <p style={{ color: "green" }}>{loading} loading----------- </p>
+//       )}
+
+//       {errorMessage && <p style={{ color: "red" }}> {errorMessage} </p>}
+
+//       <select onChange={(e) => handlerCategories(e.target.value)}>
+//         <option value=" ">all select----</option>
+
+//         {categories.map((item) => (
+//           <option key={item} value={item}>
+//             {item}
+//           </option>
+//         ))}
+//       </select>
+
+//       {!loading &&
+//         !errorMessage &&
+//         filteredData.map((item) => <li key={item.id}>{item.brand}</li>)}
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+// //----------------------------
+
+// import React, { useState, useEffect } from "react";
+
+// export default function App() {
+//   const [filterItem, setFilterItem] = useState("asc");
+//   console.log(filterItem);
+
+//   const [cityItem, setCityItem] = useState("");
+//   console.log("000000--", cityItem);
+
+//   const data = [
+//     {
+//       id: 1,
+//       name: "riya",
+//       price: 29,
+//       city: "delhi",
+//     },
+//     {
+//       id: 2,
+//       name: "naian",
+//       price: 39,
+//       city: "delhi",
+//     },
+//     {
+//       id: 3,
+//       name: "sunita",
+//       price: 69,
+//       city: "mumbai",
+//     },
+//     {
+//       id: 4,
+//       name: "mamta",
+//       price: 19,
+//       city: "bangalore",
+//     },
+//     {
+//       id: 5,
+//       name: "rajiv",
+//       price: 9,
+//       city: "bangalore",
+//     },
+//   ];
+
+//   const sortedData = [...data].sort((a, b) => {
+//     return filterItem === "asc" ? a.price - b.price : b.price - a.price;
+//   });
+
+//   const uniqueCity = [...new Set(data.map((item) => item.city))];
+//   const filterData = cityItem
+//     ? data.filter((item) => item.city === cityItem)
+//     : data;
+
+//   return (
+//     <div>
+//       <h1>Hello----------</h1>
+
+//       <select onChange={(e) => setCityItem(e.target.value)}>
+//         <option value="">choose city</option>
+//         {uniqueCity.map((item) => (
+//           <option key={item} value={item}>
+//             {item}
+//           </option>
+//         ))}
+//       </select>
+
+//       {filterData.map((item) => (
+//         <li key={item.id}>
+//           price : {item.name} ----- based on city----{item.city}
+//         </li>
+//       ))}
+
+//       <div>
+//         <h1>price section----------</h1>
+//         <select onChange={(e) => setFilterItem(e.target.value)}>
+//           <option value="">choose price</option>
+//           <option value="asc"> low to high </option>
+//           <option value="desc"> high to low </option>
+//         </select>
+
+//         {sortedData.map((item) => (
+//           <li key={item.id}>price :based on price----{item.price}</li>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+//---------------------------------------
+
+
+// import React, { useState, useEffect } from "react";
+
+// export default function App() {
+//   const [data, setData] = useState([]);
+//   const [editId, setEditId] = useState(null);
+//   const [editValue, setEditValue] = useState({
+//     name: "",
+//     category: "",
+//     price: "",
+//   });
+
+//   console.log(data);
+
+//   const products = [
+//     {
+//       id: 1,
+//       name: "Laptop",
+//       category: "Electronics",
+//       price: 55000,
+//       stock: 12,
+//     },
+//     {
+//       id: 2,
+//       name: "Keyboard",
+//       category: "Accessories",
+//       price: 1200,
+//       stock: 30,
+//     },
+//     {
+//       id: 3,
+//       name: "Mouse",
+//       category: "Accessories",
+//       price: 800,
+//       stock: 25,
+//     },
+//   ];
+
+//   const handleDelete = (id) => {
+//     const filteredItem = data.filter((item) => item.id !== id);
+//     setData(filteredItem);
+//   };
+
+//   const handleEdit = (item) => {
+//     setEditId(item.id);
+
+//     setEditValue({
+//       name: editValue.name,
+//       category: editValue.category,
+//       price: editValue.price,
+//     });
+//   };
+
+//   const handlerSave = (id) => {
+//     const updatedRow = data.map((item) => {
+//       if (item.id === editId) {
+//         return {
+//           ...item,
+//           ...editValue,
+//         };
+//       }
+//       return item;
+//     });
+//     setData(updatedRow);
+//     setEditId(null);
+//   };
+
+//   useEffect(() => {
+//     setData(products);
+//   }, []);
+
+//   return (
+//     <>
+//       <h1>App------</h1>
+
+//       <table border="1" cellPadding="10">
+//         <thead>
+//           <tr>
+//             <th>name</th>
+//             <th>category</th>
+//             <th>price</th>
+//             <th>control</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {data.map((item) => (
+//             <tr key={item.id}>
+//               <td>
+//                 {editId === item.id ? (
+//                   <input
+//                     value={editValue.name}
+//                     onChange={(e) =>
+//                       setEditValue({
+//                         ...editValue,
+//                         name: e.target.value,
+//                       })
+//                     }
+//                   />
+//                 ) : (
+//                   item.name
+//                 )}
+//               </td>
+//               <td>
+//                 {editId === item.id ? (
+//                   <input
+//                     value={editValue.category}
+//                     onChange={(e) =>
+//                       setEditValue({
+//                         ...editValue,
+//                         category: e.target.value,
+//                       })
+//                     }
+//                   />
+//                 ) : (
+//                   item.category
+//                 )}
+//               </td>
+//               <td>
+//                 {editId === item.id ? (
+//                   <input
+//                     value={editValue.price}
+//                     onChange={(e) =>
+//                       setEditValue({
+//                         ...editValue,
+//                         price: e.target.value,
+//                       })
+//                     }
+//                   />
+//                 ) : (
+//                   item.price
+//                 )}
+//               </td>
+//               <td>
+//                 {editId === item.id ? (
+//                   <button onClick={() => handlerSave(item)}>save</button>
+//                 ) : (
+//                   <button onClick={() => handleEdit(item)}>edit</button>
+//                 )}
+//                 <button onClick={() => handleDelete(item.id)}>delete</button>
+//               </td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </>
+//   );
+// }
+
+
+

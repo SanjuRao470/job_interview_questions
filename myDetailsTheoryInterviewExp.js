@@ -46,7 +46,7 @@
 // // console.log(Boolean(-1))//true
 // // console.log(Boolean(1))//true
 // // console.log(Boolean(NaN))//false
-// //console.log(Boolean(123));// true
+// //console.log(Boolean(123));//true
 
 
 
@@ -544,7 +544,7 @@
 
 
 // function app() {
-//     x = 10;           // Implicit global variable (no `let/var/const`) or x = 10; assigns 10 to a variable without declaring it, so it becomes a global variable.
+//     x = 10;           // Automatically / Implicit global variable (no `let/var/const`) or x = 10; assigns 10 to a variable without declaring it, so it becomes a global variable.
 //     let y = 50;       // Proper block-scoped variable
 //     console.log(y);   // ✅ 50
 //     console.log(x);   // ✅ 10
@@ -607,7 +607,7 @@
 
 // var a = 10;
 // function app(){
-//    console.log(a)
+  // console.log(a)//undefined
 //     var a = 20;
 // }
 // app();
@@ -689,6 +689,32 @@
 
 // greet("Sanju");
 
+
+//---------------------
+
+//  function DebounceFun(fn, delay){
+//      let timer;
+     
+//      return function(...args){
+//          clearTimeout(timer);
+//          timer=  setTimeout(()=>{
+//             fn(...args) 
+//          },delay)
+//      }
+//       }
+      
+//       function greet(name){
+//           console.log("name", name)
+//       }
+ 
+//  const DebounceGreet =  DebounceFun(greet,1000)
+// DebounceGreet("a");
+// DebounceGreet("b");
+// DebounceGreet("c"); name c( only this servive)
+
+
+//----------------
+
 //--data privacy-----
 
 //----------counter----
@@ -757,6 +783,21 @@
 // logger.stop();//-- empty nothing
 
 
+//-------
+// “I approached this by encapsulating the asynchronous logic inside a factory function so that internal state remains private.
+
+// The timers array lives in a closure, which allows the start and stop methods to share and manage the same state without exposing it externally.
+
+// In start, I schedule delayed executions using setTimeout and intentionally store each timer ID so I can control the full lifecycle of these async tasks.
+
+// I used let inside the loop to avoid common closure issues and ensure each callback captures the correct iteration value.
+
+// Finally, I added a stop method to cleanly cancel all pending timers. This is important for preventing unnecessary execution and avoiding memory leaks, especially in long-running applications.
+
+// Overall, this pattern reflects how I handle side effects and cleanup in production-level code.”
+
+
+
 //-------If an empty / undefined element is found → 
 // stop ALL future logs (even previously scheduled ones).
 
@@ -789,6 +830,74 @@
 // 4
 // 5
 // 6
+
+
+//-------------------
+// function closureForMemoryLeakage() {
+//   const timer = [];
+
+//   function start() {
+//     for (var i = 0; i < 6; i++) {
+//       const id = setTimeout((id) => {
+//         console.log("running--", i);
+//       }, 1000);
+//       timer.push(id);
+//     }
+//   }
+
+//   function stop() {
+//     for (var i = 0; i < 6; i++) {
+//       timer.forEach((id) => clearTimeout(id));
+//       timer.length = 0;
+//     }
+//   }
+//   return { start, stop };
+// }
+// const longger = closureForMemoryLeakage();
+
+// longger.start();
+
+// running-- 6
+// running-- 6
+// running-- 6
+// running-- 6
+// running-- 6
+// running-- 6
+
+
+
+//-----------------------------------------------
+
+
+// function memoryLeakageFn(){
+//     let timer = [];
+
+//     function start(){
+//         for(let i=0; i<=5; i++){
+//             const id = setTimeout(() => {
+//                 console.log(i);
+//             }, 1000);
+//             timer.push(id);
+//         }
+//     }
+
+//     function stop(){
+//         timer.forEach(id => clearTimeout(id));
+//         timer = [];
+//     }
+
+//     return { start, stop };
+}
+
+
+
+
+
+
+
+
+
+
 
 //----------------------------------------------------------
 
@@ -1091,3 +1200,16 @@
 {/* <button onClick={setCounter(counter + 1)}>+</button>
 Here, you're immediately calling setCounter(counter + 1) during render.
 It returns undefined, so it's like: */}
+
+
+
+//----------------
+
+
+// const arr = [6,2,5 ,4]
+// const result = arr.reduce((acc, val)=> acc+val   ,0)
+// console.log(result)//17
+//-----------
+// acc=> accumulator  thinks of it as a running total
+// val => currentValue of array
+// 0 => initialValue =>  or if not paased then it takes value at index 0 as a intialValue

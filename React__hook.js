@@ -44,11 +44,12 @@
 
 
 
+
  //useMemo --- is Hook
 
 
 // useMemo caches the result of a calculation so
-//  React doesn’t recompute it on every render unless its dependencies change.
+// React doesn’t recompute it on every render unless its dependencies change.
 
 
 // 🔧 How it Works (Internals – Simple)
@@ -176,3 +177,9 @@
 // React compares the old Virtual DOM with the new one.
 // Only the changed parts of the real DOM are updated.
 // The UI is updated on the screen.
+
+//----
+//setState works in batching
+//Batching means----- React groups multiple state updates together and
+//performs a single re-render instead of one for each update.
+//to improve performance.
