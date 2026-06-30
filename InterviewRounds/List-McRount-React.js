@@ -1067,6 +1067,10 @@
 
 
 //------------TASK CAROSUEL-----
+// {condition ? value1 : value2}	Strings, numbers, variables, expressions
+// {condition ? <A /> : <B />}	JSX elements/components
+//(...) around JSX Just for readability, especially with multiline JSX
+
 
 // This is a ternary operator. for applying condition =>     condition ? ' ' : ' '   //condition ? valueIfTrue : valueIfFalse
 

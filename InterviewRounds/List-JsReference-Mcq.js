@@ -45,7 +45,7 @@
 // console.log(true == 1), console.log(true === 1)//true,false
 // console.log(null == undefined), console.log(null === undefined)//true,false
 // console.log("0" == false), console.log("0" === false)//true,false
-// console.log([] == 0), console.log([] === 0)//true,false
+// console.log([] == 0), console.log([] === 0)//true, false
 // console.log( == 1), console.log( === 1)// here we can use null and undefined// false,false
 // console.log( == "1,2,3"), console.log( === "1,2,3")//similar here also// false,false
 
@@ -196,6 +196,11 @@
 // console.log(obj == obj)//true       //due to same instance
 // console.log( arr === arr)//true    //due to same instance
 // console.log(arr == arr)//true      //due to same instance
+
+
+
+//console.log({ "a": "b" } === { "c": "d" });//false
+//console.log(typeof { "a": "Hey" } === typeof ["a", "Hey"])//true
 
 
 // console.log({a:1} == {a:1})//false     
@@ -470,3 +475,77 @@
 //console.log(3 > 2 > 1);
 
 //// 3 > 2  return true > 1 => 1  > 1  return false
+
+
+
+//-------------------------
+//Reason: Because var does not create a new variable inside {}.There is still only one x.
+
+//  function Test(){
+//      var x = 10;
+     
+//      if(true){
+//          var x = 99
+//          console.log(x)
+//      }
+//         console.log(x)
+//  }
+//  Test() //99 99
+ 
+ 
+//  function Test() {
+//     let x = 10;
+
+//     if (true) {
+//         let x = 99;
+//         console.log(x);
+//     }
+
+//     console.log(x);
+// }
+
+// Test();// 99 10
+
+
+
+//----
+
+//  function a() { 
+//            console.log(1); 
+//            setTimeout(() => { 
+//                   console.log(2); 
+//             }, 0); 
+//             new Promise(resolve => { 
+//                    console.log(3); 
+//                    resolve(4); 
+//                    console.log(5); 
+//              }); 
+//              new Promise(resolve => resolve(6)).then(console.log);  
+//              console.log(7); 
+         
+//           }
+//  a()
+
+// 1
+// 3
+// 5
+// 7
+// 6
+// 2
+
+//reason :  
+// Promise executor runs immediately (synchronously).
+// resolve(4) settles the promise, but no .then() is attached, so nothing else happens (no return )
+
+
+//--------------------------
+
+        // { let a = 10; 
+        //     { let a = 20;  
+        //         { console.log(a); 
+        //            let a = 30; 
+        //            console.log(a); 
+        //           } console.log(a); 
+        //      } 
+        //  }
+         //ReferenceError: Cannot access 'a' before initialization 

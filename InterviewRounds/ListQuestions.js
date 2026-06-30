@@ -56,6 +56,67 @@
 // console.log(result)
 
 
+
+
+//---------------------------
+// Rotate an Array to the Left by k Positions
+// Input: [1, 2, 3, 4, 5, 6, 7], k = 3
+// Output: [4, 5, 6, 7, 1, 2, 3]
+
+
+//  function app(arr, k){
+//          const output = [];
+         
+   
+//       for(let i= k; i<arr.length ; i++){
+//       output.push(arr[i])
+//      }
+     
+
+//      for(let i=0 ; i<k; i++ ){
+//       output.push(arr[i])
+//      }
+   
+
+//     return output;
+//       }
+      
+// const arr =  [1, 2, 3, 4, 5, 6, 7]
+// const k = 3
+// const result = app(arr,k)
+// console.log(result)//[  4, 5, 6, 7,  1, 2, 3]
+
+
+
+
+// Rotate an array to the right by k steps**
+//  * Input: `[2, 3, 4, 5, 6, 8]`, `k = 2`
+
+
+//  function app(arr, k){
+//          const output = [];
+         
+   
+//       for(let i=arr.length - 2; i<arr.length; i++ ){
+//       output.push(arr[i])
+//      }
+     
+
+//      for(let i=0 ; i<arr.length -2; i++ ){
+//       output.push(arr[i])
+//      }
+   
+//     return output;
+//       }
+      
+// const arr =  [2, 3, 4, 5, 6, 8]
+// const k = 2
+// const result = app(arr,k)
+// console.log(result)//[ 6, 8, 2, 3, 4, 5 ]
+
+
+
+
 //------------------------------------
 
 //--FINF FREQUENCY------
@@ -1248,6 +1309,25 @@
 
 //REcursion----
 
+//  function app(num){
+//      if(num>36) return null;
+//      return num - app(num+4)
+//  }
+//  const result = app(6)
+//  console.log(result)//-16
+ 
+
+
+
+//  function app(num){
+//      if(num>36) return null;
+//      return num + app(num+4)
+//  }
+//  const result = app(6)
+//  console.log(result)//160
+ 
+
+
 //  function App(number){
 //      if(number <= 0){
 //          return null//0;
@@ -1266,6 +1346,202 @@
 //      }
 //  }
 //  console.log(App(3))//6
+
+//----------------------------------------
+// Question 1
+// function fun(n) {
+//     if (n === 0) return;
+
+//     console.log(n);
+//     fun(n - 1);
+//     console.log(n);
+// }
+
+// fun(3);
+// Guess Output
+
+// 3
+// 2
+// 1
+// 1
+// 2
+// 3
+
+// Question 2
+// function fun(n) {
+//     if (n <= 0) return 1;
+
+//     return n * fun(n - 2);
+// }
+
+// console.log(fun(5));
+// Guess Output
+
+// 15
+
+// Calculation:
+
+// 5 * fun(3)
+// 5 * 3 * fun(1)
+// 5 * 3 * 1 * fun(-1)
+
+// = 15
+
+// Question 3
+// function fun(n) {
+//     if (n === 0) return;
+
+//     fun(n - 1);
+//     console.log(n);
+// }
+
+// fun(4);
+// Guess Output
+
+// 1
+// 2
+// 3
+// 4
+
+// Question 4
+// function fun(n) {
+//     if (n === 0) return;
+
+//     console.log(n);
+//     fun(n - 1);
+//     fun(n - 1);
+// }
+
+// fun(3);
+// Guess Output
+
+// Try before checking.
+
+// 3
+// 2
+// 1
+// 1
+// 2
+// 1
+// 1
+
+// Question 5
+// function fun(n) {
+//     if (n > 3) return;
+
+//     console.log(n);
+//     fun(n + 1);
+//     console.log(n);
+// }
+
+// fun(1);
+// Guess Output
+
+// 1
+// 2
+// 3
+// 3
+// 2
+// 1
+
+// Question 6
+// function fun(n) {
+//     if (n <= 1) return n;
+
+//     return fun(n - 1) + fun(n - 2);
+// }
+
+// console.log(fun(5));
+// Guess Output
+
+// 5
+
+// This is Fibonacci recursion.
+
+// </details>
+// Question 7 (Tricky)
+// function fun(n) {
+//     if (n === 0) return;
+
+//     console.log("A", n);
+
+//     fun(n - 1);
+
+//     console.log("B", n);
+// }
+
+// fun(2);
+// Guess Output
+
+// A 2
+// A 1
+// B 1
+
+// Question 8 (Interview Favorite)
+// function fun(n) {
+//     if (n === 0) return 0;
+
+//     return n + fun(n - 1);
+// }
+
+// console.log(fun(4));
+// Guess Output
+
+// 10
+
+// Calculation:
+
+// 4 + 3 + 2 + 1 + 0
+// = 10
+
+
+// Question 9 (Hard)
+// function fun(n) {
+//     if (n === 0) return;
+
+//     fun(n - 1);
+
+//     console.log(n);
+
+//     fun(n - 1);
+// }
+
+// fun(3);
+// Guess Output
+
+// 1
+// 2
+// 1
+// 3
+// 1
+// 2
+// 1
+
+
+
+// Question 10 (Very Common)
+// function fun(n) {
+//     if (n <= 1) return;
+
+//     console.log(n);
+
+//     fun(n / 2);
+
+//     console.log(n);
+// }
+
+// fun(8);
+// Guess Output
+
+// 8
+// 4
+// 2
+// 2
+// 4
+// 8
+
+
+
 
 
 /// Recurion question------------
@@ -2505,4 +2781,29 @@
 // const result = rearrange(arr)
 // console.log(result);
 // // Output: [2,4,6,8,1,3,5,7]
+
+
+
+
+
+//--QUESTION---
+
+// function app(array){
+//     const output = {}
+//     for(let i=0; i<array.length; i++){
+//         output[i] =array[i]
+       
+//     }
+//      return output 
+// }
+
+// const array = [11, 2, 3, 14, 5];
+// const result = app(array)
+// console.log(result)//{ '0': 11, '1': 2, '2': 3, '3': 14, '4': 5 }
+
+
+
+// const array = [11, 2, 3, 14, 5];
+// const obj = {...array}
+// console.log(obj)//{ '0': 11, '1': 2, '2': 3, '3': 14, '4': 5 }
 

@@ -118,6 +118,17 @@
 
 //---TDZ-The period from scope entry until declaration where access triggers a ReferenceError
 
+ 
+//  console.log(a)
+
+//  var a= 10
+ 
+//  function a(){
+//      console.log("hello ")
+//  }
+ // a is hoisted and intialized as undefined
+ //output:[Function: a] always function hoisting has higher priority then the variable Hoisting
+ //not undefined
 
 // 🧠 Hoisting & TDZ (Temporal Dead Zone)
 // 3. Output-based Question

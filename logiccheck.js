@@ -824,6 +824,7 @@
 
 
 //-----------------------------------QUESTION----------------
+//reverseStr= char + reverseStr; -- doing prepending adding in front of char
 // function reverseStr(str){
 //     const words =str.split(' ');
 //     let output='';
