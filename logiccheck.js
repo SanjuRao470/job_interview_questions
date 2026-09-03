@@ -462,8 +462,28 @@
 // //   m: '1'
 //  //}
 
+//------ HOW TO ELEMINATE  A CERTAIN  ELEMENT AT  GIVEN INDEX
 
+// continue --- to use skip the current iteration 
+//---ELEMINATE ELEMENT
+ 
+//  function app(array, eleminate){
+//     const output = []
 
+//    for(let i=0; i < array.length ; i++){
+//     if(array[i] === eleminate){
+//        continue
+//   }
+//       output.push(array[i]) 
+//   }
+// return output
+
+//  }
+
+// const array = [1,2,3,4,5,6]
+// const eleminate = 3
+// const result = app(array , eleminate)
+// console.log(result)//[1,2,4,5,6]
 
 
 
@@ -1611,6 +1631,9 @@
 //[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
 
 //NOTES:
+//Chunking ke case mein tumhe index i ko move karna hai, isliye i += chunks correct hai.
+//  chunks+= i , chunks ko nhi change karna hai 
+
 // array.slice(i, i + chunks) extracts elements from the array starting from index i and ending at index i + chunks (non-inclusive).
 // The slice method returns a portion of the array
 
@@ -1716,6 +1739,40 @@
 //  const arr = [1, -2, 3, -4, 5]
 //  const result = rearrangePosNeg(arr)
 //  console.log(result)//[ 1, 3, 5, -2, -4 ]
+
+
+
+//-----------**Rearrange array so that positive and negative numbers alternate**
+
+ 
+//  function app(array){
+//      const positive = [];
+//      const negetive = [];
+     
+//      for(let i=0; i<array.length; i++){
+//       if(array[i]<=0){
+//           negetive.push(array[i])
+//       }else{
+//            positive.push(array[i])
+//       }
+//      }
+    
+//      const output = [];
+     
+//    for(let i=0; i< positive.length; i++){
+//            output.push(positive[i])
+//             output.push(negetive[i])
+//             }
+            
+//     return output;
+//  }
+     
+//  const arr1 = [1, -2, 3, -4, -5, 6]
+//  const result = app(arr1)
+//  console.log(result)//[ 1, -2, 3, -4, 6, -5 ]
+ 
+
+
 
 
 //--------------------------

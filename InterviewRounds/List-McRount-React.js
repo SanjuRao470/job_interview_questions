@@ -587,7 +587,7 @@
 
 //   return (
 //     <div>
-//       <h1>Hello CodeSandbox</h1>
+//       <h'1>Hello CodeSandbox</h1>
 
 //       <ul>
 //         {currentItem.map((item) => (
@@ -1322,6 +1322,72 @@
 // }
 
 
+//----PRODUCTION  LEVEL CODE-----//////////////
+
+//(timerRef.current) -- this tell that timer is running or not only YES OR NO
+
+
+// import React, { useState, useRef, useEffect } from "react";
+
+// export default function App() {
+//   const [time, setTime] = useState(0);
+
+//   // Interval ID store karega
+//   const timerRef = useRef(null);
+
+//   // Start Timer
+//   const handlerStart = () => {
+//     // Agar timer already chal raha hai to kuch mat karo
+//     if (timerRef.current) return;
+
+//     timerRef.current = setInterval(() => {
+//       setTime((prev) => prev + 1);
+//     }, 1000);
+//   };
+
+//   // Pause Timer
+//   const handlerPause = () => {
+//     clearInterval(timerRef.current);
+//     timerRef.current = null;
+//   };
+
+//   // Reset Timer
+//   const handlerReset = () => {
+//     clearInterval(timerRef.current);
+//     timerRef.current = null;
+//     setTime(0);
+//   };
+
+//   // Cleanup
+//   useEffect(() => {
+//     return () => {
+//       clearInterval(timerRef.current);
+//     };
+//   }, []);
+
+//   // Time Format
+//   const hours = String(Math.floor(time / 3600)).padStart(2, "0");
+//   const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, "0");
+//   const seconds = String(time % 60).padStart(2, "0");
+
+//   return (
+//     <div>
+//       <h1>Stopwatch</h1>
+
+//       <h2>
+//         {hours}:{minutes}:{seconds}
+//       </h2>
+
+//       <button onClick={handlerStart}>Start</button>
+
+//       <button onClick={handlerPause}>Pause</button>
+
+//       <button onClick={handlerReset}>Reset</button>
+//     </div>
+//   );
+// }
+
+
 
 
 
@@ -1636,6 +1702,7 @@
 
 //       {!loading &&
 //         !errorMessage &&
+
 //         data.map((item) => <li key={item.id}>{item.brand}</li>)}
 //     </div>
 //   );
@@ -2029,3 +2096,311 @@
 
 
 
+
+
+//-----------INTERVIEW---1---------------------
+
+// Requirement 1: Dynamic Tabs
+// The component should accept tabs as props.
+
+// Requirement 2
+// The first tab should be active by default.
+
+
+// Requirement 3
+// When the user clicks another tab,
+// update the active tab display the corresponding content
+
+// Requirement 4
+// Only one tab can be active at a time.
+
+// Requirement 5
+// The active tab should have a different style.
+
+////------------------------------
+
+
+// import React from "react";
+// import Child from "./components/Child";
+// export default function App() {
+//   const tabs = [
+//     { id: 1, title: "Home", content: "Welcome Home" },
+//     { id: 2, title: "Profile", content: "Profile Information" },
+//     { id: 3, title: "Settings", content: "Settings Page" },
+//   ];
+//   return (
+//     <div>
+//       {" "}
+//       <h1>H------------------------h</h1> <Child props={tabs} />{" "}
+//     </div>
+//   );
+// }
+
+
+// import React, { useState } from "react";
+// export default function Child({ props }) {
+//   //   const [isOpen, setIsOpen] = useState(null);
+//   const [isOpen, setIsOpen] = useState(props[0]?.id ?? null);
+
+//   console.log(isOpen);
+
+//   const hanlderTabs = (id) => {
+//     setIsOpen((prev) => (isOpen === id ? null : id));
+//   };
+
+//   // Empty state
+//   if (props.length === 0) {
+//     return <h2>No Tabs Available</h2>;
+//   }
+
+//   return (
+//     <div>
+//       <div>
+//         {props.map((tab) => (
+//           <>
+//             <button
+//               key={tab.id}
+//               onClick={() => hanlderTabs(tab.id)}
+//               style={{
+//                 backgroundColor: isOpen === tab.id ? "blue" : "#ddd",
+//                 color: isOpen === tab.id ? "white" : "black",
+//               }}
+//             >
+//               {tab.title}
+//             </button>
+//             <span style={{ marginLeft: "10px" }}>
+//               {isOpen === tab.id && <p>{tab.content}</p>}
+//             </span>
+//           </>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+
+//----------------INTERVIEW---2---------------------------
+
+
+// import React, { useState, useEffect } from "react";
+
+// export default function App() {
+//   const [items, setItems] = useState([]);
+//   const [uniqueCategory, setUniqueCategory] = useState([]);
+//   const [selectedCategory, setSelectedCategory] = useState([]);
+
+//   const data = [
+//     {
+//       id: 1,
+//       name: "Laptop",
+//       category: "Electronics",
+//       brand: "Dell",
+//     },
+//     {
+//       id: 2,
+//       name: "Mobile",
+//       category: "Furniture",
+//       brand: "Samsung",
+//     },
+//     {
+//       id: 3,
+//       name: "Headphones",
+//       category: "Electronics",
+//       brand: "Sony",
+//     },
+//     {
+//       id: 4,
+//       name: "Keyboard",
+//       category: "Furniture",
+//       brand: "Logitech",
+//     },
+//     {
+//       id: 5,
+//       name: "Mouse",
+//       category: "Accessories",
+//       brand: "HP",
+//     },
+//     {
+//       id: 6,
+//       name: "Monitor",
+//       category: "Electronics",
+//       brand: "LG",
+//     },
+//   ];
+
+//   useEffect(() => {
+//     setItems(data);
+
+//     const unique = [...new Set(data.map((item) => item.category))];
+//     setUniqueCategory(unique);
+//   }, []);
+
+//   const handlerChecked = (e) => {
+//     const { value, checked } = e.target;
+
+//     if (checked) {
+//       // Add category
+//       setSelectedCategory((prev) => [...prev, value]);
+//     } else {
+//       // Remove category
+//       setSelectedCategory((prev) =>
+//         prev.filter((category) => category !== value)
+//       );
+//     }
+//   };
+
+//   const filteredItems =
+//     selectedCategory.length === 0
+//       ? items
+//       : items.filter((item) => selectedCategory.includes(item.category));
+
+//   return (
+//     <div>
+//       <h2>Category Filter</h2>
+
+//       {uniqueCategory.map((category) => (
+//         <div key={category}>
+//           <input type="checkbox" value={category} onChange={handlerChecked} />
+//           <label>{category}</label>
+//         </div>
+//       ))}
+
+//       <hr />
+
+//       <h3>Brands</h3>
+
+//       {filteredItems.map((item) => (
+//         <p key={item.id}>{item.brand}</p>
+//       ))}
+//     </div>
+//   );
+// }
+
+//----------NOTE-----
+
+// Think of e.target as an object
+// e.target = {
+//   value: "Electronics",
+//   checked: true,
+//   type: "checkbox",
+//   name: "",
+//   id: "",
+//   disabled: false,
+//   ...
+// }
+
+
+// const { value, checked } = e.target;
+
+// For a checkbox, checked tells you whether the checkbox is selected or not selected.
+
+// What is the difference between e.target.value and e.target.checked for a checkbox?
+
+
+// A strong answer would be:
+// e.target.value tells me which checkbox was interacted with (for example, "Electronics").
+// e.target.checked tells me its current state (true if checked, false if unchecked). This lets me decide
+
+
+// checked is provided by the browser's event object (which React wraps in its SyntheticEvent).
+
+// <input
+// type="checkbox"
+//   value="Electronics"
+//   onChange={handlerChecked}
+//   />
+// and the user clicks it, React passes an event object to your handler:
+
+
+
+// const handlerChecked = (e) => {
+//  console.log(e);
+// };
+
+
+// Inside that event object is:
+
+// e.target
+
+// And e.target is the actual HTML <input> element.
+
+// Since it's a checkbox, that input element has properties like:
+
+// e.target.value
+// e.target.checked
+// e.target.type
+// e.target.name
+// e.target.id
+
+
+//---------CUSTOM  ERROR SETUP---------
+////--NOTE:----   setErrorMessage("somthing is wrong in  url"); 
+
+// i want to set custom  error but setErrorMessage only update the state(errorMessage)  that is why i use throw new Error to throw error
+// and stop executing other function and directly moving to catch(err)
+// but here fetch() throws a network error (TypeError: Failed to fetch) so to show up custom error i have handle inside  catch(err)
+
+
+//response.ok always check after request successfully done
+
+//Because fetch() fails before it receives an HTTP response. Since the protocol itself is invalid,
+// // fetch() throws a network error (TypeError: Failed to fetch),
+//  so the code never reaches the response.ok check. If I want a custom message for network failures, I handle it in the catch block
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// //https://dummyjson.com/users
+
+// export default function App() {
+//   const [users, setUsers] = useState([]);
+//   const [errorMessage, setErrorMessage] = useState(null);
+//   const [loading, setLoading] = useState(true);
+
+//   console.log("----", errorMessage);
+
+//   useEffect(() => {
+//     const fetchApisData = async () => {
+//       try {
+//         const response = await fetch("https://dummyjsoncom/users");
+
+//         if (!response.ok) {
+//           throw new Error("somthing is wrong in  url");
+//         }
+//         const responseData = await response.json();
+
+//         setUsers(responseData.users);
+//       } catch (err) {
+//         if (err instanceof TypeError) {
+//           setErrorMessage("Unable to connect to the server.");
+//         } else {
+//           setErrorMessage(err.message);
+//         }
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchApisData();
+//   }, []);
+//   return (
+//     <div>
+//       <h1>Hello CodeSandbox</h1>
+
+//       {loading && <p>loading........</p>}
+
+//       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
+//       {users && <p> {users.length ? users[0].firstName : "not found "} </p>}
+
+//       {!loading && !errorMessage && (
+//         <div>
+//           {users.map((user) => (
+//             <li key={user.id}>{user.firstName}</li>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }

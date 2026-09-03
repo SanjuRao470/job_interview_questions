@@ -60,7 +60,7 @@
 
 // useSelector is a React-Redux hook used to read (or select)  // access data from the Redux store in a functional component.
 // useReducer is a React hook for local state management;
-// useDispatch is a function provided by Redux to dispatch actions to a global store.
+// useDispatch is a function provided by Redux to dispatch actions to a global store.  //---dispatch actions goes to the Reducer to upadate the redux store.
 
 
 
@@ -832,8 +832,8 @@
 
 
 // What is the custom hook?
-//Definition: A custom hook in React is a function that starts with "use" and allows you
-// to reuse stateful logic across multiple components.
+//Definition: A custom Hook is a reusable function starting with use that uses React Hooks to extract
+// and share stateful or side-effect logic between components, reducing code duplication and improving maintainability.
 
 //Custom Hook for Making API Requests:
 
@@ -879,6 +879,107 @@
 // }
 
 // export default useFetch;
+
+
+
+
+
+
+
+///ANOTHER EXAMPLE-- CUSTOM HOOK---
+
+
+//--THIS IS HOOK
+
+// import { useMemo } from "react";
+
+// function useCharFrequency(text = "") {
+//   console.log(text);
+//   const frequency = useMemo(() => {
+//     const result = {};
+
+//     for (const char of text) {
+//       result[char] = (result[char] || 0) + 1;
+//     }
+
+//     return result;
+//   }, [text]);
+
+//   return frequency;
+// }
+
+// export default useCharFrequency;
+
+
+
+
+
+
+//-- This is the componenet where we are using the hooks
+
+// import React from "react";
+// import useCharFrequency from "./components/useCharFrequency";
+
+// export default function App() {
+//   const frequency = useCharFrequency("aabbbmmuii");
+//   console.log("--0000000", frequency);
+//   return (
+//     <div>
+//       APP=====
+//       <p>----------</p>
+//       <p>{frequency.a}: {frequency.b}: {frequency.m}:{frequency.u}</p>
+//     </div>
+//   );
+// }
+
+
+//-------we are using useMemo to keep stable object reference to unneccessay recalculation.
+
+//   const frequency = useMemo(() => {
+//     const result = {};
+
+//     for (const char of text) {
+//       result[char] = (result[char] || 0) + 1;
+//     }
+
+//     return result;
+//   }, [text]);
+
+
+
+//-- cause unneccessay recalculation due to diffterent object reference
+
+// function useCharFrequency(text = "") {
+//   const result = {};
+
+//   for (const char of text) {
+//     result[char] = (result[char] || 0) + 1;
+//   }
+
+//   return result;
+// }
+// export default useCharFrequency;
+
+
+
+// function App() {
+//   const [count, setCount] = useState(0);
+
+//   const frequency = useCharFrequency("aabbb");
+
+//   return (
+//     <>
+//       <button onClick={() => setCount(count + 1)}>
+//         {count}
+//       </button>
+// <p>{frequency.a}: {frequency.b}: {frequency.m}:{frequency.u}</p>
+//     </>
+//   );
+// }
+
+
+
+
 
 
 

@@ -1635,7 +1635,7 @@
 //     }
 
 //---optional
-//-----      count++;
+//-----      ++;
 //
 //        }
 //        return count;
@@ -2420,6 +2420,9 @@
 
 
 
+
+
+
 //Aggregation = collecting multiple values and combining them into one result.
 // Examples of Aggregation
 
@@ -2631,6 +2634,115 @@
 //     count: 2,
 //     sum: 157000,
 //     avgSalary: 78500
+//   }
+// ]
+
+
+
+
+//------------------------- ANOTHER WAYS   ------------------------------------
+//------ NOTES----
+//aggregation
+//[key]  => key === "Engineering"
+// object lookup => find value inside object using key
+// O(n)2 => loop inside loop
+//O(n) and O(n)2
+
+
+
+//  function app(users){
+  
+//      const output = [];
+//        const map = {};
+     
+     
+//      for(let {name, id, department, salary, active} of users){
+   
+    
+//      map[department] ??={
+//         users : [],
+//         count : 0,
+//         sum : 0
+       
+//         }
+        
+//          map[department].users.push(name),
+//            map[department].count++,
+//           map[department].sum+=salary  
+    
+//     }
+    
+    
+    
+//     for(let key in  map){
+//         output.push({
+//            department:key,
+//            [key] :map[key].users,
+//            count : map[key].count,
+//             sum : map[key].sum,
+//             avgSum : map[key].sum /  map[key].count
+            
+//         })
+//     }
+         
+//          return output; 
+//  }
+
+//  const users = [ { id: 1, name: 'Tom', department: 'Engineering', salary: 80000, active: true },
+//  { id: 2, name: 'Bob', department: 'Engineering', salary: 75000, active: false }, 
+// { id: 3, name: 'Charlie', department: 'Sales', salary: 60000, active: true }, 
+// { id: 4, name: 'Paul', department: 'Engineering', salary: 90000, active: true },
+//  { id: 5, name: 'Eva', department: 'Marketing', salary: 65000, active: true },
+//  { id: 6, name: 'Frank', department: 'Sales', salary: 58000, active: false }, 
+// { id: 7, name: 'Grace', department: 'HR', salary: 70000, active: true },
+//  { id: 8, name: 'Alice', department: 'Engineering', salary: 95000, active: true }, 
+// { id: 9, name: 'Ivy', department: 'Marketing', salary: 62000, active: false },
+//  { id: 10, name: 'Jack', department: 'Finance', salary: 72000, active: true },
+//  { id: 11, name: 'Kate', department: 'Sales', salary: 67000, active: true }, 
+// { id: 12, name: 'Leo', department: 'Engineering', salary: 78000, active: false },
+//  { id: 13, name: 'Maya', department: 'HR', salary: 68000, active: true },
+//  { id: 14, name: 'Noah', department: 'Finance', salary: 85000, active: true }, 
+// { id: 15, name: 'Olivia', department: 'Marketing', salary: 71000, active: true }, 
+// { id: 16, name: 'Hanery', department: 'Engineering', salary: 82000, active: true },]
+//  const result = app(users)
+//  console.log(result)
+
+
+// [
+//   {
+//     department: 'Engineering',
+//     Engineering: [ 'Tom', 'Bob', 'Paul', 'Alice', 'Leo', 'Hanery' ],
+//     count: 6,
+//     sum: 500000,
+//     avgSum: 83333.33333333333
+//   },
+//   {
+//     department: 'Sales',
+//     Sales: [ 'Charlie', 'Frank', 'Kate' ],
+//     count: 3,
+//     sum: 185000,
+//     avgSum: 61666.666666666664
+//   },
+//   {
+//     department: 'Marketing',
+//     Marketing: [ 'Eva', 'Ivy', 'Olivia' ],
+//     count: 3,
+//     sum: 198000,
+//     avgSum: 66000
+//   },
+//   {
+//     department: 'HR',
+//     HR: [ 'Grace', 'Maya' ],
+//     count: 2,
+//     sum: 138000,
+//     avgSum: 69000
+//   },
+//   {
+//     department: 'Finance',
+//     Finance: [ 'Jack', 'Noah' ],
+//     count: 2,
+//     sum: 157000,
+//     avgSum: 78500
 //   }
 // ]
 

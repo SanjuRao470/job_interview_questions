@@ -734,6 +734,43 @@
 
 
 
+//----- closure
+// function createMultiplier() {
+//   let result = 1; // Private variable
+
+//   return function (number) {
+//     result = result * number; // Maintained state
+
+//     console.log(result);
+//   };
+// }
+
+// const multiply = createMultiplier();
+
+// multiply(2); // 2
+// multiply(3); // 6
+// multiply(4); // 24
+
+
+//--------------
+// const arr = [1, 2, 4];
+
+// function createMultiplier(number) {
+//   return function (value) {
+//     return value * number;
+//   };
+// }
+
+// const multiplyBy2 = createMultiplier(2);
+
+// const result = arr.map(multiplyBy2);
+
+// console.log(result); // [2, 4, 8]
+
+
+
+
+
 
 //--here how it works..
 //--here createCounter() call only once to create private variable(count) and return anonymous function
@@ -1213,3 +1250,35 @@ It returns undefined, so it's like: */}
 // acc=> accumulator  thinks of it as a running total
 // val => currentValue of array
 // 0 => initialValue =>  or if not paased then it takes value at index 0 as a intialValue
+
+
+//-----------------ARRAY METHODS-------------
+
+// const arr = [1,2,3]
+//console.log(arr.map((i)=> console.log(i * 3)))//3,6,9
+// const newArray = arr.map((i)=> i * 3)
+// console.log(newArray)//[ 3, 6, 9 ]
+
+
+
+//const arr = [1,2,3]
+//console.log(arr.filter((i)=> console.log(i <=2)))//true//true//false
+// console.log(arr.filter((i)=> console.log(i, i <=2)))//1 true//2 true//3 false
+// const newArray = arr.filter((i)=> i <= 2)
+// console.log(newArray)//[ 1, 2 ]
+
+
+// const arr = [1,2,3]
+//  const newArray = []
+//  arr.forEach((i)=>{
+//     newArray.push( i * 3)
+//     }  )
+//  console.log(newArray)//[3,6,9]
+
+
+// const arr = [1,2,3]
+
+//  arr.forEach((i)=>
+//     console.log( i * 3)//3,6,9
+//     )
+

@@ -131,12 +131,47 @@
 //console.log(true == 'true')false
 //console.log(" " == 0)//true
 //console.log([] == 0)//true
-//console.log([] == "")//false//NaN
+//console.log([] == "")//true
 //console.log([] + []);// ''
 //console.log({} + {}); //[object Object][object Object]
 // console.log(0 || "hello");//"hello"
 // console.log("hello" && 0);//0
 //console.log(['x'] == 'x')//true
+
+
+
+
+
+//-------------------------[] → toString([]) → ""
+
+// console.log([] == "")//true
+// console.log(""== []) //true
+
+
+//--- after conversion  "" == ""        why because space is still there both side same
+
+
+// console.log([] == " ")//false
+// console.log(" "== []) //false
+
+
+//-----//--- after conversion  "" == " "  why because space is still there both side diffrent
+
+
+// console.log(0 == "")//true
+// console.log(0 == " ")//true
+
+//--- after conversion  0 == 0      Kyunki JavaScript whitespace-only string ko numeric conversion mein 0 maanta hai.
+
+
+// console.log(""== 0) //true
+// console.log(" "== 0) //true
+
+//--- after conversion  0 == 0    Kyunki JavaScript whitespace-only string ko numeric conversion mein 0 maanta hai.
+
+
+
+
 
 //--------
 // console.log(4 + 1 + "9")
@@ -150,6 +185,14 @@
 //  const a =  b =  [1,2,3];
 
 
+//[object Object]  ===>[part1 part2]
+//part1 = > object => value of objcet type
+//part2 = > Object => built-in object type (constructor/tag)
+//like---[object Object]
+// [object Array]
+// [object Date]
+// [object Map]
+// [object Set]
 
 
 //=================
@@ -160,11 +203,11 @@
 
 //strict equality (===) means it checks types
 //but here in JavaScript to compare objects or arrays, the check is not based on their structure or content, 
-// but on their reference or identity. This means even if two objects or arrays have exactly the same content,
-//  they are considered unequal unless they refer to the exact same instance.
+//but on their reference or identity. This means even if two objects or arrays have exactly the same content,
+//they are considered unequal unless they refer to the exact same instance.
 
 
-
+// console.log( typeof {} ==  typeof {})//true  
 // console.log({} == {})//false     \\due to different references.
 // console.log({} === {})//false     \\due to different references.
 // console.log([] == [])//false      \\due to different references.
@@ -174,7 +217,8 @@
 
 // console.log([] + []);   // ""
 // console.log([] + {});   // "[object Object]"
-// console.log({} + []);   // 0   (in non-strict JS / browser console)
+// console.log({} + []);   // "[object Object]"
+// console.log( {} + {} );  // "[object Object][object Object]"
 
 
 
@@ -202,7 +246,7 @@
 //console.log({ "a": "b" } === { "c": "d" });//false
 //console.log(typeof { "a": "Hey" } === typeof ["a", "Hey"])//true
 
-
+//console.log( typeof {a:1} == typeof {a:1}) //true
 // console.log({a:1} == {a:1})//false     
 // console.log({a:'ab'} === {a:'ab'})//false
 // console.log([1,2] == [1,2])//false
@@ -225,7 +269,7 @@
 // const b = a;
 // const c = {};
 
-// console.log(a === b);  // true, same reference
+// console.log(a === b);  // true, same reference/ instance
 // console.log(a === c);  // false, different reference
 
 
@@ -240,6 +284,25 @@
 // console.log(c);//[ 1, 2, 3, 4, 6 ]
 // console.log(d);//[ 1, 2, 3, 4, 6 ]
 // console.log(d == c);//true
+
+
+//---------------------------------------
+
+// const a = {
+//     name: "name 1",
+//     age: 20
+// };
+
+// const b = a;
+// b.name = "name 2";
+
+// console.log(a);
+// console.log(b);
+
+// //----ANSWER
+// { name: 'name 2', age: 20 }
+// { name: 'name 2', age: 20 }
+
 
 
 
@@ -265,11 +328,40 @@
 // console.log(a === b); // Output: true
 
 
-//---------------------------------
+//---------------REASON------------------
+//diffrence between let and const
+
+//--const
+// const arr2 = [1, 2];
+// arr2 = [3, 4]; // ❌ Error
+
+// const variable ko reassign nahi kar sakte.
+
+
+
+// Lekin object/array ko mutate kar sakte ho:
+
+// const arr2 = [1, 2];
+// arr2.push(3);
+// console.log(arr2);
+// // [1, 2, 3]
+
+
+// //--let
+// let arr2 = [1, 2];
+// arr2 = [3, 4]; // ✅ Allowed
+//---- with let re-assigment is allowed.
+
+
+
+//------------------------------------------------------------------------------------
+
+
 // const arr1 = [1, 2];
 // const arr2 = arr1;
 
 // arr1 = [3, 4];
+//arr1 is declare with const (it  allow  only  mutation not re-assigment )
 // console.log(arr2)//TypeError: Assignment to constant variable.
 // //Error if arr1 declared with const, or reassignment if let
 
@@ -278,9 +370,37 @@
 // let arr1 = [1, 2];
 // const arr2 = arr1;
 
-// arr1 = [3, 4];
+// arr1 = [3, 4]; //re-assignment
 // console.log(arr1)//[ 3, 4 ]
 // console.log(arr2)//[ 1, 2 ]
+
+
+//----------------------------
+
+// let arr1 = [1, 2];
+// let arr2 = arr1;
+
+// arr1 = [3, 4];  //re-assignment
+// console.log(arr1)//[ 3, 4 ]
+// console.log(arr2)//[ 1, 2 ]
+
+
+//here in  both case arr1 is declare with let not const
+
+//---------------------
+
+// const arr1 = [1, 2];
+// let arr2 = arr1;
+
+// arr1 = [3, 4];
+// console.log(arr1)
+// console.log(arr2)
+// //TypeError: Assignment to constant variable.
+
+
+//--//here  arr1 is declare with const
+
+
 
 
 
@@ -326,7 +446,7 @@
 //   //The object is not destroyed yet because ref1 is still pointing to it.
 //  let obj1 = {a:1}
 //  let ref1 = obj1
-//  obj1 = null
+//  obj1 = null//Object ki value {a:1} change nahi hui. Sirf obj1 ka reference change hua.
 //  console.log(ref1.a)//1
 //  console.log(obj1)//null
 
@@ -549,3 +669,278 @@
         //      } 
         //  }
          //ReferenceError: Cannot access 'a' before initialization 
+
+
+  //---INTERVIEW-------//
+
+//QUESTION-----
+ //-----------------
+  //  var module = {
+//      a:1,
+//      getA: function(){
+//          return this.a
+//      }
+//  }
+//  const getFn = module.getA
+//  console.log(getFn.call(module))
+
+
+//QUESTION-----
+// without using 
+// loops
+// forEach
+// if-else
+
+
+//const a=1 change a=1 to a=2
+// const a=2
+//  if a =1 print "Hello"
+//   if a =2 print "world"
+
+
+//-- this is call lookup
+// const obj = {
+//     1:'Hello',
+//     2:'world'
+    
+// }
+//   console.log(obj[a])
+  
+
+//--------------//------------------
+
+// 2000 = sabhi ko 2 second baad chalao
+// i * 2000 = har iteration ka delay alag banao, isliye values ek-ek karke print hoti hain.
+
+
+// for(let i=0; i<5 ; i++){
+//     setTimeout(()=>{
+//         console.log(i)
+//     },i *1000)
+//     }
+    
+//     for(let i=0; i<5 ; i++){
+//     setTimeout(()=>{
+//         console.log(i)
+//     },1000)
+// }
+
+
+//---- WHEN WE USE--------
+// Rule: Remember only one rule
+
+// Set → when we want unique value
+// Map → when we want to associte value with key
+
+//---- make unique array [1,2,2,4,3,3,5,4]
+
+//use  new Set
+
+// Set → constructor
+// new → naya Set instance/object create karo means object
+// () → koi value pass nahi ki
+// Set(0) → Set ke andar 0 values hain == obkcet ka size
+// {} → DevTools ka Set ko display karne ka format
+
+// console.log(new Set(arr)) = > Set(3) {1,2,3,4,5}
+// if we want to take out into the array use spread oprator along with take array == pehle felyega then store in  array => 1 2 3 4 5 => put into []
+// console.log([new Set(arr)]) ==> take array
+// console.log([...new Set(arr)]) ==> then use spread ==> [1,2,3,4,5]
+
+
+///-----
+// it store collection od key data but diffrenece is Map allow any type of key
+
+// const map = new Map()
+// map.set('apple', 100)
+// console.log(map)//Map(1) { 'apple' => 100 }
+// map.set(true, 102)//Map(2) { 'apple' => 100, true => 102 }
+// console.log(...map)//[ 'apple', 100 ]
+// console.log([...map])//[ [ 'apple', 100 ] ]
+// console.log(map.get('apple'))//100 // -- getting key
+// console.log(map.has('apple'))//true // -- return true if key exist
+// console.log(map.size)//2 //-- size of object
+//map.delete(key)
+
+
+//----
+// const map = new Map([
+//   ["id", 101],
+//   ["name", "Sanju"],
+//   ["city", "Delhi"]
+// ]);
+// // console.log(map.get("city")) //delhi
+// console.log(map)//Map(3) { 'id' => 101, 'name' => 'Sanju', 'city' => 'Delhi' }
+
+
+//----------------------------------------
+
+//Function Declaration — works ✅
+
+//  App()
+//  function App(){
+//     console.log('DDD')
+//  }
+/// App()
+
+
+
+//const + function expression — ReferenceError ❌
+
+//function expression assigned to a const variable
+
+//ReferenceError:
+//Cannot access 'F' before initialization
+
+//   F()
+//   const  F =  function App(){
+//     console.log('EEEEE')
+//  }
+// F()
+
+
+
+
+//---------------Reason
+
+//during memory creation phase what happend
+
+// Memory Creation Phase
+
+// App → function App() { ... }//JavaScript initializes the entire function declaration in memory before execution starts.
+
+
+//-------------------------------------------
+
+
+// Memory Creation Phase
+//JavaScript mein const F memory mein create hota hai, lekin initialize nahi hota.
+
+
+// F → uninitialized ❌//In JavaScript, const F is created in memory, but it is not initialized yet.
+
+
+
+//------------ARRAY METHOD-------------
+//-----map/filter/reduce/forEach/slice/splice
+
+//  const arr = [1,2,4]
+//  const sum = arr.reduce((acc,curr)=>{
+//  return acc+curr
+//  },0)
+//  console.log(sum)//7
+
+
+// const arr = [1,2,4]
+//  const multiple = arr.reduce((acc,curr)=>{
+//  return acc*curr
+//  },1)
+//  console.log(multiple)//8
+
+
+// const arr = ["a", "b", "c"];
+
+// const result = arr.reduce((acc, curr) => {
+//   acc[curr] = curr.toUpperCase();
+//   return acc;
+// }, {});
+// console.log(result)//{ a: 'A', b: 'B', c: 'C' }
+
+// const arr = [1, 2, 3];
+
+// const result = arr.reduce((acc, curr) => {
+//   acc.push(curr * 2);
+//   return acc;
+// }, []);
+
+// console.log(result); // [2, 4, 6]
+
+
+//-- CLOSURE--------------------------------------
+
+//  function ClosureFn(){
+// let result = 1
+//  return function(number){
+//     result = result * number
+//     console.log(result)
+//  }
+
+//  }
+//  const multiple = ClosureFn()
+//  multiple(3)//3
+//  multiple(3)//9
+//  multiple(3)//27
+
+
+//--------------------------------------------------
+
+//  function ClosureFn(resultValue){
+//     console.log(resultValue)
+//  return function(number){
+//     console.log(number)
+//     return resultValue * number
+    
+//  }
+
+//  }
+//  const arr = [1,2,4] 
+//  const multiple = ClosureFn(3)
+//  const result = arr.map(multiple)
+//  console.log(result)//[3,6,12]
+
+
+//------------------------------------------------------
+
+//  function createMultiplier() {
+//   let result = 1; // Private variable
+
+//   return function (number) {
+//     result = result * number; // Maintained state
+
+//     console.log(result);
+//   };
+// }
+
+// const multiply = createMultiplier();
+
+// multiply(2); // 2
+// multiply(3); // 6
+// multiply(4); // 24
+
+
+//-------------------------------------------------------
+
+
+//  function createSum() {
+//   let result = 0; // Private variable
+
+//   return function (number) {
+//     result = result + number; // Maintained state
+
+//     console.log(result);
+//   };
+// }
+
+// const sum = createSum();
+
+// sum(2); //2
+// sum(3); //5
+// sum(4); //9
+
+
+//----------------------------------------------------
+
+// function createCounter(){
+//   let count = 0;//// Private variable
+//   //case-1
+//  return function (){ anonyouse function
+//      count++; // // Maintained state
+//      console.log(count)
+//  }
+// }
+// const counter1 = createCounter()
+// counter1();//1
+// counter1();//2
+// counter1();//3
+// counter1();//4
+
